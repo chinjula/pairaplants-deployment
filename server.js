@@ -190,4 +190,7 @@ setInterval(() => { backupNow(); backups().slice(14).forEach(b => fs.unlinkSync(
 
 app.use('/api', (q, s) => s.status(404).json({ error: 'Not found' }));
 app.use((err, q, s, n) => s.status(err.status && err.status < 500 ? err.status : 500).json({ error: 'Request failed.' }));
-app.listen(PORT, () => console.log(`Shop running at http://localhost:${PORT}`));
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => console.log(`Shop running at http://localhost:${PORT}`));
+}
+module.exports = app;
