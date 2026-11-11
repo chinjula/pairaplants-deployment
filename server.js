@@ -4,11 +4,26 @@ const bcrypt = require('bcryptjs'), jwt = require('jsonwebtoken');
 const fs = require('fs'), path = require('path'), crypto = require('crypto');
 
 const PORT = process.env.PORT || 3000;
-const DATA = path.join(__dirname, 'data'), DB = path.join(DATA, 'db.json');
+const isVercel = !!process.env.VERCEL;
+const DATA = isVercel ? '/tmp/data' : path.join(__dirname, 'data');
+const DB = isVercel ? '/tmp/data/db.json' : path.join(DATA, 'db.json');
 const BK = path.join(DATA, 'backups'), SF = path.join(DATA, '.secret');
-fs.mkdirSync(BK, { recursive: true });
+
+try { fs.mkdirSync(BK, { recursive: true }); } catch (e) {}
+
+if (isVercel && !fs.existsSync(DB)) {
+  const seedDb = path.join(__dirname, 'data', 'db.json');
+  if (fs.existsSync(seedDb)) {
+    try { fs.copyFileSync(seedDb, DB); } catch (e) {}
+  }
+}
+
 const SECRET = process.env.JWT_SECRET || (fs.existsSync(SF) ? fs.readFileSync(SF, 'utf8') :
-  (() => { const s = crypto.randomBytes(32).toString('hex'); fs.writeFileSync(SF, s, { mode: 0o600 }); return s; })());
+  (() => {
+    const s = crypto.randomBytes(32).toString('hex');
+    try { fs.writeFileSync(SF, s, { mode: 0o600 }); } catch (e) {}
+    return s;
+  })());
 
 const ROLES = ['superadmin', 'manager', 'support'];
 const CATS = ['Fish', 'Shrimps & Invertebrates', 'Aquatic Plants & Mosses', 'Substrates & Hardscape'];
@@ -16,7 +31,14 @@ const STATUSES = ['New', 'Packed', 'Shipped', 'Delivered'];
 
 /* ---------- tiny JSON database ---------- */
 let db;
-const save = () => { fs.writeFileSync(DB + '.tmp', JSON.stringify(db, null, 2)); fs.renameSync(DB + '.tmp', DB); };
+const save = () => {
+  try {
+    fs.writeFileSync(DB + '.tmp', JSON.stringify(db, null, 2));
+    fs.renameSync(DB + '.tmp', DB);
+  } catch (e) {
+    console.error('Failed to save db:', e.message);
+  }
+};
 const nid = a => a.reduce((m, x) => Math.max(m, x.id), 0) + 1;
 function seed() {
   console.log('\nFirst run: staff accounts created. Save these passwords now (change them after login):');
@@ -186,7 +208,9 @@ app.post('/api/backups/restore', auth('superadmin'), (req, res) => {
   log(req.user.username, 'restored ' + f, req.ip); res.json({ ok: true });
 });
 app.get('/api/logs', auth('superadmin'), (req, res) => res.json(db.logs));
-setInterval(() => { backupNow(); backups().slice(14).forEach(b => fs.unlinkSync(path.join(BK, b.file))); }, 24 * 3600e3);
+if (!isVercel) {
+  setInterval(() => { backupNow(); backups().slice(14).forEach(b => fs.unlinkSync(path.join(BK, b.file))); }, 24 * 3600e3);
+}
 
 app.use('/api', (q, s) => s.status(404).json({ error: 'Not found' }));
 app.use((err, q, s, n) => s.status(err.status && err.status < 500 ? err.status : 500).json({ error: 'Request failed.' }));
