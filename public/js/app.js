@@ -142,32 +142,34 @@ const pages = {
 
       <!-- WHY CHOOSE US (Matching uploaded reference image 1) -->
       <section class="why-choose-section">
-        <a class="view-all-pill" href="#shop">View All Products</a>
-        <h2 class="why-title">Why Choose Us</h2>
+        <div class="why-inner">
+          <a class="view-all-pill" href="#shop">View All Products</a>
+          <h2 class="why-title">Why Choose Us</h2>
 
-        <div class="why-cards-grid">
-          <div class="why-card">
-            <h3>Healthy &amp; Vibrant Plants</h3>
-            <div class="card-divider"></div>
-            <p>We deliver pest-free, carefully nurtured plants that thrive in your aquarium.</p>
-          </div>
+          <div class="why-cards-grid">
+            <div class="why-card">
+              <h3>Healthy &amp; Vibrant Plants</h3>
+              <div class="card-divider"></div>
+              <p>We deliver pest-free, carefully nurtured plants that thrive in your aquarium.</p>
+            </div>
 
-          <div class="why-card">
-            <h3>Fast &amp; Reliable Shipping</h3>
-            <div class="card-divider"></div>
-            <p>Secure packaging ensures your plants arrive fresh and ready to flourish.</p>
-          </div>
+            <div class="why-card">
+              <h3>Fast &amp; Reliable Shipping</h3>
+              <div class="card-divider"></div>
+              <p>Secure packaging ensures your plants arrive fresh and ready to flourish.</p>
+            </div>
 
-          <div class="why-card">
-            <h3>Expert Guidance</h3>
-            <div class="card-divider"></div>
-            <p>Our team provides simple tips and support to help you succeed in aquascaping.</p>
-          </div>
+            <div class="why-card">
+              <h3>Expert Guidance</h3>
+              <div class="card-divider"></div>
+              <p>Our team provides simple tips and support to help you succeed in aquascaping.</p>
+            </div>
 
-          <div class="why-card">
-            <h3>Sustainable Practices</h3>
-            <div class="card-divider"></div>
-            <p>We source responsibly and use eco-friendly methods to protect natural habitats.</p>
+            <div class="why-card">
+              <h3>Sustainable Practices</h3>
+              <div class="card-divider"></div>
+              <p>We source responsibly and use eco-friendly methods to protect natural habitats.</p>
+            </div>
           </div>
         </div>
       </section>
