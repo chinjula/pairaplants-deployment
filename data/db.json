@@ -1,0 +1,949 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "owner",
+      "name": "Owner",
+      "role": "superadmin",
+      "hash": "$2a$10$tKLq5jjp3OQOmsScEeJyfOkNXrRueCRBVkB0hXrnroerr7Fgzp/6C",
+      "active": true
+    },
+    {
+      "id": 2,
+      "username": "manager",
+      "name": "Manager",
+      "role": "manager",
+      "hash": "$2a$10$HejjZ.o0pOgaJPWqSNxmqOlEUlSgBIdh0wFIbml8GT/LNq53teOV.",
+      "active": true
+    },
+    {
+      "id": 3,
+      "username": "support",
+      "name": "Support",
+      "role": "support",
+      "hash": "$2a$10$aLFlnNyq2EYYliaOw/cyuu/XW8AK2Z.x5hGDzZulOSgO4SOXJtyMi",
+      "active": true
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Cherry Barb",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 120,
+      "stock": 24,
+      "description": "Active and peaceful schooling fish with vibrant cherry-red coloration."
+    },
+    {
+      "id": 2,
+      "name": "Choco Black Pufferfish (Dwarf Pufferfish)",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 280,
+      "stock": 11,
+      "description": "Curious, intelligent freshwater dwarf puffer, natural snail population controller."
+    },
+    {
+      "id": 3,
+      "name": "Golden Mountain Minnow",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 150,
+      "stock": 29,
+      "description": "Hardy, coldwater-friendly peaceful minnow with shimmering golden tones."
+    },
+    {
+      "id": 4,
+      "name": "Golden Top Minnow",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 160,
+      "stock": 23,
+      "description": "Surface-dwelling schooling fish with brilliant reflective top highlights."
+    },
+    {
+      "id": 5,
+      "name": "Mixed Guppy",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 90,
+      "stock": 39,
+      "description": "Assorted colorful fancy guppies, peaceful and lively community swimmers."
+    },
+    {
+      "id": 6,
+      "name": "Neon Tetra",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 60,
+      "stock": 49,
+      "description": "Iconic aquascaping schooling fish with electric-blue and scarlet stripes."
+    },
+    {
+      "id": 7,
+      "name": "Otocinclus Catfish",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 220,
+      "stock": 17,
+      "description": "Gentle dwarf suckermouth catfish, supreme natural algae grazer for plant leaves."
+    },
+    {
+      "id": 8,
+      "name": "Balloon Platy Fish",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 110,
+      "stock": 21,
+      "description": "Playful balloon-shaped livebearer with bright orange and calico patterns."
+    },
+    {
+      "id": 9,
+      "name": "Siamese Algae Eater (SAE)",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 180,
+      "stock": 20,
+      "description": "Famous industrious cleaner that happily consumes black beard and brush algae."
+    },
+    {
+      "id": 10,
+      "name": "Stone Catfish (Hara Jerdoni)",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 240,
+      "stock": 15,
+      "description": "Fascinating miniature anchor catfish, peaceful nocturnal nano-tank resident."
+    },
+    {
+      "id": 11,
+      "name": "White Mountain Minnow",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 140,
+      "stock": 28,
+      "description": "Graceful silvery schooling fish with neon red accents on the fins."
+    },
+    {
+      "id": 12,
+      "name": "Hill Stream Loach",
+      "category": "Fish",
+      "subcategory": "Fish",
+      "price": 380,
+      "stock": 10,
+      "description": "Mini stingray-like river loach with suction fins designed to graze smooth stones."
+    },
+    {
+      "id": 13,
+      "name": "Amano Shrimp",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Shrimps",
+      "price": 180,
+      "stock": 35,
+      "description": "Legendary cleanup shrimp prized by Takashi Amano for voracious algae appetite."
+    },
+    {
+      "id": 14,
+      "name": "Assassin Snails",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Snails",
+      "price": 120,
+      "stock": 30,
+      "description": "Carnivorous snail that naturally keeps pest snail populations under control."
+    },
+    {
+      "id": 15,
+      "name": "Bloody Mary Shrimp",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Shrimps",
+      "price": 200,
+      "stock": 25,
+      "description": "High-grade intense crimson red Neocaridina shrimp with translucent deep color."
+    },
+    {
+      "id": 16,
+      "name": "Blue Shrimp (Blue Dream)",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Shrimps",
+      "price": 160,
+      "stock": 25,
+      "description": "Striking sapphire-blue dwarf shrimp that looks stunning over planted tanks."
+    },
+    {
+      "id": 17,
+      "name": "Borneo Sucker",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Invertebrates & Grazers",
+      "price": 260,
+      "stock": 14,
+      "description": "Specialized biofilm grazer with spotted camouflage and powerful clinging grip."
+    },
+    {
+      "id": 18,
+      "name": "Cherry Shrimp / Red Cherry Shrimp",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Shrimps",
+      "price": 90,
+      "stock": 45,
+      "description": "Hardy, beginner-favorite bright red dwarf shrimp for aquascapes and nano setups."
+    },
+    {
+      "id": 19,
+      "name": "Golden Algae Eater",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Invertebrates & Grazers",
+      "price": 150,
+      "stock": 20,
+      "description": "Vibrant yellow bottom cleaner that tirelessly polishes wood, stone and glass."
+    },
+    {
+      "id": 20,
+      "name": "Golden Yellow Apple Snails",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Snails",
+      "price": 80,
+      "stock": 30,
+      "description": "Peaceful golden snail that scavenges excess food and detritus without harming plants."
+    },
+    {
+      "id": 21,
+      "name": "Malaysian Trumpet Snail",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Snails",
+      "price": 50,
+      "stock": 40,
+      "description": "Essential substrate aerator that burrows through gravel to prevent toxic gas pockets."
+    },
+    {
+      "id": 22,
+      "name": "Nerit Snails / Zebra Nerite Snails",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Snails",
+      "price": 130,
+      "stock": 28,
+      "description": "Eye-catching tiger and zebra striped shell, unmatched at wiping glass spot algae."
+    },
+    {
+      "id": 23,
+      "name": "Orange Shrimp",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Shrimps",
+      "price": 150,
+      "stock": 22,
+      "description": "Luminous neon-orange dwarf shrimp adding warm color pops across green plants."
+    },
+    {
+      "id": 24,
+      "name": "Peelia Moss / Peelia Moss Coconut Shell",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Shrimp Habitats",
+      "price": 290,
+      "stock": 15,
+      "description": "Lush liverwort Pellia moss pre-anchored to a natural coconut shell shrimp cave."
+    },
+    {
+      "id": 25,
+      "name": "Shrimp Mixed (Pack of 5)",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Shrimps",
+      "price": 350,
+      "stock": 20,
+      "description": "Rainbow assortment of 5 healthy active dwarf shrimp (Red, Blue, Yellow, Orange)."
+    },
+    {
+      "id": 26,
+      "name": "Yellow Shrimp",
+      "category": "Shrimps & Invertebrates",
+      "subcategory": "Shrimps",
+      "price": 160,
+      "stock": 22,
+      "description": "Sunny golden-yellow Neocaridina dwarf shrimp, active and peaceful forager."
+    },
+    {
+      "id": 27,
+      "name": "Blyxa Japonica",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Foreground & Carpet Plants",
+      "price": 190,
+      "stock": 25,
+      "description": "True aquatic grass-like bush that flushes golden-red under intense aquascaping lights."
+    },
+    {
+      "id": 28,
+      "name": "Dwarf Hair Grass",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Foreground & Carpet Plants",
+      "price": 220,
+      "stock": 20,
+      "description": "The gold standard for creating manicured underwater emerald lawns."
+    },
+    {
+      "id": 29,
+      "name": "Glossostigma Elatinoides",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Foreground & Carpet Plants",
+      "price": 210,
+      "stock": 18,
+      "description": "Fast-creeping carpet plant made famous by Japanese Nature Aquarium layouts."
+    },
+    {
+      "id": 30,
+      "name": "Hemianthus Cuba (HC Cuba)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Foreground & Carpet Plants",
+      "price": 250,
+      "stock": 16,
+      "description": "One of the tiniest leafed aquarium plants, forming rich dense cushions."
+    },
+    {
+      "id": 31,
+      "name": "Marsilea / Micranthemum / Monte Carlo (Mini X Moss)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Foreground & Carpet Plants",
+      "price": 230,
+      "stock": 24,
+      "description": "Adaptable bright round-leaf carpeting plant, easier to root than HC Cuba."
+    },
+    {
+      "id": 32,
+      "name": "Sagittaria Subulata / Graminea",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Foreground & Carpet Plants",
+      "price": 140,
+      "stock": 30,
+      "description": "Vigorous runner plant with ribbon blades, exceptionally hardy in any tank."
+    },
+    {
+      "id": 33,
+      "name": "Limnophila Aromatica / Aquatica / Rugosa",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 180,
+      "stock": 25,
+      "description": "Decorative fragrant stem plant with tooth-edged leaves turning bronze and purple."
+    },
+    {
+      "id": 34,
+      "name": "Ludwigia (Super Red / Repens / Sedioides / Arcuata / Glandulosa)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 210,
+      "stock": 28,
+      "description": "Deep burgundy to scarlet red stem plants providing dramatic contrasting color."
+    },
+    {
+      "id": 35,
+      "name": "Rotala (Green / Hi Red / Macrandra / Pink / Wallichii)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 190,
+      "stock": 35,
+      "description": "Versatile background stems that form dense, prune-able colorful plant walls."
+    },
+    {
+      "id": 36,
+      "name": "Vallisneria (Nana / Spiralis / Jungle Val)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 150,
+      "stock": 30,
+      "description": "Tall flowing ribbon grass that creates a soft curtain in tank filter currents."
+    },
+    {
+      "id": 37,
+      "name": "Alternanthera Sessilis",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 170,
+      "stock": 20,
+      "description": "Bold pink-and-purple stemmed foliage plant for dynamic visual contrast."
+    },
+    {
+      "id": 38,
+      "name": "Amazon Sword / Grisebachii",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 240,
+      "stock": 18,
+      "description": "Classic majestic centerpiece plant with wide emerald sword blades."
+    },
+    {
+      "id": 39,
+      "name": "Anubias (Nana, Glabra, Gracilis, Gold)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 260,
+      "stock": 24,
+      "description": "Hardy shade-loving epiphytes with tough leather leaves that fish will not eat."
+    },
+    {
+      "id": 40,
+      "name": "Bacopa (Caroliniana, Monnieri)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 140,
+      "stock": 26,
+      "description": "Fleshy round-leaved upright stem plant, forgiving and easy to propagate."
+    },
+    {
+      "id": 42,
+      "name": "Cryptocoryne (Alba, Undulata, Axelrodi, Retrospiralis)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 190,
+      "stock": 20,
+      "description": "Low-maintenance rosette plant with fluted copper-bronze and green leaves."
+    },
+    {
+      "id": 43,
+      "name": "Echinodorus (Argentinensis, Cordifolius, Tenellus)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 230,
+      "stock": 16,
+      "description": "Stately architectural aquatic swords suitable for medium to large aquascapes."
+    },
+    {
+      "id": 44,
+      "name": "Egeria Densa (Anacharis)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 110,
+      "stock": 40,
+      "description": "Prolific oxygenating weed that absorbs nitrates and outcompetes green algae."
+    },
+    {
+      "id": 45,
+      "name": "Eleocharis Vivipara",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 190,
+      "stock": 18,
+      "description": "Hair-like umbrella stems that produce delicate plantlets in tiers."
+    },
+    {
+      "id": 46,
+      "name": "Eriocaulon Cinereum",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 340,
+      "stock": 10,
+      "description": "Exquisite spiky starburst rosette, the crown jewel for collector aquascapers."
+    },
+    {
+      "id": 47,
+      "name": "Foxtail (Ceratophyllum Demersum)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 110,
+      "stock": 35,
+      "description": "Bushy horned pondweed, unmatched water clarifier and refuge for fish fry."
+    },
+    {
+      "id": 48,
+      "name": "Giant Vallisneria",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 180,
+      "stock": 18,
+      "description": "Massive broad-leaved tape grass reaching surface heights in large tanks."
+    },
+    {
+      "id": 49,
+      "name": "Hemigraphis Sp Pink",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 210,
+      "stock": 15,
+      "description": "Crinkled metallic violet-pink leaves that stand out in any display."
+    },
+    {
+      "id": 50,
+      "name": "Hydrilla",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 90,
+      "stock": 40,
+      "description": "Unstoppable fast grower that keeps water clear and biological cycle balanced."
+    },
+    {
+      "id": 51,
+      "name": "Hydrocotyle (Sibthorpioides, Leucocephala, Verticillata)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 180,
+      "stock": 25,
+      "description": "Charming aquatic pennywort and clover runners creating whimsical trails."
+    },
+    {
+      "id": 52,
+      "name": "Hygrophila (Pinnatifida, Sunset, Corymbosa, Araguaia, Difformis)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 190,
+      "stock": 28,
+      "description": "Hardy, versatile stems with serrated fern-like or pink-veined foliage."
+    },
+    {
+      "id": 53,
+      "name": "Lobelia Cardinalis",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 200,
+      "stock": 18,
+      "description": "Stout upright stems with bright light-green leaves, beloved in Dutch aquariums."
+    },
+    {
+      "id": 54,
+      "name": "Mayaca Fluviatilis",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 170,
+      "stock": 22,
+      "description": "Super-soft needle foliage forming pillow-like light green clouds in current."
+    },
+    {
+      "id": 55,
+      "name": "Myriophyllum Red",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 210,
+      "stock": 16,
+      "description": "Delicate whorled reddish-coral water milfoil stems."
+    },
+    {
+      "id": 56,
+      "name": "Naja's Grass (Guppy Grass)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 100,
+      "stock": 35,
+      "description": "Brittle branching tangled stems that baby fish love to hide and forage in."
+    },
+    {
+      "id": 57,
+      "name": "Nitella",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 140,
+      "stock": 20,
+      "description": "Translucent green stonewort stems perfect for natural biotopes."
+    },
+    {
+      "id": 58,
+      "name": "Nuphar Japonica",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 320,
+      "stock": 10,
+      "description": "Japanese spatterdock with wavy translucent heart-shaped underwater lily pads."
+    },
+    {
+      "id": 59,
+      "name": "Nymphaea / Nymphoides (Indica, Taiwan, Omrana)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 280,
+      "stock": 14,
+      "description": "Aquatic lily plants producing lovely submerged pads and tender flower buds."
+    },
+    {
+      "id": 60,
+      "name": "Parrot Feather",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 150,
+      "stock": 25,
+      "description": "Feathery whorled blue-green stems that gracefully breach the water surface."
+    },
+    {
+      "id": 61,
+      "name": "Pogo Octopus (Pogostemon)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 170,
+      "stock": 24,
+      "description": "Slender undulating leaf tentacles that create lively flowing background motion."
+    },
+    {
+      "id": 62,
+      "name": "Polygonum Sp Pink",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 220,
+      "stock": 14,
+      "description": "Erect bamboo-like stems with pointed leaves painted in blazing hot pink."
+    },
+    {
+      "id": 63,
+      "name": "Potamogeton Gayi",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 160,
+      "stock": 20,
+      "description": "Subtle translucent bronze tape leaves, wonderful for natural river scapes."
+    },
+    {
+      "id": 64,
+      "name": "Red Banana Plant",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 260,
+      "stock": 15,
+      "description": "Novelty aquatic plant with banana-shaped nutrient tubers and lily leaves."
+    },
+    {
+      "id": 65,
+      "name": "Red Tiger Lily (Lotus)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 310,
+      "stock": 12,
+      "description": "Spectacular bulb plant with mottled red-and-green broad arrow leaves."
+    },
+    {
+      "id": 66,
+      "name": "Strogon Sp Brown (Staurogyne)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 190,
+      "stock": 22,
+      "description": "Low-creeping bushy stem plant with warm bronze-brown hues."
+    },
+    {
+      "id": 67,
+      "name": "Utricularia Valgeria (Graminifolia)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 280,
+      "stock": 12,
+      "description": "Exotic bright-green carnivorous bladderwort forming a dense, velvety lawn."
+    },
+    {
+      "id": 68,
+      "name": "Java Fern (Standard, Dwarf, Needle Leaf, Philippines, Windelov, Wrinkle)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Ferns & Mosses",
+      "price": 190,
+      "stock": 35,
+      "description": "Indestructible rhizome fern with varieties for every driftwood crevice."
+    },
+    {
+      "id": 69,
+      "name": "Java Moss (Standard, Coconut Shell)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Ferns & Mosses",
+      "price": 150,
+      "stock": 40,
+      "description": "World-renowned aquarium moss for shrimp, biofilm grazers and aquascaping accents."
+    },
+    {
+      "id": 70,
+      "name": "Trident Fern (Microsorum)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Ferns & Mosses",
+      "price": 250,
+      "stock": 18,
+      "description": "Graceful lobed fern resembling trident forks, thrives tied to hardscape."
+    },
+    {
+      "id": 71,
+      "name": "Jade Lotus Moss",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Ferns & Mosses",
+      "price": 310,
+      "stock": 12,
+      "description": "Rare compact ornamental moss forming flower-like jade rosettes."
+    },
+    {
+      "id": 72,
+      "name": "Riccia Moss / Riccardia Multifida (Coral Moss)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Ferns & Mosses",
+      "price": 280,
+      "stock": 15,
+      "description": "Deep green mini coral liverwort that pearlesces profusely under good light."
+    },
+    {
+      "id": 73,
+      "name": "Azolla (Fairy Moss)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 120,
+      "stock": 25,
+      "description": "Delicate velvet floating fern that turns reddish in good lighting."
+    },
+    {
+      "id": 74,
+      "name": "Duckweed",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 60,
+      "stock": 50,
+      "description": "Fast-multiplying miniature surface floater that rapidly soaks up excess nutrients."
+    },
+    {
+      "id": 75,
+      "name": "Hydrocleys Nymphoides (Water Poppy)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 220,
+      "stock": 15,
+      "description": "Floating oval leaves with charming cup-shaped lemon blossoms."
+    },
+    {
+      "id": 76,
+      "name": "Limnobium (Amazon Frogbit)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 140,
+      "stock": 30,
+      "description": "Sponge-thick round floating rosettes with trailing root nurseries."
+    },
+    {
+      "id": 77,
+      "name": "Mosaic Poppy",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 260,
+      "stock": 12,
+      "description": "Mesmerizing geometric mosaic rosettes floating flat on the water surface."
+    },
+    {
+      "id": 78,
+      "name": "Peace Lily (Aquatic Root Cultivated)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 250,
+      "stock": 14,
+      "description": "Riparium foliage with clean roots adapted to submerged aquatic filtration."
+    },
+    {
+      "id": 79,
+      "name": "Red Root Floater",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 190,
+      "stock": 22,
+      "description": "Dramatic crimson-red hanging roots with leaves that blush maroon in bright light."
+    },
+    {
+      "id": 80,
+      "name": "Rosette Water Lettuce",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 130,
+      "stock": 25,
+      "description": "Velvety ribbed leaves arranged in an open rose shape with feathery root systems."
+    },
+    {
+      "id": 81,
+      "name": "Salvinia",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 120,
+      "stock": 35,
+      "description": "Textured hydrophobic floating fern leaves that deflect splashes and shade water."
+    },
+    {
+      "id": 82,
+      "name": "Water Hyacinth",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 110,
+      "stock": 20,
+      "description": "Spongy bulbous floating stems with purple blooms and black fibrous roots."
+    },
+    {
+      "id": 83,
+      "name": "Water Lettuce",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 100,
+      "stock": 30,
+      "description": "Classic pale-green velvet rosettes creating natural shelter for aquatic life."
+    },
+    {
+      "id": 84,
+      "name": "Water Sprite (Ceratopteris)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Floating & Surface Plants",
+      "price": 150,
+      "stock": 25,
+      "description": "Lacy floating or rooted fern, fast growing and gentle shelter for shrimplets."
+    },
+    {
+      "id": 85,
+      "name": "Clay Soil (Active Planted Tank Soil, 3 kg)",
+      "category": "Substrates & Hardscape",
+      "subcategory": "Substrates",
+      "price": 580,
+      "stock": 24,
+      "description": "Nutrient-rich baked clay granules that stabilize pH at 6.5 for strong plant roots."
+    },
+    {
+      "id": 86,
+      "name": "Natural Aquascaping Driftwood",
+      "category": "Substrates & Hardscape",
+      "subcategory": "Hardscape",
+      "price": 420,
+      "stock": 18,
+      "description": "Curated branchy bogwood pieces that release beneficial tannins and anchor plants."
+    }
+  ],
+  "orders": [
+    {
+      "id": 1001,
+      "name": "Web Novaitpak",
+      "phone": "35409996",
+      "address": "A-404, Mohidins iconia, jairam nagar",
+      "items": [
+        {
+          "id": 1,
+          "name": "Cherry Barb",
+          "qty": 1,
+          "price": 120
+        },
+        {
+          "id": 2,
+          "name": "Choco Black Pufferfish (Dwarf Pufferfish)",
+          "qty": 1,
+          "price": 280
+        },
+        {
+          "id": 3,
+          "name": "Golden Mountain Minnow",
+          "qty": 1,
+          "price": 150
+        },
+        {
+          "id": 4,
+          "name": "Golden Top Minnow",
+          "qty": 1,
+          "price": 160
+        },
+        {
+          "id": 5,
+          "name": "Mixed Guppy",
+          "qty": 1,
+          "price": 90
+        },
+        {
+          "id": 6,
+          "name": "Neon Tetra",
+          "qty": 1,
+          "price": 60
+        },
+        {
+          "id": 7,
+          "name": "Otocinclus Catfish",
+          "qty": 1,
+          "price": 220
+        },
+        {
+          "id": 8,
+          "name": "Balloon Platy Fish",
+          "qty": 1,
+          "price": 110
+        }
+      ],
+      "total": 1190,
+      "status": "Packed",
+      "date": 1794399984449
+    }
+  ],
+  "inquiries": [],
+  "logs": [
+    {
+      "t": 1794400735391,
+      "user": "owner",
+      "action": "order #1001 Packed",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400691477,
+      "user": "owner",
+      "action": "deleted product Cabomba (Green, Red)",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400671640,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400671515,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400671215,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400671076,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400670978,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400670871,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400670775,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400670579,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400670429,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400653980,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400604971,
+      "user": "owner",
+      "action": "backup db-2026-11-11T12-36-44-970Z.json",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400600923,
+      "user": "owner",
+      "action": "backup db-2026-11-11T12-36-40-921Z.json",
+      "ip": "::1"
+    },
+    {
+      "t": 1794400582650,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    }
+  ]
+}
