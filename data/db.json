@@ -856,6 +856,12 @@
   "inquiries": [],
   "logs": [
     {
+      "t": 1794402971934,
+      "user": "owner",
+      "action": "login",
+      "ip": "::1"
+    },
+    {
       "t": 1794400735391,
       "user": "owner",
       "action": "order #1001 Packed",

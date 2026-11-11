@@ -93,7 +93,7 @@ function getFilteredProducts() {
 
 function renderProductCards(list) {
   if (!list.length) {
-    return `<div style="grid-column:1/-1;text-align:center;padding:50px 20px;background:var(--canvas-alt);border-radius:var(--radius-card);border:1px dashed var(--line)">
+    return `<div style="grid-column:1/-1;text-align:center;padding:50px 20px;background:var(--canvas-alt);border-radius:var(--radius-card);border:1px dashed var(--line);margin:0 48px">
       <p style="font-size:2rem;margin-bottom:8px">🔍</p>
       <h3 style="margin-bottom:6px">No botanical items match your query</h3>
       <p class="muted">Try adjusting your search terms or selecting another category.</p>
@@ -123,133 +123,118 @@ const pages = {
   async home() {
     await loadProducts();
     const featuredCats = [
-      { name: 'Aquatic Plants & Mosses', icon: '🌿', count: products.filter(p => p.category === 'Aquatic Plants & Mosses').length, note: 'Tissue cultures, carpet stems & floaters' },
-      { name: 'Fish', icon: '🐠', count: products.filter(p => p.category === 'Fish').length, note: 'Quarantined schooling & peaceful grazers' },
-      { name: 'Shrimps & Invertebrates', icon: '🦐', count: products.filter(p => p.category === 'Shrimps & Invertebrates').length, note: 'Living cleaners & pure color morphs' },
-      { name: 'Substrates & Hardscape', icon: '🪵', count: products.filter(p => p.category === 'Substrates & Hardscape').length, note: 'Active clay soils & cured driftwood' }
+      { name: 'Aquatic Plants & Mosses', icon: '🌿', count: products.filter(p => p.category === 'Aquatic Plants & Mosses').length, note: 'Tissue cultures, carpets & floaters' },
+      { name: 'Fish', icon: '🐠', count: products.filter(p => p.category === 'Fish').length, note: 'Schooling species & peaceful bottom grazers' },
+      { name: 'Shrimps & Invertebrates', icon: '🦐', count: products.filter(p => p.category === 'Shrimps & Invertebrates').length, note: 'Living cleaners & vibrant color morphs' },
+      { name: 'Substrates & Hardscape', icon: '🪵', count: products.filter(p => p.category === 'Substrates & Hardscape').length, note: 'Active planted soil & cured driftwood' }
     ];
 
     return `
-      <section class="hero-luxury">
-        <div class="hero-content">
-          <span class="kicker">CURATED BOTANICAL STUDIO</span>
-          <h1>Luxury<br><span style="font-style:italic">Aquatics &amp; Plants</span></h1>
-          <p class="subheading">Healthy nursery-cultivated aquatic flora, certified quarantined freshwater fishes, vibrant dwarf shrimps and active substrates designed for living natural aquascapes.</p>
-          <div class="cta-group">
-            <a class="btn-pill" href="#shop">Explore Collection &rarr;</a>
-            <a class="btn-pill outline" href="#story">Our Philosophy</a>
+      <!-- HERO PHOTO BANNER (Matching uploaded hero image) -->
+      <section class="hero-photo-banner">
+        <h1 class="banner-title">Bring Life to Your Aquarium</h1>
+        <p class="banner-sub">Pairaplants brings the beauty of aquatic nature into your home and workspace with premium, healthy aquatic plants, quarantined fishes &amp; gravels.</p>
+        <div class="banner-cta">
+          <a class="btn-banner" href="#shop">Explore Collection &rarr;</a>
+          <a class="btn-banner outline-light" href="#story">About Pairaplants</a>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US (Matching uploaded reference image 1) -->
+      <section class="why-choose-section">
+        <a class="view-all-pill" href="#shop">View All Products</a>
+        <h2 class="why-title">Why Choose Us</h2>
+
+        <div class="why-cards-grid">
+          <div class="why-card">
+            <h3>Healthy &amp; Vibrant Plants</h3>
+            <div class="card-divider"></div>
+            <p>We deliver pest-free, carefully nurtured plants that thrive in your aquarium.</p>
+          </div>
+
+          <div class="why-card">
+            <h3>Fast &amp; Reliable Shipping</h3>
+            <div class="card-divider"></div>
+            <p>Secure packaging ensures your plants arrive fresh and ready to flourish.</p>
+          </div>
+
+          <div class="why-card">
+            <h3>Expert Guidance</h3>
+            <div class="card-divider"></div>
+            <p>Our team provides simple tips and support to help you succeed in aquascaping.</p>
+          </div>
+
+          <div class="why-card">
+            <h3>Sustainable Practices</h3>
+            <div class="card-divider"></div>
+            <p>We source responsibly and use eco-friendly methods to protect natural habitats.</p>
           </div>
         </div>
+      </section>
 
-        <div class="hero-visual">
-          <div class="hero-plant-frame">
-            <svg viewBox="0 0 400 450" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="200" cy="380" rx="90" ry="24" fill="#0c1813" opacity="0.2"/>
-              <!-- Ceramic Plant Pot -->
-              <path d="M140 330L150 400C152 410 160 418 170 418H230C240 418 248 410 250 400L260 330H140Z" fill="#2d3a33"/>
-              <ellipse cx="200" cy="330" rx="60" ry="12" fill="#1e2823"/>
-              <!-- Elegant Stem & Botanical Leaves -->
-              <path d="M200 330Q205 240 195 140" stroke="#3d664c" stroke-width="6" stroke-linecap="round"/>
-              <g class="leaf-anim">
-                <path d="M195 280Q130 250 110 220Q145 200 195 250Z" fill="#325a42"/>
-                <path d="M200 240Q270 210 285 180Q250 160 200 210Z" fill="#447556"/>
-                <path d="M196 190Q110 160 95 120Q140 110 196 160Z" fill="#3a6b4d"/>
-                <path d="M198 150Q280 120 290 80Q240 80 198 130Z" fill="#4f8564"/>
-                <path d="M195 140Q195 70 200 40Q205 70 195 140Z" fill="#5c9a74"/>
-              </g>
-            </svg>
-          </div>
-
-          <div class="float-card top-right">
-            <h4>Certified Quality</h4>
-            <p>100% Snail-free tissue culture &amp; healthy quarantined stock.</p>
-            <div class="stars">★★★★★ 4.9/5 (180+ Reviews)</div>
-          </div>
-
-          <div class="float-card bottom-left">
-            <span style="font-size:1.8rem">🌿</span>
+      <!-- CURATED COLLECTIONS ROW (Matching reference design) -->
+      <div class="section-container">
+        <section class="overview-section">
+          <div class="section-head">
             <div>
-              <h4>Fresh Harvest</h4>
-              <p>Dispatched in insulated oxygen packs.</p>
+              <span class="kicker">ECOSYSTEM TIERS</span>
+              <h2>Curated Collections</h2>
             </div>
+            <a class="btn-pill outline sm" href="#shop">View All ${products.length} Products &rarr;</a>
           </div>
-        </div>
-      </section>
 
-      <!-- Overview / Collections Row (matching reference image) -->
-      <section class="overview-section">
-        <div class="section-head">
-          <div>
-            <span class="kicker">ECOSYSTEM TIERS</span>
-            <h2>Curated Collections</h2>
+          <div class="overview-grid">
+            ${featuredCats.map(c => `
+              <div class="overview-card" data-a="browse" data-v="${c.name}">
+                <div class="card-thumb" aria-hidden="true">${c.icon}</div>
+                <h3>${c.name}</h3>
+                <div class="count-label">${c.count} items available</div>
+                <p style="font-size:0.82rem;color:var(--ink-secondary);margin-bottom:16px">${c.note}</p>
+                <button class="btn-pill outline sm" data-a="browse" data-v="${c.name}">Browse ${c.name.split(' ')[0]}</button>
+              </div>
+            `).join('')}
           </div>
-          <a class="btn-pill outline sm" href="#shop">View All ${products.length} Products &rarr;</a>
-        </div>
-
-        <div class="overview-grid">
-          ${featuredCats.map(c => `
-            <div class="overview-card" data-a="browse" data-v="${c.name}">
-              <div class="card-thumb" aria-hidden="true">${c.icon}</div>
-              <h3>${c.name}</h3>
-              <div class="count-label">${c.count} items available</div>
-              <p style="font-size:0.8rem;color:var(--ink-secondary);margin-bottom:16px">${c.note}</p>
-              <button class="btn-pill outline sm" data-a="browse" data-v="${c.name}">Browse ${c.name.split(' ')[0]}</button>
-            </div>
-          `).join('')}
-        </div>
-      </section>
-
-      <!-- Values / Assurance Banner -->
-      <section class="values-banner">
-        <div class="value-item">
-          <div class="value-icon">🚚</div>
-          <div>
-            <h4>Live-Arrival Guarantee</h4>
-            <p>Every shipment is protected in thermal insulation with breathable oxygen-infused transport packs.</p>
-          </div>
-        </div>
-        <div class="value-item">
-          <div class="value-icon">🛡️</div>
-          <div>
-            <h4>14-Day Quarantined Stock</h4>
-            <p>Every single fish and invertebrate undergoes rigorous conditioning and health observation before dispatch.</p>
-          </div>
-        </div>
-        <div class="value-item">
-          <div class="value-icon">✨</div>
-          <div>
-            <h4>Pest &amp; Snail-Free Plants</h4>
-            <p>Tissue cultures and submersed flora are meticulously washed and inspected to protect your aquarium's balance.</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
     `;
   },
 
   async story() {
     return `
-      <div class="narrow-box" style="padding:40px 0">
-        <span class="kicker">OUR CRAFT &amp; PASSION</span>
-        <h1>Born from a Passion for Living Underwater Art.</h1>
-        <p class="subheading" style="margin:20px 0 30px">Green Bed Aquatics began with a simple belief: an aquarium shouldn't just be glass and water—it should be a thriving, self-sustaining living ecosystem.</p>
-        
-        <div style="background:var(--surface-card);border:1px solid var(--line-subtle);border-radius:var(--radius-card);padding:28px;margin-bottom:28px">
-          <h3 style="margin-bottom:10px">The Living Standard</h3>
-          <p style="color:var(--ink-secondary);line-height:1.7">We cultivate our aquatic plants in balanced in-house nurseries, propagate delicate mosses on natural cured materials, and quarantine all freshwater fauna for a full 14 days before offering them to hobbyists. When you order from Green Bed, you receive plants with robust root systems and fish that acclimatize effortlessly to your tank.</p>
+      <div class="narrow-box" style="padding:50px 24px">
+        <span class="kicker">PAIRAPLANTS HERITAGE</span>
+        <h1 style="font-size:clamp(2.4rem, 5vw, 3.8rem);margin-bottom:24px">About Pairaplants</h1>
+
+        <div style="background:var(--surface-card);border:1px solid var(--line-subtle);border-radius:var(--radius-card);padding:36px;margin-bottom:32px">
+          <h2 style="font-size:1.8rem;color:var(--forest-primary);margin-bottom:12px">Our Story</h2>
+          <p style="font-size:1.08rem;color:var(--ink-secondary);line-height:1.75">
+            Pairaplants brings the beauty of aquatic nature into your home and workspace. We provide premium, healthy aquatic plants and aquascaping essentials. Our mission is to make every aquarium vibrant, serene, and easy to maintain.
+          </p>
         </div>
 
-        <div class="two-col" style="margin-top:20px">
-          <div style="padding:20px;background:var(--canvas-alt);border-radius:14px;border:1px solid var(--line-subtle)">
-            <h4 style="color:var(--forest-primary);font-size:1.05rem;margin-bottom:6px">In-House Propagation</h4>
-            <p style="font-size:0.85rem;color:var(--ink-secondary)">Our stem plants, carpets, and floating varieties are conditioned under full-spectrum lights and nutrient-rich waters.</p>
+        <div style="background:var(--canvas-alt);border:1px solid var(--line);border-radius:var(--radius-card);padding:36px;margin-bottom:36px">
+          <h2 style="font-size:1.8rem;color:var(--moss);margin-bottom:12px">Our Mission</h2>
+          <p style="font-size:1.08rem;color:var(--ink-secondary);line-height:1.75">
+            At Pairaplants, our mission is to inspire and support aquascaping by providing premium aquatic plants and expert guidance, helping every enthusiast create thriving, beautiful underwater worlds.
+          </p>
+        </div>
+
+        <div class="why-cards-grid" style="margin-top:20px">
+          <div class="why-card">
+            <h3>Pest-Free Quality</h3>
+            <div class="card-divider"></div>
+            <p>Every tissue culture and nursery stem is thoroughly inspected to protect your aquarium.</p>
           </div>
-          <div style="padding:20px;background:var(--canvas-alt);border-radius:14px;border:1px solid var(--line-subtle)">
-            <h4 style="color:var(--forest-primary);font-size:1.05rem;margin-bottom:6px">Thermal Packaging</h4>
-            <p style="font-size:0.85rem;color:var(--ink-secondary)">Custom insulated boxes and temperature packs safeguard livestock from extreme weather throughout delivery.</p>
+          <div class="why-card">
+            <h3>Living Guarantee</h3>
+            <div class="card-divider"></div>
+            <p>Insulated thermal dispatch ensures your aquatic life arrives fresh and energized.</p>
           </div>
         </div>
 
-        <p style="margin-top:36px;text-align:center"><a class="btn-pill" href="#shop">Explore our Live Catalog &rarr;</a></p>
+        <p style="margin-top:40px;text-align:center">
+          <a class="btn-pill" href="#shop">Explore Pairaplants Catalog &rarr;</a>
+        </p>
       </div>
     `;
   },
@@ -265,7 +250,7 @@ const pages = {
       <div class="shop-filter-bar">
         <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:12px">
           <div>
-            <span class="kicker">LIVE CATALOG</span>
+            <span class="kicker">PAIRAPLANTS COLLECTION</span>
             <h1>The Botanical Shop</h1>
             <p class="muted">Showing ${list.length} of ${products.length} living items in catalog</p>
           </div>
@@ -312,17 +297,17 @@ const pages = {
 
     if (!rows) {
       return `
-        <div class="narrow-box" style="text-align:center;padding:60px 20px">
-          <span style="font-size:3rem">🛒</span>
+        <div class="narrow-box" style="text-align:center;padding:70px 20px">
+          <span style="font-size:3.5rem">🛒</span>
           <h2 style="margin:16px 0 8px">Your cart is currently empty</h2>
-          <p class="muted" style="margin-bottom:24px">Explore our curated collection of aquatic plants, fishes, and dwarf shrimps to get started.</p>
+          <p class="muted" style="margin-bottom:24px">Explore Pairaplants collection of aquatic plants, fishes, and dwarf shrimps to get started.</p>
           <a class="btn-pill" href="#shop">Browse Collection</a>
         </div>
       `;
     }
 
     return `
-      <div class="two-col" style="align-items:start">
+      <div class="two-col" style="align-items:start;padding-top:40px">
         <div>
           <span class="kicker">ORDER REVIEW</span>
           <h2>Your Cart (${count()} items)</h2>
@@ -373,14 +358,14 @@ const pages = {
       return `
         <div class="narrow-box" style="text-align:center;padding:50px 20px">
           <h2>Order Received</h2>
-          <p class="muted">Your order is being processed by our team.</p>
+          <p class="muted">Your order is being processed by Pairaplants.</p>
           <a class="btn-pill" style="margin-top:20px" href="#shop">Return to Shop</a>
         </div>
       `;
     }
     const o = lastOrder;
     return `
-      <div class="narrow-box">
+      <div class="narrow-box" style="padding-top:40px">
         <div style="background:var(--surface-card);border:1px solid var(--line-subtle);border-radius:var(--radius-card);padding:36px;box-shadow:var(--shadow-card)">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px">
             <span style="font-size:2.5rem">🎉</span>
@@ -411,7 +396,7 @@ const pages = {
           </div>
 
           <div style="font-size:0.82rem;color:var(--ink-secondary);line-height:1.5;margin-bottom:24px">
-            📦 <strong>Care Dispatch Protocol</strong>: Our specialists are packing your live plants and fauna in thermal temperature-regulated boxes with oxygen-filled sealed bladders. You will receive an SMS/WhatsApp dispatch notification once handed to the courier.
+            📦 <strong>Care Dispatch Protocol</strong>: Pairaplants specialists are packaging your live flora and fauna in insulated boxes with oxygen-filled sealed pouches. You will receive an SMS/WhatsApp notification once dispatched.
           </div>
 
           <div style="text-align:center">
@@ -424,7 +409,7 @@ const pages = {
 
   async contact() {
     return `
-      <div class="two-col" style="align-items:start">
+      <div class="two-col" style="align-items:start;padding-top:40px">
         <div>
           <span class="kicker">CONNECT WITH US</span>
           <h1>Care Consultations &amp; Inquiries</h1>
@@ -434,21 +419,21 @@ const pages = {
             <div style="display:flex;align-items:center;gap:14px">
               <span style="font-size:1.4rem">📍</span>
               <div>
-                <strong>Nursery &amp; Showroom</strong>
-                <p class="muted" style="font-size:0.85rem">Green Bed Botanicals Aquatics Studio</p>
+                <strong>Pairaplants Studio</strong>
+                <p class="muted" style="font-size:0.85rem">Aquatic Plants, Fishes &amp; Gravels Nursery</p>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:14px">
               <span style="font-size:1.4rem">✉️</span>
               <div>
                 <strong>Email Consultation</strong>
-                <p class="muted" style="font-size:0.85rem">care@greenbedaquatics.com</p>
+                <p class="muted" style="font-size:0.85rem">care@pairaplants.com</p>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:14px">
               <span style="font-size:1.4rem">⏱️</span>
               <div>
-                <strong>Response Window</strong>
+                <strong>Expert Response</strong>
                 <p class="muted" style="font-size:0.85rem">Within 2 to 4 business hours</p>
               </div>
             </div>
@@ -465,8 +450,8 @@ const pages = {
             <label for="e">Email Address</label>
             <input id="e" name="email" type="email" required maxlength="120" placeholder="name@example.com">
             
-            <label for="m">Your Message or Tank Setup Question</label>
-            <textarea id="m" name="message" rows="4" required maxlength="1000" placeholder="Tell us about your aquarium size, lighting, or specific product inquiries..."></textarea>
+            <label for="m">Your Message or Setup Question</label>
+            <textarea id="m" name="message" rows="4" required maxlength="1000" placeholder="Tell us about your aquarium size, lighting, or specific plant/fish questions..."></textarea>
             
             <button class="btn-pill" style="margin-top:20px;width:100%">Submit Consultation Message</button>
           </form>
@@ -479,7 +464,7 @@ const pages = {
   async staff() {
     if (!me) {
       return `
-        <div class="narrow-box" style="padding:40px 0">
+        <div class="narrow-box" style="padding:50px 24px">
           <div style="background:var(--surface-card);border:1px solid var(--line-subtle);border-radius:var(--radius-card);padding:36px;box-shadow:var(--shadow-card)">
             <span class="kicker">INTERNAL PORTAL</span>
             <h2>Staff Sign In</h2>
@@ -505,20 +490,22 @@ const pages = {
     }
 
     return `
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
-        <div>
-          <span class="kicker">${ROLE[me.role].toUpperCase()} DASHBOARD</span>
-          <h1 style="font-size:2rem;margin:0">${ROLE[me.role]}</h1>
-          <span class="muted">Signed in as <strong>${esc(me.name)}</strong> (${esc(me.username)})</span>
+      <div style="padding:30px 48px 0">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+          <div>
+            <span class="kicker">${ROLE[me.role].toUpperCase()} DASHBOARD</span>
+            <h1 style="font-size:2rem;margin:0">${ROLE[me.role]}</h1>
+            <span class="muted">Signed in as <strong>${esc(me.name)}</strong> (${esc(me.username)})</span>
+          </div>
+          <button class="btn-pill outline sm" data-a="logout">Sign Out</button>
         </div>
-        <button class="btn-pill outline sm" data-a="logout">Sign Out</button>
-      </div>
 
-      <div class="tabs" role="group" aria-label="Staff tools">
-        ${tabs.map(t => `<button data-a="tab" data-v="${t}" aria-pressed="${t == tab}">${t}</button>`).join('')}
-      </div>
+        <div class="tabs" role="group" aria-label="Staff tools">
+          ${tabs.map(t => `<button data-a="tab" data-v="${t}" aria-pressed="${t == tab}">${t}</button>`).join('')}
+        </div>
 
-      <div style="margin-top:24px">${body}</div>
+        <div style="margin-top:24px">${body}</div>
+      </div>
     `;
   }
 };
@@ -611,7 +598,7 @@ const views = {
     return `
       <div style="background:var(--surface-card);border:1px solid var(--line-subtle);border-radius:var(--radius-card);padding:24px;margin-bottom:28px">
         <h3 style="margin-bottom:12px">Add New Product</h3>
-        <form class="two-col" data-f="product">
+        <form class="two-col" style="padding:0" data-f="product">
           <div>
             <label for="pn">Product Name</label>
             <input id="pn" name="name" required maxlength="80" placeholder="e.g. Rare Bucephalandra">
@@ -690,7 +677,7 @@ const views = {
 
       <div style="background:var(--surface-card);border:1px solid var(--line-subtle);border-radius:var(--radius-card);padding:24px;margin-top:24px">
         <h3 style="margin-bottom:12px">Create New Staff User</h3>
-        <form class="two-col" data-f="user">
+        <form class="two-col" style="padding:0" data-f="user">
           <div>
             <label for="an">Full Name</label>
             <input id="an" name="name" required maxlength="60" placeholder="e.g. Ananya Patel">
@@ -799,7 +786,7 @@ const forms = {
     location.hash = '#confirmed';
     toast('Order placed successfully!');
   },
-  async contact(d, f) { await api('/inquiries', 'POST', d); f.reset(); toast('Consultation inquiry received! We will email you shortly.'); },
+  async contact(d, f) { await api('/inquiries', 'POST', d); f.reset(); toast('Consultation inquiry received! Pairaplants team will email you shortly.'); },
   async user(d) { await api('/users', 'POST', d); toast('New staff user created'); return render(); },
   async product(d) { await api('/products', 'POST', { ...d, price: +d.price, stock: +d.stock }); toast('Product added to catalog'); return render(); }
 };
@@ -854,7 +841,7 @@ document.addEventListener('submit', run(async e => {
 function nav() {
   const hash = location.hash.slice(1).split('?')[0];
   const r = pages[hash] ? hash : 'home';
-  const names = { home: 'Home', shop: 'Shop', story: 'Our Philosophy', cart: 'Cart', contact: 'Contact' };
+  const names = { home: 'Home', story: 'Our Story', shop: 'Shop', cart: 'Cart', contact: 'Contact Us' };
   
   $('#nav').innerHTML = Object.entries(names).map(([k, v]) => `
     <a href="#${k}" ${k == r ? 'aria-current="page"' : ''}>
