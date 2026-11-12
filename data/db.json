@@ -2782,6 +2782,18 @@
   "inquiries": [],
   "logs": [
     {
+      "t": 1794461186482,
+      "user": "owner",
+      "action": "cancelled order #1003 (stock restored)",
+      "ip": "::1"
+    },
+    {
+      "t": 1794461186410,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
       "t": 1794460932628,
       "user": "owner",
       "action": "cancelled order #1003 (stock restored)",
@@ -2986,6 +2998,17 @@
     }
   ],
   "inventoryLogs": [
+    {
+      "id": 4,
+      "productId": 41,
+      "productName": "Cabomba (Green, Red)",
+      "change": -2,
+      "previousStock": 22,
+      "newStock": 20,
+      "reason": "Order #checkout purchase",
+      "performedBy": "system",
+      "timestamp": 1794461186428
+    },
     {
       "id": 3,
       "productId": 41,
