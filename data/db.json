@@ -852,9 +852,9 @@
       "sku": "PP-AQU-028",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/dwarf-hair-grass.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/dwarf-hair-grass.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -976,9 +976,9 @@
       "sku": "PP-AQU-032",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/sagittaria-subulata.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/sagittaria-subulata.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1101,7 +1101,8 @@
       "sku": "PP-AQU-036",
       "salePrice": null,
       "images": [
-        "/images/products/vallisneria-jungle.jpg"
+        "/images/products/vallisneria-jungle.jpg",
+        "/images/products/vallisneria-spiralis.jpg"
       ],
       "image": "/images/products/vallisneria-jungle.jpg",
       "lowStockThreshold": 5,
@@ -1292,7 +1293,8 @@
       "images": [
         "/images/products/cryptocoryne-green.webp",
         "/images/products/cryptocoryne-undulata.jpg",
-        "/images/products/cryptocoryne-retrospiralis.jpg"
+        "/images/products/cryptocoryne-retrospiralis.jpg",
+        "/images/products/cryptocoryne-wendtii-brown.jpg"
       ],
       "image": "/images/products/cryptocoryne-green.webp",
       "lowStockThreshold": 5,
@@ -1323,9 +1325,10 @@
       "sku": "PP-AQU-043",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/echinodorus-cordifolius.jpg",
+        "/images/products/echinodorus-aquarium.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/echinodorus-cordifolius.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1478,7 +1481,8 @@
       "sku": "PP-AQU-048",
       "salePrice": null,
       "images": [
-        "/images/products/vallisneria-jungle.jpg"
+        "/images/products/vallisneria-jungle.jpg",
+        "/images/products/vallisneria-spiralis.jpg"
       ],
       "image": "/images/products/vallisneria-jungle.jpg",
       "lowStockThreshold": 5,
@@ -2284,9 +2288,9 @@
       "sku": "PP-AQU-074",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/duckweed-surface.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/duckweed-surface.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
