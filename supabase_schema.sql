@@ -238,3 +238,4 @@ CREATE POLICY "Public can view active coupons" ON coupons FOR SELECT USING (acti
 CREATE POLICY "Public can create inquiries" ON inquiries FOR INSERT WITH CHECK (true);
 CREATE POLICY "Public can create orders" ON orders FOR INSERT WITH CHECK (true);
 CREATE POLICY "Public can create order items" ON order_items FOR INSERT WITH CHECK (true);
+

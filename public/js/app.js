@@ -203,8 +203,8 @@ function renderProductCards(list) {
       <article class="product-card" data-id="${p.id}">
         <div class="product-art-wrap" style="position:relative;cursor:pointer;" data-a="viewProduct" data-id="${p.id}">
           ${mainImg && !mainImg.includes('hero-aquarium') ? `
-            <div style="height:140px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:var(--radius-sm);margin-bottom:12px;background:var(--canvas-alt)">
-              <img src="${esc(mainImg)}" alt="${esc(p.name)}" style="max-height:100%;max-width:100%;object-fit:cover;" loading="lazy">
+            <div class="product-card-photo">
+              <img src="${esc(mainImg)}" alt="${esc(p.name)}" loading="lazy">
             </div>
           ` : `
             <div class="product-art" aria-hidden="true">${EMOJI[p.subcategory] || EMOJI[p.category] || '🌿'}</div>
@@ -1007,10 +1007,17 @@ const adminViews = {
           <tbody id="admin-prod-tbody">
             ${products.map(p => `
               <tr data-name="${esc(p.name.toLowerCase())}" data-cat="${esc(p.category.toLowerCase())}">
-                <td>
-                  <strong>${esc(p.name)}</strong>
-                  ${p.isFeatured ? '<span class="badge" style="background:#eaf2ec;margin-left:4px;">Featured</span>' : ''}
-                  ${p.isVisible === false ? '<span class="badge" style="background:#fee2e2;color:#b91c1c;margin-left:4px;">Hidden</span>' : ''}
+                <td style="display:flex;align-items:center;gap:10px;">
+                  ${p.image && !p.image.includes('hero-aquarium') ? `
+                    <img src="${esc(p.image)}" alt="" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;border:1px solid var(--line);">
+                  ` : `
+                    <span style="font-size:1.2rem;width:36px;text-align:center;">${EMOJI[p.subcategory] || EMOJI[p.category] || '🌿'}</span>
+                  `}
+                  <div>
+                    <strong>${esc(p.name)}</strong>
+                    ${p.isFeatured ? '<span class="badge" style="background:#eaf2ec;margin-left:4px;">Featured</span>' : ''}
+                    ${p.isVisible === false ? '<span class="badge" style="background:#fee2e2;color:#b91c1c;margin-left:4px;">Hidden</span>' : ''}
+                  </div>
                 </td>
                 <td>${esc(p.category)}</td>
                 <td><code style="font-size:0.8rem">${esc(p.sku || `PP-${p.id}`)}</code></td>

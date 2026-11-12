@@ -217,9 +217,10 @@
       "sku": "PP-FIS-007",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/otocinclus-catfish-1.jpg",
+        "/images/products/otocinclus-catfish-2.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/otocinclus-catfish-1.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -277,9 +278,9 @@
       "sku": "PP-FIS-009",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/siamese-algae-eater.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/siamese-algae-eater.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -337,9 +338,9 @@
       "sku": "PP-FIS-011",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/white-mountain-minnow.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/white-mountain-minnow.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -397,9 +398,9 @@
       "sku": "PP-SHR-013",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/amano-shrimp.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/amano-shrimp.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -547,9 +548,9 @@
       "sku": "PP-SHR-018",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/red-cherry-shrimp.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/red-cherry-shrimp.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -667,9 +668,9 @@
       "sku": "PP-SHR-022",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/zebra-nerite-snail.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/zebra-nerite-snail.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -697,9 +698,9 @@
       "sku": "PP-SHR-023",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/orange-shrimp.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/orange-shrimp.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -787,9 +788,9 @@
       "sku": "PP-SHR-026",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/yellow-shrimp.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/yellow-shrimp.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2782,6 +2783,18 @@
   "inquiries": [],
   "logs": [
     {
+      "t": 1794462223566,
+      "user": "owner",
+      "action": "cancelled order #1003 (stock restored)",
+      "ip": "::1"
+    },
+    {
+      "t": 1794462223511,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
       "t": 1794461186482,
       "user": "owner",
       "action": "cancelled order #1003 (stock restored)",
@@ -2998,6 +3011,17 @@
     }
   ],
   "inventoryLogs": [
+    {
+      "id": 5,
+      "productId": 41,
+      "productName": "Cabomba (Green, Red)",
+      "change": -2,
+      "previousStock": 22,
+      "newStock": 20,
+      "reason": "Order #checkout purchase",
+      "performedBy": "system",
+      "timestamp": 1794462223526
+    },
     {
       "id": 4,
       "productId": 41,
