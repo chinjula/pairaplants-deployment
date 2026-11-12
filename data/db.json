@@ -883,9 +883,9 @@
       "sku": "PP-AQU-029",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/glossostigma-carpet.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/glossostigma-carpet.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1102,7 +1102,8 @@
       "salePrice": null,
       "images": [
         "/images/products/vallisneria-jungle.jpg",
-        "/images/products/vallisneria-spiralis.jpg"
+        "/images/products/vallisneria-spiralis.jpg",
+        "/images/products/vallisneria-harvest.jpg"
       ],
       "image": "/images/products/vallisneria-jungle.jpg",
       "lowStockThreshold": 5,
@@ -1133,9 +1134,9 @@
       "sku": "PP-AQU-037",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/alternanthera-sessilis.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/alternanthera-sessilis.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1357,9 +1358,9 @@
       "sku": "PP-AQU-044",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/egeria-densa-anacharis.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/egeria-densa-anacharis.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1388,9 +1389,9 @@
       "sku": "PP-AQU-045",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/eleocharis-vivipara.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/eleocharis-vivipara.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1419,7 +1420,8 @@
       "sku": "PP-AQU-046",
       "salePrice": null,
       "images": [
-        "/images/products/eriocaulon-cinereum.jpg"
+        "/images/products/eriocaulon-cinereum.jpg",
+        "/images/products/eriocaulon-cinereum-rosette.jpg"
       ],
       "image": "/images/products/eriocaulon-cinereum.jpg",
       "lowStockThreshold": 5,
@@ -1450,9 +1452,9 @@
       "sku": "PP-AQU-047",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/foxtail-ceratophyllum.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/foxtail-ceratophyllum.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1482,7 +1484,8 @@
       "salePrice": null,
       "images": [
         "/images/products/vallisneria-jungle.jpg",
-        "/images/products/vallisneria-spiralis.jpg"
+        "/images/products/vallisneria-spiralis.jpg",
+        "/images/products/vallisneria-harvest.jpg"
       ],
       "image": "/images/products/vallisneria-jungle.jpg",
       "lowStockThreshold": 5,
@@ -1513,9 +1516,9 @@
       "sku": "PP-AQU-049",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/alternanthera-sessilis.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/alternanthera-sessilis.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1544,9 +1547,9 @@
       "sku": "PP-AQU-050",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/egeria-densa-anacharis.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/egeria-densa-anacharis.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2350,9 +2353,9 @@
       "sku": "PP-AQU-076",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/amazon-frogbit.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/amazon-frogbit.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
