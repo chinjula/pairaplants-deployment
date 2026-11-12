@@ -33,7 +33,28 @@
       "subcategory": "Fish",
       "price": 120,
       "stock": 23,
-      "description": "Active and peaceful schooling fish with vibrant cherry-red coloration."
+      "description": "Active and peaceful schooling fish with vibrant cherry-red coloration.",
+      "sku": "PP-FIS-001",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isVisible": true,
+      "labels": [
+        "Best Seller"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.7,
+      "reviewCount": 4
     },
     {
       "id": 2,
@@ -42,7 +63,28 @@
       "subcategory": "Fish",
       "price": 280,
       "stock": 10,
-      "description": "Curious, intelligent freshwater dwarf puffer, natural snail population controller."
+      "description": "Curious, intelligent freshwater dwarf puffer, natural snail population controller.",
+      "sku": "PP-FIS-002",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isVisible": true,
+      "labels": [
+        "Best Seller"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.8,
+      "reviewCount": 5
     },
     {
       "id": 3,
@@ -51,7 +93,28 @@
       "subcategory": "Fish",
       "price": 150,
       "stock": 29,
-      "description": "Hardy, coldwater-friendly peaceful minnow with shimmering golden tones."
+      "description": "Hardy, coldwater-friendly peaceful minnow with shimmering golden tones.",
+      "sku": "PP-FIS-003",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isVisible": true,
+      "labels": [
+        "Best Seller"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.8,
+      "reviewCount": 6
     },
     {
       "id": 4,
@@ -60,7 +123,28 @@
       "subcategory": "Fish",
       "price": 160,
       "stock": 23,
-      "description": "Surface-dwelling schooling fish with brilliant reflective top highlights."
+      "description": "Surface-dwelling schooling fish with brilliant reflective top highlights.",
+      "sku": "PP-FIS-004",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isVisible": true,
+      "labels": [
+        "Best Seller"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.9,
+      "reviewCount": 7
     },
     {
       "id": 5,
@@ -69,7 +153,28 @@
       "subcategory": "Fish",
       "price": 90,
       "stock": 38,
-      "description": "Assorted colorful fancy guppies, peaceful and lively community swimmers."
+      "description": "Assorted colorful fancy guppies, peaceful and lively community swimmers.",
+      "sku": "PP-FIS-005",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.6,
+      "reviewCount": 8
     },
     {
       "id": 6,
@@ -78,7 +183,28 @@
       "subcategory": "Fish",
       "price": 60,
       "stock": 48,
-      "description": "Iconic aquascaping schooling fish with electric-blue and scarlet stripes."
+      "description": "Iconic aquascaping schooling fish with electric-blue and scarlet stripes.",
+      "sku": "PP-FIS-006",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": true,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.7,
+      "reviewCount": 9
     },
     {
       "id": 7,
@@ -87,7 +213,28 @@
       "subcategory": "Fish",
       "price": 220,
       "stock": 16,
-      "description": "Gentle dwarf suckermouth catfish, supreme natural algae grazer for plant leaves."
+      "description": "Gentle dwarf suckermouth catfish, supreme natural algae grazer for plant leaves.",
+      "sku": "PP-FIS-007",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.8,
+      "reviewCount": 3
     },
     {
       "id": 8,
@@ -96,7 +243,28 @@
       "subcategory": "Fish",
       "price": 110,
       "stock": 21,
-      "description": "Playful balloon-shaped livebearer with bright orange and calico patterns."
+      "description": "Playful balloon-shaped livebearer with bright orange and calico patterns.",
+      "sku": "PP-FIS-008",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.8,
+      "reviewCount": 4
     },
     {
       "id": 9,
@@ -105,7 +273,28 @@
       "subcategory": "Fish",
       "price": 180,
       "stock": 20,
-      "description": "Famous industrious cleaner that happily consumes black beard and brush algae."
+      "description": "Famous industrious cleaner that happily consumes black beard and brush algae.",
+      "sku": "PP-FIS-009",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.9,
+      "reviewCount": 5
     },
     {
       "id": 10,
@@ -114,7 +303,28 @@
       "subcategory": "Fish",
       "price": 240,
       "stock": 15,
-      "description": "Fascinating miniature anchor catfish, peaceful nocturnal nano-tank resident."
+      "description": "Fascinating miniature anchor catfish, peaceful nocturnal nano-tank resident.",
+      "sku": "PP-FIS-010",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.6,
+      "reviewCount": 6
     },
     {
       "id": 11,
@@ -123,7 +333,28 @@
       "subcategory": "Fish",
       "price": 140,
       "stock": 28,
-      "description": "Graceful silvery schooling fish with neon red accents on the fins."
+      "description": "Graceful silvery schooling fish with neon red accents on the fins.",
+      "sku": "PP-FIS-011",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.7,
+      "reviewCount": 7
     },
     {
       "id": 12,
@@ -132,7 +363,28 @@
       "subcategory": "Fish",
       "price": 380,
       "stock": 10,
-      "description": "Mini stingray-like river loach with suction fins designed to graze smooth stones."
+      "description": "Mini stingray-like river loach with suction fins designed to graze smooth stones.",
+      "sku": "PP-FIS-012",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "temperament": "Peaceful",
+        "minTankSize": "15 Gallons",
+        "diet": "Omnivore / Flakes & Micro Pellets",
+        "waterTemp": "24°C - 28°C",
+        "pHRange": "6.5 - 7.5"
+      },
+      "rating": 4.8,
+      "reviewCount": 8
     },
     {
       "id": 13,
@@ -141,7 +393,28 @@
       "subcategory": "Shrimps",
       "price": 180,
       "stock": 35,
-      "description": "Legendary cleanup shrimp prized by Takashi Amano for voracious algae appetite."
+      "description": "Legendary cleanup shrimp prized by Takashi Amano for voracious algae appetite.",
+      "sku": "PP-SHR-013",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.8,
+      "reviewCount": 9
     },
     {
       "id": 14,
@@ -150,7 +423,28 @@
       "subcategory": "Snails",
       "price": 120,
       "stock": 30,
-      "description": "Carnivorous snail that naturally keeps pest snail populations under control."
+      "description": "Carnivorous snail that naturally keeps pest snail populations under control.",
+      "sku": "PP-SHR-014",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.9,
+      "reviewCount": 3
     },
     {
       "id": 15,
@@ -159,7 +453,28 @@
       "subcategory": "Shrimps",
       "price": 200,
       "stock": 25,
-      "description": "High-grade intense crimson red Neocaridina shrimp with translucent deep color."
+      "description": "High-grade intense crimson red Neocaridina shrimp with translucent deep color.",
+      "sku": "PP-SHR-015",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.6,
+      "reviewCount": 4
     },
     {
       "id": 16,
@@ -168,7 +483,28 @@
       "subcategory": "Shrimps",
       "price": 160,
       "stock": 25,
-      "description": "Striking sapphire-blue dwarf shrimp that looks stunning over planted tanks."
+      "description": "Striking sapphire-blue dwarf shrimp that looks stunning over planted tanks.",
+      "sku": "PP-SHR-016",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.7,
+      "reviewCount": 5
     },
     {
       "id": 17,
@@ -177,7 +513,28 @@
       "subcategory": "Invertebrates & Grazers",
       "price": 260,
       "stock": 14,
-      "description": "Specialized biofilm grazer with spotted camouflage and powerful clinging grip."
+      "description": "Specialized biofilm grazer with spotted camouflage and powerful clinging grip.",
+      "sku": "PP-SHR-017",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.8,
+      "reviewCount": 6
     },
     {
       "id": 18,
@@ -186,7 +543,28 @@
       "subcategory": "Shrimps",
       "price": 90,
       "stock": 45,
-      "description": "Hardy, beginner-favorite bright red dwarf shrimp for aquascapes and nano setups."
+      "description": "Hardy, beginner-favorite bright red dwarf shrimp for aquascapes and nano setups.",
+      "sku": "PP-SHR-018",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.8,
+      "reviewCount": 7
     },
     {
       "id": 19,
@@ -195,7 +573,28 @@
       "subcategory": "Invertebrates & Grazers",
       "price": 150,
       "stock": 20,
-      "description": "Vibrant yellow bottom cleaner that tirelessly polishes wood, stone and glass."
+      "description": "Vibrant yellow bottom cleaner that tirelessly polishes wood, stone and glass.",
+      "sku": "PP-SHR-019",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.9,
+      "reviewCount": 8
     },
     {
       "id": 20,
@@ -204,7 +603,28 @@
       "subcategory": "Snails",
       "price": 80,
       "stock": 30,
-      "description": "Peaceful golden snail that scavenges excess food and detritus without harming plants."
+      "description": "Peaceful golden snail that scavenges excess food and detritus without harming plants.",
+      "sku": "PP-SHR-020",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.6,
+      "reviewCount": 9
     },
     {
       "id": 21,
@@ -213,7 +633,28 @@
       "subcategory": "Snails",
       "price": 50,
       "stock": 40,
-      "description": "Essential substrate aerator that burrows through gravel to prevent toxic gas pockets."
+      "description": "Essential substrate aerator that burrows through gravel to prevent toxic gas pockets.",
+      "sku": "PP-SHR-021",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.7,
+      "reviewCount": 3
     },
     {
       "id": 22,
@@ -222,7 +663,28 @@
       "subcategory": "Snails",
       "price": 130,
       "stock": 28,
-      "description": "Eye-catching tiger and zebra striped shell, unmatched at wiping glass spot algae."
+      "description": "Eye-catching tiger and zebra striped shell, unmatched at wiping glass spot algae.",
+      "sku": "PP-SHR-022",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.8,
+      "reviewCount": 4
     },
     {
       "id": 23,
@@ -231,7 +693,28 @@
       "subcategory": "Shrimps",
       "price": 150,
       "stock": 22,
-      "description": "Luminous neon-orange dwarf shrimp adding warm color pops across green plants."
+      "description": "Luminous neon-orange dwarf shrimp adding warm color pops across green plants.",
+      "sku": "PP-SHR-023",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.8,
+      "reviewCount": 5
     },
     {
       "id": 24,
@@ -240,7 +723,28 @@
       "subcategory": "Shrimp Habitats",
       "price": 290,
       "stock": 15,
-      "description": "Lush liverwort Pellia moss pre-anchored to a natural coconut shell shrimp cave."
+      "description": "Lush liverwort Pellia moss pre-anchored to a natural coconut shell shrimp cave.",
+      "sku": "PP-SHR-024",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.9,
+      "reviewCount": 6
     },
     {
       "id": 25,
@@ -249,7 +753,28 @@
       "subcategory": "Shrimps",
       "price": 350,
       "stock": 20,
-      "description": "Rainbow assortment of 5 healthy active dwarf shrimp (Red, Blue, Yellow, Orange)."
+      "description": "Rainbow assortment of 5 healthy active dwarf shrimp (Red, Blue, Yellow, Orange).",
+      "sku": "PP-SHR-025",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.6,
+      "reviewCount": 7
     },
     {
       "id": 26,
@@ -258,7 +783,28 @@
       "subcategory": "Shrimps",
       "price": 160,
       "stock": 22,
-      "description": "Sunny golden-yellow Neocaridina dwarf shrimp, active and peaceful forager."
+      "description": "Sunny golden-yellow Neocaridina dwarf shrimp, active and peaceful forager.",
+      "sku": "PP-SHR-026",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "diet": "Algae grazer / Biofilm",
+        "temperament": "Peaceful",
+        "waterTDS": "150 - 220 ppm",
+        "pHRange": "6.5 - 7.5",
+        "breeding": "Easy freshwater breeder"
+      },
+      "rating": 4.7,
+      "reviewCount": 8
     },
     {
       "id": 27,
@@ -267,7 +813,29 @@
       "subcategory": "Foreground & Carpet Plants",
       "price": 190,
       "stock": 25,
-      "description": "True aquatic grass-like bush that flushes golden-red under intense aquascaping lights."
+      "description": "True aquatic grass-like bush that flushes golden-red under intense aquascaping lights.",
+      "sku": "PP-AQU-027",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Foreground",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 9
     },
     {
       "id": 28,
@@ -276,7 +844,29 @@
       "subcategory": "Foreground & Carpet Plants",
       "price": 220,
       "stock": 20,
-      "description": "The gold standard for creating manicured underwater emerald lawns."
+      "description": "The gold standard for creating manicured underwater emerald lawns.",
+      "sku": "PP-AQU-028",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Foreground",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 3
     },
     {
       "id": 29,
@@ -285,7 +875,29 @@
       "subcategory": "Foreground & Carpet Plants",
       "price": 210,
       "stock": 18,
-      "description": "Fast-creeping carpet plant made famous by Japanese Nature Aquarium layouts."
+      "description": "Fast-creeping carpet plant made famous by Japanese Nature Aquarium layouts.",
+      "sku": "PP-AQU-029",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Foreground",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 4
     },
     {
       "id": 30,
@@ -294,7 +906,29 @@
       "subcategory": "Foreground & Carpet Plants",
       "price": 250,
       "stock": 16,
-      "description": "One of the tiniest leafed aquarium plants, forming rich dense cushions."
+      "description": "One of the tiniest leafed aquarium plants, forming rich dense cushions.",
+      "sku": "PP-AQU-030",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Foreground",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 5
     },
     {
       "id": 31,
@@ -303,7 +937,29 @@
       "subcategory": "Foreground & Carpet Plants",
       "price": 230,
       "stock": 24,
-      "description": "Adaptable bright round-leaf carpeting plant, easier to root than HC Cuba."
+      "description": "Adaptable bright round-leaf carpeting plant, easier to root than HC Cuba.",
+      "sku": "PP-AQU-031",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Foreground",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 6
     },
     {
       "id": 32,
@@ -312,7 +968,29 @@
       "subcategory": "Foreground & Carpet Plants",
       "price": 140,
       "stock": 30,
-      "description": "Vigorous runner plant with ribbon blades, exceptionally hardy in any tank."
+      "description": "Vigorous runner plant with ribbon blades, exceptionally hardy in any tank.",
+      "sku": "PP-AQU-032",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Foreground",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 7
     },
     {
       "id": 33,
@@ -321,7 +999,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 180,
       "stock": 25,
-      "description": "Decorative fragrant stem plant with tooth-edged leaves turning bronze and purple."
+      "description": "Decorative fragrant stem plant with tooth-edged leaves turning bronze and purple.",
+      "sku": "PP-AQU-033",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 8
     },
     {
       "id": 34,
@@ -330,7 +1030,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 210,
       "stock": 28,
-      "description": "Deep burgundy to scarlet red stem plants providing dramatic contrasting color."
+      "description": "Deep burgundy to scarlet red stem plants providing dramatic contrasting color.",
+      "sku": "PP-AQU-034",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 9
     },
     {
       "id": 35,
@@ -339,7 +1061,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 190,
       "stock": 35,
-      "description": "Versatile background stems that form dense, prune-able colorful plant walls."
+      "description": "Versatile background stems that form dense, prune-able colorful plant walls.",
+      "sku": "PP-AQU-035",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 3
     },
     {
       "id": 36,
@@ -348,7 +1092,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 150,
       "stock": 30,
-      "description": "Tall flowing ribbon grass that creates a soft curtain in tank filter currents."
+      "description": "Tall flowing ribbon grass that creates a soft curtain in tank filter currents.",
+      "sku": "PP-AQU-036",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 4
     },
     {
       "id": 37,
@@ -357,7 +1123,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 170,
       "stock": 20,
-      "description": "Bold pink-and-purple stemmed foliage plant for dynamic visual contrast."
+      "description": "Bold pink-and-purple stemmed foliage plant for dynamic visual contrast.",
+      "sku": "PP-AQU-037",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 5
     },
     {
       "id": 38,
@@ -366,7 +1154,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 240,
       "stock": 18,
-      "description": "Classic majestic centerpiece plant with wide emerald sword blades."
+      "description": "Classic majestic centerpiece plant with wide emerald sword blades.",
+      "sku": "PP-AQU-038",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 6
     },
     {
       "id": 39,
@@ -375,7 +1185,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 260,
       "stock": 24,
-      "description": "Hardy shade-loving epiphytes with tough leather leaves that fish will not eat."
+      "description": "Hardy shade-loving epiphytes with tough leather leaves that fish will not eat.",
+      "sku": "PP-AQU-039",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 7
     },
     {
       "id": 40,
@@ -384,7 +1216,60 @@
       "subcategory": "Stem & Background Plants",
       "price": 140,
       "stock": 26,
-      "description": "Fleshy round-leaved upright stem plant, forgiving and easy to propagate."
+      "description": "Fleshy round-leaved upright stem plant, forgiving and easy to propagate.",
+      "sku": "PP-AQU-040",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 8
+    },
+    {
+      "id": 41,
+      "name": "Cabomba (Green, Red)",
+      "category": "Aquatic Plants & Mosses",
+      "subcategory": "Stem & Background Plants",
+      "price": 160,
+      "stock": 22,
+      "description": "Fan-shaped feathery foliage creating soft background volume and fry shelter.",
+      "sku": "PP-AQU-041",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 9
     },
     {
       "id": 42,
@@ -393,7 +1278,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 190,
       "stock": 20,
-      "description": "Low-maintenance rosette plant with fluted copper-bronze and green leaves."
+      "description": "Low-maintenance rosette plant with fluted copper-bronze and green leaves.",
+      "sku": "PP-AQU-042",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 3
     },
     {
       "id": 43,
@@ -402,7 +1309,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 230,
       "stock": 16,
-      "description": "Stately architectural aquatic swords suitable for medium to large aquascapes."
+      "description": "Stately architectural aquatic swords suitable for medium to large aquascapes.",
+      "sku": "PP-AQU-043",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 4
     },
     {
       "id": 44,
@@ -411,7 +1340,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 110,
       "stock": 40,
-      "description": "Prolific oxygenating weed that absorbs nitrates and outcompetes green algae."
+      "description": "Prolific oxygenating weed that absorbs nitrates and outcompetes green algae.",
+      "sku": "PP-AQU-044",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 5
     },
     {
       "id": 45,
@@ -420,7 +1371,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 190,
       "stock": 18,
-      "description": "Hair-like umbrella stems that produce delicate plantlets in tiers."
+      "description": "Hair-like umbrella stems that produce delicate plantlets in tiers.",
+      "sku": "PP-AQU-045",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 6
     },
     {
       "id": 46,
@@ -429,7 +1402,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 340,
       "stock": 10,
-      "description": "Exquisite spiky starburst rosette, the crown jewel for collector aquascapers."
+      "description": "Exquisite spiky starburst rosette, the crown jewel for collector aquascapers.",
+      "sku": "PP-AQU-046",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 7
     },
     {
       "id": 47,
@@ -438,7 +1433,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 110,
       "stock": 35,
-      "description": "Bushy horned pondweed, unmatched water clarifier and refuge for fish fry."
+      "description": "Bushy horned pondweed, unmatched water clarifier and refuge for fish fry.",
+      "sku": "PP-AQU-047",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 8
     },
     {
       "id": 48,
@@ -447,7 +1464,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 180,
       "stock": 18,
-      "description": "Massive broad-leaved tape grass reaching surface heights in large tanks."
+      "description": "Massive broad-leaved tape grass reaching surface heights in large tanks.",
+      "sku": "PP-AQU-048",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 9
     },
     {
       "id": 49,
@@ -456,7 +1495,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 210,
       "stock": 15,
-      "description": "Crinkled metallic violet-pink leaves that stand out in any display."
+      "description": "Crinkled metallic violet-pink leaves that stand out in any display.",
+      "sku": "PP-AQU-049",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 3
     },
     {
       "id": 50,
@@ -465,7 +1526,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 90,
       "stock": 40,
-      "description": "Unstoppable fast grower that keeps water clear and biological cycle balanced."
+      "description": "Unstoppable fast grower that keeps water clear and biological cycle balanced.",
+      "sku": "PP-AQU-050",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 4
     },
     {
       "id": 51,
@@ -474,7 +1557,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 180,
       "stock": 25,
-      "description": "Charming aquatic pennywort and clover runners creating whimsical trails."
+      "description": "Charming aquatic pennywort and clover runners creating whimsical trails.",
+      "sku": "PP-AQU-051",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 5
     },
     {
       "id": 52,
@@ -483,7 +1588,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 190,
       "stock": 28,
-      "description": "Hardy, versatile stems with serrated fern-like or pink-veined foliage."
+      "description": "Hardy, versatile stems with serrated fern-like or pink-veined foliage.",
+      "sku": "PP-AQU-052",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 6
     },
     {
       "id": 53,
@@ -492,7 +1619,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 200,
       "stock": 18,
-      "description": "Stout upright stems with bright light-green leaves, beloved in Dutch aquariums."
+      "description": "Stout upright stems with bright light-green leaves, beloved in Dutch aquariums.",
+      "sku": "PP-AQU-053",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 7
     },
     {
       "id": 54,
@@ -501,7 +1650,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 170,
       "stock": 22,
-      "description": "Super-soft needle foliage forming pillow-like light green clouds in current."
+      "description": "Super-soft needle foliage forming pillow-like light green clouds in current.",
+      "sku": "PP-AQU-054",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 8
     },
     {
       "id": 55,
@@ -510,7 +1681,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 210,
       "stock": 16,
-      "description": "Delicate whorled reddish-coral water milfoil stems."
+      "description": "Delicate whorled reddish-coral water milfoil stems.",
+      "sku": "PP-AQU-055",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 9
     },
     {
       "id": 56,
@@ -519,7 +1712,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 100,
       "stock": 35,
-      "description": "Brittle branching tangled stems that baby fish love to hide and forage in."
+      "description": "Brittle branching tangled stems that baby fish love to hide and forage in.",
+      "sku": "PP-AQU-056",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 3
     },
     {
       "id": 57,
@@ -528,7 +1743,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 140,
       "stock": 20,
-      "description": "Translucent green stonewort stems perfect for natural biotopes."
+      "description": "Translucent green stonewort stems perfect for natural biotopes.",
+      "sku": "PP-AQU-057",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 4
     },
     {
       "id": 58,
@@ -537,7 +1774,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 320,
       "stock": 10,
-      "description": "Japanese spatterdock with wavy translucent heart-shaped underwater lily pads."
+      "description": "Japanese spatterdock with wavy translucent heart-shaped underwater lily pads.",
+      "sku": "PP-AQU-058",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 5
     },
     {
       "id": 59,
@@ -546,7 +1805,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 280,
       "stock": 14,
-      "description": "Aquatic lily plants producing lovely submerged pads and tender flower buds."
+      "description": "Aquatic lily plants producing lovely submerged pads and tender flower buds.",
+      "sku": "PP-AQU-059",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 6
     },
     {
       "id": 60,
@@ -555,7 +1836,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 150,
       "stock": 25,
-      "description": "Feathery whorled blue-green stems that gracefully breach the water surface."
+      "description": "Feathery whorled blue-green stems that gracefully breach the water surface.",
+      "sku": "PP-AQU-060",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 7
     },
     {
       "id": 61,
@@ -564,7 +1867,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 170,
       "stock": 24,
-      "description": "Slender undulating leaf tentacles that create lively flowing background motion."
+      "description": "Slender undulating leaf tentacles that create lively flowing background motion.",
+      "sku": "PP-AQU-061",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 8
     },
     {
       "id": 62,
@@ -573,7 +1898,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 220,
       "stock": 14,
-      "description": "Erect bamboo-like stems with pointed leaves painted in blazing hot pink."
+      "description": "Erect bamboo-like stems with pointed leaves painted in blazing hot pink.",
+      "sku": "PP-AQU-062",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 9
     },
     {
       "id": 63,
@@ -582,7 +1929,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 160,
       "stock": 20,
-      "description": "Subtle translucent bronze tape leaves, wonderful for natural river scapes."
+      "description": "Subtle translucent bronze tape leaves, wonderful for natural river scapes.",
+      "sku": "PP-AQU-063",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 3
     },
     {
       "id": 64,
@@ -591,7 +1960,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 260,
       "stock": 15,
-      "description": "Novelty aquatic plant with banana-shaped nutrient tubers and lily leaves."
+      "description": "Novelty aquatic plant with banana-shaped nutrient tubers and lily leaves.",
+      "sku": "PP-AQU-064",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 4
     },
     {
       "id": 65,
@@ -600,7 +1991,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 310,
       "stock": 12,
-      "description": "Spectacular bulb plant with mottled red-and-green broad arrow leaves."
+      "description": "Spectacular bulb plant with mottled red-and-green broad arrow leaves.",
+      "sku": "PP-AQU-065",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 5
     },
     {
       "id": 66,
@@ -609,7 +2022,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 190,
       "stock": 22,
-      "description": "Low-creeping bushy stem plant with warm bronze-brown hues."
+      "description": "Low-creeping bushy stem plant with warm bronze-brown hues.",
+      "sku": "PP-AQU-066",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 6
     },
     {
       "id": 67,
@@ -618,7 +2053,29 @@
       "subcategory": "Stem & Background Plants",
       "price": 280,
       "stock": 12,
-      "description": "Exotic bright-green carnivorous bladderwort forming a dense, velvety lawn."
+      "description": "Exotic bright-green carnivorous bladderwort forming a dense, velvety lawn.",
+      "sku": "PP-AQU-067",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 7
     },
     {
       "id": 68,
@@ -627,7 +2084,29 @@
       "subcategory": "Ferns & Mosses",
       "price": 190,
       "stock": 35,
-      "description": "Indestructible rhizome fern with varieties for every driftwood crevice."
+      "description": "Indestructible rhizome fern with varieties for every driftwood crevice.",
+      "sku": "PP-AQU-068",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 8
     },
     {
       "id": 69,
@@ -636,7 +2115,29 @@
       "subcategory": "Ferns & Mosses",
       "price": 150,
       "stock": 40,
-      "description": "World-renowned aquarium moss for shrimp, biofilm grazers and aquascaping accents."
+      "description": "World-renowned aquarium moss for shrimp, biofilm grazers and aquascaping accents.",
+      "sku": "PP-AQU-069",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 9
     },
     {
       "id": 70,
@@ -645,7 +2146,29 @@
       "subcategory": "Ferns & Mosses",
       "price": 250,
       "stock": 18,
-      "description": "Graceful lobed fern resembling trident forks, thrives tied to hardscape."
+      "description": "Graceful lobed fern resembling trident forks, thrives tied to hardscape.",
+      "sku": "PP-AQU-070",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 3
     },
     {
       "id": 71,
@@ -654,7 +2177,29 @@
       "subcategory": "Ferns & Mosses",
       "price": 310,
       "stock": 12,
-      "description": "Rare compact ornamental moss forming flower-like jade rosettes."
+      "description": "Rare compact ornamental moss forming flower-like jade rosettes.",
+      "sku": "PP-AQU-071",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 4
     },
     {
       "id": 72,
@@ -663,7 +2208,29 @@
       "subcategory": "Ferns & Mosses",
       "price": 280,
       "stock": 15,
-      "description": "Deep green mini coral liverwort that pearlesces profusely under good light."
+      "description": "Deep green mini coral liverwort that pearlesces profusely under good light.",
+      "sku": "PP-AQU-072",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Midground/Background",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 5
     },
     {
       "id": 73,
@@ -672,7 +2239,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 120,
       "stock": 25,
-      "description": "Delicate velvet floating fern that turns reddish in good lighting."
+      "description": "Delicate velvet floating fern that turns reddish in good lighting.",
+      "sku": "PP-AQU-073",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 6
     },
     {
       "id": 74,
@@ -681,7 +2270,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 60,
       "stock": 50,
-      "description": "Fast-multiplying miniature surface floater that rapidly soaks up excess nutrients."
+      "description": "Fast-multiplying miniature surface floater that rapidly soaks up excess nutrients.",
+      "sku": "PP-AQU-074",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 7
     },
     {
       "id": 75,
@@ -690,7 +2301,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 220,
       "stock": 15,
-      "description": "Floating oval leaves with charming cup-shaped lemon blossoms."
+      "description": "Floating oval leaves with charming cup-shaped lemon blossoms.",
+      "sku": "PP-AQU-075",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 8
     },
     {
       "id": 76,
@@ -699,7 +2332,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 140,
       "stock": 30,
-      "description": "Sponge-thick round floating rosettes with trailing root nurseries."
+      "description": "Sponge-thick round floating rosettes with trailing root nurseries.",
+      "sku": "PP-AQU-076",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 9
     },
     {
       "id": 77,
@@ -708,7 +2363,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 260,
       "stock": 12,
-      "description": "Mesmerizing geometric mosaic rosettes floating flat on the water surface."
+      "description": "Mesmerizing geometric mosaic rosettes floating flat on the water surface.",
+      "sku": "PP-AQU-077",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 3
     },
     {
       "id": 78,
@@ -717,7 +2394,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 250,
       "stock": 14,
-      "description": "Riparium foliage with clean roots adapted to submerged aquatic filtration."
+      "description": "Riparium foliage with clean roots adapted to submerged aquatic filtration.",
+      "sku": "PP-AQU-078",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Moderate",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 4
     },
     {
       "id": 79,
@@ -726,7 +2425,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 190,
       "stock": 22,
-      "description": "Dramatic crimson-red hanging roots with leaves that blush maroon in bright light."
+      "description": "Dramatic crimson-red hanging roots with leaves that blush maroon in bright light.",
+      "sku": "PP-AQU-079",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "Featured"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 5
     },
     {
       "id": 80,
@@ -735,7 +2456,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 130,
       "stock": 25,
-      "description": "Velvety ribbed leaves arranged in an open rose shape with feathery root systems."
+      "description": "Velvety ribbed leaves arranged in an open rose shape with feathery root systems.",
+      "sku": "PP-AQU-080",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "New Arrival"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.6,
+      "reviewCount": 6
     },
     {
       "id": 81,
@@ -744,7 +2487,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 120,
       "stock": 35,
-      "description": "Textured hydrophobic floating fern leaves that deflect splashes and shade water."
+      "description": "Textured hydrophobic floating fern leaves that deflect splashes and shade water.",
+      "sku": "PP-AQU-081",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "New Arrival"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.7,
+      "reviewCount": 7
     },
     {
       "id": 82,
@@ -753,7 +2518,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 110,
       "stock": 20,
-      "description": "Spongy bulbous floating stems with purple blooms and black fibrous roots."
+      "description": "Spongy bulbous floating stems with purple blooms and black fibrous roots.",
+      "sku": "PP-AQU-082",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "New Arrival"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 8
     },
     {
       "id": 83,
@@ -762,7 +2549,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 100,
       "stock": 30,
-      "description": "Classic pale-green velvet rosettes creating natural shelter for aquatic life."
+      "description": "Classic pale-green velvet rosettes creating natural shelter for aquatic life.",
+      "sku": "PP-AQU-083",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "New Arrival"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.8,
+      "reviewCount": 9
     },
     {
       "id": 84,
@@ -771,7 +2580,29 @@
       "subcategory": "Floating & Surface Plants",
       "price": 150,
       "stock": 25,
-      "description": "Lacy floating or rooted fern, fast growing and gentle shelter for shrimplets."
+      "description": "Lacy floating or rooted fern, fast growing and gentle shelter for shrimplets.",
+      "sku": "PP-AQU-084",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "New Arrival"
+      ],
+      "specifications": {
+        "difficulty": "Easy",
+        "lightRequirement": "Medium",
+        "co2": "Optional",
+        "placement": "Floating",
+        "pH": "6.2 - 7.5",
+        "temperature": "22°C - 28°C"
+      },
+      "rating": 4.9,
+      "reviewCount": 3
     },
     {
       "id": 85,
@@ -780,7 +2611,26 @@
       "subcategory": "Substrates",
       "price": 580,
       "stock": 24,
-      "description": "Nutrient-rich baked clay granules that stabilize pH at 6.5 for strong plant roots."
+      "description": "Nutrient-rich baked clay granules that stabilize pH at 6.5 for strong plant roots.",
+      "sku": "PP-SUB-085",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "New Arrival"
+      ],
+      "specifications": {
+        "grainSize": "2 - 4 mm",
+        "buffering": "Mildly acidic (ideal for planted aquariums)",
+        "nutrientContent": "High macro/micro nutrients"
+      },
+      "rating": 4.6,
+      "reviewCount": 4
     },
     {
       "id": 86,
@@ -789,7 +2639,26 @@
       "subcategory": "Hardscape",
       "price": 420,
       "stock": 18,
-      "description": "Curated branchy bogwood pieces that release beneficial tannins and anchor plants."
+      "description": "Curated branchy bogwood pieces that release beneficial tannins and anchor plants.",
+      "sku": "PP-SUB-086",
+      "salePrice": null,
+      "images": [
+        "/images/hero-aquarium.jpg"
+      ],
+      "image": "/images/hero-aquarium.jpg",
+      "lowStockThreshold": 5,
+      "isFeatured": false,
+      "isVisible": true,
+      "labels": [
+        "New Arrival"
+      ],
+      "specifications": {
+        "grainSize": "2 - 4 mm",
+        "buffering": "Mildly acidic (ideal for planted aquariums)",
+        "nutrientContent": "High macro/micro nutrients"
+      },
+      "rating": 4.7,
+      "reviewCount": 5
     }
   ],
   "orders": [
@@ -832,7 +2701,15 @@
       ],
       "total": 770,
       "status": "New",
-      "date": 1794403803946
+      "date": 1794403803946,
+      "statusHistory": [
+        {
+          "status": "New",
+          "time": 1794403803946,
+          "note": "Initial order placed"
+        }
+      ],
+      "paymentMethod": "Cash / UPI on Delivery"
     },
     {
       "id": 1001,
@@ -891,11 +2768,37 @@
       ],
       "total": 1190,
       "status": "Packed",
-      "date": 1794399984449
+      "date": 1794399984449,
+      "statusHistory": [
+        {
+          "status": "Packed",
+          "time": 1794399984449,
+          "note": "Initial order placed"
+        }
+      ],
+      "paymentMethod": "Cash / UPI on Delivery"
     }
   ],
   "inquiries": [],
   "logs": [
+    {
+      "t": 1794460932628,
+      "user": "owner",
+      "action": "cancelled order #1003 (stock restored)",
+      "ip": "::1"
+    },
+    {
+      "t": 1794460932601,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794460772904,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
     {
       "t": 1794402971934,
       "user": "owner",
@@ -992,5 +2895,250 @@
       "action": "login",
       "ip": "::1"
     }
-  ]
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Aquatic Plants & Mosses",
+      "slug": "aquatic-plants-mosses",
+      "icon": "🌿",
+      "subcategories": [
+        "Foreground & Carpet Plants",
+        "Stem & Background Plants",
+        "Ferns & Mosses",
+        "Floating & Surface Plants"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Fish",
+      "slug": "fish",
+      "icon": "🐠",
+      "subcategories": [
+        "Fish",
+        "Tetras & Barbs",
+        "Livebearers & Guppies",
+        "Centerpiece Fish"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Shrimps & Invertebrates",
+      "slug": "shrimps-invertebrates",
+      "icon": "🦐",
+      "subcategories": [
+        "Shrimps",
+        "Snails",
+        "Invertebrates"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Substrates & Hardscape",
+      "slug": "substrates-hardscape",
+      "icon": "🪵",
+      "subcategories": [
+        "Substrates",
+        "Hardscape",
+        "Aquascaping Stones",
+        "Driftwood"
+      ]
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Rahul Sharma",
+      "email": "rahul@pairaplants.com",
+      "phone": "+91 98765 43210",
+      "address": "Flat 402, Green Glen Layout, Bellandur, Bengaluru, Karnataka 560103",
+      "passwordHash": "$2a$10$Fp60NqFDAhXZPIKMSwqoQeh5PguJHHx7UIE0s0JgyrM3swUXlB5Si",
+      "active": true,
+      "wishlist": [
+        1,
+        5,
+        41
+      ],
+      "createdAt": 1794028448764
+    }
+  ],
+  "coupons": [
+    {
+      "id": 1,
+      "code": "PAIRAWELCOME",
+      "discountType": "percent",
+      "discountValue": 10,
+      "minOrder": 500,
+      "maxDiscount": 200,
+      "active": true,
+      "usageCount": 2,
+      "expiresAt": "2027-12-31"
+    },
+    {
+      "id": 2,
+      "code": "GREEN100",
+      "discountType": "fixed",
+      "discountValue": 100,
+      "minOrder": 800,
+      "active": true,
+      "usageCount": 1,
+      "expiresAt": "2027-12-31"
+    }
+  ],
+  "inventoryLogs": [
+    {
+      "id": 3,
+      "productId": 41,
+      "productName": "Cabomba (Green, Red)",
+      "change": -2,
+      "previousStock": 22,
+      "newStock": 20,
+      "reason": "Order #checkout purchase",
+      "performedBy": "system",
+      "timestamp": 1794460932616
+    },
+    {
+      "id": 1,
+      "productId": 1,
+      "productName": "Cherry Barb",
+      "change": -1,
+      "previousStock": 24,
+      "newStock": 23,
+      "reason": "Order #1002 placed",
+      "performedBy": "system",
+      "timestamp": 1794453248764
+    },
+    {
+      "id": 2,
+      "productId": 41,
+      "productName": "Cabomba (Green, Red)",
+      "change": 10,
+      "previousStock": 12,
+      "newStock": 22,
+      "reason": "Fresh nursery shipment received",
+      "performedBy": "owner",
+      "timestamp": 1794374048764
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "productId": 1,
+      "customerName": "Ananya S.",
+      "rating": 5,
+      "title": "Extremely vibrant and healthy!",
+      "comment": "Arrived active and in perfect condition. Colorful and schooling peacefully with my tetras.",
+      "verifiedPurchase": true,
+      "status": "approved",
+      "createdAt": 1794287648764
+    },
+    {
+      "id": 2,
+      "productId": 41,
+      "customerName": "Vikram Mehta",
+      "rating": 5,
+      "title": "Lush green stems with zero snails",
+      "comment": "Very clean tissue culture batch. Rooted within 3 days and started putting out new shoots.",
+      "verifiedPurchase": true,
+      "status": "approved",
+      "createdAt": 1794201248764
+    }
+  ],
+  "homepage": {
+    "hero": {
+      "title": "Bring Life to Your Aquarium",
+      "subtitle": "Pairaplants brings the beauty of aquatic nature into your home and workspace with premium, healthy aquatic plants, quarantined fishes & gravels.",
+      "ctaText": "Explore Collection →",
+      "ctaLink": "#shop",
+      "secondaryCtaText": "About Pairaplants",
+      "secondaryCtaLink": "#story",
+      "bannerImage": "/images/hero-aquarium.jpg"
+    },
+    "promoBanners": [
+      {
+        "id": 1,
+        "title": "Complimentary Thermal Care Packaging",
+        "description": "Every live order includes insulated polystyrene shielding and oxygen-filled travel chambers.",
+        "badge": "CERTIFIED SAFE DISPATCH",
+        "active": true
+      }
+    ],
+    "whyChooseUs": {
+      "title": "Why Choose Us",
+      "cards": [
+        {
+          "icon": "🌿",
+          "title": "Healthy & Vibrant Plants",
+          "description": "We deliver pest-free, carefully nurtured plants that thrive in your aquarium."
+        },
+        {
+          "icon": "🚚",
+          "title": "Fast & Reliable Shipping",
+          "description": "Secure packaging ensures your plants arrive fresh and ready to flourish."
+        },
+        {
+          "icon": "💡",
+          "title": "Expert Guidance",
+          "description": "Our team provides simple tips and support to help you succeed in aquascaping."
+        },
+        {
+          "icon": "♻️",
+          "title": "Sustainable Practices",
+          "description": "We source responsibly and use eco-friendly methods to protect natural habitats."
+        }
+      ]
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "name": "Hero Photo Banner",
+        "enabled": true,
+        "order": 1
+      },
+      {
+        "id": "why_choose",
+        "name": "Why Choose Us Grid",
+        "enabled": true,
+        "order": 2
+      },
+      {
+        "id": "featured_products",
+        "name": "Featured Botanicals Row",
+        "enabled": true,
+        "order": 3
+      },
+      {
+        "id": "collections",
+        "name": "Curated Ecosystem Tiers",
+        "enabled": true,
+        "order": 4
+      },
+      {
+        "id": "promo_banner",
+        "name": "Thermal Care Banner",
+        "enabled": true,
+        "order": 5
+      }
+    ]
+  },
+  "settings": {
+    "storeName": "Pairaplants",
+    "brandTitle": "Paira Plants",
+    "tagline": "Aquatic Plants, Fishes & Gravels",
+    "email": "care@pairaplants.com",
+    "phone": "+91 98765 43210",
+    "whatsappNumber": "919876543210",
+    "address": "Pairaplants Studio, Aquatic Flora Hub, India",
+    "currency": "INR",
+    "currencySymbol": "₹",
+    "freeShippingThreshold": 0,
+    "seo": {
+      "metaTitle": "Pairaplants – Premium Aquatic Plants, Tropical Fishes & Aquascaping",
+      "metaDescription": "Pairaplants provides premium, pest-free aquatic plants, quarantined fishes, dwarf shrimps, and planted aquarium substrates with 100% live arrival guarantee.",
+      "ogImage": "/images/hero-aquarium.jpg",
+      "canonicalUrl": "https://pairaplants.vercel.app",
+      "keywords": "aquatic plants, pairaplants, aquascaping, freshwater shrimp, planted aquarium, live fish"
+    }
+  },
+  "newsletter": []
 }
