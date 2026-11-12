@@ -37,9 +37,9 @@
       "sku": "PP-FIS-001",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/cherry-barb.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/cherry-barb.jpg",
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isVisible": true,
@@ -248,9 +248,9 @@
       "sku": "PP-FIS-008",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/balloon-platy.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/balloon-platy.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -368,9 +368,9 @@
       "sku": "PP-FIS-012",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/borneo-sucker.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/borneo-sucker.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -398,9 +398,10 @@
       "sku": "PP-SHR-013",
       "salePrice": null,
       "images": [
+        "/images/products/amano-shrimp-moss.jpg",
         "/images/products/amano-shrimp.webp"
       ],
-      "image": "/images/products/amano-shrimp.webp",
+      "image": "/images/products/amano-shrimp-moss.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -428,9 +429,9 @@
       "sku": "PP-SHR-014",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/assassin-snail.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/assassin-snail.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -458,9 +459,9 @@
       "sku": "PP-SHR-015",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/bloody-mary-shrimp.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/bloody-mary-shrimp.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -488,9 +489,10 @@
       "sku": "PP-SHR-016",
       "salePrice": null,
       "images": [
+        "/images/products/blue-dream-shrimp-berried.jpg",
         "/images/products/blue-dream-shrimp.jpg"
       ],
-      "image": "/images/products/blue-dream-shrimp.jpg",
+      "image": "/images/products/blue-dream-shrimp-berried.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -518,9 +520,9 @@
       "sku": "PP-SHR-017",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/borneo-sucker.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/borneo-sucker.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
