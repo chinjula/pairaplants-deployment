@@ -7,6 +7,13 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const multer = require('multer');
+const {
+  loadFromSupabase,
+  syncOrderToSupabase,
+  syncStockToSupabase,
+  syncProductToSupabase,
+  syncInquiryToSupabase
+} = require('./lib/supabaseSync');
 
 const PORT = process.env.PORT || 3000;
 const isVercel = !!process.env.VERCEL;
@@ -74,6 +81,9 @@ if (!db.coupons) db.coupons = [];
 if (!db.inventoryLogs) db.inventoryLogs = [];
 if (!db.reviews) db.reviews = [];
 if (!db.newsletter) db.newsletter = [];
+
+// Synchronize with Supabase if credentials are provided in environment
+loadFromSupabase(db).catch(() => {});
 
 const log = (user, action, ip, details) => {
   db.logs.unshift({ t: Date.now(), user, action, ip, details });
@@ -503,6 +513,7 @@ app.patch('/api/products/:id/stock', auth('superadmin', 'manager', 'support'), (
   });
 
   save();
+  syncStockToSupabase(p.id, s).catch(() => {});
   log(req.user.username, `stock ${p.name} updated: ${prev} -> ${s}`, req.ip);
   res.json(p);
 });
@@ -626,6 +637,7 @@ app.post('/api/orders', (req, res) => {
 
   db.orders.unshift(o);
   save();
+  syncOrderToSupabase(o, lines, db).catch(() => {});
   res.status(201).json(o);
 });
 

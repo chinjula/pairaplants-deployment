@@ -92,7 +92,7 @@
       "category": "Fish",
       "subcategory": "Fish",
       "price": 150,
-      "stock": 29,
+      "stock": 34,
       "description": "Hardy, coldwater-friendly peaceful minnow with shimmering golden tones.",
       "sku": "PP-FIS-003",
       "salePrice": null,
@@ -122,7 +122,7 @@
       "category": "Fish",
       "subcategory": "Fish",
       "price": 160,
-      "stock": 23,
+      "stock": 3,
       "description": "Surface-dwelling schooling fish with brilliant reflective top highlights.",
       "sku": "PP-FIS-004",
       "salePrice": null,
@@ -152,7 +152,7 @@
       "category": "Fish",
       "subcategory": "Fish",
       "price": 90,
-      "stock": 38,
+      "stock": 9,
       "description": "Assorted colorful fancy guppies, peaceful and lively community swimmers.",
       "sku": "PP-FIS-005",
       "salePrice": null,
@@ -974,7 +974,7 @@
       "category": "Aquatic Plants & Mosses",
       "subcategory": "Foreground & Carpet Plants",
       "price": 140,
-      "stock": 30,
+      "stock": 0,
       "description": "Vigorous runner plant with ribbon blades, exceptionally hardy in any tank.",
       "sku": "PP-AQU-032",
       "salePrice": null,
@@ -2815,6 +2815,558 @@
   "inquiries": [],
   "logs": [
     {
+      "t": 1794471347943,
+      "user": "owner",
+      "action": "inventory adjust Mixed Guppy: +5",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471346474,
+      "user": "owner",
+      "action": "inventory adjust Mixed Guppy: +1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471339527,
+      "user": "owner",
+      "action": "inventory adjust Mixed Guppy: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471335816,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 5 -> 4",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471335607,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 6 -> 5",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471334815,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 7 -> 6",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471334599,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 8 -> 7",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471334399,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 9 -> 8",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471334217,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 10 -> 9",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471334026,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 11 -> 10",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471333826,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 12 -> 11",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471333639,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 13 -> 12",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471333426,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 14 -> 13",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471333242,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 15 -> 14",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471333026,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 23 -> 15",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471332367,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 24 -> 23",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471332183,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 25 -> 24",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471332001,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 26 -> 25",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471331800,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 27 -> 26",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471331626,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 28 -> 27",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471331419,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 30 -> 28",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471331095,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 31 -> 30",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471330907,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 32 -> 31",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471330719,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 33 -> 32",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471330544,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 34 -> 33",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471330360,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 35 -> 34",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471330215,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 36 -> 35",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471330008,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 37 -> 36",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471329842,
+      "user": "owner",
+      "action": "stock Mixed Guppy updated: 38 -> 37",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471324619,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471324375,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471324160,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471323975,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471323787,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471323587,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471323370,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471323127,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471322735,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471322535,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471322335,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471321803,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471321624,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471321468,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471321321,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471321176,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471321016,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471320839,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471320686,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471320503,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471319423,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471319232,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471319039,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471318735,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471318129,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: -1",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471316848,
+      "user": "owner",
+      "action": "inventory adjust Golden Top Minnow: +5",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471315120,
+      "user": "owner",
+      "action": "inventory adjust Golden Mountain Minnow: +5",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471292801,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 2 -> 0",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471292446,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 3 -> 2",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471292256,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 4 -> 3",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471287767,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 5 -> 4",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471287600,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 6 -> 5",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471287422,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 7 -> 6",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471276572,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 8 -> 7",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471276410,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 9 -> 8",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471276235,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 10 -> 9",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471276227,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 12 -> 10",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471275839,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 13 -> 12",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471275554,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 14 -> 13",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471275426,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 15 -> 14",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471275419,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 16 -> 15",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471274756,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 17 -> 16",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471274658,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 18 -> 17",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471274381,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 19 -> 18",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471274100,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 20 -> 19",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471273949,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 21 -> 20",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471273857,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 22 -> 21",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471273636,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 23 -> 22",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471273617,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 24 -> 23",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471273602,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 25 -> 24",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471273587,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 27 -> 25",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471273556,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 28 -> 27",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471272520,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 29 -> 28",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471272343,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 30 -> 29",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471272186,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 31 -> 30",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471272033,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 32 -> 31",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471271969,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 33 -> 32",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471271956,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 34 -> 33",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471271354,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 33 -> 34",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471270665,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 32 -> 33",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471270585,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 31 -> 32",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471270332,
+      "user": "owner",
+      "action": "stock Sagittaria Subulata / Graminea updated: 30 -> 31",
+      "ip": "::1"
+    },
+    {
+      "t": 1794471252298,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
       "t": 1794462223566,
       "user": "owner",
       "action": "cancelled order #1003 (stock restored)",
@@ -3043,6 +3595,1007 @@
     }
   ],
   "inventoryLogs": [
+    {
+      "id": 96,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": 5,
+      "previousStock": 4,
+      "newStock": 9,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471347940
+    },
+    {
+      "id": 95,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": 1,
+      "previousStock": 3,
+      "newStock": 4,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471346472
+    },
+    {
+      "id": 94,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 4,
+      "newStock": 3,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471339525
+    },
+    {
+      "id": 93,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 5,
+      "newStock": 4,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471335813
+    },
+    {
+      "id": 92,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 6,
+      "newStock": 5,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471335605
+    },
+    {
+      "id": 91,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 7,
+      "newStock": 6,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471334813
+    },
+    {
+      "id": 90,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 8,
+      "newStock": 7,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471334597
+    },
+    {
+      "id": 89,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 9,
+      "newStock": 8,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471334397
+    },
+    {
+      "id": 88,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 10,
+      "newStock": 9,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471334213
+    },
+    {
+      "id": 87,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 11,
+      "newStock": 10,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471334021
+    },
+    {
+      "id": 86,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 12,
+      "newStock": 11,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471333821
+    },
+    {
+      "id": 85,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 13,
+      "newStock": 12,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471333637
+    },
+    {
+      "id": 84,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 14,
+      "newStock": 13,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471333421
+    },
+    {
+      "id": 83,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 15,
+      "newStock": 14,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471333237
+    },
+    {
+      "id": 82,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -8,
+      "previousStock": 23,
+      "newStock": 15,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471333021
+    },
+    {
+      "id": 81,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 24,
+      "newStock": 23,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471332365
+    },
+    {
+      "id": 80,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 25,
+      "newStock": 24,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471332181
+    },
+    {
+      "id": 79,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 26,
+      "newStock": 25,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471331999
+    },
+    {
+      "id": 78,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 27,
+      "newStock": 26,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471331797
+    },
+    {
+      "id": 77,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 28,
+      "newStock": 27,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471331622
+    },
+    {
+      "id": 76,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -2,
+      "previousStock": 30,
+      "newStock": 28,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471331416
+    },
+    {
+      "id": 75,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 31,
+      "newStock": 30,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471331093
+    },
+    {
+      "id": 74,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 32,
+      "newStock": 31,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471330901
+    },
+    {
+      "id": 73,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 33,
+      "newStock": 32,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471330717
+    },
+    {
+      "id": 72,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 34,
+      "newStock": 33,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471330541
+    },
+    {
+      "id": 71,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 35,
+      "newStock": 34,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471330357
+    },
+    {
+      "id": 70,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 36,
+      "newStock": 35,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471330213
+    },
+    {
+      "id": 69,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 37,
+      "newStock": 36,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471330006
+    },
+    {
+      "id": 68,
+      "productId": 5,
+      "productName": "Mixed Guppy",
+      "change": -1,
+      "previousStock": 38,
+      "newStock": 37,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471329840
+    },
+    {
+      "id": 67,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 4,
+      "newStock": 3,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471324613
+    },
+    {
+      "id": 66,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 5,
+      "newStock": 4,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471324373
+    },
+    {
+      "id": 65,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 6,
+      "newStock": 5,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471324158
+    },
+    {
+      "id": 64,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 7,
+      "newStock": 6,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471323973
+    },
+    {
+      "id": 63,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 8,
+      "newStock": 7,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471323784
+    },
+    {
+      "id": 62,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 9,
+      "newStock": 8,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471323584
+    },
+    {
+      "id": 61,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 10,
+      "newStock": 9,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471323367
+    },
+    {
+      "id": 60,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 11,
+      "newStock": 10,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471323125
+    },
+    {
+      "id": 59,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 12,
+      "newStock": 11,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471322733
+    },
+    {
+      "id": 58,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 13,
+      "newStock": 12,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471322533
+    },
+    {
+      "id": 57,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 14,
+      "newStock": 13,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471322333
+    },
+    {
+      "id": 56,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 15,
+      "newStock": 14,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471321800
+    },
+    {
+      "id": 55,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 16,
+      "newStock": 15,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471321621
+    },
+    {
+      "id": 54,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 17,
+      "newStock": 16,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471321465
+    },
+    {
+      "id": 53,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 18,
+      "newStock": 17,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471321318
+    },
+    {
+      "id": 52,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 19,
+      "newStock": 18,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471321174
+    },
+    {
+      "id": 51,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 20,
+      "newStock": 19,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471321013
+    },
+    {
+      "id": 50,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 21,
+      "newStock": 20,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471320837
+    },
+    {
+      "id": 49,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 22,
+      "newStock": 21,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471320683
+    },
+    {
+      "id": 48,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 23,
+      "newStock": 22,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471320501
+    },
+    {
+      "id": 47,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 24,
+      "newStock": 23,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471319421
+    },
+    {
+      "id": 46,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 25,
+      "newStock": 24,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471319230
+    },
+    {
+      "id": 45,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 26,
+      "newStock": 25,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471319037
+    },
+    {
+      "id": 44,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 27,
+      "newStock": 26,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471318733
+    },
+    {
+      "id": 43,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": -1,
+      "previousStock": 28,
+      "newStock": 27,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471318127
+    },
+    {
+      "id": 42,
+      "productId": 4,
+      "productName": "Golden Top Minnow",
+      "change": 5,
+      "previousStock": 23,
+      "newStock": 28,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471316845
+    },
+    {
+      "id": 41,
+      "productId": 3,
+      "productName": "Golden Mountain Minnow",
+      "change": 5,
+      "previousStock": 29,
+      "newStock": 34,
+      "reason": "Quick adjustment in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471315118
+    },
+    {
+      "id": 40,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -2,
+      "previousStock": 2,
+      "newStock": 0,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471292796
+    },
+    {
+      "id": 39,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 3,
+      "newStock": 2,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471292444
+    },
+    {
+      "id": 38,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 4,
+      "newStock": 3,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471292253
+    },
+    {
+      "id": 37,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 5,
+      "newStock": 4,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471287765
+    },
+    {
+      "id": 36,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 6,
+      "newStock": 5,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471287597
+    },
+    {
+      "id": 35,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 7,
+      "newStock": 6,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471287421
+    },
+    {
+      "id": 34,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 8,
+      "newStock": 7,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471276568
+    },
+    {
+      "id": 33,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 9,
+      "newStock": 8,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471276407
+    },
+    {
+      "id": 32,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 10,
+      "newStock": 9,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471276230
+    },
+    {
+      "id": 31,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -2,
+      "previousStock": 12,
+      "newStock": 10,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471276224
+    },
+    {
+      "id": 30,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 13,
+      "newStock": 12,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471275794
+    },
+    {
+      "id": 29,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 14,
+      "newStock": 13,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471275551
+    },
+    {
+      "id": 28,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 15,
+      "newStock": 14,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471275424
+    },
+    {
+      "id": 27,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 16,
+      "newStock": 15,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471275330
+    },
+    {
+      "id": 26,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 17,
+      "newStock": 16,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471274753
+    },
+    {
+      "id": 25,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 18,
+      "newStock": 17,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471274656
+    },
+    {
+      "id": 24,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 19,
+      "newStock": 18,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471274316
+    },
+    {
+      "id": 23,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 20,
+      "newStock": 19,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471274095
+    },
+    {
+      "id": 22,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 21,
+      "newStock": 20,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471273925
+    },
+    {
+      "id": 21,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 22,
+      "newStock": 21,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471273855
+    },
+    {
+      "id": 20,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 23,
+      "newStock": 22,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471273626
+    },
+    {
+      "id": 19,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 24,
+      "newStock": 23,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471273610
+    },
+    {
+      "id": 18,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 25,
+      "newStock": 24,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471273599
+    },
+    {
+      "id": 17,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -2,
+      "previousStock": 27,
+      "newStock": 25,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471273583
+    },
+    {
+      "id": 16,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 28,
+      "newStock": 27,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471272937
+    },
+    {
+      "id": 15,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 29,
+      "newStock": 28,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471272517
+    },
+    {
+      "id": 14,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 30,
+      "newStock": 29,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471272341
+    },
+    {
+      "id": 13,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 31,
+      "newStock": 30,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471272182
+    },
+    {
+      "id": 12,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 32,
+      "newStock": 31,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471272031
+    },
+    {
+      "id": 11,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 33,
+      "newStock": 32,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471271965
+    },
+    {
+      "id": 10,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": -1,
+      "previousStock": 34,
+      "newStock": 33,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471271950
+    },
+    {
+      "id": 9,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": 1,
+      "previousStock": 33,
+      "newStock": 34,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471271352
+    },
+    {
+      "id": 8,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": 1,
+      "previousStock": 32,
+      "newStock": 33,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471270663
+    },
+    {
+      "id": 7,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": 1,
+      "previousStock": 31,
+      "newStock": 32,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471270582
+    },
+    {
+      "id": 6,
+      "productId": 32,
+      "productName": "Sagittaria Subulata / Graminea",
+      "change": 1,
+      "previousStock": 30,
+      "newStock": 31,
+      "reason": "Manual override in admin",
+      "performedBy": "owner",
+      "timestamp": 1794471270329
+    },
     {
       "id": 5,
       "productId": 41,

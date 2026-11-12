@@ -115,3 +115,4 @@ if (p69) {
 
 fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf8');
 console.log('Finished refining latest photos in db.json!');
+
