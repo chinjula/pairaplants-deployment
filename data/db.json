@@ -821,9 +821,9 @@
       "sku": "PP-AQU-027",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/blyxa-japonica.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/blyxa-japonica.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -945,9 +945,9 @@
       "sku": "PP-AQU-031",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/monte-carlo-carpet.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/monte-carlo-carpet.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1195,7 +1195,8 @@
       "sku": "PP-AQU-039",
       "salePrice": null,
       "images": [
-        "/images/products/anubias-nana.webp"
+        "/images/products/anubias-nana.webp",
+        "/images/products/anubias-glabra.webp"
       ],
       "image": "/images/products/anubias-nana.webp",
       "lowStockThreshold": 5,
@@ -1226,9 +1227,9 @@
       "sku": "PP-AQU-040",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/bacopa-caroliniana.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/bacopa-caroliniana.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1257,9 +1258,10 @@
       "sku": "PP-AQU-041",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/cabomba-green.jpg",
+        "/images/products/cabomba-red.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/cabomba-green.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1288,9 +1290,11 @@
       "sku": "PP-AQU-042",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/cryptocoryne-green.webp",
+        "/images/products/cryptocoryne-undulata.jpg",
+        "/images/products/cryptocoryne-retrospiralis.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/cryptocoryne-green.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1691,9 +1695,9 @@
       "sku": "PP-AQU-055",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/cabomba-red.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/cabomba-red.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2249,9 +2253,9 @@
       "sku": "PP-AQU-073",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/azolla-fairy-moss.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/azolla-fairy-moss.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2311,9 +2315,9 @@
       "sku": "PP-AQU-075",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/water-poppy.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/water-poppy.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2404,9 +2408,10 @@
       "sku": "PP-AQU-078",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/peace-lily-aquatic.jpg",
+        "/images/products/aquatic-cultivated-collection.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/peace-lily-aquatic.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
