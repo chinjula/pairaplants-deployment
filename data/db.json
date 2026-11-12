@@ -127,9 +127,9 @@
       "sku": "PP-FIS-004",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/golden-top-minnow.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/golden-top-minnow.webp",
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isVisible": true,
@@ -308,9 +308,9 @@
       "sku": "PP-FIS-010",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/stone-catfish-hara-jerdoni.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/stone-catfish-hara-jerdoni.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -731,9 +731,10 @@
       "sku": "PP-SHR-024",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/peelia-moss-rock.jpg",
+        "/images/products/peelia-moss.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/peelia-moss-rock.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -821,7 +822,8 @@
       "sku": "PP-AQU-027",
       "salePrice": null,
       "images": [
-        "/images/products/blyxa-japonica.webp"
+        "/images/products/blyxa-japonica.webp",
+        "/images/products/blyxa-japonica-hand.jpg"
       ],
       "image": "/images/products/blyxa-japonica.webp",
       "lowStockThreshold": 5,
@@ -914,9 +916,10 @@
       "sku": "PP-AQU-030",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/hc-cuba-carpet.jpg",
+        "/images/products/hc-cuba-pot.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/hc-cuba-carpet.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1039,7 +1042,7 @@
       "salePrice": null,
       "images": [
         "/images/products/ludwigia-repens.jpg",
-        "/images/products/ludwigia-super-red.jpg"
+        "/images/products/ludwigia-glandulosa.webp"
       ],
       "image": "/images/products/ludwigia-repens.jpg",
       "lowStockThreshold": 5,
@@ -1101,11 +1104,11 @@
       "sku": "PP-AQU-036",
       "salePrice": null,
       "images": [
-        "/images/products/vallisneria-jungle.jpg",
-        "/images/products/vallisneria-spiralis.jpg",
-        "/images/products/vallisneria-harvest.jpg"
+        "/images/products/vallisneria-spiralis-tank.jpg",
+        "/images/products/vallisneria-corkscrew-hand.jpg",
+        "/images/products/vallisneria-jungle.jpg"
       ],
-      "image": "/images/products/vallisneria-jungle.jpg",
+      "image": "/images/products/vallisneria-spiralis-tank.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1293,9 +1296,7 @@
       "salePrice": null,
       "images": [
         "/images/products/cryptocoryne-green.webp",
-        "/images/products/cryptocoryne-undulata.jpg",
-        "/images/products/cryptocoryne-retrospiralis.jpg",
-        "/images/products/cryptocoryne-wendtii-brown.jpg"
+        "/images/products/cryptocoryne-pot.webp"
       ],
       "image": "/images/products/cryptocoryne-green.webp",
       "lowStockThreshold": 5,
@@ -1484,8 +1485,7 @@
       "salePrice": null,
       "images": [
         "/images/products/vallisneria-jungle.jpg",
-        "/images/products/vallisneria-spiralis.jpg",
-        "/images/products/vallisneria-harvest.jpg"
+        "/images/products/vallisneria-spiralis-tank.jpg"
       ],
       "image": "/images/products/vallisneria-jungle.jpg",
       "lowStockThreshold": 5,
@@ -1578,9 +1578,10 @@
       "sku": "PP-AQU-051",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/hydrocotyle-leucocephala.webp",
+        "/images/products/hydrocotyle-verticillata.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/hydrocotyle-leucocephala.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1609,9 +1610,12 @@
       "sku": "PP-AQU-052",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/hygrophila-pinnatifida.jpg",
+        "/images/products/hygrophila-sunset-hd.jpg",
+        "/images/products/hygrophila-corymbosa.jpg",
+        "/images/products/hygrophila-difformis.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/hygrophila-pinnatifida.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1640,9 +1644,9 @@
       "sku": "PP-AQU-053",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/lobelia-cardinalis.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/lobelia-cardinalis.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1671,9 +1675,9 @@
       "sku": "PP-AQU-054",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/mayaca-fluviatilis.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/mayaca-fluviatilis.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1733,9 +1737,10 @@
       "sku": "PP-AQU-056",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/guppy-grass-najas.jpg",
+        "/images/products/guppy-grass-aquarium.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/guppy-grass-najas.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1764,9 +1769,9 @@
       "sku": "PP-AQU-057",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/nitella-aquatic.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/nitella-aquatic.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1795,9 +1800,9 @@
       "sku": "PP-AQU-058",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/nuphar-japonica.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/nuphar-japonica.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1826,9 +1831,9 @@
       "sku": "PP-AQU-059",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/nymphoides-indica-snowflake.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/nymphoides-indica-snowflake.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1857,9 +1862,10 @@
       "sku": "PP-AQU-060",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/parrot-feather.jpg",
+        "/images/products/parrot-feather-red.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/parrot-feather.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1888,9 +1894,9 @@
       "sku": "PP-AQU-061",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/pogo-octopus.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/pogo-octopus.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1919,9 +1925,10 @@
       "sku": "PP-AQU-062",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/polygonum-sp-pink.jpg",
+        "/images/products/polygonum-pink-stem.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/polygonum-sp-pink.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1950,9 +1957,9 @@
       "sku": "PP-AQU-063",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/potamogeton-gayi.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/potamogeton-gayi.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1981,9 +1988,9 @@
       "sku": "PP-AQU-064",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/red-banana-plant.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/red-banana-plant.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2012,9 +2019,9 @@
       "sku": "PP-AQU-065",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/red-tiger-lily.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/red-tiger-lily.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2043,9 +2050,9 @@
       "sku": "PP-AQU-066",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/strogon-sp-brown.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/strogon-sp-brown.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2074,9 +2081,9 @@
       "sku": "PP-AQU-067",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/utricularia-graminifolia.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/utricularia-graminifolia.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2105,9 +2112,12 @@
       "sku": "PP-AQU-068",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/java-fern.jpg",
+        "/images/products/java-fern-coconut.jpg",
+        "/images/products/java-fern-windelov.jpg",
+        "/images/products/java-fern-needle-leaf.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/java-fern.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2136,9 +2146,10 @@
       "sku": "PP-AQU-069",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/java-moss-coconut.jpg",
+        "/images/products/java-fern-coconut.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/java-moss-coconut.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2167,9 +2178,9 @@
       "sku": "PP-AQU-070",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/trident-fern.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/trident-fern.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2198,9 +2209,9 @@
       "sku": "PP-AQU-071",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/jade-lotus-moss.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/jade-lotus-moss.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2229,9 +2240,10 @@
       "sku": "PP-AQU-072",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/riccia-coral-moss.jpg",
+        "/images/products/riccia-fluitans-bush.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/riccia-coral-moss.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2322,7 +2334,8 @@
       "sku": "PP-AQU-075",
       "salePrice": null,
       "images": [
-        "/images/products/water-poppy.jpg"
+        "/images/products/water-poppy.jpg",
+        "/images/products/water-poppy-blossom.jpg"
       ],
       "image": "/images/products/water-poppy.jpg",
       "lowStockThreshold": 5,
@@ -2416,7 +2429,8 @@
       "salePrice": null,
       "images": [
         "/images/products/peace-lily-aquatic.jpg",
-        "/images/products/aquatic-cultivated-collection.jpg"
+        "/images/products/aquatic-cultivated-collection.jpg",
+        "/images/products/peace-lily-cultivated.webp"
       ],
       "image": "/images/products/peace-lily-aquatic.jpg",
       "lowStockThreshold": 5,
@@ -2447,9 +2461,9 @@
       "sku": "PP-AQU-079",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/red-root-floater.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/red-root-floater.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2478,9 +2492,9 @@
       "sku": "PP-AQU-080",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/rosette-water-lettuce.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/rosette-water-lettuce.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2509,9 +2523,9 @@
       "sku": "PP-AQU-081",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/salvinia-floater.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/salvinia-floater.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2540,9 +2554,9 @@
       "sku": "PP-AQU-082",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/water-hyacinth-flower.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/water-hyacinth-flower.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2571,9 +2585,9 @@
       "sku": "PP-AQU-083",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/water-lettuce.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/water-lettuce.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2602,9 +2616,10 @@
       "sku": "PP-AQU-084",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/water-sprite.webp",
+        "/images/products/water-sprite-tank.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/water-sprite.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
