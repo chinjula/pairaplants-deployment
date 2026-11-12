@@ -1007,9 +1007,9 @@
       "sku": "PP-AQU-033",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/limnophila-aromatica.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/limnophila-aromatica.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1038,9 +1038,10 @@
       "sku": "PP-AQU-034",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/ludwigia-repens.jpg",
+        "/images/products/ludwigia-super-red.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/ludwigia-repens.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1069,9 +1070,9 @@
       "sku": "PP-AQU-035",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/rotala-macrandra-red.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/rotala-macrandra-red.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1100,9 +1101,9 @@
       "sku": "PP-AQU-036",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/vallisneria-jungle.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/vallisneria-jungle.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1162,9 +1163,10 @@
       "sku": "PP-AQU-038",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/amazon-sword.jpg",
+        "/images/products/amazon-sword-potted.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/amazon-sword.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1193,9 +1195,9 @@
       "sku": "PP-AQU-039",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/anubias-nana.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/anubias-nana.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1410,9 +1412,9 @@
       "sku": "PP-AQU-046",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/eriocaulon-cinereum.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/eriocaulon-cinereum.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -1472,9 +1474,9 @@
       "sku": "PP-AQU-048",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/vallisneria-jungle.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/vallisneria-jungle.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2371,9 +2373,9 @@
       "sku": "PP-AQU-077",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/mosaic-poppy.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/mosaic-poppy.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2619,9 +2621,9 @@
       "sku": "PP-SUB-085",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/clay-soil-planted-tank.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/clay-soil-planted-tank.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -2647,9 +2649,9 @@
       "sku": "PP-SUB-086",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/natural-aquascaping-driftwood.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/natural-aquascaping-driftwood.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
