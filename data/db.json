@@ -67,9 +67,9 @@
       "sku": "PP-FIS-002",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/dwarf-pufferfish.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/dwarf-pufferfish.webp",
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isVisible": true,
@@ -97,9 +97,9 @@
       "sku": "PP-FIS-003",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/golden-mountain-minnow.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/golden-mountain-minnow.webp",
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isVisible": true,
@@ -157,9 +157,9 @@
       "sku": "PP-FIS-005",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/mixed-guppy.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/mixed-guppy.jpg",
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isVisible": true,
@@ -187,9 +187,9 @@
       "sku": "PP-FIS-006",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/neon-tetra.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/neon-tetra.jpg",
       "lowStockThreshold": 5,
       "isFeatured": true,
       "isVisible": true,
@@ -488,9 +488,9 @@
       "sku": "PP-SHR-016",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/blue-dream-shrimp.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/blue-dream-shrimp.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -578,9 +578,9 @@
       "sku": "PP-SHR-019",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/golden-algae-eater.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/golden-algae-eater.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -608,9 +608,9 @@
       "sku": "PP-SHR-020",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/golden-yellow-apple-snails.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/golden-yellow-apple-snails.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -638,9 +638,9 @@
       "sku": "PP-SHR-021",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/malaysian-trumpet-snail.jpg"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/malaysian-trumpet-snail.jpg",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
@@ -668,7 +668,8 @@
       "sku": "PP-SHR-022",
       "salePrice": null,
       "images": [
-        "/images/products/zebra-nerite-snail.jpg"
+        "/images/products/zebra-nerite-snail.jpg",
+        "/images/products/red-onion-nerite-snail.jpg"
       ],
       "image": "/images/products/zebra-nerite-snail.jpg",
       "lowStockThreshold": 5,
@@ -758,9 +759,9 @@
       "sku": "PP-SHR-025",
       "salePrice": null,
       "images": [
-        "/images/hero-aquarium.jpg"
+        "/images/products/shrimp-mixed-pack.webp"
       ],
-      "image": "/images/hero-aquarium.jpg",
+      "image": "/images/products/shrimp-mixed-pack.webp",
       "lowStockThreshold": 5,
       "isFeatured": false,
       "isVisible": true,
