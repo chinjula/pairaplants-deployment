@@ -498,6 +498,7 @@ app.post('/api/products', auth('superadmin'), (req, res) => {
   });
 
   save();
+  syncProductToSupabase(p).catch(() => {});
   log(req.user.username, `added product ${name} (Stock: ${stock})`, req.ip);
   res.status(201).json(p);
 });
@@ -526,6 +527,7 @@ app.put('/api/products/:id', auth('superadmin'), (req, res) => {
   if (b.image) p.image = str(b.image, 255);
 
   save();
+  syncProductToSupabase(p).catch(() => {});
   log(req.user.username, `updated product details #${p.id} (${p.name})`, req.ip);
   res.json(p);
 });
@@ -537,6 +539,9 @@ app.delete('/api/products/:id', auth('superadmin'), (req, res) => {
   log(req.user.username, `deleted product #${prod.id} (${prod.name})`, req.ip);
   db.products.splice(i, 1);
   save();
+  if (supabase) {
+    supabase.from('products').delete().eq('id', prod.id).catch(() => {});
+  }
   res.json({ ok: true, message: `Product ${prod.name} deleted.` });
 });
 
