@@ -14,6 +14,7 @@ const {
   syncProductToSupabase,
   syncInquiryToSupabase
 } = require('./lib/supabaseSync');
+const supabase = require('./lib/supabaseClient');
 
 const PORT = process.env.PORT || 3000;
 const isVercel = !!process.env.VERCEL;
@@ -57,25 +58,31 @@ const save = () => {
 };
 const nid = a => (Array.isArray(a) && a.length ? a.reduce((m, x) => Math.max(m, x.id || 0), 0) + 1 : 1);
 
+// Load fallback seed data if needed
+let defaultDb = null;
+try {
+  defaultDb = require('./data/db.json');
+} catch (e) {}
+
 // Load database
 if (fs.existsSync(DB)) {
   try {
     db = JSON.parse(fs.readFileSync(DB, 'utf8'));
   } catch (e) {
     console.error('Error parsing DB, initializing empty structure');
-    db = { users: [], products: [], orders: [], inquiries: [], logs: [], categories: [], customers: [], coupons: [], inventoryLogs: [], reviews: [] };
+    db = defaultDb ? JSON.parse(JSON.stringify(defaultDb)) : { users: [], products: [], orders: [], inquiries: [], logs: [], categories: [], customers: [], coupons: [], inventoryLogs: [], reviews: [] };
   }
 } else {
-  db = { users: [], products: [], orders: [], inquiries: [], logs: [], categories: [], customers: [], coupons: [], inventoryLogs: [], reviews: [] };
+  db = defaultDb ? JSON.parse(JSON.stringify(defaultDb)) : { users: [], products: [], orders: [], inquiries: [], logs: [], categories: [], customers: [], coupons: [], inventoryLogs: [], reviews: [] };
 }
 
 // Ensure all root collections exist
-if (!db.users) db.users = [];
-if (!db.products) db.products = [];
+if (!db.users || !db.users.length) db.users = (defaultDb && defaultDb.users) ? [...defaultDb.users] : [];
+if (!db.products || !db.products.length) db.products = (defaultDb && defaultDb.products) ? [...defaultDb.products] : [];
 if (!db.orders) db.orders = [];
 if (!db.inquiries) db.inquiries = [];
 if (!db.logs) db.logs = [];
-if (!db.categories) db.categories = [];
+if (!db.categories || !db.categories.length) db.categories = (defaultDb && defaultDb.categories) ? [...defaultDb.categories] : [];
 if (!db.customers) db.customers = [];
 if (!db.coupons) db.coupons = [];
 if (!db.inventoryLogs) db.inventoryLogs = [];
@@ -192,13 +199,23 @@ const recordFail = ip => {
 /* ==============================================================================
    1. STAFF AUTHENTICATION ENDPOINTS
    ============================================================================== */
-app.post('/api/login', (req, res) => {
+app.post('/api/login', async (req, res) => {
   const ip = req.ip;
   if (!checkRateLimit(ip)) {
     return res.status(429).json({ error: 'Too many failed sign-in attempts. Try again in 15 minutes.' });
   }
   const uname = str(req.body.username, 40).toLowerCase();
-  const u = db.users.find(x => x.username === uname);
+  let u = (db.users || []).find(x => x.username === uname);
+  if (!u && supabase) {
+    try {
+      const { data: su } = await supabase.from('staff_users').select('*').eq('username', uname).single();
+      if (su) {
+        u = { id: su.id, username: su.username, name: su.name, role: su.role, hash: su.password_hash, active: su.active !== false };
+        if (!db.users) db.users = [];
+        db.users.push(u);
+      }
+    } catch (e) {}
+  }
   if (!u || !u.active || !bcrypt.compareSync(String(req.body.password || ''), u.hash)) {
     recordFail(ip);
     log(uname || 'unknown', 'failed staff login', ip);
