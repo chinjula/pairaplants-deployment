@@ -201,6 +201,14 @@ function renderProductCards(list) {
     const isOutOfStock = p.stock <= 0;
     const isLowStock = !isOutOfStock && p.stock <= (p.lowStockThreshold || 5);
 
+    const catSubtitle = (p.category && p.subcategory && p.category.toLowerCase() !== p.subcategory.toLowerCase())
+      ? `${p.category} • ${p.subcategory}`
+      : (p.subcategory || p.category || 'BOTANICAL');
+
+    const stockSubline = isOutOfStock
+      ? 'Currently out of stock'
+      : (isLowStock ? `Only ${p.stock} left in nursery` : 'In stock & ready to dispatch');
+
     return `
       <article class="product-card" data-id="${p.id}">
         <div class="product-art-wrap">
@@ -214,7 +222,7 @@ function renderProductCards(list) {
 
           <div class="product-stock-tag ${isOutOfStock ? 'out' : (isLowStock ? 'low' : 'in')}">
             <span class="stock-dot"></span>
-            <span class="stock-text">${isOutOfStock ? 'Out of Stock' : (isLowStock ? 'Limited Stock' : 'In Stock')}</span>
+            <span class="stock-text">${isOutOfStock ? 'Out of Stock' : (isLowStock ? `Limited Stock (${p.stock} left)` : `In Stock (${p.stock} left)`)}</span>
           </div>
 
           <button class="wishlist-btn-corner ${isWished ? 'wished' : ''}" 
@@ -223,23 +231,22 @@ function renderProductCards(list) {
                   type="button" 
                   aria-label="${isWished ? 'Remove from wishlist' : 'Save to wishlist'}" 
                   title="${isWished ? 'Remove from wishlist' : 'Save to wishlist'}">
-            <svg class="heart-icon" viewBox="0 0 24 24" width="16" height="16" fill="${isWished ? '#e11d48' : 'none'}" stroke="${isWished ? '#e11d48' : '#112217'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="heart-icon" viewBox="0 0 24 24" width="18" height="18" fill="${isWished ? '#e11d48' : 'none'}" stroke="${isWished ? '#e11d48' : '#1a1a1a'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
             </svg>
           </button>
         </div>
 
         <div class="product-meta-header">
-          <span class="product-category">${esc(p.subcategory || p.category)}</span>
+          <span class="product-category">${esc(catSubtitle)}</span>
           ${p.labels && p.labels.length ? `<span class="product-label-tag">${esc(p.labels[0])}</span>` : ''}
         </div>
 
         <h3 class="product-title" data-a="viewProduct" data-id="${p.id}" title="${esc(p.name)}">${esc(p.name)}</h3>
         <p class="product-desc" title="${esc(p.description || '')}">${esc(p.description || '')}</p>
 
-        <div class="product-availability">
-          <span class="avail-dot ${isOutOfStock ? 'out' : (isLowStock ? 'low' : 'in')}"></span>
-          <span>${isOutOfStock ? 'Out of Stock' : (isLowStock ? `Limited Stock (${p.stock} available)` : `In Stock (${p.stock} available)`)}</span>
+        <div class="product-greenhouse-note">
+          ${esc(stockSubline)}
         </div>
 
         <div class="product-footer">
@@ -253,8 +260,11 @@ function renderProductCards(list) {
           </div>
 
           <div class="action-wrap">
-            <button class="btn-info" data-a="viewProduct" data-id="${p.id}" type="button" title="Quick View & Specifications" aria-label="Quick View">
-              <span>Info</span>
+            <button class="btn-eye-info" data-a="viewProduct" data-id="${p.id}" type="button" title="Quick View" aria-label="Quick View">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
             </button>
             <button class="btn-add-bag ${isOutOfStock ? 'disabled' : ''}" 
                     data-a="add" 
@@ -262,6 +272,11 @@ function renderProductCards(list) {
                     type="button" 
                     ${isOutOfStock ? 'disabled' : ''} 
                     aria-label="${isOutOfStock ? 'Sold Out' : 'Add to Bag'}">
+              <svg class="bag-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
               <span>${isOutOfStock ? 'Sold Out' : 'Add to Bag'}</span>
             </button>
           </div>
