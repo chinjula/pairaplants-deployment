@@ -12,6 +12,7 @@ const {
   syncOrderToSupabase,
   syncStockToSupabase,
   syncProductToSupabase,
+  syncSettingsToSupabase,
   syncInquiryToSupabase
 } = require('./lib/supabaseSync');
 const supabase = require('./lib/supabaseClient');
@@ -1197,6 +1198,7 @@ app.get('/api/settings', (req, res) => {
 app.put('/api/settings', auth('superadmin'), (req, res) => {
   db.settings = { ...db.settings, ...req.body };
   save();
+  syncSettingsToSupabase(db.settings).catch(() => {});
   log(req.user.username, 'updated store & SEO settings', req.ip);
   res.json(db.settings);
 });

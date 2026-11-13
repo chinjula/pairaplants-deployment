@@ -108,11 +108,30 @@ async function loadProducts() {
   }
 }
 
+function applyStoreSettings() {
+  const s = storeSettings || {};
+  const footerEl = $('#footer-store-contact');
+  if (footerEl) {
+    const addr = s.address ? esc(s.address).replace(/\n/g, '<br>') : 'Pairaplants Studio &amp; Flora Nursery';
+    const email = s.email || 'care@pairaplants.com';
+    const phone = s.phone || '+91 98765 43210';
+    footerEl.innerHTML = `
+      📍 ${addr}<br>
+      ✉️ <a href="mailto:${esc(email)}" style="color:inherit;text-decoration:none;">${esc(email)}</a> · 📞 <a href="tel:${esc(phone)}" style="color:inherit;text-decoration:none;">${esc(phone)}</a>
+    `;
+  }
+  const brandTitleEl = $('.logo-title');
+  if (brandTitleEl && s.brandTitle) {
+    brandTitleEl.innerHTML = esc(s.brandTitle);
+  }
+}
+
 async function loadStoreMetadata() {
   try {
     homepageConfig = await api('/homepage');
     storeSettings = await api('/settings');
     categories = await api('/categories');
+    applyStoreSettings();
   } catch (e) {
     console.error('Metadata load error:', e.message);
   }
@@ -769,6 +788,14 @@ const pages = {
 
   /* ---------- Contact & Care Consultation Page ---------- */
   async contact() {
+    const s = storeSettings || {};
+    const storeName = s.storeName || 'Pairaplants Studio & Nursery';
+    const tagline = s.tagline || 'Aquatic Plants, Fishes & Gravels Hub';
+    const addr = s.address ? esc(s.address).replace(/\n/g, '<br>') : `${esc(storeName)}<br><span class="muted" style="font-size:0.85rem">${esc(tagline)}</span>`;
+    const email = s.email || 'care@pairaplants.com';
+    const phone = s.phone || '+91 98765 43210';
+    const wa = s.whatsappNumber || phone;
+
     return `
       <div class="two-col" style="align-items:start;padding-top:40px">
         <div>
@@ -780,22 +807,22 @@ const pages = {
             <div style="display:flex;align-items:center;gap:14px">
               <span style="font-size:1.4rem">📍</span>
               <div>
-                <strong>Pairaplants Studio &amp; Nursery</strong>
-                <p class="muted" style="font-size:0.85rem">Aquatic Plants, Fishes &amp; Gravels Hub</p>
+                <strong>${esc(storeName)}</strong>
+                <p class="muted" style="font-size:0.85rem">${addr}</p>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:14px">
               <span style="font-size:1.4rem">✉️</span>
               <div>
                 <strong>Email Consultation</strong>
-                <p class="muted" style="font-size:0.85rem">care@pairaplants.com</p>
+                <p class="muted" style="font-size:0.85rem"><a href="mailto:${esc(email)}" style="color:inherit;text-decoration:none;">${esc(email)}</a></p>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:14px">
               <span style="font-size:1.4rem">💬</span>
               <div>
                 <strong>WhatsApp Care Line</strong>
-                <p class="muted" style="font-size:0.85rem">+91 98765 43210 (10 AM – 7 PM IST)</p>
+                <p class="muted" style="font-size:0.85rem"><a href="https://wa.me/${esc(wa.replace(/[^0-9]/g, ''))}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${esc(phone)} (10 AM – 7 PM IST)</a></p>
               </div>
             </div>
           </div>
@@ -2239,6 +2266,7 @@ const forms = {
   async saveSettings(d) {
     await api('/settings', 'PUT', d);
     storeSettings = await api('/settings');
+    applyStoreSettings();
     toast('Website settings updated!');
     return render();
   },
