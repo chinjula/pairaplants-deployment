@@ -5,7 +5,7 @@
       "username": "owner",
       "name": "Owner",
       "role": "superadmin",
-      "hash": "",
+      "hash": "$2a$10$oTWRA0IsOYJAIkmJbBK1euEF7fTXAOu4Znbjt5b3arkcy9exaZ7kS",
       "active": true
     },
     {
@@ -13,7 +13,7 @@
       "username": "manager",
       "name": "Manager",
       "role": "manager",
-      "hash": ".0ySXi//4dxCap8HxiRVdRN4ZvCS3O",
+      "hash": "$2a$10$cYppre8YBF0QNuTYaFL7HeO.0ySXi//4dxCap8HxiRVdRN4ZvCS3O",
       "active": true
     },
     {
@@ -21,7 +21,7 @@
       "username": "support",
       "name": "Support",
       "role": "support",
-      "hash": "/1tWu/aCxIcO3X0Qe",
+      "hash": "$2a$10$0Osw6cYcPiDpn5m0EcVQ7uc9RwCLvIYrl1WO/1tWu/aCxIcO3X0Qe",
       "active": true
     }
   ],
