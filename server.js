@@ -1191,14 +1191,26 @@ app.get('/api/reports/overview', auth('superadmin', 'manager'), (req, res) => {
 /* ==============================================================================
    15. STORE SETTINGS & SEO ENDPOINTS
    ============================================================================== */
-app.get('/api/settings', (req, res) => {
+app.get('/api/settings', async (req, res) => {
+  if (supabase) {
+    try {
+      const { data: hs, error: hErr } = await supabase.from('homepage_settings').select('*').eq('id', 1).single();
+      if (!hErr && hs && hs.why_choose_us && typeof hs.why_choose_us === 'object') {
+        db.settings = { ...(db.settings || {}), ...hs.why_choose_us };
+      }
+    } catch (e) {}
+  }
   res.json(db.settings || {});
 });
 
-app.put('/api/settings', auth('superadmin'), (req, res) => {
+app.put('/api/settings', auth('superadmin'), async (req, res) => {
   db.settings = { ...db.settings, ...req.body };
   save();
-  syncSettingsToSupabase(db.settings).catch(() => {});
+  try {
+    await syncSettingsToSupabase(db.settings);
+  } catch (e) {
+    console.error('Settings Supabase sync error:', e.message);
+  }
   log(req.user.username, 'updated store & SEO settings', req.ip);
   res.json(db.settings);
 });
