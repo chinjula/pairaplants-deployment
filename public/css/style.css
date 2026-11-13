@@ -219,6 +219,157 @@ nav.main-nav a[aria-current="page"] {
   font-weight: 600;
 }
 
+/* Mobile Toggle - Hidden on desktop */
+.mobile-menu-toggle {
+  display: none;
+}
+
+/* Mobile Navigation Drawer Base */
+.mobile-nav-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-nav-drawer.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mobile-nav-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 22, 17, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(88vw, 380px);
+  background: #ffffff;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 28px 24px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+
+.mobile-nav-drawer.open .mobile-nav-panel {
+  transform: translateX(0);
+}
+
+.mobile-nav-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line-subtle);
+  margin-bottom: 16px;
+}
+
+.mobile-nav-close {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.mobile-nav-close:hover,
+.mobile-nav-close:active {
+  background: #e2e8f0;
+  transform: scale(0.95);
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--forest-primary);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  min-height: 48px;
+}
+
+.mobile-nav-item:hover,
+.mobile-nav-item.active {
+  background: rgba(30, 92, 60, 0.08);
+  color: var(--forest-primary);
+}
+
+.mobile-nav-item .cart-badge {
+  background: var(--terracotta);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.mobile-nav-footer {
+  border-top: 1px solid var(--line-subtle);
+  padding-top: 20px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-nav-user-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-nav-user-actions a {
+  text-align: center;
+  padding: 12px;
+  font-size: 0.95rem;
+}
+
+.mobile-nav-contact-info {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+}
+
+/* Background scroll lock when drawer is active */
+body.menu-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -1385,37 +1536,134 @@ footer.site-footer a:hover {
 }
 
 @media (max-width: 840px) {
+  /* Clean White Mobile Header (110–140px, vertically centered, no harsh shadows/borders) */
   header.site-header {
-    padding: 12px 18px;
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: clamp(110px, 14vh, 138px);
+    min-height: 110px;
+    max-height: 140px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 90;
   }
   .header-bar {
-    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0;
+    max-width: 100%;
+    flex-wrap: nowrap;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
     gap: 12px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .brand .brand-icon {
+    font-size: 2.2rem;
+    line-height: 1;
   }
   .brand .logo-title {
-    font-size: 1.35rem;
+    font-size: clamp(1.4rem, 4.5vw, 1.85rem);
+    font-weight: 800;
+    color: var(--forest-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
   .brand .logo-tagline {
     display: none;
   }
-  nav.main-nav {
-    width: 100%;
-    order: 3;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 6px 0 2px;
+
+  /* Hide Desktop navigation and action pills on mobile */
+  nav.main-nav,
+  .header-actions {
+    display: none !important;
+  }
+
+  /* Prominent Red Hamburger Menu Button with 3 white lines */
+  .mobile-menu-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 6px;
-  }
-  nav.main-nav::-webkit-scrollbar {
-    display: none;
-  }
-  nav.main-nav a {
-    padding: 7px 15px;
-    font-size: 0.86rem;
-    white-space: nowrap;
+    width: 54px;
+    height: 54px;
+    background: #dc2626; /* Prominent red */
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+    padding: 0;
     flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
   }
+  .mobile-menu-toggle:active {
+    background: #b91c1c;
+    transform: scale(0.96);
+  }
+  .hamburger-bar {
+    display: block;
+    width: 26px;
+    height: 3.5px;
+    background: #ffffff;
+    border-radius: 999px;
+  }
+
+  /* Full-width Visually Attractive Aquarium Hero Section (~100svh) */
+  .hero-photo-banner {
+    width: 100%;
+    min-height: 100svh;
+    height: 100svh;
+    background-image: linear-gradient(rgba(10, 22, 17, 0.22), rgba(10, 22, 17, 0.68)), url('/images/hero-aquarium.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+  }
+  .hero-photo-banner h1.banner-title {
+    font-size: clamp(2rem, 7vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 14px;
+    max-width: 18ch;
+  }
+  .hero-photo-banner p.banner-sub {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-bottom: 28px;
+    max-width: 32ch;
+  }
+  .hero-photo-banner .banner-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+  }
+  .hero-photo-banner .btn-banner {
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+
   .two-col {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -1463,10 +1711,6 @@ footer.site-footer a:hover {
   .why-card {
     padding: 24px 18px;
   }
-  .hero-photo-banner {
-    min-height: 380px;
-    padding: 50px 16px;
-  }
   .footer-top-grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -1497,38 +1741,138 @@ footer.site-footer a:hover {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Floating Actions Container */
-.floating-actions {
+/* ==============================================================================
+   FLOATING WHATSAPP SUPPORT WIDGET (With "Need Help? Chat with us" Bubble)
+   ============================================================================== */
+.floating-whatsapp-widget {
   position: fixed;
-  right: 24px;
-  bottom: 24px;
+  right: calc(24px + env(safe-area-inset-right, 0px));
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   gap: 12px;
-  z-index: 99;
+  z-index: 999;
+  pointer-events: none;
 }
 
-.fab-whatsapp {
-  width: 52px;
-  height: 52px;
+.floating-whatsapp-widget > * {
+  pointer-events: auto;
+}
+
+/* Chat Message Bubble Label ("Need Help? Chat with us") */
+.whatsapp-chat-bubble {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  color: #1e293b;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.94rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.whatsapp-chat-bubble::after {
+  content: "";
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 7px 0 7px 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent #ffffff;
+}
+
+.whatsapp-chat-bubble:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.chat-bubble-text {
+  letter-spacing: -0.01em;
+}
+
+/* Circular WhatsApp Button */
+.whatsapp-btn-circle {
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background: #25d366;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  flex-shrink: 0;
 }
 
-.fab-whatsapp:hover {
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+.whatsapp-svg-icon {
+  width: 38px;
+  height: 38px;
+  fill: #ffffff;
+  transition: transform 0.2s ease;
 }
 
-.fab-support {
-  position: static;
-  width: 52px;
-  height: 52px;
+.whatsapp-btn-circle:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.55), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.whatsapp-btn-circle:hover .whatsapp-svg-icon {
+  transform: scale(1.05);
+}
+
+/* Mobile Screens: 90–105px diameter matching exact reference specification */
+@media (max-width: 840px) {
+  .floating-whatsapp-widget {
+    right: calc(16px + env(safe-area-inset-right, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    gap: 10px;
+  }
+  .whatsapp-btn-circle {
+    width: 96px;
+    height: 96px;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.48), 0 4px 14px rgba(0, 0, 0, 0.18);
+  }
+  .whatsapp-svg-icon {
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-chat-bubble {
+    font-size: 0.88rem;
+    padding: 8px 14px;
+    border-radius: 16px;
+  }
+}
+
+/* Extremely narrow mobile devices (<= 360px): Gracefully scale to prevent clipping */
+@media (max-width: 360px) {
+  .floating-whatsapp-widget {
+    right: 10px;
+    bottom: 16px;
+    gap: 6px;
+  }
+  .whatsapp-btn-circle {
+    width: 82px;
+    height: 82px;
+  }
+  .whatsapp-svg-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .whatsapp-chat-bubble {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+  }
 }
 
 /* Footer Top Grid */

@@ -124,6 +124,13 @@ function applyStoreSettings() {
   if (brandTitleEl && s.brandTitle) {
     brandTitleEl.innerHTML = esc(s.brandTitle);
   }
+  const rawWa = s.whatsapp || s.phone || '919876543210';
+  const waClean = rawWa.replace(/[^0-9]/g, '');
+  const waLink = `https://wa.me/${waClean}?text=Hello%20Pairaplants!%20I%20have%20an%20aquarium%20question.`;
+  const waBtn = $('#whatsapp-btn-circle');
+  if (waBtn) waBtn.href = waLink;
+  const waBubble = $('#whatsapp-chat-bubble');
+  if (waBubble) waBubble.href = waLink;
 }
 
 async function loadStoreMetadata() {
@@ -2275,6 +2282,12 @@ const forms = {
     await api(`/products/${id}/reviews`, 'POST', d);
     toast('Thank you for your review!');
     showProductDetailModal(id);
+  },
+  closeMobileNav() {
+    closeMobileNav();
+  },
+  openMobileNav() {
+    openMobileNav();
   }
 };
 
@@ -2340,11 +2353,24 @@ function updateHeaderNav() {
   const r = pages[hash] ? hash : 'home';
   const navMap = { home: 'Home', story: 'Our Story', shop: 'Shop', cart: 'Cart', contact: 'Contact Us' };
 
-  $('#nav').innerHTML = Object.entries(navMap).map(([k, v]) => `
-    <a href="#${k}" ${k == r ? 'aria-current="page"' : ''}>
-      ${v}${k == 'cart' && cartCount() ? `<span class="cart-badge">${cartCount()}</span>` : ''}
-    </a>
-  `).join('');
+  const navEl = $('#nav');
+  if (navEl) {
+    navEl.innerHTML = Object.entries(navMap).map(([k, v]) => `
+      <a href="#${k}" ${k == r ? 'aria-current="page"' : ''}>
+        ${v}${k == 'cart' && cartCount() ? `<span class="cart-badge">${cartCount()}</span>` : ''}
+      </a>
+    `).join('');
+  }
+
+  const mobileNavLinksEl = $('#mobile-nav-links');
+  if (mobileNavLinksEl) {
+    mobileNavLinksEl.innerHTML = Object.entries(navMap).map(([k, v]) => `
+      <a class="mobile-nav-item ${k == r ? 'active' : ''}" href="#${k}" data-a="closeMobileNav">
+        <span>${v}</span>
+        ${k == 'cart' && cartCount() ? `<span class="cart-badge">${cartCount()}</span>` : ''}
+      </a>
+    `).join('');
+  }
 
   const actionsEl = $('#header-user-actions');
   if (actionsEl) {
@@ -2353,8 +2379,56 @@ function updateHeaderNav() {
       <a class="btn-pill outline sm staff-btn" href="#staff">${staffUser ? 'Staff Dashboard' : 'Staff Portal'}</a>
     `;
   }
+
+  const mobileUserActionsEl = $('#mobile-nav-user-actions');
+  if (mobileUserActionsEl) {
+    mobileUserActionsEl.innerHTML = `
+      <a class="btn-pill outline sm" href="#account" data-a="closeMobileNav">${customerUser ? 'My Account' : 'Sign In'}</a>
+      <a class="btn-pill outline sm staff-btn" href="#staff" data-a="closeMobileNav">${staffUser ? 'Staff Dashboard' : 'Staff Portal'}</a>
+    `;
+  }
+
   return r;
 }
+
+function openMobileNav() {
+  const drawer = $('#mobile-nav-drawer');
+  const toggleBtn = $('#mobile-menu-toggle');
+  if (drawer) {
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+  }
+  if (toggleBtn) {
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+  document.body.classList.add('menu-open');
+}
+
+function closeMobileNav() {
+  const drawer = $('#mobile-nav-drawer');
+  const toggleBtn = $('#mobile-menu-toggle');
+  if (drawer) {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+  if (toggleBtn) {
+    toggleBtn.setAttribute('aria-expanded', 'false');
+  }
+  document.body.classList.remove('menu-open');
+}
+
+document.addEventListener('click', e => {
+  if (e.target.closest('#mobile-menu-toggle')) {
+    e.preventDefault();
+    openMobileNav();
+  } else if (e.target.closest('#mobile-nav-close') || e.target.closest('#mobile-nav-backdrop') || e.target.closest('[data-a="closeMobileNav"]')) {
+    closeMobileNav();
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeMobileNav();
+});
 
 /* ---------- Page Render Execution ---------- */
 async function render() {
@@ -2366,7 +2440,10 @@ async function render() {
   }
 }
 
-addEventListener('hashchange', () => render().then(() => scrollTo(0, 0)));
+addEventListener('hashchange', () => {
+  closeMobileNav();
+  render().then(() => scrollTo(0, 0));
+});
 
 /* ---------- Application Bootstrap ---------- */
 (async () => {
