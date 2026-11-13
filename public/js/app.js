@@ -198,48 +198,71 @@ function renderProductCards(list) {
     const mainImg = p.image || (p.images && p.images[0]) || '';
     const hasSale = p.salePrice && p.salePrice < p.price;
     const isWished = inWishlist(p.id);
+    const isOutOfStock = p.stock <= 0;
+    const isLowStock = !isOutOfStock && p.stock <= (p.lowStockThreshold || 5);
 
     return `
       <article class="product-card" data-id="${p.id}">
-        <div class="product-art-wrap" style="position:relative;cursor:pointer;" data-a="viewProduct" data-id="${p.id}">
-          ${mainImg && !mainImg.includes('hero-aquarium') ? `
-            <div class="product-card-photo">
+        <div class="product-art-wrap">
+          <div class="product-card-photo" data-a="viewProduct" data-id="${p.id}" title="Click to view ${esc(p.name)}">
+            ${mainImg && !mainImg.includes('hero-aquarium') ? `
               <img src="${esc(mainImg)}" alt="${esc(p.name)}" loading="lazy">
-            </div>
-          ` : `
-            <div class="product-art" aria-hidden="true">${EMOJI[p.subcategory] || EMOJI[p.category] || '🌿'}</div>
-          `}
-          
-          <button class="wishlist-btn-corner" data-a="toggleWishlist" data-id="${p.id}" title="${isWished ? 'Remove from wishlist' : 'Save to wishlist'}" style="position:absolute;top:0;right:0;background:rgba(255,255,255,0.9);border:1px solid var(--line);border-radius:50%;width:32px;height:32px;display:grid;place-items:center;cursor:pointer;font-size:14px;">
-            ${isWished ? '❤️' : '🤍'}
+            ` : `
+              <div class="product-art" aria-hidden="true">${EMOJI[p.subcategory] || EMOJI[p.category] || '🌿'}</div>
+            `}
+          </div>
+
+          <div class="product-stock-tag ${isOutOfStock ? 'out' : (isLowStock ? 'low' : 'in')}">
+            <span class="stock-dot"></span>
+            <span class="stock-text">${isOutOfStock ? 'Out of Stock' : (isLowStock ? 'Limited Stock' : 'In Stock')}</span>
+          </div>
+
+          <button class="wishlist-btn-corner ${isWished ? 'wished' : ''}" 
+                  data-a="toggleWishlist" 
+                  data-id="${p.id}" 
+                  type="button" 
+                  aria-label="${isWished ? 'Remove from wishlist' : 'Save to wishlist'}" 
+                  title="${isWished ? 'Remove from wishlist' : 'Save to wishlist'}">
+            <svg class="heart-icon" viewBox="0 0 24 24" width="16" height="16" fill="${isWished ? '#e11d48' : 'none'}" stroke="${isWished ? '#e11d48' : '#112217'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
           </button>
         </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-          <span class="tag-subcat">${esc(p.subcategory || p.category)}</span>
-          ${p.labels && p.labels.length ? `<span class="badge" style="background:#eaf2ec;color:#204c32;font-size:0.7rem;">${esc(p.labels[0])}</span>` : ''}
+        <div class="product-meta-header">
+          <span class="product-category">${esc(p.subcategory || p.category)}</span>
+          ${p.labels && p.labels.length ? `<span class="product-label-tag">${esc(p.labels[0])}</span>` : ''}
         </div>
 
-        <h3 style="cursor:pointer;" data-a="viewProduct" data-id="${p.id}">${esc(p.name)}</h3>
-        <p class="product-desc">${esc(p.description || '')}</p>
+        <h3 class="product-title" data-a="viewProduct" data-id="${p.id}" title="${esc(p.name)}">${esc(p.name)}</h3>
+        <p class="product-desc" title="${esc(p.description || '')}">${esc(p.description || '')}</p>
+
+        <div class="product-availability">
+          <span class="avail-dot ${isOutOfStock ? 'out' : (isLowStock ? 'low' : 'in')}"></span>
+          <span>${isOutOfStock ? 'Out of Stock' : (isLowStock ? `Limited Stock (${p.stock} available)` : `In Stock (${p.stock} available)`)}</span>
+        </div>
 
         <div class="product-footer">
-          <div>
-            <div class="product-price">
-              ${hasSale ? `
-                <span style="color:var(--terracotta);">${money(p.salePrice)}</span>
-                <span style="font-size:0.8rem;text-decoration:line-through;color:var(--ink-muted);margin-left:6px">${money(p.price)}</span>
-              ` : `
-                <span>${money(p.price)}</span>
-              `}
-            </div>
-            ${stockBadge(p)}
+          <div class="price-wrap">
+            ${hasSale ? `
+              <span class="price-sale">${money(p.salePrice)}</span>
+              <span class="price-original">${money(p.price)}</span>
+            ` : `
+              <span class="price-regular">${money(p.price)}</span>
+            `}
           </div>
 
-          <div style="display:flex;gap:6px;">
-            <button class="btn-pill sm outline" data-a="viewProduct" data-id="${p.id}" title="Quick View & Specifications">Info</button>
-            <button class="btn-pill sm" data-a="add" data-id="${p.id}" ${p.stock <= 0 ? 'disabled' : ''}>
-              ${p.stock <= 0 ? 'Sold Out' : 'Add to Bag'}
+          <div class="action-wrap">
+            <button class="btn-info" data-a="viewProduct" data-id="${p.id}" type="button" title="Quick View & Specifications" aria-label="Quick View">
+              <span>Info</span>
+            </button>
+            <button class="btn-add-bag ${isOutOfStock ? 'disabled' : ''}" 
+                    data-a="add" 
+                    data-id="${p.id}" 
+                    type="button" 
+                    ${isOutOfStock ? 'disabled' : ''} 
+                    aria-label="${isOutOfStock ? 'Sold Out' : 'Add to Bag'}">
+              <span>${isOutOfStock ? 'Sold Out' : 'Add to Bag'}</span>
             </button>
           </div>
         </div>
@@ -1827,6 +1850,9 @@ const actions = {
   add(btn) {
     const p = findProduct(btn.dataset.id);
     if (!p) return;
+    if (p.stock <= 0) {
+      return toast(`${p.name} is currently out of stock.`, 'error');
+    }
     if ((cart[p.id] || 0) >= p.stock) {
       return toast(`All ${p.stock} units of ${p.name} are in your cart.`, 'error');
     }
@@ -1834,6 +1860,15 @@ const actions = {
     saveCart();
     updateHeaderNav();
     toast(`${p.name} added to cart!`);
+
+    // Subtle feedback animation on button
+    const origHtml = btn.innerHTML;
+    btn.classList.add('added');
+    btn.innerHTML = '<span>Added ✓</span>';
+    setTimeout(() => {
+      btn.classList.remove('added');
+      btn.innerHTML = origHtml;
+    }, 1400);
   },
   remove(btn) {
     delete cart[btn.dataset.id];
