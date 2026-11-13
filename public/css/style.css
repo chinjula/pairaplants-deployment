@@ -46,6 +46,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -633,12 +635,14 @@ main#app {
    ============================================================================== */
 
 .product-grid {
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   padding: 0 4%;
+  box-sizing: border-box;
 }
 
 .product-card {
@@ -1011,23 +1015,70 @@ main#app {
   color: #ffffff !important;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
+/* ==============================================================================
+   RESPONSIVE PRODUCT GRID & MULTI-DEVICE ARCHITECTURE
+   ============================================================================== */
+
+/* 1. Large Desktop (1600px - 1920px and above) - 5 Cards Per Row */
+@media (min-width: 1600px) {
   .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 20px;
+    max-width: 1720px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 26px;
+    padding: 0 3%;
+  }
+}
+
+/* 2. Standard Desktop (1200px - 1599px, e.g. 1440px, 1366px Laptop) - 4 Cards Per Row */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .product-grid {
+    max-width: 1400px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 0 4%;
+  }
+}
+
+/* 3. Small Laptop & Tablet Landscape (992px - 1199px, e.g. 1024px) - 3 Cards Per Row */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .product-grid {
+    max-width: 1120px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    padding: 0 3%;
   }
   .btn-add-bag {
     padding: 0 14px;
+    font-size: 0.84rem;
+  }
+}
+
+/* 4. Tablet Portrait (641px - 991px, e.g. 768px iPad) - 2 or 3 Cards Per Row */
+@media (min-width: 641px) and (max-width: 991px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+    padding: 0 20px;
+  }
+  .product-card {
+    padding: 12px 12px 16px 12px;
+  }
+  .product-title {
+    font-size: 1.15rem;
+    min-height: 2.6em;
+  }
+  .btn-add-bag {
+    padding: 0 12px;
     font-size: 0.82rem;
   }
 }
 
-@media (max-width: 640px) {
+/* 5. Mobile (351px - 640px, e.g. 480px, 390px, 375px) - 2 Clean Equal Cards */
+@media (min-width: 351px) and (max-width: 640px) {
   .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 12px;
-    padding: 0 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0 10px;
   }
   .product-card {
     padding: 10px 10px 14px 10px;
@@ -1035,30 +1086,71 @@ main#app {
   }
   .product-art-wrap {
     border-radius: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+  }
+  .product-stock-tag {
+    top: 7px;
+    left: 7px;
+    font-size: 0.65rem;
+    padding: 3px 8px;
+    gap: 4px;
+  }
+  .product-stock-tag .stock-dot {
+    width: 6px;
+    height: 6px;
+  }
+  .wishlist-btn-corner {
+    width: 34px;
+    height: 34px;
+    top: 7px;
+    right: 7px;
+  }
+  .wishlist-btn-corner::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+  }
+  .wishlist-btn-corner .heart-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .product-category {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
   }
   .product-title {
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     min-height: 2.5em;
+    line-height: 1.25;
+    margin: 4px 0 4px;
   }
   .product-desc {
     display: none;
   }
   .product-greenhouse-note {
-    font-size: 0.72rem;
-    margin-bottom: 10px;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    min-height: 1.2em;
   }
   .product-footer {
-    padding-top: 8px;
+    padding-top: 6px;
     flex-direction: column;
     align-items: stretch;
-    gap: 8px;
+    gap: 6px;
+    margin-top: auto;
   }
   .price-wrap {
     justify-content: flex-start;
   }
   .price-regular, .price-sale {
-    font-size: 1.25rem;
+    font-size: 1.22rem;
+  }
+  .price-original {
+    font-size: 0.75rem;
   }
   .action-wrap {
     width: 100%;
@@ -1066,15 +1158,56 @@ main#app {
     gap: 6px;
   }
   .btn-eye-info {
-    width: 42px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     flex-shrink: 0;
   }
   .btn-add-bag {
     flex: 1;
-    height: 38px;
+    height: 40px;
     padding: 0 10px;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+    border-radius: 10px;
+    gap: 6px;
+  }
+  .btn-add-bag .bag-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* 6. Small Mobile (<= 350px, e.g. 320px iPhone SE) - 1 Readability Column */
+@media (max-width: 350px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    max-width: 310px;
+    margin: 0 auto;
+    gap: 14px;
+    padding: 0 10px;
+  }
+  .product-card {
+    padding: 12px 12px 16px 12px;
+    border-radius: 16px;
+  }
+  .product-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .action-wrap {
+    width: auto;
+    display: flex;
+    gap: 6px;
+  }
+  .btn-add-bag {
+    flex: none;
+    padding: 0 14px;
+    height: 40px;
+    font-size: 0.82rem;
   }
 }
 
@@ -1239,34 +1372,112 @@ footer.site-footer a:hover {
   border: 1px solid var(--line);
 }
 
-/* Responsive */
+/* Responsive Global Enhancements */
 @media (max-width: 1024px) {
   .why-cards-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .footer-top-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
 }
 
 @media (max-width: 840px) {
   header.site-header {
-    padding: 14px 20px;
+    padding: 12px 18px;
+  }
+  .header-bar {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .brand .logo-title {
+    font-size: 1.35rem;
+  }
+  .brand .logo-tagline {
+    display: none;
+  }
+  nav.main-nav {
+    width: 100%;
+    order: 3;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 6px 0 2px;
+    gap: 6px;
+  }
+  nav.main-nav::-webkit-scrollbar {
+    display: none;
+  }
+  nav.main-nav a {
+    padding: 7px 15px;
+    font-size: 0.86rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .two-col {
     grid-template-columns: 1fr;
-    padding: 0 20px;
+    gap: 28px;
+    padding: 0 18px;
   }
-  .shop-filter-bar, .product-grid, .section-container, .why-choose-section, footer.site-footer {
-    padding-left: 20px;
-    padding-right: 20px;
+  .shop-filter-bar, .section-container, .why-choose-section, footer.site-footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .chips, .tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 6px;
+  }
+  .chips::-webkit-scrollbar, .tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .chips button, .tabs button {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .subchips {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+  .subchips::-webkit-scrollbar {
+    display: none;
+  }
+  .subchips button {
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 }
 
 @media (max-width: 600px) {
   .why-cards-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .why-card {
+    padding: 24px 18px;
   }
   .hero-photo-banner {
-    min-height: 420px;
-    padding: 60px 16px;
+    min-height: 380px;
+    padding: 50px 16px;
+  }
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  footer.site-footer {
+    padding: 36px 16px 20px;
+  }
+  .footer-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
   }
 }
 
