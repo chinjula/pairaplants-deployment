@@ -264,9 +264,9 @@ INSERT INTO categories (name, slug, icon, description) VALUES ('Shrimps & Invert
 INSERT INTO categories (name, slug, icon, description) VALUES ('Substrates & Hardscape', 'substrates-hardscape', '🪵', 'Active planted aquarium soils, sands, and natural driftwoods') ON CONFLICT (name) DO NOTHING;
 
 -- 2. Insert Staff Accounts
-INSERT INTO staff_users (id, username, name, role, password_hash, active) VALUES (1, 'owner', 'Owner', 'superadmin', '$2a$10$tKLq5jjp3OQOmsScEeJyfOkNXrRueCRBVkB0hXrnroerr7Fgzp/6C', true) ON CONFLICT (username) DO UPDATE SET name = EXCLUDED.name, role = EXCLUDED.role, password_hash = EXCLUDED.password_hash;
-INSERT INTO staff_users (id, username, name, role, password_hash, active) VALUES (2, 'manager', 'Manager', 'manager', '$2a$10$HejjZ.o0pOgaJPWqSNxmqOlEUlSgBIdh0wFIbml8GT/LNq53teOV.', true) ON CONFLICT (username) DO UPDATE SET name = EXCLUDED.name, role = EXCLUDED.role, password_hash = EXCLUDED.password_hash;
-INSERT INTO staff_users (id, username, name, role, password_hash, active) VALUES (3, 'support', 'Support', 'support', '$2a$10$aLFlnNyq2EYYliaOw/cyuu/XW8AK2Z.x5hGDzZulOSgO4SOXJtyMi', true) ON CONFLICT (username) DO UPDATE SET name = EXCLUDED.name, role = EXCLUDED.role, password_hash = EXCLUDED.password_hash;
+INSERT INTO staff_users (id, username, name, role, password_hash, active) VALUES (1, 'owner', 'Owner', 'superadmin', '$2a$10$oTWRA0IsOYJAIkmJbBK1euEF7fTXAOu4Znbjt5b3arkcy9exaZ7kS', true) ON CONFLICT (username) DO UPDATE SET name = EXCLUDED.name, role = EXCLUDED.role, password_hash = EXCLUDED.password_hash;
+INSERT INTO staff_users (id, username, name, role, password_hash, active) VALUES (2, 'manager', 'Manager', 'manager', '$2a$10$cYppre8YBF0QNuTYaFL7HeO.0ySXi//4dxCap8HxiRVdRN4ZvCS3O', true) ON CONFLICT (username) DO UPDATE SET name = EXCLUDED.name, role = EXCLUDED.role, password_hash = EXCLUDED.password_hash;
+INSERT INTO staff_users (id, username, name, role, password_hash, active) VALUES (3, 'support', 'Support', 'support', '$2a$10$0Osw6cYcPiDpn5m0EcVQ7uc9RwCLvIYrl1WO/1tWu/aCxIcO3X0Qe', true) ON CONFLICT (username) DO UPDATE SET name = EXCLUDED.name, role = EXCLUDED.role, password_hash = EXCLUDED.password_hash;
 SELECT setval('staff_users_id_seq', (SELECT MAX(id) FROM staff_users));
 
 -- 3. Insert Master Products Catalog (All 86 Items)
