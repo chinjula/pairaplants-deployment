@@ -1,0 +1,492 @@
+/* public/css/admin.css - Professional Management Dashboard & POS Styles */
+
+:root {
+  --admin-sidebar-bg: #0F172A;
+  --admin-sidebar-text: #94A3B8;
+  --admin-sidebar-active: #15803D;
+  --admin-topbar-bg: #FFFFFF;
+  --admin-workspace-bg: #F8FAFC;
+  --admin-border: #E2E8F0;
+  --admin-card-bg: #FFFFFF;
+  --admin-text-main: #0F172A;
+  --admin-text-muted: #64748B;
+}
+
+body.admin-body {
+  margin: 0;
+  padding: 0;
+  background: var(--admin-workspace-bg);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--admin-text-main);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.admin-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 250px;
+  background: var(--admin-sidebar-bg);
+  color: var(--admin-sidebar-text);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease;
+  z-index: 1000;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.sidebar-brand .brand-icon svg {
+  width: 26px;
+  height: 26px;
+  color: #10B981;
+}
+
+.sidebar-brand .logo-title {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.5px;
+}
+
+.sidebar-brand .logo-title span {
+  color: #34D399;
+}
+
+.sidebar-brand .logo-tagline {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+
+.nav-group-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #64748B;
+  letter-spacing: 0.8px;
+  padding: 8px 12px 4px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  color: #94A3B8;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s;
+  margin-bottom: 2px;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+}
+
+.sidebar-link.active {
+  background: var(--admin-sidebar-active);
+  color: #FFFFFF;
+}
+
+.sidebar-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sidebar-user-footer {
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #15803D;
+  color: #FFF;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.user-meta .user-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFF;
+}
+
+.user-meta .user-role {
+  font-size: 0.7rem;
+  color: #34D399;
+  font-weight: 600;
+}
+
+.btn-sidebar-logout {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #CBD5E1;
+  border-radius: 6px;
+  padding: 7px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-sidebar-logout:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #EF4444;
+  color: #F87171;
+}
+
+/* Main Workspace */
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.admin-topbar {
+  height: 60px;
+  background: var(--admin-topbar-bg);
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-sidebar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.topbar-crumb {
+  font-size: 0.85rem;
+  color: var(--admin-text-muted);
+}
+
+.topbar-crumb strong {
+  color: var(--admin-text-main);
+}
+
+.admin-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* POS High-Speed 60/40 Layout */
+.pos-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  height: calc(100vh - 120px);
+}
+
+.pos-left-panel {
+  background: #FFF;
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pos-search-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pos-search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pos-search-input-wrap svg {
+  position: absolute;
+  left: 14px;
+  color: var(--admin-text-muted);
+}
+
+.pos-search-input-wrap input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  border-radius: 8px;
+  border: 1px solid var(--admin-border);
+  font-size: 0.95rem;
+  background: var(--admin-workspace-bg);
+}
+
+.pos-cat-pills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.pos-cat-pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--admin-border);
+  background: #FFF;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.pos-cat-pill.active, .pos-cat-pill:hover {
+  background: #15803D;
+  color: #FFF;
+  border-color: #15803D;
+}
+
+.pos-product-list-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  align-content: start;
+}
+
+.pos-prod-card {
+  background: #FFF;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.pos-prod-card:hover {
+  border-color: #15803D;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.pos-prod-card .prod-thumb {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.pos-prod-card .prod-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.pos-prod-card .prod-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--admin-text-muted);
+}
+
+/* POS Right Panel (Live Cart & Checkout) */
+.pos-right-panel {
+  background: #FFF;
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pos-invoice-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--admin-border);
+  background: #F8FAFC;
+}
+
+.pos-customer-select {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--admin-border);
+  font-size: 0.85rem;
+}
+
+.pos-cart-items-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 20px;
+}
+
+.pos-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.pos-item-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pos-item-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pos-item-stepper button {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--admin-border);
+  background: #FFF;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.pos-totals-panel {
+  padding: 16px 20px;
+  border-top: 1px solid var(--admin-border);
+  background: #F8FAFC;
+}
+
+.pos-total-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+  color: var(--admin-text-muted);
+}
+
+.pos-grand-total {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0F291E;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--admin-border);
+}
+
+.pos-payment-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.pos-pay-btn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--admin-border);
+  background: #FFF;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.pos-pay-btn.active {
+  border-color: #15803D;
+  background: #ECFDF5;
+  color: #15803D;
+}
+
+.pos-checkout-btn {
+  width: 100%;
+  padding: 14px;
+  background: #15803D;
+  color: #FFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pos-checkout-btn:hover {
+  background: #166534;
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+  }
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+  .mobile-sidebar-toggle {
+    display: inline-block;
+  }
+  .pos-layout-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}

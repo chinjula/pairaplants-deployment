@@ -16,6 +16,21 @@ const {
   syncInquiryToSupabase
 } = require('./lib/supabaseSync');
 const supabase = require('./lib/supabaseClient');
+const {
+  renderLayout,
+  renderHomePage,
+  renderAboutPage,
+  renderShopPage,
+  renderProductPage,
+  renderGalleryPage,
+  renderContactPage,
+  renderCartPage,
+  renderAdminLoginPage,
+  renderAdminAppShell,
+  slugify,
+  getSettings
+} = require('./lib/ssrRenderer');
+
 
 const PORT = process.env.PORT || 3000;
 const isVercel = !!process.env.VERCEL;
@@ -235,7 +250,7 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '500kb' }));
 app.use(express.urlencoded({ extended: true, limit: '500kb' }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 if (isVercel) {
   app.use('/uploads', express.static(UPLOADS_DIR));
 }
@@ -3443,17 +3458,22 @@ app.put('/api/settings', auth('superadmin'), async (req, res) => {
    ============================================================================== */
 app.get('/sitemap.xml', (req, res) => {
   const host = `${req.protocol}://${req.get('host')}`;
-  const staticUrls = ['#home', '#shop', '#story', '#contact'];
+  const staticUrls = ['', 'about', 'shop', 'gallery', 'contact', 'cart'];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
   staticUrls.forEach(u => {
-    xml += `  <url>\n    <loc>${host}/${u}</loc>\n    <changefreq>daily</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+    xml += `  <url>\n    <loc>${host}/${u}</loc>\n    <changefreq>daily</changefreq>\n    <priority>${u === '' ? '1.0' : '0.8'}</priority>\n  </url>\n`;
   });
 
-  db.products.filter(p => p.isVisible !== false).forEach(p => {
-    xml += `  <url>\n    <loc>${host}/#product?id=${p.id}</loc>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n`;
+  (db.categories || []).forEach(c => {
+    xml += `  <url>\n    <loc>${host}/shop/${c.slug}</loc>\n    <changefreq>daily</changefreq>\n    <priority>0.85</priority>\n  </url>\n`;
+  });
+
+  (db.products || []).filter(p => p.isVisible !== false).forEach(p => {
+    const slug = p.slug || ('prod-' + p.id);
+    xml += `  <url>\n    <loc>${host}/product/${slug}</loc>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.9</priority>\n  </url>\n`;
   });
 
   xml += `</urlset>`;
@@ -3464,7 +3484,7 @@ app.get('/sitemap.xml', (req, res) => {
 app.get('/robots.txt', (req, res) => {
   const host = `${req.protocol}://${req.get('host')}`;
   res.type('text/plain');
-  res.send(`User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /#staff\n\nSitemap: ${host}/sitemap.xml\n`);
+  res.send(`User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /admin/\n\nSitemap: ${host}/sitemap.xml\n`);
 });
 
 /* ==============================================================================
@@ -3568,6 +3588,128 @@ if (!isVercel) {
     } catch (e) {}
   }, 24 * 3600e3);
 }
+
+/* ==============================================================================
+   ADMIN AUTHENTICATION & ROUTE PROTECTION (Requirements 2, 6 & 12)
+   ============================================================================== */
+app.get('/admin/login', (req, res) => {
+  try {
+    const t = jwt.verify(req.cookies.token, SECRET);
+    const u = db.users.find(x => x.id === t.id && x.active);
+    if (u) return res.redirect('/admin/dashboard');
+  } catch (e) {}
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.send(renderAdminLoginPage(req.query.error, host));
+});
+
+app.post('/admin/login', (req, res) => {
+  const b = req.body || {};
+  const username = str(b.username, 20).toLowerCase();
+  const password = String(b.password || '');
+  const u = db.users.find(x => x.username === username && x.active);
+
+  let valid = false;
+  if (u && u.hash) {
+    valid = bcrypt.compareSync(password, u.hash);
+    if (!valid && DEFAULT_STAFF_PASSWORDS[username]) {
+      valid = DEFAULT_STAFF_PASSWORDS[username].includes(password);
+    }
+  }
+
+  if (!u || !valid) {
+    return res.redirect('/admin/login?error=Invalid+staff+username+or+password');
+  }
+
+  const token = jwt.sign({ id: u.id, role: u.role, username: u.username }, SECRET, { expiresIn: '7d' });
+  res.cookie('token', token, {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production' && !isVercel ? true : false,
+    maxAge: 7 * 864e5
+  });
+  log(u.username, 'staff logged in via /admin/login', req.ip);
+  res.redirect('/admin/dashboard');
+});
+
+app.post('/admin/logout', (req, res) => {
+  res.clearCookie('token');
+  res.redirect('/admin/login');
+});
+
+// Server-Side Protected Admin Routes: unauthenticated visitors are redirected to /admin/login
+app.get(['/admin', '/admin/:section'], (req, res) => {
+  const section = req.params.section || 'dashboard';
+  if (section === 'login') {
+    const host = `${req.protocol}://${req.get('host')}`;
+    return res.send(renderAdminLoginPage(req.query.error, host));
+  }
+
+  try {
+    const t = jwt.verify(req.cookies.token, SECRET);
+    const u = db.users.find(x => x.id === t.id && x.active);
+    if (!u) throw new Error('Unauthenticated');
+    res.send(renderAdminAppShell({ user: u, section, db }));
+  } catch (err) {
+    return res.redirect('/admin/login');
+  }
+});
+
+/* ==============================================================================
+   PUBLIC WEBSITE SERVER-SIDE RENDERING (SSR) ROUTES (Requirements 2, 3, 4 & 5)
+   ============================================================================== */
+app.get('/', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.send(renderHomePage(db, host));
+});
+
+app.get('/about', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.send(renderAboutPage(db, host));
+});
+
+app.get('/shop', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.send(renderShopPage(db, host, null, req.query.q || ''));
+});
+
+app.get('/shop/:category', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.send(renderShopPage(db, host, req.params.category, req.query.q || ''));
+});
+
+app.get('/product/:slug', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  const html = renderProductPage(db, host, req.params.slug);
+  if (!html) {
+    return res.status(404).send(renderLayout({
+      title: 'Botanical Product Not Found · Paira Plants',
+      description: 'The requested botanical item is not found in our catalog.',
+      canonicalUrl: `${host}/shop`,
+      content: `<div class="narrow-box" style="text-align:center;padding:80px 20px;">
+        <h2>Product Not Found</h2>
+        <p class="muted">The botanical product you are looking for may have been retired or renamed.</p>
+        <a class="btn-pill" href="/shop">Browse Full Botanical Catalog &rarr;</a>
+      </div>`,
+      settings: getSettings(db)
+    }));
+  }
+  res.send(html);
+});
+
+app.get('/gallery', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.send(renderGalleryPage(db, host));
+});
+
+app.get('/contact', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.send(renderContactPage(db, host));
+});
+
+app.get('/cart', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.send(renderCartPage(db, host));
+});
 
 /* ---------- 404 & Global Error Handler ---------- */
 app.use('/api', (req, res) => res.status(404).json({ error: 'Endpoint not found.' }));

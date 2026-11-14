@@ -29,10 +29,10 @@
     {
       "id": 1,
       "name": "Cherry Barb",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 120,
-      "stock": 20,
+      "stock": 19,
       "description": "Active and peaceful schooling fish with vibrant cherry-red coloration.",
       "sku": "PP-FIS-001",
       "salePrice": null,
@@ -57,12 +57,15 @@
       "reviewCount": 4,
       "purchasePrice": 66,
       "openingStock": 24,
-      "productStatus": "in_stock"
+      "productStatus": "in_stock",
+      "slug": "cherry-barb",
+      "careLevel": null,
+      "co2Required": false
     },
     {
       "id": 2,
       "name": "Choco Black Pufferfish (Dwarf Pufferfish)",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 280,
       "stock": 10,
@@ -89,12 +92,16 @@
       "rating": 4.8,
       "reviewCount": 5,
       "purchasePrice": 154,
-      "openingStock": 10
+      "openingStock": 10,
+      "slug": "choco-black-pufferfish-dwarf-pufferfish",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 3,
       "name": "Golden Mountain Minnow",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 150,
       "stock": 34,
@@ -121,12 +128,16 @@
       "rating": 4.8,
       "reviewCount": 6,
       "purchasePrice": 83,
-      "openingStock": 29
+      "openingStock": 29,
+      "slug": "golden-mountain-minnow",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 4,
       "name": "Golden Top Minnow",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 160,
       "stock": 3,
@@ -153,12 +164,16 @@
       "rating": 4.9,
       "reviewCount": 7,
       "purchasePrice": 88,
-      "openingStock": 23
+      "openingStock": 23,
+      "slug": "golden-top-minnow",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "low_stock"
     },
     {
       "id": 5,
       "name": "Mixed Guppy",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 90,
       "stock": 9,
@@ -185,12 +200,16 @@
       "rating": 4.6,
       "reviewCount": 8,
       "purchasePrice": 50,
-      "openingStock": 38
+      "openingStock": 38,
+      "slug": "mixed-guppy",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 6,
       "name": "Neon Tetra",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 60,
       "stock": 48,
@@ -217,12 +236,16 @@
       "rating": 4.7,
       "reviewCount": 9,
       "purchasePrice": 33,
-      "openingStock": 48
+      "openingStock": 48,
+      "slug": "neon-tetra",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 7,
       "name": "Otocinclus Catfish",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 220,
       "stock": 16,
@@ -250,12 +273,16 @@
       "rating": 4.8,
       "reviewCount": 3,
       "purchasePrice": 121,
-      "openingStock": 16
+      "openingStock": 16,
+      "slug": "otocinclus-catfish",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 8,
       "name": "Balloon Platy Fish",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 110,
       "stock": 21,
@@ -282,12 +309,16 @@
       "rating": 4.8,
       "reviewCount": 4,
       "purchasePrice": 61,
-      "openingStock": 21
+      "openingStock": 21,
+      "slug": "balloon-platy-fish",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 9,
       "name": "Siamese Algae Eater (SAE)",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 180,
       "stock": 20,
@@ -314,12 +345,16 @@
       "rating": 4.9,
       "reviewCount": 5,
       "purchasePrice": 99,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "siamese-algae-eater-sae",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 10,
       "name": "Stone Catfish (Hara Jerdoni)",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 240,
       "stock": 15,
@@ -346,12 +381,16 @@
       "rating": 4.6,
       "reviewCount": 6,
       "purchasePrice": 132,
-      "openingStock": 15
+      "openingStock": 15,
+      "slug": "stone-catfish-hara-jerdoni",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 11,
       "name": "White Mountain Minnow",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 140,
       "stock": 28,
@@ -378,12 +417,16 @@
       "rating": 4.7,
       "reviewCount": 7,
       "purchasePrice": 77,
-      "openingStock": 28
+      "openingStock": 28,
+      "slug": "white-mountain-minnow",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 12,
       "name": "Hill Stream Loach",
-      "category": "Fish",
+      "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 380,
       "stock": 10,
@@ -410,12 +453,16 @@
       "rating": 4.8,
       "reviewCount": 8,
       "purchasePrice": 209,
-      "openingStock": 10
+      "openingStock": 10,
+      "slug": "hill-stream-loach",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 13,
       "name": "Amano Shrimp",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Shrimps",
       "price": 180,
       "stock": 35,
@@ -443,12 +490,16 @@
       "rating": 4.8,
       "reviewCount": 9,
       "purchasePrice": 99,
-      "openingStock": 35
+      "openingStock": 35,
+      "slug": "amano-shrimp",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 14,
       "name": "Assassin Snails",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Snails",
       "price": 120,
       "stock": 30,
@@ -475,12 +526,16 @@
       "rating": 4.9,
       "reviewCount": 3,
       "purchasePrice": 66,
-      "openingStock": 30
+      "openingStock": 30,
+      "slug": "assassin-snails",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 15,
       "name": "Bloody Mary Shrimp",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Shrimps",
       "price": 200,
       "stock": 25,
@@ -507,12 +562,16 @@
       "rating": 4.6,
       "reviewCount": 4,
       "purchasePrice": 110,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "bloody-mary-shrimp",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 16,
       "name": "Blue Shrimp (Blue Dream)",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Shrimps",
       "price": 160,
       "stock": 25,
@@ -540,12 +599,16 @@
       "rating": 4.7,
       "reviewCount": 5,
       "purchasePrice": 88,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "blue-shrimp-blue-dream",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 17,
       "name": "Borneo Sucker",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Invertebrates & Grazers",
       "price": 260,
       "stock": 14,
@@ -572,12 +635,16 @@
       "rating": 4.8,
       "reviewCount": 6,
       "purchasePrice": 143,
-      "openingStock": 14
+      "openingStock": 14,
+      "slug": "borneo-sucker",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 18,
       "name": "Cherry Shrimp / Red Cherry Shrimp",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Shrimps",
       "price": 90,
       "stock": 45,
@@ -604,12 +671,16 @@
       "rating": 4.8,
       "reviewCount": 7,
       "purchasePrice": 50,
-      "openingStock": 45
+      "openingStock": 45,
+      "slug": "cherry-shrimp-red-cherry-shrimp",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 19,
       "name": "Golden Algae Eater",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Invertebrates & Grazers",
       "price": 150,
       "stock": 20,
@@ -636,12 +707,16 @@
       "rating": 4.9,
       "reviewCount": 8,
       "purchasePrice": 83,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "golden-algae-eater",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 20,
       "name": "Golden Yellow Apple Snails",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Snails",
       "price": 80,
       "stock": 30,
@@ -668,12 +743,16 @@
       "rating": 4.6,
       "reviewCount": 9,
       "purchasePrice": 44,
-      "openingStock": 30
+      "openingStock": 30,
+      "slug": "golden-yellow-apple-snails",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 21,
       "name": "Malaysian Trumpet Snail",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Snails",
       "price": 50,
       "stock": 40,
@@ -700,12 +779,16 @@
       "rating": 4.7,
       "reviewCount": 3,
       "purchasePrice": 28,
-      "openingStock": 40
+      "openingStock": 40,
+      "slug": "malaysian-trumpet-snail",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 22,
       "name": "Nerit Snails / Zebra Nerite Snails",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Snails",
       "price": 130,
       "stock": 28,
@@ -733,12 +816,16 @@
       "rating": 4.8,
       "reviewCount": 4,
       "purchasePrice": 72,
-      "openingStock": 28
+      "openingStock": 28,
+      "slug": "nerit-snails-zebra-nerite-snails",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 23,
       "name": "Orange Shrimp",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Shrimps",
       "price": 150,
       "stock": 22,
@@ -765,12 +852,16 @@
       "rating": 4.8,
       "reviewCount": 5,
       "purchasePrice": 83,
-      "openingStock": 22
+      "openingStock": 22,
+      "slug": "orange-shrimp",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 24,
       "name": "Peelia Moss / Peelia Moss Coconut Shell",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Shrimp Habitats",
       "price": 290,
       "stock": 15,
@@ -798,12 +889,16 @@
       "rating": 4.9,
       "reviewCount": 6,
       "purchasePrice": 160,
-      "openingStock": 15
+      "openingStock": 15,
+      "slug": "peelia-moss-peelia-moss-coconut-shell",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 25,
       "name": "Shrimp Mixed (Pack of 5)",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Shrimps",
       "price": 350,
       "stock": 20,
@@ -830,12 +925,16 @@
       "rating": 4.6,
       "reviewCount": 7,
       "purchasePrice": 193,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "shrimp-mixed-pack-of-5",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 26,
       "name": "Yellow Shrimp",
-      "category": "Shrimps & Invertebrates",
+      "category": "Dwarf Shrimps & Cleaners",
       "subcategory": "Shrimps",
       "price": 160,
       "stock": 22,
@@ -862,7 +961,11 @@
       "rating": 4.7,
       "reviewCount": 8,
       "purchasePrice": 88,
-      "openingStock": 22
+      "openingStock": 22,
+      "slug": "yellow-shrimp",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 27,
@@ -896,7 +999,11 @@
       "rating": 4.8,
       "reviewCount": 9,
       "purchasePrice": 105,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "blyxa-japonica",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 28,
@@ -929,7 +1036,11 @@
       "rating": 4.8,
       "reviewCount": 3,
       "purchasePrice": 121,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "dwarf-hair-grass",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 29,
@@ -962,7 +1073,11 @@
       "rating": 4.9,
       "reviewCount": 4,
       "purchasePrice": 116,
-      "openingStock": 18
+      "openingStock": 18,
+      "slug": "glossostigma-elatinoides",
+      "careLevel": "Advanced",
+      "co2Required": true,
+      "productStatus": "in_stock"
     },
     {
       "id": 30,
@@ -996,7 +1111,11 @@
       "rating": 4.6,
       "reviewCount": 5,
       "purchasePrice": 138,
-      "openingStock": 16
+      "openingStock": 16,
+      "slug": "hemianthus-cuba-hc-cuba",
+      "careLevel": "Advanced",
+      "co2Required": true,
+      "productStatus": "in_stock"
     },
     {
       "id": 31,
@@ -1029,7 +1148,11 @@
       "rating": 4.7,
       "reviewCount": 6,
       "purchasePrice": 127,
-      "openingStock": 24
+      "openingStock": 24,
+      "slug": "marsilea-micranthemum-monte-carlo-mini-x-moss",
+      "careLevel": "Advanced",
+      "co2Required": true,
+      "productStatus": "in_stock"
     },
     {
       "id": 32,
@@ -1062,7 +1185,11 @@
       "rating": 4.8,
       "reviewCount": 7,
       "purchasePrice": 77,
-      "openingStock": 30
+      "openingStock": 30,
+      "slug": "sagittaria-subulata-graminea",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "out_of_stock"
     },
     {
       "id": 33,
@@ -1095,7 +1222,11 @@
       "rating": 4.8,
       "reviewCount": 8,
       "purchasePrice": 99,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "limnophila-aromatica-aquatica-rugosa",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 34,
@@ -1129,7 +1260,11 @@
       "rating": 4.9,
       "reviewCount": 9,
       "purchasePrice": 116,
-      "openingStock": 28
+      "openingStock": 28,
+      "slug": "ludwigia-super-red-repens-sedioides-arcuata-glandulosa",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 35,
@@ -1162,7 +1297,11 @@
       "rating": 4.6,
       "reviewCount": 3,
       "purchasePrice": 105,
-      "openingStock": 35
+      "openingStock": 35,
+      "slug": "rotala-green-hi-red-macrandra-pink-wallichii",
+      "careLevel": "Advanced",
+      "co2Required": true,
+      "productStatus": "in_stock"
     },
     {
       "id": 36,
@@ -1197,7 +1336,11 @@
       "rating": 4.7,
       "reviewCount": 4,
       "purchasePrice": 83,
-      "openingStock": 30
+      "openingStock": 30,
+      "slug": "vallisneria-nana-spiralis-jungle-val",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 37,
@@ -1230,7 +1373,11 @@
       "rating": 4.8,
       "reviewCount": 5,
       "purchasePrice": 94,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "alternanthera-sessilis",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 38,
@@ -1264,7 +1411,11 @@
       "rating": 4.8,
       "reviewCount": 6,
       "purchasePrice": 132,
-      "openingStock": 18
+      "openingStock": 18,
+      "slug": "amazon-sword-grisebachii",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 39,
@@ -1298,7 +1449,11 @@
       "rating": 4.9,
       "reviewCount": 7,
       "purchasePrice": 143,
-      "openingStock": 24
+      "openingStock": 24,
+      "slug": "anubias-nana-glabra-gracilis-gold",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 40,
@@ -1331,7 +1486,11 @@
       "rating": 4.6,
       "reviewCount": 8,
       "purchasePrice": 77,
-      "openingStock": 26
+      "openingStock": 26,
+      "slug": "bacopa-caroliniana-monnieri",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 41,
@@ -1365,7 +1524,11 @@
       "rating": 4.7,
       "reviewCount": 9,
       "purchasePrice": 88,
-      "openingStock": 18
+      "openingStock": 18,
+      "slug": "cabomba-green-red",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 42,
@@ -1399,7 +1562,11 @@
       "rating": 4.8,
       "reviewCount": 3,
       "purchasePrice": 105,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "cryptocoryne-alba-undulata-axelrodi-retrospiralis",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 43,
@@ -1433,7 +1600,11 @@
       "rating": 4.8,
       "reviewCount": 4,
       "purchasePrice": 127,
-      "openingStock": 16
+      "openingStock": 16,
+      "slug": "echinodorus-argentinensis-cordifolius-tenellus",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 44,
@@ -1466,7 +1637,11 @@
       "rating": 4.9,
       "reviewCount": 5,
       "purchasePrice": 61,
-      "openingStock": 40
+      "openingStock": 40,
+      "slug": "egeria-densa-anacharis",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 45,
@@ -1499,7 +1674,11 @@
       "rating": 4.6,
       "reviewCount": 6,
       "purchasePrice": 105,
-      "openingStock": 18
+      "openingStock": 18,
+      "slug": "eleocharis-vivipara",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 46,
@@ -1533,7 +1712,11 @@
       "rating": 4.7,
       "reviewCount": 7,
       "purchasePrice": 187,
-      "openingStock": 10
+      "openingStock": 10,
+      "slug": "eriocaulon-cinereum",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 47,
@@ -1566,7 +1749,11 @@
       "rating": 4.8,
       "reviewCount": 8,
       "purchasePrice": 61,
-      "openingStock": 35
+      "openingStock": 35,
+      "slug": "foxtail-ceratophyllum-demersum",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 48,
@@ -1600,7 +1787,11 @@
       "rating": 4.8,
       "reviewCount": 9,
       "purchasePrice": 99,
-      "openingStock": 18
+      "openingStock": 18,
+      "slug": "giant-vallisneria",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 49,
@@ -1633,7 +1824,11 @@
       "rating": 4.9,
       "reviewCount": 3,
       "purchasePrice": 116,
-      "openingStock": 15
+      "openingStock": 15,
+      "slug": "hemigraphis-sp-pink",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 50,
@@ -1666,7 +1861,11 @@
       "rating": 4.6,
       "reviewCount": 4,
       "purchasePrice": 50,
-      "openingStock": 40
+      "openingStock": 40,
+      "slug": "hydrilla",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 51,
@@ -1700,7 +1899,11 @@
       "rating": 4.7,
       "reviewCount": 5,
       "purchasePrice": 99,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "hydrocotyle-sibthorpioides-leucocephala-verticillata",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 52,
@@ -1736,7 +1939,11 @@
       "rating": 4.8,
       "reviewCount": 6,
       "purchasePrice": 105,
-      "openingStock": 28
+      "openingStock": 28,
+      "slug": "hygrophila-pinnatifida-sunset-corymbosa-araguaia-difformis",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 53,
@@ -1769,7 +1976,11 @@
       "rating": 4.8,
       "reviewCount": 7,
       "purchasePrice": 110,
-      "openingStock": 18
+      "openingStock": 18,
+      "slug": "lobelia-cardinalis",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 54,
@@ -1802,7 +2013,11 @@
       "rating": 4.9,
       "reviewCount": 8,
       "purchasePrice": 94,
-      "openingStock": 22
+      "openingStock": 22,
+      "slug": "mayaca-fluviatilis",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 55,
@@ -1835,7 +2050,11 @@
       "rating": 4.6,
       "reviewCount": 9,
       "purchasePrice": 116,
-      "openingStock": 16
+      "openingStock": 16,
+      "slug": "myriophyllum-red",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 56,
@@ -1869,7 +2088,11 @@
       "rating": 4.7,
       "reviewCount": 3,
       "purchasePrice": 55,
-      "openingStock": 35
+      "openingStock": 35,
+      "slug": "najas-grass-guppy-grass",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 57,
@@ -1902,7 +2125,11 @@
       "rating": 4.8,
       "reviewCount": 4,
       "purchasePrice": 77,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "nitella",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 58,
@@ -1935,7 +2162,11 @@
       "rating": 4.8,
       "reviewCount": 5,
       "purchasePrice": 176,
-      "openingStock": 10
+      "openingStock": 10,
+      "slug": "nuphar-japonica",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 59,
@@ -1968,7 +2199,11 @@
       "rating": 4.9,
       "reviewCount": 6,
       "purchasePrice": 154,
-      "openingStock": 14
+      "openingStock": 14,
+      "slug": "nymphaea-nymphoides-indica-taiwan-omrana",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 60,
@@ -2002,7 +2237,11 @@
       "rating": 4.6,
       "reviewCount": 7,
       "purchasePrice": 83,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "parrot-feather",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 61,
@@ -2035,7 +2274,11 @@
       "rating": 4.7,
       "reviewCount": 8,
       "purchasePrice": 94,
-      "openingStock": 24
+      "openingStock": 24,
+      "slug": "pogo-octopus-pogostemon",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 62,
@@ -2069,7 +2312,11 @@
       "rating": 4.8,
       "reviewCount": 9,
       "purchasePrice": 121,
-      "openingStock": 14
+      "openingStock": 14,
+      "slug": "polygonum-sp-pink",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 63,
@@ -2102,7 +2349,11 @@
       "rating": 4.8,
       "reviewCount": 3,
       "purchasePrice": 88,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "potamogeton-gayi",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 64,
@@ -2135,7 +2386,11 @@
       "rating": 4.9,
       "reviewCount": 4,
       "purchasePrice": 143,
-      "openingStock": 15
+      "openingStock": 15,
+      "slug": "red-banana-plant",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 65,
@@ -2168,7 +2423,11 @@
       "rating": 4.6,
       "reviewCount": 5,
       "purchasePrice": 171,
-      "openingStock": 12
+      "openingStock": 12,
+      "slug": "red-tiger-lily-lotus",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 66,
@@ -2201,7 +2460,11 @@
       "rating": 4.7,
       "reviewCount": 6,
       "purchasePrice": 105,
-      "openingStock": 22
+      "openingStock": 22,
+      "slug": "strogon-sp-brown-staurogyne",
+      "careLevel": "Medium",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 67,
@@ -2234,7 +2497,11 @@
       "rating": 4.8,
       "reviewCount": 7,
       "purchasePrice": 154,
-      "openingStock": 12
+      "openingStock": 12,
+      "slug": "utricularia-valgeria-graminifolia",
+      "careLevel": "Advanced",
+      "co2Required": true,
+      "productStatus": "in_stock"
     },
     {
       "id": 68,
@@ -2270,7 +2537,11 @@
       "rating": 4.8,
       "reviewCount": 8,
       "purchasePrice": 105,
-      "openingStock": 35
+      "openingStock": 35,
+      "slug": "java-fern-standard-dwarf-needle-leaf-philippines-windelov-wrinkle",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 69,
@@ -2304,7 +2575,11 @@
       "rating": 4.9,
       "reviewCount": 9,
       "purchasePrice": 83,
-      "openingStock": 40
+      "openingStock": 40,
+      "slug": "java-moss-standard-coconut-shell",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 70,
@@ -2337,7 +2612,11 @@
       "rating": 4.6,
       "reviewCount": 3,
       "purchasePrice": 138,
-      "openingStock": 18
+      "openingStock": 18,
+      "slug": "trident-fern-microsorum",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 71,
@@ -2370,7 +2649,11 @@
       "rating": 4.7,
       "reviewCount": 4,
       "purchasePrice": 171,
-      "openingStock": 12
+      "openingStock": 12,
+      "slug": "jade-lotus-moss",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 72,
@@ -2404,7 +2687,11 @@
       "rating": 4.8,
       "reviewCount": 5,
       "purchasePrice": 154,
-      "openingStock": 15
+      "openingStock": 15,
+      "slug": "riccia-moss-riccardia-multifida-coral-moss",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 73,
@@ -2437,7 +2724,11 @@
       "rating": 4.8,
       "reviewCount": 6,
       "purchasePrice": 66,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "azolla-fairy-moss",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 74,
@@ -2470,7 +2761,11 @@
       "rating": 4.9,
       "reviewCount": 7,
       "purchasePrice": 33,
-      "openingStock": 50
+      "openingStock": 50,
+      "slug": "duckweed",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 75,
@@ -2504,7 +2799,11 @@
       "rating": 4.6,
       "reviewCount": 8,
       "purchasePrice": 121,
-      "openingStock": 15
+      "openingStock": 15,
+      "slug": "hydrocleys-nymphoides-water-poppy",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 76,
@@ -2537,7 +2836,11 @@
       "rating": 4.7,
       "reviewCount": 9,
       "purchasePrice": 77,
-      "openingStock": 30
+      "openingStock": 30,
+      "slug": "limnobium-amazon-frogbit",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 77,
@@ -2570,7 +2873,11 @@
       "rating": 4.8,
       "reviewCount": 3,
       "purchasePrice": 143,
-      "openingStock": 12
+      "openingStock": 12,
+      "slug": "mosaic-poppy",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 78,
@@ -2605,7 +2912,11 @@
       "rating": 4.8,
       "reviewCount": 4,
       "purchasePrice": 138,
-      "openingStock": 14
+      "openingStock": 14,
+      "slug": "peace-lily-aquatic-root-cultivated",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 79,
@@ -2638,7 +2949,11 @@
       "rating": 4.9,
       "reviewCount": 5,
       "purchasePrice": 105,
-      "openingStock": 22
+      "openingStock": 22,
+      "slug": "red-root-floater",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 80,
@@ -2671,7 +2986,11 @@
       "rating": 4.6,
       "reviewCount": 6,
       "purchasePrice": 72,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "rosette-water-lettuce",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 81,
@@ -2704,7 +3023,11 @@
       "rating": 4.7,
       "reviewCount": 7,
       "purchasePrice": 66,
-      "openingStock": 35
+      "openingStock": 35,
+      "slug": "salvinia",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 82,
@@ -2737,7 +3060,11 @@
       "rating": 4.8,
       "reviewCount": 8,
       "purchasePrice": 61,
-      "openingStock": 20
+      "openingStock": 20,
+      "slug": "water-hyacinth",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 83,
@@ -2770,7 +3097,11 @@
       "rating": 4.8,
       "reviewCount": 9,
       "purchasePrice": 55,
-      "openingStock": 30
+      "openingStock": 30,
+      "slug": "water-lettuce",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 84,
@@ -2804,12 +3135,16 @@
       "rating": 4.9,
       "reviewCount": 3,
       "purchasePrice": 83,
-      "openingStock": 25
+      "openingStock": 25,
+      "slug": "water-sprite-ceratopteris",
+      "careLevel": "Easy",
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 85,
       "name": "Clay Soil (Active Planted Tank Soil, 3 kg)",
-      "category": "Substrates & Hardscape",
+      "category": "Substrates & Driftwood",
       "subcategory": "Substrates",
       "price": 580,
       "stock": 24,
@@ -2834,12 +3169,16 @@
       "rating": 4.6,
       "reviewCount": 4,
       "purchasePrice": 319,
-      "openingStock": 24
+      "openingStock": 24,
+      "slug": "clay-soil-active-planted-tank-soil-3-kg",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     },
     {
       "id": 86,
       "name": "Natural Aquascaping Driftwood",
-      "category": "Substrates & Hardscape",
+      "category": "Substrates & Driftwood",
       "subcategory": "Hardscape",
       "price": 420,
       "stock": 18,
@@ -2864,7 +3203,11 @@
       "rating": 4.7,
       "reviewCount": 5,
       "purchasePrice": 231,
-      "openingStock": 18
+      "openingStock": 18,
+      "slug": "natural-aquascaping-driftwood",
+      "careLevel": null,
+      "co2Required": false,
+      "productStatus": "in_stock"
     }
   ],
   "orders": [
@@ -2987,6 +3330,24 @@
   ],
   "inquiries": [],
   "logs": [
+    {
+      "t": 1794647793464,
+      "user": "owner",
+      "action": "completed POS sale #PP-INV-7004 (₹126) for Walk-in Customer",
+      "ip": "::1"
+    },
+    {
+      "t": 1794647793408,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794647784754,
+      "user": "owner",
+      "action": "staff logged in via /admin/login",
+      "ip": "::ffff:127.0.0.1"
+    },
     {
       "t": 1794647125342,
       "user": "owner",
@@ -3731,47 +4092,67 @@
       "id": 1,
       "name": "Aquatic Plants & Mosses",
       "slug": "aquatic-plants-mosses",
-      "icon": "🌿",
+      "icon": "leaf",
+      "description": "Pest-free, laboratory-cultured, and farm-acclimated freshwater aquarium plants.",
       "subcategories": [
         "Foreground & Carpet Plants",
         "Stem & Background Plants",
         "Ferns & Mosses",
-        "Floating & Surface Plants"
+        "Floating & Surface Plants",
+        "Tissue Culture Cups"
       ]
     },
     {
       "id": 2,
-      "name": "Fish",
-      "slug": "fish",
-      "icon": "🐠",
+      "name": "Ornamental Freshwater Fish",
+      "slug": "ornamental-freshwater-fish",
+      "icon": "sparkles",
+      "description": "Quarantined, active, and colorful tropical fishes ideal for planted aquariums.",
       "subcategories": [
-        "Fish",
-        "Tetras & Barbs",
+        "Tetras & Rasboras",
+        "Barbs",
         "Livebearers & Guppies",
-        "Centerpiece Fish"
+        "Centerpiece Fish",
+        "Algae Eaters & Cleaners"
       ]
     },
     {
       "id": 3,
-      "name": "Shrimps & Invertebrates",
-      "slug": "shrimps-invertebrates",
-      "icon": "🦐",
+      "name": "Dwarf Shrimps & Cleaners",
+      "slug": "dwarf-shrimps-cleaners",
+      "icon": "droplet",
+      "description": "Vibrant Neocaridina shrimps, active Caridina varieties, and essential clean-up crew.",
       "subcategories": [
-        "Shrimps",
-        "Snails",
-        "Invertebrates"
+        "Neocaridina Shrimps",
+        "Caridina Shrimps",
+        "Amano Shrimps",
+        "Nerite & Snail Cleaners"
       ]
     },
     {
       "id": 4,
-      "name": "Substrates & Hardscape",
-      "slug": "substrates-hardscape",
-      "icon": "🪵",
+      "name": "Substrates & Driftwood",
+      "slug": "substrates-driftwood",
+      "icon": "packageIcon",
+      "description": "Nutrient-rich aquasoils, volcanic active substrates, and cured natural hardscape.",
       "subcategories": [
-        "Substrates",
-        "Hardscape",
+        "Aquasoil",
+        "Natural Driftwood",
         "Aquascaping Stones",
-        "Driftwood"
+        "Root Tabs & Additives"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Aquarium Gravels & Accessories",
+      "slug": "aquarium-gravels-accessories",
+      "icon": "tag",
+      "description": "Clean natural gravels, inert river sand, and precision aquascaping maintenance tools.",
+      "subcategories": [
+        "Inert Quartz Gravel",
+        "Natural River Sand",
+        "Aquascaping Tools",
+        "CO2 Accessories & Glassware"
       ]
     }
   ],
@@ -3816,6 +4197,27 @@
     }
   ],
   "inventoryLogs": [
+    {
+      "id": 99,
+      "productId": 1,
+      "productName": "Cherry Barb",
+      "sku": "PP-FIS-001",
+      "transactionType": "sale",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "change": -1,
+      "previousStock": 20,
+      "newStock": 19,
+      "referenceNumber": "PP-INV-7004",
+      "transactionDate": "2026-11-14T09:16:33.458Z",
+      "createdBy": "owner",
+      "notes": "POS Counter Sale #PP-INV-7004",
+      "batchNumber": null,
+      "type": "sale",
+      "reason": "POS Counter Sale #PP-INV-7004",
+      "performedBy": "owner",
+      "timestamp": 1794647793458
+    },
     {
       "id": 98,
       "productId": 1,
@@ -5943,6 +6345,35 @@
   ],
   "posSales": [
     {
+      "id": 7004,
+      "invoiceNumber": "PP-INV-7004",
+      "customerId": null,
+      "customerName": "Walk-in Customer",
+      "customerPhone": "",
+      "date": "2026-11-14T09:16:33.457Z",
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Cherry Barb",
+          "sku": "PP-FIS-001",
+          "qty": 1,
+          "price": 120,
+          "discount": 0,
+          "total": 120
+        }
+      ],
+      "subtotal": 120,
+      "discount": 0,
+      "tax": 6,
+      "taxRate": 5,
+      "grandTotal": 126,
+      "paymentMethod": "Cash",
+      "paymentStatus": "completed",
+      "transactionRef": "",
+      "notes": "",
+      "createdBy": "owner"
+    },
+    {
       "id": 7003,
       "invoiceNumber": "PP-INV-7003",
       "customerId": null,
@@ -6036,6 +6467,40 @@
     }
   ],
   "invoices": [
+    {
+      "id": 9004,
+      "invoiceNumber": "PP-INV-7004",
+      "type": "pos",
+      "referenceId": 7004,
+      "date": "2026-11-14T09:16:33.457Z",
+      "customer": {
+        "name": "Walk-in Customer",
+        "phone": "",
+        "email": "",
+        "address": ""
+      },
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Cherry Barb",
+          "sku": "PP-FIS-001",
+          "qty": 1,
+          "price": 120,
+          "discount": 0,
+          "total": 120
+        }
+      ],
+      "subtotal": 120,
+      "discount": 0,
+      "tax": 6,
+      "taxRate": 5,
+      "grandTotal": 126,
+      "paymentMethod": "Cash",
+      "paymentStatus": "completed",
+      "transactionRef": "",
+      "gstin": "32AAAAA0000A1Z5",
+      "notes": "Thank you for choosing Paira Plants Botanical Studio."
+    },
     {
       "id": 9003,
       "invoiceNumber": "PP-INV-7003",
@@ -6145,6 +6610,20 @@
     }
   ],
   "payments": [
+    {
+      "id": 8005,
+      "paymentNumber": "PAY-2026-8005",
+      "date": "2026-11-14T09:16:33.457Z",
+      "type": "sale",
+      "referenceId": 7004,
+      "referenceNumber": "PP-INV-7004",
+      "customerName": "Walk-in Customer",
+      "amount": 126,
+      "method": "Cash",
+      "status": "completed",
+      "transactionRef": "",
+      "notes": "Counter checkout payment via Cash"
+    },
     {
       "id": 8004,
       "paymentNumber": "PAY-2026-8004",
