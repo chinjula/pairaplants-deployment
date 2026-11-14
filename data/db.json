@@ -32,7 +32,7 @@
       "category": "Fish",
       "subcategory": "Fish",
       "price": 120,
-      "stock": 21,
+      "stock": 20,
       "description": "Active and peaceful schooling fish with vibrant cherry-red coloration.",
       "sku": "PP-FIS-001",
       "salePrice": null,
@@ -55,7 +55,9 @@
       },
       "rating": 4.7,
       "reviewCount": 4,
-      "purchasePrice": 66
+      "purchasePrice": 66,
+      "openingStock": 24,
+      "productStatus": "in_stock"
     },
     {
       "id": 2,
@@ -86,7 +88,8 @@
       },
       "rating": 4.8,
       "reviewCount": 5,
-      "purchasePrice": 154
+      "purchasePrice": 154,
+      "openingStock": 10
     },
     {
       "id": 3,
@@ -117,7 +120,8 @@
       },
       "rating": 4.8,
       "reviewCount": 6,
-      "purchasePrice": 83
+      "purchasePrice": 83,
+      "openingStock": 29
     },
     {
       "id": 4,
@@ -148,7 +152,8 @@
       },
       "rating": 4.9,
       "reviewCount": 7,
-      "purchasePrice": 88
+      "purchasePrice": 88,
+      "openingStock": 23
     },
     {
       "id": 5,
@@ -179,7 +184,8 @@
       },
       "rating": 4.6,
       "reviewCount": 8,
-      "purchasePrice": 50
+      "purchasePrice": 50,
+      "openingStock": 38
     },
     {
       "id": 6,
@@ -210,7 +216,8 @@
       },
       "rating": 4.7,
       "reviewCount": 9,
-      "purchasePrice": 33
+      "purchasePrice": 33,
+      "openingStock": 48
     },
     {
       "id": 7,
@@ -242,7 +249,8 @@
       },
       "rating": 4.8,
       "reviewCount": 3,
-      "purchasePrice": 121
+      "purchasePrice": 121,
+      "openingStock": 16
     },
     {
       "id": 8,
@@ -273,7 +281,8 @@
       },
       "rating": 4.8,
       "reviewCount": 4,
-      "purchasePrice": 61
+      "purchasePrice": 61,
+      "openingStock": 21
     },
     {
       "id": 9,
@@ -304,7 +313,8 @@
       },
       "rating": 4.9,
       "reviewCount": 5,
-      "purchasePrice": 99
+      "purchasePrice": 99,
+      "openingStock": 20
     },
     {
       "id": 10,
@@ -335,7 +345,8 @@
       },
       "rating": 4.6,
       "reviewCount": 6,
-      "purchasePrice": 132
+      "purchasePrice": 132,
+      "openingStock": 15
     },
     {
       "id": 11,
@@ -366,7 +377,8 @@
       },
       "rating": 4.7,
       "reviewCount": 7,
-      "purchasePrice": 77
+      "purchasePrice": 77,
+      "openingStock": 28
     },
     {
       "id": 12,
@@ -397,7 +409,8 @@
       },
       "rating": 4.8,
       "reviewCount": 8,
-      "purchasePrice": 209
+      "purchasePrice": 209,
+      "openingStock": 10
     },
     {
       "id": 13,
@@ -429,7 +442,8 @@
       },
       "rating": 4.8,
       "reviewCount": 9,
-      "purchasePrice": 99
+      "purchasePrice": 99,
+      "openingStock": 35
     },
     {
       "id": 14,
@@ -460,7 +474,8 @@
       },
       "rating": 4.9,
       "reviewCount": 3,
-      "purchasePrice": 66
+      "purchasePrice": 66,
+      "openingStock": 30
     },
     {
       "id": 15,
@@ -491,7 +506,8 @@
       },
       "rating": 4.6,
       "reviewCount": 4,
-      "purchasePrice": 110
+      "purchasePrice": 110,
+      "openingStock": 25
     },
     {
       "id": 16,
@@ -523,7 +539,8 @@
       },
       "rating": 4.7,
       "reviewCount": 5,
-      "purchasePrice": 88
+      "purchasePrice": 88,
+      "openingStock": 25
     },
     {
       "id": 17,
@@ -554,7 +571,8 @@
       },
       "rating": 4.8,
       "reviewCount": 6,
-      "purchasePrice": 143
+      "purchasePrice": 143,
+      "openingStock": 14
     },
     {
       "id": 18,
@@ -585,7 +603,8 @@
       },
       "rating": 4.8,
       "reviewCount": 7,
-      "purchasePrice": 50
+      "purchasePrice": 50,
+      "openingStock": 45
     },
     {
       "id": 19,
@@ -616,7 +635,8 @@
       },
       "rating": 4.9,
       "reviewCount": 8,
-      "purchasePrice": 83
+      "purchasePrice": 83,
+      "openingStock": 20
     },
     {
       "id": 20,
@@ -647,7 +667,8 @@
       },
       "rating": 4.6,
       "reviewCount": 9,
-      "purchasePrice": 44
+      "purchasePrice": 44,
+      "openingStock": 30
     },
     {
       "id": 21,
@@ -678,7 +699,8 @@
       },
       "rating": 4.7,
       "reviewCount": 3,
-      "purchasePrice": 28
+      "purchasePrice": 28,
+      "openingStock": 40
     },
     {
       "id": 22,
@@ -710,7 +732,8 @@
       },
       "rating": 4.8,
       "reviewCount": 4,
-      "purchasePrice": 72
+      "purchasePrice": 72,
+      "openingStock": 28
     },
     {
       "id": 23,
@@ -741,7 +764,8 @@
       },
       "rating": 4.8,
       "reviewCount": 5,
-      "purchasePrice": 83
+      "purchasePrice": 83,
+      "openingStock": 22
     },
     {
       "id": 24,
@@ -773,7 +797,8 @@
       },
       "rating": 4.9,
       "reviewCount": 6,
-      "purchasePrice": 160
+      "purchasePrice": 160,
+      "openingStock": 15
     },
     {
       "id": 25,
@@ -804,7 +829,8 @@
       },
       "rating": 4.6,
       "reviewCount": 7,
-      "purchasePrice": 193
+      "purchasePrice": 193,
+      "openingStock": 20
     },
     {
       "id": 26,
@@ -835,7 +861,8 @@
       },
       "rating": 4.7,
       "reviewCount": 8,
-      "purchasePrice": 88
+      "purchasePrice": 88,
+      "openingStock": 22
     },
     {
       "id": 27,
@@ -868,7 +895,8 @@
       },
       "rating": 4.8,
       "reviewCount": 9,
-      "purchasePrice": 105
+      "purchasePrice": 105,
+      "openingStock": 25
     },
     {
       "id": 28,
@@ -900,7 +928,8 @@
       },
       "rating": 4.8,
       "reviewCount": 3,
-      "purchasePrice": 121
+      "purchasePrice": 121,
+      "openingStock": 20
     },
     {
       "id": 29,
@@ -932,7 +961,8 @@
       },
       "rating": 4.9,
       "reviewCount": 4,
-      "purchasePrice": 116
+      "purchasePrice": 116,
+      "openingStock": 18
     },
     {
       "id": 30,
@@ -965,7 +995,8 @@
       },
       "rating": 4.6,
       "reviewCount": 5,
-      "purchasePrice": 138
+      "purchasePrice": 138,
+      "openingStock": 16
     },
     {
       "id": 31,
@@ -997,7 +1028,8 @@
       },
       "rating": 4.7,
       "reviewCount": 6,
-      "purchasePrice": 127
+      "purchasePrice": 127,
+      "openingStock": 24
     },
     {
       "id": 32,
@@ -1029,7 +1061,8 @@
       },
       "rating": 4.8,
       "reviewCount": 7,
-      "purchasePrice": 77
+      "purchasePrice": 77,
+      "openingStock": 30
     },
     {
       "id": 33,
@@ -1061,7 +1094,8 @@
       },
       "rating": 4.8,
       "reviewCount": 8,
-      "purchasePrice": 99
+      "purchasePrice": 99,
+      "openingStock": 25
     },
     {
       "id": 34,
@@ -1094,7 +1128,8 @@
       },
       "rating": 4.9,
       "reviewCount": 9,
-      "purchasePrice": 116
+      "purchasePrice": 116,
+      "openingStock": 28
     },
     {
       "id": 35,
@@ -1126,7 +1161,8 @@
       },
       "rating": 4.6,
       "reviewCount": 3,
-      "purchasePrice": 105
+      "purchasePrice": 105,
+      "openingStock": 35
     },
     {
       "id": 36,
@@ -1160,7 +1196,8 @@
       },
       "rating": 4.7,
       "reviewCount": 4,
-      "purchasePrice": 83
+      "purchasePrice": 83,
+      "openingStock": 30
     },
     {
       "id": 37,
@@ -1192,7 +1229,8 @@
       },
       "rating": 4.8,
       "reviewCount": 5,
-      "purchasePrice": 94
+      "purchasePrice": 94,
+      "openingStock": 20
     },
     {
       "id": 38,
@@ -1225,7 +1263,8 @@
       },
       "rating": 4.8,
       "reviewCount": 6,
-      "purchasePrice": 132
+      "purchasePrice": 132,
+      "openingStock": 18
     },
     {
       "id": 39,
@@ -1258,7 +1297,8 @@
       },
       "rating": 4.9,
       "reviewCount": 7,
-      "purchasePrice": 143
+      "purchasePrice": 143,
+      "openingStock": 24
     },
     {
       "id": 40,
@@ -1290,7 +1330,8 @@
       },
       "rating": 4.6,
       "reviewCount": 8,
-      "purchasePrice": 77
+      "purchasePrice": 77,
+      "openingStock": 26
     },
     {
       "id": 41,
@@ -1323,7 +1364,8 @@
       },
       "rating": 4.7,
       "reviewCount": 9,
-      "purchasePrice": 88
+      "purchasePrice": 88,
+      "openingStock": 18
     },
     {
       "id": 42,
@@ -1356,7 +1398,8 @@
       },
       "rating": 4.8,
       "reviewCount": 3,
-      "purchasePrice": 105
+      "purchasePrice": 105,
+      "openingStock": 20
     },
     {
       "id": 43,
@@ -1389,7 +1432,8 @@
       },
       "rating": 4.8,
       "reviewCount": 4,
-      "purchasePrice": 127
+      "purchasePrice": 127,
+      "openingStock": 16
     },
     {
       "id": 44,
@@ -1421,7 +1465,8 @@
       },
       "rating": 4.9,
       "reviewCount": 5,
-      "purchasePrice": 61
+      "purchasePrice": 61,
+      "openingStock": 40
     },
     {
       "id": 45,
@@ -1453,7 +1498,8 @@
       },
       "rating": 4.6,
       "reviewCount": 6,
-      "purchasePrice": 105
+      "purchasePrice": 105,
+      "openingStock": 18
     },
     {
       "id": 46,
@@ -1486,7 +1532,8 @@
       },
       "rating": 4.7,
       "reviewCount": 7,
-      "purchasePrice": 187
+      "purchasePrice": 187,
+      "openingStock": 10
     },
     {
       "id": 47,
@@ -1518,7 +1565,8 @@
       },
       "rating": 4.8,
       "reviewCount": 8,
-      "purchasePrice": 61
+      "purchasePrice": 61,
+      "openingStock": 35
     },
     {
       "id": 48,
@@ -1551,7 +1599,8 @@
       },
       "rating": 4.8,
       "reviewCount": 9,
-      "purchasePrice": 99
+      "purchasePrice": 99,
+      "openingStock": 18
     },
     {
       "id": 49,
@@ -1583,7 +1632,8 @@
       },
       "rating": 4.9,
       "reviewCount": 3,
-      "purchasePrice": 116
+      "purchasePrice": 116,
+      "openingStock": 15
     },
     {
       "id": 50,
@@ -1615,7 +1665,8 @@
       },
       "rating": 4.6,
       "reviewCount": 4,
-      "purchasePrice": 50
+      "purchasePrice": 50,
+      "openingStock": 40
     },
     {
       "id": 51,
@@ -1648,7 +1699,8 @@
       },
       "rating": 4.7,
       "reviewCount": 5,
-      "purchasePrice": 99
+      "purchasePrice": 99,
+      "openingStock": 25
     },
     {
       "id": 52,
@@ -1683,7 +1735,8 @@
       },
       "rating": 4.8,
       "reviewCount": 6,
-      "purchasePrice": 105
+      "purchasePrice": 105,
+      "openingStock": 28
     },
     {
       "id": 53,
@@ -1715,7 +1768,8 @@
       },
       "rating": 4.8,
       "reviewCount": 7,
-      "purchasePrice": 110
+      "purchasePrice": 110,
+      "openingStock": 18
     },
     {
       "id": 54,
@@ -1747,7 +1801,8 @@
       },
       "rating": 4.9,
       "reviewCount": 8,
-      "purchasePrice": 94
+      "purchasePrice": 94,
+      "openingStock": 22
     },
     {
       "id": 55,
@@ -1779,7 +1834,8 @@
       },
       "rating": 4.6,
       "reviewCount": 9,
-      "purchasePrice": 116
+      "purchasePrice": 116,
+      "openingStock": 16
     },
     {
       "id": 56,
@@ -1812,7 +1868,8 @@
       },
       "rating": 4.7,
       "reviewCount": 3,
-      "purchasePrice": 55
+      "purchasePrice": 55,
+      "openingStock": 35
     },
     {
       "id": 57,
@@ -1844,7 +1901,8 @@
       },
       "rating": 4.8,
       "reviewCount": 4,
-      "purchasePrice": 77
+      "purchasePrice": 77,
+      "openingStock": 20
     },
     {
       "id": 58,
@@ -1876,7 +1934,8 @@
       },
       "rating": 4.8,
       "reviewCount": 5,
-      "purchasePrice": 176
+      "purchasePrice": 176,
+      "openingStock": 10
     },
     {
       "id": 59,
@@ -1908,7 +1967,8 @@
       },
       "rating": 4.9,
       "reviewCount": 6,
-      "purchasePrice": 154
+      "purchasePrice": 154,
+      "openingStock": 14
     },
     {
       "id": 60,
@@ -1941,7 +2001,8 @@
       },
       "rating": 4.6,
       "reviewCount": 7,
-      "purchasePrice": 83
+      "purchasePrice": 83,
+      "openingStock": 25
     },
     {
       "id": 61,
@@ -1973,7 +2034,8 @@
       },
       "rating": 4.7,
       "reviewCount": 8,
-      "purchasePrice": 94
+      "purchasePrice": 94,
+      "openingStock": 24
     },
     {
       "id": 62,
@@ -2006,7 +2068,8 @@
       },
       "rating": 4.8,
       "reviewCount": 9,
-      "purchasePrice": 121
+      "purchasePrice": 121,
+      "openingStock": 14
     },
     {
       "id": 63,
@@ -2038,7 +2101,8 @@
       },
       "rating": 4.8,
       "reviewCount": 3,
-      "purchasePrice": 88
+      "purchasePrice": 88,
+      "openingStock": 20
     },
     {
       "id": 64,
@@ -2070,7 +2134,8 @@
       },
       "rating": 4.9,
       "reviewCount": 4,
-      "purchasePrice": 143
+      "purchasePrice": 143,
+      "openingStock": 15
     },
     {
       "id": 65,
@@ -2102,7 +2167,8 @@
       },
       "rating": 4.6,
       "reviewCount": 5,
-      "purchasePrice": 171
+      "purchasePrice": 171,
+      "openingStock": 12
     },
     {
       "id": 66,
@@ -2134,7 +2200,8 @@
       },
       "rating": 4.7,
       "reviewCount": 6,
-      "purchasePrice": 105
+      "purchasePrice": 105,
+      "openingStock": 22
     },
     {
       "id": 67,
@@ -2166,7 +2233,8 @@
       },
       "rating": 4.8,
       "reviewCount": 7,
-      "purchasePrice": 154
+      "purchasePrice": 154,
+      "openingStock": 12
     },
     {
       "id": 68,
@@ -2201,7 +2269,8 @@
       },
       "rating": 4.8,
       "reviewCount": 8,
-      "purchasePrice": 105
+      "purchasePrice": 105,
+      "openingStock": 35
     },
     {
       "id": 69,
@@ -2234,7 +2303,8 @@
       },
       "rating": 4.9,
       "reviewCount": 9,
-      "purchasePrice": 83
+      "purchasePrice": 83,
+      "openingStock": 40
     },
     {
       "id": 70,
@@ -2266,7 +2336,8 @@
       },
       "rating": 4.6,
       "reviewCount": 3,
-      "purchasePrice": 138
+      "purchasePrice": 138,
+      "openingStock": 18
     },
     {
       "id": 71,
@@ -2298,7 +2369,8 @@
       },
       "rating": 4.7,
       "reviewCount": 4,
-      "purchasePrice": 171
+      "purchasePrice": 171,
+      "openingStock": 12
     },
     {
       "id": 72,
@@ -2331,7 +2403,8 @@
       },
       "rating": 4.8,
       "reviewCount": 5,
-      "purchasePrice": 154
+      "purchasePrice": 154,
+      "openingStock": 15
     },
     {
       "id": 73,
@@ -2363,7 +2436,8 @@
       },
       "rating": 4.8,
       "reviewCount": 6,
-      "purchasePrice": 66
+      "purchasePrice": 66,
+      "openingStock": 25
     },
     {
       "id": 74,
@@ -2395,7 +2469,8 @@
       },
       "rating": 4.9,
       "reviewCount": 7,
-      "purchasePrice": 33
+      "purchasePrice": 33,
+      "openingStock": 50
     },
     {
       "id": 75,
@@ -2428,7 +2503,8 @@
       },
       "rating": 4.6,
       "reviewCount": 8,
-      "purchasePrice": 121
+      "purchasePrice": 121,
+      "openingStock": 15
     },
     {
       "id": 76,
@@ -2460,7 +2536,8 @@
       },
       "rating": 4.7,
       "reviewCount": 9,
-      "purchasePrice": 77
+      "purchasePrice": 77,
+      "openingStock": 30
     },
     {
       "id": 77,
@@ -2492,7 +2569,8 @@
       },
       "rating": 4.8,
       "reviewCount": 3,
-      "purchasePrice": 143
+      "purchasePrice": 143,
+      "openingStock": 12
     },
     {
       "id": 78,
@@ -2526,7 +2604,8 @@
       },
       "rating": 4.8,
       "reviewCount": 4,
-      "purchasePrice": 138
+      "purchasePrice": 138,
+      "openingStock": 14
     },
     {
       "id": 79,
@@ -2558,7 +2637,8 @@
       },
       "rating": 4.9,
       "reviewCount": 5,
-      "purchasePrice": 105
+      "purchasePrice": 105,
+      "openingStock": 22
     },
     {
       "id": 80,
@@ -2590,7 +2670,8 @@
       },
       "rating": 4.6,
       "reviewCount": 6,
-      "purchasePrice": 72
+      "purchasePrice": 72,
+      "openingStock": 25
     },
     {
       "id": 81,
@@ -2622,7 +2703,8 @@
       },
       "rating": 4.7,
       "reviewCount": 7,
-      "purchasePrice": 66
+      "purchasePrice": 66,
+      "openingStock": 35
     },
     {
       "id": 82,
@@ -2654,7 +2736,8 @@
       },
       "rating": 4.8,
       "reviewCount": 8,
-      "purchasePrice": 61
+      "purchasePrice": 61,
+      "openingStock": 20
     },
     {
       "id": 83,
@@ -2686,7 +2769,8 @@
       },
       "rating": 4.8,
       "reviewCount": 9,
-      "purchasePrice": 55
+      "purchasePrice": 55,
+      "openingStock": 30
     },
     {
       "id": 84,
@@ -2719,7 +2803,8 @@
       },
       "rating": 4.9,
       "reviewCount": 3,
-      "purchasePrice": 83
+      "purchasePrice": 83,
+      "openingStock": 25
     },
     {
       "id": 85,
@@ -2748,7 +2833,8 @@
       },
       "rating": 4.6,
       "reviewCount": 4,
-      "purchasePrice": 319
+      "purchasePrice": 319,
+      "openingStock": 24
     },
     {
       "id": 86,
@@ -2777,7 +2863,8 @@
       },
       "rating": 4.7,
       "reviewCount": 5,
-      "purchasePrice": 231
+      "purchasePrice": 231,
+      "openingStock": 18
     }
   ],
   "orders": [
@@ -2900,6 +2987,30 @@
   ],
   "inquiries": [],
   "logs": [
+    {
+      "t": 1794647125342,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794647112231,
+      "user": "owner",
+      "action": "completed POS sale #PP-INV-7003 (₹126) for Walk-in Customer",
+      "ip": "::1"
+    },
+    {
+      "t": 1794647112181,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794646899023,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
     {
       "t": 1794645109777,
       "user": "owner",
@@ -3706,6 +3817,27 @@
   ],
   "inventoryLogs": [
     {
+      "id": 98,
+      "productId": 1,
+      "productName": "Cherry Barb",
+      "sku": "PP-FIS-001",
+      "transactionType": "sale",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "change": -1,
+      "previousStock": 21,
+      "newStock": 20,
+      "referenceNumber": "PP-INV-7003",
+      "transactionDate": "2026-11-14T09:05:12.226Z",
+      "createdBy": "owner",
+      "notes": "POS Counter Sale #PP-INV-7003",
+      "batchNumber": null,
+      "type": "sale",
+      "reason": "POS Counter Sale #PP-INV-7003",
+      "performedBy": "owner",
+      "timestamp": 1794647112226
+    },
+    {
       "id": 97,
       "productId": 1,
       "productName": "Cherry Barb",
@@ -3715,7 +3847,15 @@
       "type": "pos_sale",
       "reason": "POS Counter Sale #PP-INV-7002",
       "performedBy": "owner",
-      "timestamp": 1794645109775
+      "timestamp": 1794645109775,
+      "transactionType": "sale",
+      "quantityIn": 0,
+      "quantityOut": 2,
+      "referenceNumber": "PP-INV-7002",
+      "transactionDate": "2026-11-14T08:31:49.775Z",
+      "createdBy": "owner",
+      "notes": "POS Counter Sale #PP-INV-7002",
+      "sku": "PP-FIS-001"
     },
     {
       "id": 96,
@@ -3726,7 +3866,15 @@
       "newStock": 9,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471347940
+      "timestamp": 1794471347940,
+      "transactionType": "adjustment",
+      "quantityIn": 5,
+      "quantityOut": 0,
+      "referenceNumber": "REF-96",
+      "transactionDate": "2026-11-12T08:15:47.940Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 95,
@@ -3737,7 +3885,15 @@
       "newStock": 4,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471346472
+      "timestamp": 1794471346472,
+      "transactionType": "adjustment",
+      "quantityIn": 1,
+      "quantityOut": 0,
+      "referenceNumber": "REF-95",
+      "transactionDate": "2026-11-12T08:15:46.472Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 94,
@@ -3748,7 +3904,15 @@
       "newStock": 3,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471339525
+      "timestamp": 1794471339525,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-94",
+      "transactionDate": "2026-11-12T08:15:39.525Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 93,
@@ -3759,7 +3923,15 @@
       "newStock": 4,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471335813
+      "timestamp": 1794471335813,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-93",
+      "transactionDate": "2026-11-12T08:15:35.813Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 92,
@@ -3770,7 +3942,15 @@
       "newStock": 5,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471335605
+      "timestamp": 1794471335605,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-92",
+      "transactionDate": "2026-11-12T08:15:35.605Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 91,
@@ -3781,7 +3961,15 @@
       "newStock": 6,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471334813
+      "timestamp": 1794471334813,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-91",
+      "transactionDate": "2026-11-12T08:15:34.813Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 90,
@@ -3792,7 +3980,15 @@
       "newStock": 7,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471334597
+      "timestamp": 1794471334597,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-90",
+      "transactionDate": "2026-11-12T08:15:34.597Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 89,
@@ -3803,7 +3999,15 @@
       "newStock": 8,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471334397
+      "timestamp": 1794471334397,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-89",
+      "transactionDate": "2026-11-12T08:15:34.397Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 88,
@@ -3814,7 +4018,15 @@
       "newStock": 9,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471334213
+      "timestamp": 1794471334213,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-88",
+      "transactionDate": "2026-11-12T08:15:34.213Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 87,
@@ -3825,7 +4037,15 @@
       "newStock": 10,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471334021
+      "timestamp": 1794471334021,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-87",
+      "transactionDate": "2026-11-12T08:15:34.021Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 86,
@@ -3836,7 +4056,15 @@
       "newStock": 11,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471333821
+      "timestamp": 1794471333821,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-86",
+      "transactionDate": "2026-11-12T08:15:33.821Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 85,
@@ -3847,7 +4075,15 @@
       "newStock": 12,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471333637
+      "timestamp": 1794471333637,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-85",
+      "transactionDate": "2026-11-12T08:15:33.637Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 84,
@@ -3858,7 +4094,15 @@
       "newStock": 13,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471333421
+      "timestamp": 1794471333421,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-84",
+      "transactionDate": "2026-11-12T08:15:33.421Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 83,
@@ -3869,7 +4113,15 @@
       "newStock": 14,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471333237
+      "timestamp": 1794471333237,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-83",
+      "transactionDate": "2026-11-12T08:15:33.237Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 82,
@@ -3880,7 +4132,15 @@
       "newStock": 15,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471333021
+      "timestamp": 1794471333021,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 8,
+      "referenceNumber": "REF-82",
+      "transactionDate": "2026-11-12T08:15:33.021Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 81,
@@ -3891,7 +4151,15 @@
       "newStock": 23,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471332365
+      "timestamp": 1794471332365,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-81",
+      "transactionDate": "2026-11-12T08:15:32.365Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 80,
@@ -3902,7 +4170,15 @@
       "newStock": 24,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471332181
+      "timestamp": 1794471332181,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-80",
+      "transactionDate": "2026-11-12T08:15:32.181Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 79,
@@ -3913,7 +4189,15 @@
       "newStock": 25,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471331999
+      "timestamp": 1794471331999,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-79",
+      "transactionDate": "2026-11-12T08:15:31.999Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 78,
@@ -3924,7 +4208,15 @@
       "newStock": 26,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471331797
+      "timestamp": 1794471331797,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-78",
+      "transactionDate": "2026-11-12T08:15:31.797Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 77,
@@ -3935,7 +4227,15 @@
       "newStock": 27,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471331622
+      "timestamp": 1794471331622,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-77",
+      "transactionDate": "2026-11-12T08:15:31.622Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 76,
@@ -3946,7 +4246,15 @@
       "newStock": 28,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471331416
+      "timestamp": 1794471331416,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 2,
+      "referenceNumber": "REF-76",
+      "transactionDate": "2026-11-12T08:15:31.416Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 75,
@@ -3957,7 +4265,15 @@
       "newStock": 30,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471331093
+      "timestamp": 1794471331093,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-75",
+      "transactionDate": "2026-11-12T08:15:31.093Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 74,
@@ -3968,7 +4284,15 @@
       "newStock": 31,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471330901
+      "timestamp": 1794471330901,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-74",
+      "transactionDate": "2026-11-12T08:15:30.901Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 73,
@@ -3979,7 +4303,15 @@
       "newStock": 32,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471330717
+      "timestamp": 1794471330717,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-73",
+      "transactionDate": "2026-11-12T08:15:30.717Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 72,
@@ -3990,7 +4322,15 @@
       "newStock": 33,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471330541
+      "timestamp": 1794471330541,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-72",
+      "transactionDate": "2026-11-12T08:15:30.541Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 71,
@@ -4001,7 +4341,15 @@
       "newStock": 34,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471330357
+      "timestamp": 1794471330357,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-71",
+      "transactionDate": "2026-11-12T08:15:30.357Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 70,
@@ -4012,7 +4360,15 @@
       "newStock": 35,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471330213
+      "timestamp": 1794471330213,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-70",
+      "transactionDate": "2026-11-12T08:15:30.213Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 69,
@@ -4023,7 +4379,15 @@
       "newStock": 36,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471330006
+      "timestamp": 1794471330006,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-69",
+      "transactionDate": "2026-11-12T08:15:30.006Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 68,
@@ -4034,7 +4398,15 @@
       "newStock": 37,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471329840
+      "timestamp": 1794471329840,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-68",
+      "transactionDate": "2026-11-12T08:15:29.840Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-FIS-005"
     },
     {
       "id": 67,
@@ -4045,7 +4417,15 @@
       "newStock": 3,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471324613
+      "timestamp": 1794471324613,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-67",
+      "transactionDate": "2026-11-12T08:15:24.613Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 66,
@@ -4056,7 +4436,15 @@
       "newStock": 4,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471324373
+      "timestamp": 1794471324373,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-66",
+      "transactionDate": "2026-11-12T08:15:24.373Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 65,
@@ -4067,7 +4455,15 @@
       "newStock": 5,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471324158
+      "timestamp": 1794471324158,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-65",
+      "transactionDate": "2026-11-12T08:15:24.158Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 64,
@@ -4078,7 +4474,15 @@
       "newStock": 6,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471323973
+      "timestamp": 1794471323973,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-64",
+      "transactionDate": "2026-11-12T08:15:23.973Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 63,
@@ -4089,7 +4493,15 @@
       "newStock": 7,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471323784
+      "timestamp": 1794471323784,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-63",
+      "transactionDate": "2026-11-12T08:15:23.784Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 62,
@@ -4100,7 +4512,15 @@
       "newStock": 8,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471323584
+      "timestamp": 1794471323584,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-62",
+      "transactionDate": "2026-11-12T08:15:23.584Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 61,
@@ -4111,7 +4531,15 @@
       "newStock": 9,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471323367
+      "timestamp": 1794471323367,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-61",
+      "transactionDate": "2026-11-12T08:15:23.367Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 60,
@@ -4122,7 +4550,15 @@
       "newStock": 10,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471323125
+      "timestamp": 1794471323125,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-60",
+      "transactionDate": "2026-11-12T08:15:23.125Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 59,
@@ -4133,7 +4569,15 @@
       "newStock": 11,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471322733
+      "timestamp": 1794471322733,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-59",
+      "transactionDate": "2026-11-12T08:15:22.733Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 58,
@@ -4144,7 +4588,15 @@
       "newStock": 12,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471322533
+      "timestamp": 1794471322533,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-58",
+      "transactionDate": "2026-11-12T08:15:22.533Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 57,
@@ -4155,7 +4607,15 @@
       "newStock": 13,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471322333
+      "timestamp": 1794471322333,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-57",
+      "transactionDate": "2026-11-12T08:15:22.333Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 56,
@@ -4166,7 +4626,15 @@
       "newStock": 14,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471321800
+      "timestamp": 1794471321800,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-56",
+      "transactionDate": "2026-11-12T08:15:21.800Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 55,
@@ -4177,7 +4645,15 @@
       "newStock": 15,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471321621
+      "timestamp": 1794471321621,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-55",
+      "transactionDate": "2026-11-12T08:15:21.621Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 54,
@@ -4188,7 +4664,15 @@
       "newStock": 16,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471321465
+      "timestamp": 1794471321465,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-54",
+      "transactionDate": "2026-11-12T08:15:21.465Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 53,
@@ -4199,7 +4683,15 @@
       "newStock": 17,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471321318
+      "timestamp": 1794471321318,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-53",
+      "transactionDate": "2026-11-12T08:15:21.318Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 52,
@@ -4210,7 +4702,15 @@
       "newStock": 18,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471321174
+      "timestamp": 1794471321174,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-52",
+      "transactionDate": "2026-11-12T08:15:21.174Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 51,
@@ -4221,7 +4721,15 @@
       "newStock": 19,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471321013
+      "timestamp": 1794471321013,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-51",
+      "transactionDate": "2026-11-12T08:15:21.013Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 50,
@@ -4232,7 +4740,15 @@
       "newStock": 20,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471320837
+      "timestamp": 1794471320837,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-50",
+      "transactionDate": "2026-11-12T08:15:20.837Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 49,
@@ -4243,7 +4759,15 @@
       "newStock": 21,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471320683
+      "timestamp": 1794471320683,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-49",
+      "transactionDate": "2026-11-12T08:15:20.683Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 48,
@@ -4254,7 +4778,15 @@
       "newStock": 22,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471320501
+      "timestamp": 1794471320501,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-48",
+      "transactionDate": "2026-11-12T08:15:20.501Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 47,
@@ -4265,7 +4797,15 @@
       "newStock": 23,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471319421
+      "timestamp": 1794471319421,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-47",
+      "transactionDate": "2026-11-12T08:15:19.421Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 46,
@@ -4276,7 +4816,15 @@
       "newStock": 24,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471319230
+      "timestamp": 1794471319230,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-46",
+      "transactionDate": "2026-11-12T08:15:19.230Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 45,
@@ -4287,7 +4835,15 @@
       "newStock": 25,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471319037
+      "timestamp": 1794471319037,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-45",
+      "transactionDate": "2026-11-12T08:15:19.037Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 44,
@@ -4298,7 +4854,15 @@
       "newStock": 26,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471318733
+      "timestamp": 1794471318733,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-44",
+      "transactionDate": "2026-11-12T08:15:18.733Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 43,
@@ -4309,7 +4873,15 @@
       "newStock": 27,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471318127
+      "timestamp": 1794471318127,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-43",
+      "transactionDate": "2026-11-12T08:15:18.127Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 42,
@@ -4320,7 +4892,15 @@
       "newStock": 28,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471316845
+      "timestamp": 1794471316845,
+      "transactionType": "adjustment",
+      "quantityIn": 5,
+      "quantityOut": 0,
+      "referenceNumber": "REF-42",
+      "transactionDate": "2026-11-12T08:15:16.845Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-004"
     },
     {
       "id": 41,
@@ -4331,7 +4911,15 @@
       "newStock": 34,
       "reason": "Quick adjustment in admin",
       "performedBy": "owner",
-      "timestamp": 1794471315118
+      "timestamp": 1794471315118,
+      "transactionType": "adjustment",
+      "quantityIn": 5,
+      "quantityOut": 0,
+      "referenceNumber": "REF-41",
+      "transactionDate": "2026-11-12T08:15:15.118Z",
+      "createdBy": "owner",
+      "notes": "Quick adjustment in admin",
+      "sku": "PP-FIS-003"
     },
     {
       "id": 40,
@@ -4342,7 +4930,15 @@
       "newStock": 0,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471292796
+      "timestamp": 1794471292796,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 2,
+      "referenceNumber": "REF-40",
+      "transactionDate": "2026-11-12T08:14:52.796Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 39,
@@ -4353,7 +4949,15 @@
       "newStock": 2,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471292444
+      "timestamp": 1794471292444,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-39",
+      "transactionDate": "2026-11-12T08:14:52.444Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 38,
@@ -4364,7 +4968,15 @@
       "newStock": 3,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471292253
+      "timestamp": 1794471292253,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-38",
+      "transactionDate": "2026-11-12T08:14:52.253Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 37,
@@ -4375,7 +4987,15 @@
       "newStock": 4,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471287765
+      "timestamp": 1794471287765,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-37",
+      "transactionDate": "2026-11-12T08:14:47.765Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 36,
@@ -4386,7 +5006,15 @@
       "newStock": 5,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471287597
+      "timestamp": 1794471287597,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-36",
+      "transactionDate": "2026-11-12T08:14:47.597Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 35,
@@ -4397,7 +5025,15 @@
       "newStock": 6,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471287421
+      "timestamp": 1794471287421,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-35",
+      "transactionDate": "2026-11-12T08:14:47.421Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 34,
@@ -4408,7 +5044,15 @@
       "newStock": 7,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471276568
+      "timestamp": 1794471276568,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-34",
+      "transactionDate": "2026-11-12T08:14:36.568Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 33,
@@ -4419,7 +5063,15 @@
       "newStock": 8,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471276407
+      "timestamp": 1794471276407,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-33",
+      "transactionDate": "2026-11-12T08:14:36.407Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 32,
@@ -4430,7 +5082,15 @@
       "newStock": 9,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471276230
+      "timestamp": 1794471276230,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-32",
+      "transactionDate": "2026-11-12T08:14:36.230Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 31,
@@ -4441,7 +5101,15 @@
       "newStock": 10,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471276224
+      "timestamp": 1794471276224,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 2,
+      "referenceNumber": "REF-31",
+      "transactionDate": "2026-11-12T08:14:36.224Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 30,
@@ -4452,7 +5120,15 @@
       "newStock": 12,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471275794
+      "timestamp": 1794471275794,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-30",
+      "transactionDate": "2026-11-12T08:14:35.794Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 29,
@@ -4463,7 +5139,15 @@
       "newStock": 13,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471275551
+      "timestamp": 1794471275551,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-29",
+      "transactionDate": "2026-11-12T08:14:35.551Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 28,
@@ -4474,7 +5158,15 @@
       "newStock": 14,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471275424
+      "timestamp": 1794471275424,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-28",
+      "transactionDate": "2026-11-12T08:14:35.424Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 27,
@@ -4485,7 +5177,15 @@
       "newStock": 15,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471275330
+      "timestamp": 1794471275330,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-27",
+      "transactionDate": "2026-11-12T08:14:35.330Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 26,
@@ -4496,7 +5196,15 @@
       "newStock": 16,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471274753
+      "timestamp": 1794471274753,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-26",
+      "transactionDate": "2026-11-12T08:14:34.753Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 25,
@@ -4507,7 +5215,15 @@
       "newStock": 17,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471274656
+      "timestamp": 1794471274656,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-25",
+      "transactionDate": "2026-11-12T08:14:34.656Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 24,
@@ -4518,7 +5234,15 @@
       "newStock": 18,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471274316
+      "timestamp": 1794471274316,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-24",
+      "transactionDate": "2026-11-12T08:14:34.316Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 23,
@@ -4529,7 +5253,15 @@
       "newStock": 19,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471274095
+      "timestamp": 1794471274095,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-23",
+      "transactionDate": "2026-11-12T08:14:34.095Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 22,
@@ -4540,7 +5272,15 @@
       "newStock": 20,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471273925
+      "timestamp": 1794471273925,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-22",
+      "transactionDate": "2026-11-12T08:14:33.925Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 21,
@@ -4551,7 +5291,15 @@
       "newStock": 21,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471273855
+      "timestamp": 1794471273855,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-21",
+      "transactionDate": "2026-11-12T08:14:33.855Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 20,
@@ -4562,7 +5310,15 @@
       "newStock": 22,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471273626
+      "timestamp": 1794471273626,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-20",
+      "transactionDate": "2026-11-12T08:14:33.626Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 19,
@@ -4573,7 +5329,15 @@
       "newStock": 23,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471273610
+      "timestamp": 1794471273610,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-19",
+      "transactionDate": "2026-11-12T08:14:33.610Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 18,
@@ -4584,7 +5348,15 @@
       "newStock": 24,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471273599
+      "timestamp": 1794471273599,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-18",
+      "transactionDate": "2026-11-12T08:14:33.599Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 17,
@@ -4595,7 +5367,15 @@
       "newStock": 25,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471273583
+      "timestamp": 1794471273583,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 2,
+      "referenceNumber": "REF-17",
+      "transactionDate": "2026-11-12T08:14:33.583Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 16,
@@ -4606,7 +5386,15 @@
       "newStock": 27,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471272937
+      "timestamp": 1794471272937,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-16",
+      "transactionDate": "2026-11-12T08:14:32.937Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 15,
@@ -4617,7 +5405,15 @@
       "newStock": 28,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471272517
+      "timestamp": 1794471272517,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-15",
+      "transactionDate": "2026-11-12T08:14:32.517Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 14,
@@ -4628,7 +5424,15 @@
       "newStock": 29,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471272341
+      "timestamp": 1794471272341,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-14",
+      "transactionDate": "2026-11-12T08:14:32.341Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 13,
@@ -4639,7 +5443,15 @@
       "newStock": 30,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471272182
+      "timestamp": 1794471272182,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-13",
+      "transactionDate": "2026-11-12T08:14:32.182Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 12,
@@ -4650,7 +5462,15 @@
       "newStock": 31,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471272031
+      "timestamp": 1794471272031,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-12",
+      "transactionDate": "2026-11-12T08:14:32.031Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 11,
@@ -4661,7 +5481,15 @@
       "newStock": 32,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471271965
+      "timestamp": 1794471271965,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-11",
+      "transactionDate": "2026-11-12T08:14:31.965Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 10,
@@ -4672,7 +5500,15 @@
       "newStock": 33,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471271950
+      "timestamp": 1794471271950,
+      "transactionType": "damage",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "REF-10",
+      "transactionDate": "2026-11-12T08:14:31.950Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 9,
@@ -4683,7 +5519,15 @@
       "newStock": 34,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471271352
+      "timestamp": 1794471271352,
+      "transactionType": "adjustment",
+      "quantityIn": 1,
+      "quantityOut": 0,
+      "referenceNumber": "REF-9",
+      "transactionDate": "2026-11-12T08:14:31.352Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 8,
@@ -4694,7 +5538,15 @@
       "newStock": 33,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471270663
+      "timestamp": 1794471270663,
+      "transactionType": "adjustment",
+      "quantityIn": 1,
+      "quantityOut": 0,
+      "referenceNumber": "REF-8",
+      "transactionDate": "2026-11-12T08:14:30.663Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 7,
@@ -4705,7 +5557,15 @@
       "newStock": 32,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471270582
+      "timestamp": 1794471270582,
+      "transactionType": "adjustment",
+      "quantityIn": 1,
+      "quantityOut": 0,
+      "referenceNumber": "REF-7",
+      "transactionDate": "2026-11-12T08:14:30.582Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 6,
@@ -4716,7 +5576,15 @@
       "newStock": 31,
       "reason": "Manual override in admin",
       "performedBy": "owner",
-      "timestamp": 1794471270329
+      "timestamp": 1794471270329,
+      "transactionType": "adjustment",
+      "quantityIn": 1,
+      "quantityOut": 0,
+      "referenceNumber": "REF-6",
+      "transactionDate": "2026-11-12T08:14:30.329Z",
+      "createdBy": "owner",
+      "notes": "Manual override in admin",
+      "sku": "PP-AQU-032"
     },
     {
       "id": 5,
@@ -4727,7 +5595,15 @@
       "newStock": 20,
       "reason": "Order #checkout purchase",
       "performedBy": "system",
-      "timestamp": 1794462223526
+      "timestamp": 1794462223526,
+      "transactionType": "sale",
+      "quantityIn": 0,
+      "quantityOut": 2,
+      "referenceNumber": "checkout",
+      "transactionDate": "2026-11-12T05:43:43.526Z",
+      "createdBy": "system",
+      "notes": "Order #checkout purchase",
+      "sku": "PP-AQU-041"
     },
     {
       "id": 4,
@@ -4738,7 +5614,15 @@
       "newStock": 20,
       "reason": "Order #checkout purchase",
       "performedBy": "system",
-      "timestamp": 1794461186428
+      "timestamp": 1794461186428,
+      "transactionType": "sale",
+      "quantityIn": 0,
+      "quantityOut": 2,
+      "referenceNumber": "checkout",
+      "transactionDate": "2026-11-12T05:26:26.428Z",
+      "createdBy": "system",
+      "notes": "Order #checkout purchase",
+      "sku": "PP-AQU-041"
     },
     {
       "id": 3,
@@ -4749,7 +5633,15 @@
       "newStock": 20,
       "reason": "Order #checkout purchase",
       "performedBy": "system",
-      "timestamp": 1794460932616
+      "timestamp": 1794460932616,
+      "transactionType": "sale",
+      "quantityIn": 0,
+      "quantityOut": 2,
+      "referenceNumber": "checkout",
+      "transactionDate": "2026-11-12T05:22:12.616Z",
+      "createdBy": "system",
+      "notes": "Order #checkout purchase",
+      "sku": "PP-AQU-041"
     },
     {
       "id": 1,
@@ -4760,7 +5652,15 @@
       "newStock": 23,
       "reason": "Order #1002 placed",
       "performedBy": "system",
-      "timestamp": 1794453248764
+      "timestamp": 1794453248764,
+      "transactionType": "sale",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "referenceNumber": "1002",
+      "transactionDate": "2026-11-12T03:14:08.764Z",
+      "createdBy": "system",
+      "notes": "Order #1002 placed",
+      "sku": "PP-FIS-001"
     },
     {
       "id": 2,
@@ -4771,7 +5671,15 @@
       "newStock": 22,
       "reason": "Fresh nursery shipment received",
       "performedBy": "owner",
-      "timestamp": 1794374048764
+      "timestamp": 1794374048764,
+      "transactionType": "adjustment",
+      "quantityIn": 10,
+      "quantityOut": 0,
+      "referenceNumber": "REF-2",
+      "transactionDate": "2026-11-11T05:14:08.764Z",
+      "createdBy": "owner",
+      "notes": "Fresh nursery shipment received",
+      "sku": "PP-AQU-041"
     }
   ],
   "reviews": [
@@ -4876,20 +5784,34 @@
     ]
   },
   "settings": {
+    "id": 1,
+    "business_name": "Pairaplants",
     "storeName": "Pairaplants",
     "brandTitle": "Paira Plants",
-    "tagline": "Aquatic Plants, Fishes & Gravels",
-    "email": "care@pairaplants.com",
+    "business_logo": "/images/hero-aquarium.jpg",
+    "business_address": "Pairaplants Studio, Aquatic Flora Hub, Kochi, Kerala, India",
+    "address": "Pairaplants Studio, Aquatic Flora Hub, Kochi, Kerala, India",
+    "phone_number": "+91 98765 43210",
     "phone": "+91 98765 43210",
+    "whatsapp_number": "919876543210",
     "whatsappNumber": "919876543210",
-    "address": "Pairaplants Studio, Aquatic Flora Hub, India",
-    "gstin": "32AAAAA0000A1Z5",
-    "invoicePrefix": "PP-INV-",
+    "email": "care@pairaplants.com",
+    "currency_code": "INR",
     "currency": "INR",
+    "currency_symbol": "₹",
     "currencySymbol": "₹",
+    "invoice_prefix": "PP-INV-",
+    "invoicePrefix": "PP-INV-",
+    "gstin": "32AAAAA0000A1Z5",
+    "tax_enabled": true,
+    "default_tax_rate": 5,
     "defaultTaxRate": 5,
+    "low_stock_default": 8,
     "lowStockDefault": 8,
+    "tagline": "Aquatic Plants, Fishes & Gravels",
     "freeShippingThreshold": 0,
+    "created_at": "2026-01-01T00:00:00.000Z",
+    "updated_at": "2026-11-14T08:56:00.240Z",
     "seo": {
       "metaTitle": "Pairaplants – Premium Aquatic Plants, Tropical Fishes & Aquascaping",
       "metaDescription": "Pairaplants provides premium, pest-free aquatic plants, quarantined fishes, dwarf shrimps, and planted aquarium substrates with 100% live arrival guarantee.",
@@ -5021,6 +5943,35 @@
   ],
   "posSales": [
     {
+      "id": 7003,
+      "invoiceNumber": "PP-INV-7003",
+      "customerId": null,
+      "customerName": "Walk-in Customer",
+      "customerPhone": "",
+      "date": "2026-11-14T09:05:12.226Z",
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Cherry Barb",
+          "sku": "PP-FIS-001",
+          "qty": 1,
+          "price": 120,
+          "discount": 0,
+          "total": 120
+        }
+      ],
+      "subtotal": 120,
+      "discount": 0,
+      "tax": 6,
+      "taxRate": 5,
+      "grandTotal": 126,
+      "paymentMethod": "Cash",
+      "paymentStatus": "completed",
+      "transactionRef": "",
+      "notes": "",
+      "createdBy": "owner"
+    },
+    {
       "id": 7002,
       "invoiceNumber": "PP-INV-7002",
       "customerId": null,
@@ -5085,6 +6036,40 @@
     }
   ],
   "invoices": [
+    {
+      "id": 9003,
+      "invoiceNumber": "PP-INV-7003",
+      "type": "pos",
+      "referenceId": 7003,
+      "date": "2026-11-14T09:05:12.226Z",
+      "customer": {
+        "name": "Walk-in Customer",
+        "phone": "",
+        "email": "",
+        "address": ""
+      },
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Cherry Barb",
+          "sku": "PP-FIS-001",
+          "qty": 1,
+          "price": 120,
+          "discount": 0,
+          "total": 120
+        }
+      ],
+      "subtotal": 120,
+      "discount": 0,
+      "tax": 6,
+      "taxRate": 5,
+      "grandTotal": 126,
+      "paymentMethod": "Cash",
+      "paymentStatus": "completed",
+      "transactionRef": "",
+      "gstin": "32AAAAA0000A1Z5",
+      "notes": "Thank you for choosing Paira Plants Botanical Studio."
+    },
     {
       "id": 9002,
       "invoiceNumber": "PP-INV-7002",
@@ -5160,6 +6145,20 @@
     }
   ],
   "payments": [
+    {
+      "id": 8004,
+      "paymentNumber": "PAY-2026-8004",
+      "date": "2026-11-14T09:05:12.226Z",
+      "type": "sale",
+      "referenceId": 7003,
+      "referenceNumber": "PP-INV-7003",
+      "customerName": "Walk-in Customer",
+      "amount": 126,
+      "method": "Cash",
+      "status": "completed",
+      "transactionRef": "",
+      "notes": "Counter checkout payment via Cash"
+    },
     {
       "id": 8003,
       "paymentNumber": "PAY-2026-8003",

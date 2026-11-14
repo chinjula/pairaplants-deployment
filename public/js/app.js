@@ -7,7 +7,33 @@
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const money = n => '₹' + Number(n || 0).toLocaleString('en-IN');
+const money = n => {
+  const sym = (storeSettings && (storeSettings.currency_symbol || storeSettings.currencySymbol)) || '₹';
+  return sym + Number(n || 0).toLocaleString('en-IN');
+};
+
+/* ==============================================================================
+   UNIVERSAL WHATSAPP LINK GENERATOR (Requirement 22)
+   Template: https://wa.me/{phone}?text={encoded_message}
+   Dynamic message: Hi, I am interested in {product_name} (SKU: {sku}) priced at {price}. Please share more details.
+   WhatsApp enquiries are customer leads ONLY - NEVER automatically decrease stock or create completed sales.
+   ============================================================================== */
+function getWhatsAppEnquiryUrl(p) {
+  const s = storeSettings || {};
+  const phone = (s.whatsapp_number || s.whatsappNumber || s.phone_number || s.phone || '919876543210').replace(/[^0-9]/g, '');
+  const sym = s.currency_symbol || s.currencySymbol || '₹';
+  const price = p.salePrice || p.price;
+  const msg = `Hi, I am interested in ${p.name} (SKU: ${p.sku || 'PP-' + p.id}) priced at ${sym}${price}. Please share more details.`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+}
+
+function getWhatsAppGeneralUrl(text = '') {
+  const s = storeSettings || {};
+  const phone = (s.whatsapp_number || s.whatsappNumber || s.phone_number || s.phone || '919876543210').replace(/[^0-9]/g, '');
+  const bizName = s.business_name || s.brandTitle || s.storeName || 'Pairaplants';
+  const msg = text || `Hello ${bizName}! I would like to inquire about your aquatic plants, fishes, and aquarium products.`;
+  return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+}
 const when = t => new Date(t).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 
 const CATS = ['Aquatic Plants & Mosses', 'Fish', 'Shrimps & Invertebrates', 'Substrates & Hardscape'];
@@ -44,6 +70,7 @@ const ADMIN_SECTIONS = [
   { id: 'suppliers', name: 'Suppliers', icon: '🏭', roles: ['superadmin', 'manager', 'inventory'] },
   { id: 'purchases', name: 'Purchases', icon: '📥', roles: ['superadmin', 'manager', 'inventory'] },
   { id: 'inventory', name: 'Stock Management', icon: '📦', roles: ['superadmin', 'manager', 'inventory', 'sales', 'support'] },
+  { id: 'stock-history', name: 'Stock History', icon: '📜', roles: ['superadmin', 'manager', 'inventory'] },
   { id: 'pos', name: 'Sales / POS', icon: '💳', roles: ['superadmin', 'manager', 'sales'] },
   { id: 'customers', name: 'Customers', icon: '👥', roles: ['superadmin', 'manager', 'sales', 'support'] },
   { id: 'orders', name: 'Website Orders', icon: '🛍️', roles: ['superadmin', 'manager', 'sales', 'support'] },
@@ -67,6 +94,10 @@ let posSelectedCustomer = null;
 let posCategoryFilter = 'All';
 let posSearchQuery = '';
 let reportsPeriod = 'all';
+let reportsTab = 'current-stock';
+let stockHistoryFilter = { product: '', type: 'all', search: '', startDate: '', endDate: '' };
+let salesReportFilter = { channel: 'all', paymentMethod: 'all', startDate: '', endDate: '' };
+let purchaseReportFilter = { supplierId: '', startDate: '', endDate: '' };
 let settingsTab = 'store';
 let stockTab = 'all';
 let customerUser = null;
@@ -135,7 +166,7 @@ function applyStoreSettings() {
   if (brandTitleEl && s.brandTitle) {
     brandTitleEl.innerHTML = esc(s.brandTitle);
   }
-  const rawWa = s.whatsapp || s.phone || '919876543210';
+  const rawWa = s.whatsapp_number || s.whatsappNumber || s.phone_number || s.phone || '919876543210';
   const waClean = rawWa.replace(/[^0-9]/g, '');
   const waLink = `https://wa.me/${waClean}?text=Hello%20Pairaplants!%20I%20have%20an%20aquarium%20question.`;
   const waBtn = $('#whatsapp-btn-circle');
@@ -1952,86 +1983,613 @@ const adminViews = {
     `;
   },
 
-  /* 12. Reports & Analytics */
-  async reports() {
-    const r = await api(`/reports/analytics?period=${reportsPeriod}`);
+  /* 12. Stock History Movement Ledger (Requirement 21 & 24) */
+  async 'stock-history'() {
+    let q = '/reports/stock-history?';
+    if (stockHistoryFilter.type && stockHistoryFilter.type !== 'all') q += `&transactionType=${encodeURIComponent(stockHistoryFilter.type)}`;
+    if (stockHistoryFilter.search) q += `&referenceNumber=${encodeURIComponent(stockHistoryFilter.search)}`;
+    if (stockHistoryFilter.startDate) q += `&startDate=${stockHistoryFilter.startDate}`;
+    if (stockHistoryFilter.endDate) q += `&endDate=${stockHistoryFilter.endDate}`;
+    if (stockHistoryFilter.product) q += `&productId=${stockHistoryFilter.product}`;
+
+    const res = await api(q);
+    const summary = res.summary || {};
+    const items = res.items || [];
+    await loadProducts();
+
     return `
       <div class="admin-header-row">
         <div>
-          <span class="kicker">BUSINESS INTELLIGENCE &amp; AUDIT</span>
-          <h1 style="font-size:2rem;margin:0">Reports &amp; Analytics</h1>
+          <span class="kicker">CENTRALIZED INVENTORY ENGINE</span>
+          <h1 style="font-size:2rem;margin:0">Stock History &amp; Movement Ledger</h1>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <a class="btn-pill sm outline" href="/api/reports/export?type=sales" target="_blank">📥 Sales CSV</a>
-          <a class="btn-pill sm outline" href="/api/reports/export?type=purchases" target="_blank">📥 Purchases CSV</a>
-          <a class="btn-pill sm outline" href="/api/reports/export?type=inventory" target="_blank">📥 Inventory CSV</a>
-        </div>
-      </div>
-
-      <!-- Period Filter -->
-      <div class="admin-subnav" style="margin-top:0;">
-        <button class="admin-subnav-btn ${reportsPeriod === 'today' ? 'active' : ''}" data-a="reportsPeriod" data-v="today">Today</button>
-        <button class="admin-subnav-btn ${reportsPeriod === '7d' ? 'active' : ''}" data-a="reportsPeriod" data-v="7d">Last 7 Days</button>
-        <button class="admin-subnav-btn ${reportsPeriod === '30d' ? 'active' : ''}" data-a="reportsPeriod" data-v="30d">Last 30 Days</button>
-        <button class="admin-subnav-btn ${reportsPeriod === 'all' ? 'active' : ''}" data-a="reportsPeriod" data-v="all">All Time</button>
-      </div>
-
-      <!-- Financial Metrics Cards -->
-      <div class="kpi-grid">
-        <div class="kpi-card">
-          <span class="kpi-title">Gross Revenue</span>
-          <div class="kpi-value" style="color:var(--forest-primary);">${money(r.revenue || 0)}</div>
-          <span class="kpi-subtitle">Total invoiced sales</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-title">Cost of Goods Sold (COGS)</span>
-          <div class="kpi-value">${money(r.cogs || 0)}</div>
-          <span class="kpi-subtitle">Direct acquisition cost</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-title">Gross Profit</span>
-          <div class="kpi-value" style="color:var(--moss);">${money(r.grossProfit || 0)}</div>
-          <span class="kpi-subtitle">Net markup earnings</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-title">Gross Margin</span>
-          <div class="kpi-value" style="color:${(r.grossMargin || 0) >= 35 ? '#166534' : '#b45309'};">${r.grossMargin || 0}%</div>
-          <span class="kpi-subtitle">Gross profit percentage</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-title">Stock Valuation (Cost)</span>
-          <div class="kpi-value">${money(r.stockValuationCost || 0)}</div>
-          <span class="kpi-subtitle">Current stock at cost</span>
-        </div>
-        <div class="kpi-card">
-          <span class="kpi-title">Stock Valuation (Retail)</span>
-          <div class="kpi-value">${money(r.stockValuationRetail || 0)}</div>
-          <span class="kpi-subtitle">Current stock at retail</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn-pill sm outline" data-a="printReport" data-v="stock-history">🖨️ Print Ledger</button>
+          <a class="btn-pill sm outline" href="/api/reports/export?type=stock-history" target="_blank">📥 Export CSV</a>
         </div>
       </div>
 
-      <!-- Category Breakdown -->
-      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;margin-top:20px;">
-        <h3 style="margin-top:0;margin-bottom:14px;">Sales by Category Breakdown</h3>
-        <div class="table-wrap" style="margin:0;">
-          <table>
-            <thead><tr><th>Category</th><th>Units Sold</th><th>Revenue</th></tr></thead>
-            <tbody>
-              ${(r.categoryBreakdown || []).map(c => `
+      <!-- KPI Summary -->
+      <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));">
+        <div class="kpi-card">
+          <span class="kpi-title">Total Movements</span>
+          <div class="kpi-value">${summary.totalTransactions || items.length}</div>
+          <span class="kpi-subtitle">Logged audit records</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Total Stock In (+)</span>
+          <div class="kpi-value" style="color:var(--moss);">+${summary.totalQuantityIn || 0}</div>
+          <span class="kpi-subtitle">Purchases, returns, adjustments</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Total Stock Out (-)</span>
+          <div class="kpi-value" style="color:var(--terracotta);">-${summary.totalQuantityOut || 0}</div>
+          <span class="kpi-subtitle">POS sales, orders, damages</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Net Movement</span>
+          <div class="kpi-value" style="color:var(--forest-primary);">${summary.netMovement >= 0 ? '+' : ''}${summary.netMovement || 0}</div>
+          <span class="kpi-subtitle">Overall balance shift</span>
+        </div>
+      </div>
+
+      <!-- Filters Form -->
+      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:18px 24px;margin:20px 0;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;align-items:end;">
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;">Filter by Product</label>
+            <select id="sh-filter-prod" style="padding:7px 10px;font-size:0.85rem;">
+              <option value="">-- All Products --</option>
+              ${products.map(p => `<option value="${p.id}" ${stockHistoryFilter.product == p.id ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;">Movement Type</label>
+            <select id="sh-filter-type" style="padding:7px 10px;font-size:0.85rem;">
+              <option value="all" ${stockHistoryFilter.type === 'all' ? 'selected' : ''}>All Transaction Types</option>
+              <option value="opening" ${stockHistoryFilter.type === 'opening' ? 'selected' : ''}>Opening Stock</option>
+              <option value="purchase" ${stockHistoryFilter.type === 'purchase' ? 'selected' : ''}>Purchase (Stock In)</option>
+              <option value="sale" ${stockHistoryFilter.type === 'sale' ? 'selected' : ''}>Sale (Stock Out)</option>
+              <option value="sale_return" ${stockHistoryFilter.type === 'sale_return' ? 'selected' : ''}>Sale Return / Cancellation</option>
+              <option value="damage" ${stockHistoryFilter.type === 'damage' ? 'selected' : ''}>Damage / Mortality</option>
+              <option value="adjustment" ${stockHistoryFilter.type === 'adjustment' ? 'selected' : ''}>Audit Adjustment</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;">Reference # (PO/Inv/Ord)</label>
+            <input id="sh-filter-search" placeholder="e.g. PP-INV or PO-" value="${esc(stockHistoryFilter.search)}" style="padding:7px 10px;font-size:0.85rem;">
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;">From Date</label>
+            <input type="date" id="sh-filter-from" value="${stockHistoryFilter.startDate || ''}" style="padding:6px 10px;font-size:0.85rem;">
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;">To Date</label>
+            <input type="date" id="sh-filter-to" value="${stockHistoryFilter.endDate || ''}" style="padding:6px 10px;font-size:0.85rem;">
+          </div>
+          <div>
+            <button class="btn-pill sm" style="width:100%;padding:9px;" data-a="applyStockHistoryFilter">Apply Filters</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Movement Ledger Table -->
+      <div class="table-wrap" id="printable-report-area">
+        <table>
+          <thead>
+            <tr>
+              <th>Date &amp; Time</th>
+              <th>Reference #</th>
+              <th>Product Name</th>
+              <th>SKU</th>
+              <th>Movement Type</th>
+              <th>In (+)</th>
+              <th>Out (-)</th>
+              <th>Previous</th>
+              <th>New Stock</th>
+              <th>Staff / Actor</th>
+              <th>Notes / Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${items.length ? items.map(l => {
+              const tx = (l.transactionType || l.type || 'adjustment').toLowerCase();
+              let badgeClass = 'new';
+              if (tx === 'purchase' || tx === 'opening') badgeClass = 'instock';
+              else if (tx === 'sale') badgeClass = 'pos';
+              else if (tx === 'damage') badgeClass = 'mortality';
+              else if (tx === 'sale_return') badgeClass = 'web';
+
+              return `
                 <tr>
-                  <td><strong>${esc(c.category)}</strong></td>
-                  <td>${c.units} units</td>
-                  <td><strong>${money(c.revenue)}</strong></td>
+                  <td>${new Date(l.transactionDate || l.date || l.timestamp).toLocaleString('en-IN')}</td>
+                  <td><code>${esc(l.referenceNumber || '-')}</code></td>
+                  <td><strong>${esc(l.productName || 'Product #' + l.productId)}</strong></td>
+                  <td><code>${esc(l.sku || '')}</code></td>
+                  <td><span class="badge-status ${badgeClass}">${esc(tx.toUpperCase())}</span></td>
+                  <td style="color:#166534;font-weight:700;">${l.quantityIn > 0 ? '+' + l.quantityIn : '-'}</td>
+                  <td style="color:#b91c1c;font-weight:700;">${l.quantityOut > 0 ? '-' + l.quantityOut : '-'}</td>
+                  <td>${l.previousStock !== undefined ? l.previousStock : '-'}</td>
+                  <td><strong>${l.newStock !== undefined ? l.newStock : '-'}</strong></td>
+                  <td>${esc(l.createdBy || l.performedBy || 'system')}</td>
+                  <td style="font-size:0.8rem;color:var(--ink-secondary);">${esc(l.notes || l.reason || '')}</td>
                 </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
+              `;
+            }).join('') : '<tr><td colspan="11" class="muted" style="text-align:center;padding:30px;">No inventory movements match the selected filters.</td></tr>'}
+          </tbody>
+        </table>
       </div>
     `;
   },
 
-  /* 13. Settings Hub */
+  /* 13. Reports Suite (Requirement 23) */
+  async reports() {
+    let reportData = null;
+    let exportUrl = `/api/reports/export?type=${reportsTab}`;
+
+    if (reportsTab === 'current-stock') {
+      reportData = await api('/reports/current-stock');
+    } else if (reportsTab === 'low-stock') {
+      reportData = await api('/reports/low-stock');
+    } else if (reportsTab === 'purchases') {
+      let q = '/reports/purchases?';
+      if (purchaseReportFilter.supplierId) q += `&supplierId=${purchaseReportFilter.supplierId}`;
+      if (purchaseReportFilter.startDate) q += `&startDate=${purchaseReportFilter.startDate}`;
+      if (purchaseReportFilter.endDate) q += `&endDate=${purchaseReportFilter.endDate}`;
+      reportData = await api(q);
+    } else if (reportsTab === 'sales') {
+      let q = '/reports/sales?';
+      if (salesReportFilter.channel) q += `&channel=${salesReportFilter.channel}`;
+      if (salesReportFilter.paymentMethod) q += `&paymentMethod=${salesReportFilter.paymentMethod}`;
+      if (salesReportFilter.startDate) q += `&startDate=${salesReportFilter.startDate}`;
+      if (salesReportFilter.endDate) q += `&endDate=${salesReportFilter.endDate}`;
+      reportData = await api(q);
+    } else if (reportsTab === 'payment-methods') {
+      reportData = await api('/reports/payment-methods');
+    } else if (reportsTab === 'analytics') {
+      reportData = await api(`/reports/analytics?period=${reportsPeriod}`);
+    }
+
+    const suppliers = await api('/suppliers');
+
+    return `
+      <div class="admin-header-row">
+        <div>
+          <span class="kicker">STATUTORY AUDIT &amp; BUSINESS INTELLIGENCE</span>
+          <h1 style="font-size:2rem;margin:0">Reports &amp; Analytics</h1>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn-pill sm outline" data-a="printReport" data-v="${reportsTab}">🖨️ Print Report</button>
+          <a class="btn-pill sm outline" href="${exportUrl}" target="_blank">📥 Export CSV</a>
+        </div>
+      </div>
+
+      <!-- Reports Subnav Tabs (Requirement 23: A through G) -->
+      <div class="admin-subnav" style="margin-top:0;">
+        <button class="admin-subnav-btn ${reportsTab === 'current-stock' ? 'active' : ''}" data-a="reportsTab" data-v="current-stock">📦 Current Stock</button>
+        <button class="admin-subnav-btn ${reportsTab === 'low-stock' ? 'active' : ''}" data-a="reportsTab" data-v="low-stock">⚠️ Low Stock</button>
+        <button class="admin-subnav-btn ${reportsTab === 'purchases' ? 'active' : ''}" data-a="reportsTab" data-v="purchases">📥 Purchase Report</button>
+        <button class="admin-subnav-btn ${reportsTab === 'sales' ? 'active' : ''}" data-a="reportsTab" data-v="sales">💳 Sales Report</button>
+        <button class="admin-subnav-btn ${reportsTab === 'payment-methods' ? 'active' : ''}" data-a="reportsTab" data-v="payment-methods">💰 Payment Methods</button>
+        <button class="admin-subnav-btn ${reportsTab === 'analytics' ? 'active' : ''}" data-a="reportsTab" data-v="analytics">📈 Financial Analytics</button>
+      </div>
+
+      <!-- REPORT A: CURRENT STOCK REPORT -->
+      ${reportsTab === 'current-stock' ? (() => {
+        const s = (reportData && reportData.summary) || {};
+        const items = (reportData && reportData.items) || [];
+        return `
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-title">Total Products</span>
+              <div class="kpi-value">${s.totalProducts || items.length}</div>
+              <span class="kpi-subtitle">Active catalog lines</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Current Stock Units</span>
+              <div class="kpi-value">${s.totalStockUnits || 0}</div>
+              <span class="kpi-subtitle">Available on hand</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Total Stock In</span>
+              <div class="kpi-value" style="color:var(--moss);">+${s.totalStockIn || 0}</div>
+              <span class="kpi-subtitle">Cumulative received</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Total Stock Out</span>
+              <div class="kpi-value" style="color:var(--terracotta);">-${s.totalStockOut || 0}</div>
+              <span class="kpi-subtitle">Cumulative sales &amp; loss</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Stock Valuation (Cost)</span>
+              <div class="kpi-value" style="color:var(--forest-primary);">${money(s.totalValuationCost || 0)}</div>
+              <span class="kpi-subtitle">Acquisition value</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Stock Valuation (Retail)</span>
+              <div class="kpi-value" style="color:var(--moss);">${money(s.totalValuationRetail || 0)}</div>
+              <span class="kpi-subtitle">Retail projected value</span>
+            </div>
+          </div>
+
+          <div class="table-wrap" id="printable-report-area">
+            <table>
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>SKU</th>
+                  <th>Category</th>
+                  <th>Opening Stock</th>
+                  <th>Stock In (+)</th>
+                  <th>Stock Out (-)</th>
+                  <th>Current Stock</th>
+                  <th>Status</th>
+                  <th>Unit Cost</th>
+                  <th>Valuation (Cost)</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${items.map(p => `
+                  <tr>
+                    <td>
+                      <strong>${esc(p.name)}</strong>
+                      ${p.scientificName ? `<div style="font-size:0.75rem;font-style:italic;color:var(--ink-secondary)">${esc(p.scientificName)}</div>` : ''}
+                    </td>
+                    <td><code>${esc(p.sku)}</code></td>
+                    <td>${esc(p.category)}</td>
+                    <td>${p.openingStock}</td>
+                    <td style="color:#166534;font-weight:600;">+${p.totalIn}</td>
+                    <td style="color:#b91c1c;font-weight:600;">-${p.totalOut}</td>
+                    <td><strong>${p.currentStock}</strong></td>
+                    <td><span class="badge-status ${p.status === 'In Stock' ? 'instock' : (p.status === 'Low Stock' ? 'low' : 'out')}">${esc(p.status)}</span></td>
+                    <td>${money(p.unitCost)}</td>
+                    <td><strong>${money(p.valuationCost)}</strong></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      })() : ''}
+
+      <!-- REPORT B: LOW STOCK REPORT -->
+      ${reportsTab === 'low-stock' ? (() => {
+        const items = (reportData && reportData.items) || [];
+        return `
+          <div class="kpi-grid" style="grid-template-columns:1fr 1fr 1fr;">
+            <div class="kpi-card alert">
+              <span class="kpi-title">Low Stock Items</span>
+              <div class="kpi-value" style="color:var(--terracotta);">${items.length}</div>
+              <span class="kpi-subtitle">At or below reorder threshold</span>
+            </div>
+            <div class="kpi-card alert">
+              <span class="kpi-title">Out of Stock Items</span>
+              <div class="kpi-value" style="color:#b91c1c;">${items.filter(i => i.currentStock <= 0).length}</div>
+              <span class="kpi-subtitle">Zero available inventory</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Estimated Reorder Cost</span>
+              <div class="kpi-value" style="color:var(--forest-primary);">${money(items.reduce((s, i) => s + (i.estimatedReorderCost || 0), 0))}</div>
+              <span class="kpi-subtitle">Suggested replenishment spend</span>
+            </div>
+          </div>
+
+          <div class="table-wrap" id="printable-report-area">
+            <table>
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>SKU</th>
+                  <th>Category</th>
+                  <th>Current Stock</th>
+                  <th>Threshold</th>
+                  <th>Suggested Reorder</th>
+                  <th>Unit Cost</th>
+                  <th>Estimated Cost</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${items.length ? items.map(p => `
+                  <tr>
+                    <td><strong>${esc(p.name)}</strong></td>
+                    <td><code>${esc(p.sku)}</code></td>
+                    <td>${esc(p.category)}</td>
+                    <td><span class="badge-status ${p.currentStock <= 0 ? 'out' : 'low'}">${p.currentStock} units</span></td>
+                    <td>${p.threshold} units</td>
+                    <td><strong>${p.suggestedReorder} units</strong></td>
+                    <td>${money(p.unitCost)}</td>
+                    <td><strong>${money(p.estimatedReorderCost)}</strong></td>
+                    <td>
+                      <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="openStockAdjustModal" data-id="${p.id}">+ Reorder</button>
+                    </td>
+                  </tr>
+                `).join('') : '<tr><td colspan="9" class="muted" style="text-align:center;padding:30px;">All catalog items have healthy inventory levels!</td></tr>'}
+              </tbody>
+            </table>
+          </div>
+        `;
+      })() : ''}
+
+      <!-- REPORT C: PURCHASES REPORT -->
+      ${reportsTab === 'purchases' ? (() => {
+        const s = (reportData && reportData.summary) || {};
+        const items = (reportData && reportData.items) || [];
+        return `
+          <div class="kpi-grid" style="grid-template-columns:1fr 1fr 1fr;">
+            <div class="kpi-card">
+              <span class="kpi-title">Total Purchases Value</span>
+              <div class="kpi-value" style="color:var(--forest-primary);">${money(s.totalAmount || 0)}</div>
+              <span class="kpi-subtitle">Period procurement</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Total Orders</span>
+              <div class="kpi-value">${s.totalPurchases || items.length}</div>
+              <span class="kpi-subtitle">Generated PO records</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Units Received</span>
+              <div class="kpi-value" style="color:var(--moss);">${s.totalUnits || 0}</div>
+              <span class="kpi-subtitle">Botanicals added to stock</span>
+            </div>
+          </div>
+
+          <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:16px 20px;margin:20px 0;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;align-items:end;">
+              <div>
+                <label style="font-size:0.75rem;font-weight:700;">Supplier</label>
+                <select id="pr-filter-sup" style="padding:6px 10px;font-size:0.85rem;">
+                  <option value="">All Suppliers</option>
+                  ${suppliers.map(sup => `<option value="${sup.id}" ${purchaseReportFilter.supplierId == sup.id ? 'selected' : ''}>${esc(sup.name)}</option>`).join('')}
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.75rem;font-weight:700;">From Date</label>
+                <input type="date" id="pr-filter-from" value="${purchaseReportFilter.startDate || ''}" style="padding:6px 10px;font-size:0.85rem;">
+              </div>
+              <div>
+                <label style="font-size:0.75rem;font-weight:700;">To Date</label>
+                <input type="date" id="pr-filter-to" value="${purchaseReportFilter.endDate || ''}" style="padding:6px 10px;font-size:0.85rem;">
+              </div>
+              <div>
+                <button class="btn-pill sm" style="width:100%;padding:8px;" data-a="applyPurchaseReportFilter">Filter Purchases</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-wrap" id="printable-report-area">
+            <table>
+              <thead>
+                <tr>
+                  <th>Purchase #</th>
+                  <th>Date</th>
+                  <th>Supplier</th>
+                  <th>Items Ordered</th>
+                  <th>Total Amount</th>
+                  <th>Payment Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${items.map(p => `
+                  <tr>
+                    <td><code>${esc(p.purchaseNumber || p.poNumber || 'PO-' + p.id)}</code></td>
+                    <td>${new Date(p.createdAt || p.date).toLocaleDateString('en-IN')}</td>
+                    <td><strong>${esc(p.supplierName || 'Supplier')}</strong></td>
+                    <td>${(p.items || []).length} lines (${(p.items || []).reduce((acc, it) => acc + (it.quantity || 0), 0)} units)</td>
+                    <td><strong>${money(p.totalCost || p.grandTotal || 0)}</strong></td>
+                    <td><span class="badge-status ${p.paymentStatus === 'Paid' ? 'paid' : 'pending'}">${esc(p.paymentStatus || 'Paid')}</span></td>
+                    <td><button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="viewPurchase" data-id="${p.id}">View</button></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      })() : ''}
+
+      <!-- REPORT D: SALES REPORT -->
+      ${reportsTab === 'sales' ? (() => {
+        const s = (reportData && reportData.summary) || {};
+        const items = (reportData && reportData.items) || [];
+        return `
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-title">Total Sales Revenue</span>
+              <div class="kpi-value" style="color:var(--forest-primary);">${money(s.totalSalesRevenue || 0)}</div>
+              <span class="kpi-subtitle">Period sales earnings</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Total Invoices &amp; Orders</span>
+              <div class="kpi-value">${s.totalSalesCount || items.length}</div>
+              <span class="kpi-subtitle">Completed transactions</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Units Sold</span>
+              <div class="kpi-value" style="color:var(--moss);">${s.totalUnitsSold || 0}</div>
+              <span class="kpi-subtitle">Botanicals dispatched</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Average Order Value</span>
+              <div class="kpi-value">${money(s.averageSaleValue || 0)}</div>
+              <span class="kpi-subtitle">Per transaction average</span>
+            </div>
+          </div>
+
+          <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:16px 20px;margin:20px 0;">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;align-items:end;">
+              <div>
+                <label style="font-size:0.75rem;font-weight:700;">Sales Channel</label>
+                <select id="sr-filter-chan" style="padding:6px 10px;font-size:0.85rem;">
+                  <option value="all" ${salesReportFilter.channel === 'all' ? 'selected' : ''}>All Channels</option>
+                  <option value="pos" ${salesReportFilter.channel === 'pos' ? 'selected' : ''}>Store POS Counter</option>
+                  <option value="web" ${salesReportFilter.channel === 'web' ? 'selected' : ''}>Website Online Order</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.75rem;font-weight:700;">Payment Method</label>
+                <select id="sr-filter-meth" style="padding:6px 10px;font-size:0.85rem;">
+                  <option value="all" ${salesReportFilter.paymentMethod === 'all' ? 'selected' : ''}>All Payment Modes</option>
+                  <option value="cash" ${salesReportFilter.paymentMethod === 'cash' ? 'selected' : ''}>Cash</option>
+                  <option value="upi" ${salesReportFilter.paymentMethod === 'upi' ? 'selected' : ''}>UPI / QR</option>
+                  <option value="card" ${salesReportFilter.paymentMethod === 'card' ? 'selected' : ''}>Card</option>
+                  <option value="bank" ${salesReportFilter.paymentMethod === 'bank' ? 'selected' : ''}>Bank Transfer</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.75rem;font-weight:700;">From Date</label>
+                <input type="date" id="sr-filter-from" value="${salesReportFilter.startDate || ''}" style="padding:6px 10px;font-size:0.85rem;">
+              </div>
+              <div>
+                <label style="font-size:0.75rem;font-weight:700;">To Date</label>
+                <input type="date" id="sr-filter-to" value="${salesReportFilter.endDate || ''}" style="padding:6px 10px;font-size:0.85rem;">
+              </div>
+              <div>
+                <button class="btn-pill sm" style="width:100%;padding:8px;" data-a="applySalesReportFilter">Filter Sales</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-wrap" id="printable-report-area">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ref / Invoice #</th>
+                  <th>Channel</th>
+                  <th>Customer</th>
+                  <th>Sale Date</th>
+                  <th>Total Qty</th>
+                  <th>Amount</th>
+                  <th>Payment Mode</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${items.map(s => `
+                  <tr>
+                    <td><code>${esc(s.referenceNumber || s.id)}</code></td>
+                    <td><span class="badge-status ${s.channel.includes('POS') ? 'pos' : 'web'}">${esc(s.channel)}</span></td>
+                    <td><strong>${esc(s.customerName)}</strong>${s.customerPhone ? `<div style="font-size:0.75rem;color:var(--ink-secondary)">${esc(s.customerPhone)}</div>` : ''}</td>
+                    <td>${new Date(s.date).toLocaleDateString('en-IN')}</td>
+                    <td>${s.totalQuantity} units</td>
+                    <td><strong>${money(s.grandTotal)}</strong></td>
+                    <td>${esc(s.paymentMethod)}</td>
+                    <td><span class="badge-status instock">${esc(s.status)}</span></td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      })() : ''}
+
+      <!-- REPORT E: PAYMENT METHODS REPORT -->
+      ${reportsTab === 'payment-methods' ? (() => {
+        const breakdown = (reportData && reportData.breakdown) || [];
+        const total = (reportData && reportData.totalRevenue) || 0;
+        return `
+          <div class="kpi-grid" style="grid-template-columns:1fr 1fr;">
+            <div class="kpi-card">
+              <span class="kpi-title">Total Collections</span>
+              <div class="kpi-value" style="color:var(--forest-primary);">${money(total)}</div>
+              <span class="kpi-subtitle">Across all payment channels</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Total Transactions</span>
+              <div class="kpi-value">${(reportData && reportData.totalTransactions) || 0}</div>
+              <span class="kpi-subtitle">POS &amp; Online checkouts</span>
+            </div>
+          </div>
+
+          <div class="table-wrap" id="printable-report-area">
+            <table>
+              <thead>
+                <tr>
+                  <th>Payment Method</th>
+                  <th>Transactions Count</th>
+                  <th>Total Amount Collected</th>
+                  <th>Percentage of Sales</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${breakdown.map(b => `
+                  <tr>
+                    <td><strong>${esc(b.method)}</strong></td>
+                    <td>${b.count} orders</td>
+                    <td><strong>${money(b.totalAmount)}</strong></td>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:8px;">
+                        <span style="font-weight:700;width:40px;">${b.percentage}%</span>
+                        <div style="flex:1;background:var(--canvas-alt);border-radius:6px;height:8px;overflow:hidden;">
+                          <div style="background:var(--forest-primary);width:${b.percentage}%;height:100%;"></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      })() : ''}
+
+      <!-- REPORT F: FINANCIAL ANALYTICS -->
+      ${reportsTab === 'analytics' ? (() => {
+        const r = reportData || {};
+        return `
+          <div class="admin-subnav" style="margin-top:0;">
+            <button class="admin-subnav-btn ${reportsPeriod === 'today' ? 'active' : ''}" data-a="reportsPeriod" data-v="today">Today</button>
+            <button class="admin-subnav-btn ${reportsPeriod === '7d' ? 'active' : ''}" data-a="reportsPeriod" data-v="7d">Last 7 Days</button>
+            <button class="admin-subnav-btn ${reportsPeriod === '30d' ? 'active' : ''}" data-a="reportsPeriod" data-v="30d">Last 30 Days</button>
+            <button class="admin-subnav-btn ${reportsPeriod === 'all' ? 'active' : ''}" data-a="reportsPeriod" data-v="all">All Time</button>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-title">Gross Revenue</span>
+              <div class="kpi-value" style="color:var(--forest-primary);">${money(r.revenue || 0)}</div>
+              <span class="kpi-subtitle">Total invoiced sales</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Cost of Goods Sold (COGS)</span>
+              <div class="kpi-value">${money(r.cogs || 0)}</div>
+              <span class="kpi-subtitle">Direct acquisition cost</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Gross Profit</span>
+              <div class="kpi-value" style="color:var(--moss);">${money(r.grossProfit || 0)}</div>
+              <span class="kpi-subtitle">Net markup earnings</span>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-title">Gross Margin</span>
+              <div class="kpi-value" style="color:${(r.grossMargin || 0) >= 35 ? '#166534' : '#b45309'};">${r.grossMargin || 0}%</div>
+              <span class="kpi-subtitle">Profit margin percentage</span>
+            </div>
+          </div>
+
+          <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;margin-top:20px;">
+            <h3 style="margin-top:0;margin-bottom:14px;">Sales by Category Breakdown</h3>
+            <div class="table-wrap" style="margin:0;">
+              <table>
+                <thead><tr><th>Category</th><th>Units Sold</th><th>Revenue</th></tr></thead>
+                <tbody>
+                  ${(r.categoryBreakdown || []).map(c => `
+                    <tr>
+                      <td><strong>${esc(c.category)}</strong></td>
+                      <td>${c.units} units</td>
+                      <td><strong>${money(c.revenue)}</strong></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      })() : ''}
+    `;
+  },
+
+  /* 14. Settings Hub */
   async settings() {
     const s = storeSettings || {};
     const users = await api('/users');
@@ -2062,38 +2620,67 @@ const adminViews = {
       </div>
 
       ${settingsTab === 'store' ? `
-        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;max-width:800px;">
-          <h3 style="margin-top:0;">Business Profile &amp; Statutory GST Configuration</h3>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;max-width:850px;">
+          <h3 style="margin-top:0;">Reusable Business Profile &amp; Core Configuration</h3>
+          <p class="muted" style="margin-top:4px;font-size:0.85rem;">All values below are dynamically pulled across public store, bills, tax invoices, and WhatsApp enquiry links.</p>
+          
           <form data-f="saveSettings">
             <div class="two-col" style="padding:0;">
               <div>
-                <label for="set-name">Store Name</label>
-                <input id="set-name" name="name" value="${esc(s.name || 'Pairaplants')}" required>
+                <label for="set-bname">Business / Store Name</label>
+                <input id="set-bname" name="business_name" value="${esc(s.business_name || s.storeName || 'Pairaplants')}" required>
 
                 <label for="set-phone">Phone Number</label>
-                <input id="set-phone" name="phone" value="${esc(s.phone || '+91 98765 43210')}">
+                <input id="set-phone" name="phone_number" value="${esc(s.phone_number || s.phone || '+91 98765 43210')}" required>
 
-                <label for="set-email">Email Address</label>
-                <input id="set-email" name="email" value="${esc(s.email || 'info@pairaplants.com')}">
+                <label for="set-wa">WhatsApp Enquiry Number (with country code, no +)</label>
+                <input id="set-wa" name="whatsapp_number" value="${esc(s.whatsapp_number || s.whatsappNumber || '919876543210')}" required placeholder="919876543210">
 
-                <label for="set-addr">Physical Nursery Address</label>
-                <textarea id="set-addr" name="address" rows="2">${esc(s.address || 'Kochi, Kerala, India')}</textarea>
+                <label for="set-email">Business Email</label>
+                <input id="set-email" name="email" type="email" value="${esc(s.email || 'care@pairaplants.com')}" required>
+
+                <label for="set-addr">Physical Address</label>
+                <textarea id="set-addr" name="business_address" rows="2">${esc(s.business_address || s.address || 'Kochi, Kerala, India')}</textarea>
               </div>
 
               <div>
+                <div class="two-col" style="padding:0;">
+                  <div>
+                    <label for="set-cur-sym">Currency Symbol</label>
+                    <input id="set-cur-sym" name="currency_symbol" value="${esc(s.currency_symbol || s.currencySymbol || '₹')}" required>
+                  </div>
+                  <div>
+                    <label for="set-cur-cod">Currency Code</label>
+                    <input id="set-cur-cod" name="currency_code" value="${esc(s.currency_code || s.currency || 'INR')}" required>
+                  </div>
+                </div>
+
                 <label for="set-gstin">GSTIN (Statutory Tax ID)</label>
-                <input id="set-gstin" name="gstin" value="${esc(s.gstin || '32AAAAA0000A1Z5')}" placeholder="e.g. 32AAAAA0000A1Z5">
+                <input id="set-gstin" name="gstin" value="${esc(s.gstin || '32AAAAA0000A1Z5')}" placeholder="32AAAAA0000A1Z5">
 
                 <label for="set-prefix">Invoice Prefix</label>
-                <input id="set-prefix" name="invoicePrefix" value="${esc(s.invoicePrefix || 'PP-INV-')}" placeholder="PP-INV-">
+                <input id="set-prefix" name="invoice_prefix" value="${esc(s.invoice_prefix || s.invoicePrefix || 'PP-INV-')}" required placeholder="PP-INV-">
 
-                <label for="set-tax">Default GST Tax Rate (%)</label>
-                <input id="set-tax" name="defaultTaxRate" type="number" step="0.5" value="${s.defaultTaxRate || 5}">
+                <div class="two-col" style="padding:0;">
+                  <div>
+                    <label for="set-tax">Default GST Tax Rate (%)</label>
+                    <input id="set-tax" name="default_tax_rate" type="number" step="0.5" value="${s.default_tax_rate || s.defaultTaxRate || 5}">
+                  </div>
+                  <div>
+                    <label for="set-th">Default Low Stock Threshold</label>
+                    <input id="set-th" name="low_stock_default" type="number" value="${s.low_stock_default || s.lowStockDefault || 8}">
+                  </div>
+                </div>
 
-                <label for="set-th">Default Low Stock Reorder Threshold</label>
-                <input id="set-th" name="lowStockDefault" type="number" value="${s.lowStockDefault || 8}">
+                <div style="margin-top:14px;">
+                  <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                    <input type="checkbox" name="tax_enabled" ${s.tax_enabled !== false ? 'checked' : ''}>
+                    <span style="font-weight:600;font-size:0.9rem;">Enable GST Tax Invoicing</span>
+                  </label>
+                </div>
               </div>
             </div>
+
             <button class="btn-pill" style="margin-top:20px;">Save Business Settings</button>
           </form>
         </div>
@@ -2386,7 +2973,7 @@ async function showProductDetailModal(id) {
               <button class="btn-pill" data-a="add" data-id="${p.id}" ${p.stock <= 0 ? 'disabled' : ''}>
                 ${p.stock <= 0 ? 'Out of Stock' : 'Add to Bag'}
               </button>
-              <a class="btn-whatsapp" href="https://wa.me/919876543210?text=${encodeURIComponent(`Hello Pairaplants! I would like to order ${p.name} (SKU: ${p.sku || p.id}).`)}" target="_blank">Order via WhatsApp</a>
+              <a class="btn-whatsapp" href="${getWhatsAppEnquiryUrl(p)}" title="WhatsApp Enquiry (Lead Only - No Stock Deduction)" target="_blank">💬 WhatsApp Enquiry (Customer Lead)</a>
               <button class="btn-pill outline" data-a="toggleWishlist" data-id="${p.id}">
                 ${isWished ? '❤️ Saved' : '🤍 Wishlist'}
               </button>
@@ -3394,6 +3981,71 @@ const actions = {
     }
   },
 
+  reportsTab(btn) {
+    reportsTab = btn.dataset.v;
+    return render();
+  },
+  applyStockHistoryFilter() {
+    stockHistoryFilter.product = $('#sh-filter-prod') ? $('#sh-filter-prod').value : '';
+    stockHistoryFilter.type = $('#sh-filter-type') ? $('#sh-filter-type').value : 'all';
+    stockHistoryFilter.search = $('#sh-filter-search') ? $('#sh-filter-search').value.trim() : '';
+    stockHistoryFilter.startDate = $('#sh-filter-from') ? $('#sh-filter-from').value : '';
+    stockHistoryFilter.endDate = $('#sh-filter-to') ? $('#sh-filter-to').value : '';
+    return render();
+  },
+  applyPurchaseReportFilter() {
+    purchaseReportFilter.supplierId = $('#pr-filter-sup') ? $('#pr-filter-sup').value : '';
+    purchaseReportFilter.startDate = $('#pr-filter-from') ? $('#pr-filter-from').value : '';
+    purchaseReportFilter.endDate = $('#pr-filter-to') ? $('#pr-filter-to').value : '';
+    return render();
+  },
+  applySalesReportFilter() {
+    salesReportFilter.channel = $('#sr-filter-chan') ? $('#sr-filter-chan').value : 'all';
+    salesReportFilter.paymentMethod = $('#sr-filter-meth') ? $('#sr-filter-meth').value : 'all';
+    salesReportFilter.startDate = $('#sr-filter-from') ? $('#sr-filter-from').value : '';
+    salesReportFilter.endDate = $('#sr-filter-to') ? $('#sr-filter-to').value : '';
+    return render();
+  },
+  printReport(btn) {
+    const reportArea = $('#printable-report-area');
+    if (!reportArea) return window.print();
+
+    const title = btn.dataset.v ? btn.dataset.v.replace('-', ' ').toUpperCase() + ' REPORT' : 'INVENTORY AUDIT REPORT';
+    const s = storeSettings || {};
+    const win = window.open('', '_blank');
+    win.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>${title} - ${s.business_name || 'Pairaplants'}</title>
+        <style>
+          body { font-family: -apple-system, sans-serif; padding: 24px; color: #1e293b; }
+          .header { display: flex; justify-content: space-between; border-bottom: 2px solid #1e5c3c; padding-bottom: 12px; margin-bottom: 20px; }
+          table { width: 100%; border-collapse: collapse; font-size: 12px; }
+          th, td { border: 1px solid #cbd5e1; padding: 8px 10px; text-align: left; }
+          th { background: #f1f5f9; color: #0f172a; }
+          .badge-status { font-weight: bold; text-transform: uppercase; }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <div>
+            <h2 style="margin:0;color:#1e5c3c;">🌿 ${s.business_name || 'Pairaplants'}</h2>
+            <div style="font-size:12px;color:#64748b;">${s.business_address || 'Kochi, Kerala, India'} · GSTIN: ${s.gstin || '32AAAAA0000A1Z5'}</div>
+          </div>
+          <div style="text-align:right;">
+            <h3 style="margin:0;">${title}</h3>
+            <div style="font-size:12px;color:#64748b;">Generated: ${new Date().toLocaleString('en-IN')}</div>
+          </div>
+        </div>
+        ${reportArea.outerHTML}
+        <script>window.onload = function() { window.print(); };</script>
+      </body>
+      </html>
+    `);
+    win.document.close();
+  },
+
   async staffLogout() {
     await api('/logout', 'POST');
     staffUser = null;
@@ -3650,10 +4302,35 @@ const forms = {
     return render();
   },
   async saveSettings(d) {
-    await api('/settings', 'PUT', d);
+    const payload = {
+      business_name: d.business_name,
+      storeName: d.business_name,
+      brandTitle: d.business_name,
+      business_address: d.business_address,
+      address: d.business_address,
+      phone_number: d.phone_number,
+      phone: d.phone_number,
+      whatsapp_number: d.whatsapp_number,
+      whatsappNumber: d.whatsapp_number,
+      email: d.email,
+      currency_code: d.currency_code,
+      currency: d.currency_code,
+      currency_symbol: d.currency_symbol,
+      currencySymbol: d.currency_symbol,
+      invoice_prefix: d.invoice_prefix,
+      invoicePrefix: d.invoice_prefix,
+      gstin: d.gstin,
+      tax_enabled: !!d.tax_enabled,
+      default_tax_rate: +d.default_tax_rate || 5,
+      defaultTaxRate: +d.default_tax_rate || 5,
+      low_stock_default: +d.low_stock_default || 8,
+      lowStockDefault: +d.low_stock_default || 8
+    };
+
+    await api('/settings', 'PUT', payload);
     storeSettings = await api('/settings');
     applyStoreSettings();
-    toast('Website settings updated!');
+    toast('Reusable business settings updated successfully!');
     return render();
   },
   async submitReview(d, f) {
