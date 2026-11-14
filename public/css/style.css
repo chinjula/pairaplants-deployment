@@ -1682,14 +1682,14 @@ footer.site-footer a:hover {
   /* Clean White Mobile Header (110–140px, vertically centered, no harsh shadows/borders) */
   header.site-header {
     background: #ffffff !important;
-    border: none !important;
-    box-shadow: none !important;
-    height: clamp(110px, 14vh, 138px);
-    min-height: 110px;
-    max-height: 140px;
-    padding: 0 22px;
-    display: flex;
-    align-items: center;
+    border-bottom: 1px solid #E2E8F0 !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04) !important;
+    height: 64px !important;
+    min-height: 64px !important;
+    max-height: 64px !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    align-items: center !important;
     position: sticky;
     top: 0;
     z-index: 90;
@@ -1744,19 +1744,18 @@ footer.site-footer a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 6px;
-    width: 54px;
-    height: 54px;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
     background: #dc2626;
-    /* Prominent red */
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+    box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
     padding: 0;
     flex-shrink: 0;
     -webkit-tap-highlight-color: transparent;
-    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
   }
 
   .mobile-menu-toggle:active {
@@ -1775,9 +1774,7 @@ footer.site-footer a:hover {
   /* Full-width Visually Attractive Aquarium Hero Section (~100svh) */
   .hero-photo-banner {
     width: 100%;
-    min-height: 100svh;
-    height: 100svh;
-    background-image: linear-gradient(rgba(10, 22, 17, 0.22), rgba(10, 22, 17, 0.68)), url('/images/hero-aquarium.jpg');
+    min-height: clamp(480px, 85vh, 680px);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -1786,7 +1783,7 @@ footer.site-footer a:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 40px 20px;
+    padding: 50px 18px 40px 18px;
     box-sizing: border-box;
   }
 
@@ -3788,16 +3785,21 @@ footer.site-footer a:hover {
   border-bottom: 1px solid #E2E8F0;
   padding: 56px 24px 48px 24px;
   text-align: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .page-header-banner .banner-inner {
   max-width: 760px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .page-header-banner .kicker {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   font-size: 0.78rem;
   font-weight: 700;
@@ -3805,23 +3807,30 @@ footer.site-footer a:hover {
   text-transform: uppercase;
   color: #15803D;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .page-header-banner h1 {
   font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
-  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-size: clamp(1.85rem, 5vw, 3.2rem);
   font-weight: 700;
   color: #0F172A;
-  line-height: 1.15;
+  line-height: 1.18;
   margin: 0 0 14px 0;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .page-header-banner p.muted {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
   color: #64748B;
   line-height: 1.6;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 68ch;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
 }
 
 /* Story Hero Image Banner */
@@ -4058,5 +4067,220 @@ footer.site-footer a:hover {
   }
   .page-header-banner {
     padding: 40px 20px 32px 20px;
+  }
+}
+
+
+/* ==============================================================================
+   COMPREHENSIVE MOBILE VIEWPORT OPTIMIZATIONS (Smartphones <= 768px & <= 480px)
+   ============================================================================== */
+@media (max-width: 768px) {
+  /* Global Container and Box Sizing Safety */
+  html, body, .site-wrapper {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  /* Page Header Banner - Fix Text Clipping and Word Wrap */
+  .page-header-banner {
+    padding: 32px 16px 24px 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .page-header-banner .banner-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 4px !important;
+  }
+
+  .page-header-banner h1 {
+    font-size: clamp(1.6rem, 6.8vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    margin: 0 0 10px 0 !important;
+    letter-spacing: -0.01em !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .page-header-banner p.muted {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+    max-width: 100% !important;
+    padding: 0 6px !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+  }
+
+  .page-header-banner .kicker {
+    font-size: 0.72rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Global Content Containers */
+  .content-container {
+    padding: 20px 16px 50px 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Contact Page Grid & Form Controls */
+  .contact-grid-wrap {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    width: 100% !important;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 20px 16px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+  }
+
+  .btn-whatsapp-large {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    padding: 12px 16px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Shop Filter Bar & Category Chips */
+  .shop-filter-bar {
+    padding: 18px 14px 14px 14px !important;
+  }
+
+  .shop-header-flex {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .search-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .chips {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    padding-bottom: 6px !important;
+    width: 100% !important;
+    scrollbar-width: none !important;
+  }
+  .chips::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .chip-pill {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    padding: 7px 14px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Product Grid Mobile: 2 Balanced Columns */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 0 12px 40px 12px !important;
+    max-width: 100% !important;
+  }
+
+  .product-card {
+    border-radius: 12px !important;
+  }
+
+  .product-card-body {
+    padding: 10px 10px 12px 10px !important;
+  }
+
+  .product-card-title {
+    font-size: 0.88rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .card-action-row {
+    flex-direction: column !important;
+    gap: 6px !important;
+    margin-top: 8px !important;
+  }
+
+  .btn-add-cart-card,
+  .btn-wa-card {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 8px 10px !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* Our Story / About Mobile */
+  .story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .story-hero-image-wrap {
+    max-height: 200px !important;
+    border-radius: 12px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .story-hero-badge {
+    font-size: 0.7rem !important;
+    padding: 5px 10px !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+  }
+
+  .aside-card {
+    padding: 20px 16px !important;
+  }
+
+  .metrics-grid-2x2 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Cart Layout Mobile */
+  .cart-grid-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .cart-table-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .cart-summary-card {
+    padding: 20px 16px !important;
+  }
+
+  /* Gallery Grid Mobile */
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 0 14px 40px 14px !important;
   }
 }
