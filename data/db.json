@@ -32,7 +32,7 @@
       "category": "Fish",
       "subcategory": "Fish",
       "price": 120,
-      "stock": 23,
+      "stock": 21,
       "description": "Active and peaceful schooling fish with vibrant cherry-red coloration.",
       "sku": "PP-FIS-001",
       "salePrice": null,
@@ -54,7 +54,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.7,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 66
     },
     {
       "id": 2,
@@ -84,7 +85,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.8,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 154
     },
     {
       "id": 3,
@@ -114,7 +116,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.8,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 83
     },
     {
       "id": 4,
@@ -144,7 +147,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.9,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 88
     },
     {
       "id": 5,
@@ -174,7 +178,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.6,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 50
     },
     {
       "id": 6,
@@ -204,7 +209,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.7,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 33
     },
     {
       "id": 7,
@@ -235,7 +241,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.8,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 121
     },
     {
       "id": 8,
@@ -265,7 +272,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.8,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 61
     },
     {
       "id": 9,
@@ -295,7 +303,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.9,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 99
     },
     {
       "id": 10,
@@ -325,7 +334,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.6,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 132
     },
     {
       "id": 11,
@@ -355,7 +365,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.7,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 77
     },
     {
       "id": 12,
@@ -385,7 +396,8 @@
         "pHRange": "6.5 - 7.5"
       },
       "rating": 4.8,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 209
     },
     {
       "id": 13,
@@ -416,7 +428,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.8,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 99
     },
     {
       "id": 14,
@@ -446,7 +459,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.9,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 66
     },
     {
       "id": 15,
@@ -476,7 +490,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.6,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 110
     },
     {
       "id": 16,
@@ -507,7 +522,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.7,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 88
     },
     {
       "id": 17,
@@ -537,7 +553,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.8,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 143
     },
     {
       "id": 18,
@@ -567,7 +584,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.8,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 50
     },
     {
       "id": 19,
@@ -597,7 +615,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.9,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 83
     },
     {
       "id": 20,
@@ -627,7 +646,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.6,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 44
     },
     {
       "id": 21,
@@ -657,7 +677,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.7,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 28
     },
     {
       "id": 22,
@@ -688,7 +709,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.8,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 72
     },
     {
       "id": 23,
@@ -718,7 +740,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.8,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 83
     },
     {
       "id": 24,
@@ -749,7 +772,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.9,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 160
     },
     {
       "id": 25,
@@ -779,7 +803,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.6,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 193
     },
     {
       "id": 26,
@@ -809,7 +834,8 @@
         "breeding": "Easy freshwater breeder"
       },
       "rating": 4.7,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 88
     },
     {
       "id": 27,
@@ -841,7 +867,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 105
     },
     {
       "id": 28,
@@ -872,7 +899,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 121
     },
     {
       "id": 29,
@@ -903,7 +931,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 116
     },
     {
       "id": 30,
@@ -935,7 +964,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 138
     },
     {
       "id": 31,
@@ -966,7 +996,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 127
     },
     {
       "id": 32,
@@ -997,7 +1028,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 77
     },
     {
       "id": 33,
@@ -1028,7 +1060,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 99
     },
     {
       "id": 34,
@@ -1060,7 +1093,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 116
     },
     {
       "id": 35,
@@ -1091,7 +1125,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 105
     },
     {
       "id": 36,
@@ -1124,7 +1159,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 83
     },
     {
       "id": 37,
@@ -1155,7 +1191,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 94
     },
     {
       "id": 38,
@@ -1187,7 +1224,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 132
     },
     {
       "id": 39,
@@ -1219,7 +1257,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 143
     },
     {
       "id": 40,
@@ -1250,7 +1289,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 77
     },
     {
       "id": 41,
@@ -1282,7 +1322,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 88
     },
     {
       "id": 42,
@@ -1314,7 +1355,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 105
     },
     {
       "id": 43,
@@ -1346,7 +1388,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 127
     },
     {
       "id": 44,
@@ -1377,7 +1420,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 61
     },
     {
       "id": 45,
@@ -1408,7 +1452,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 105
     },
     {
       "id": 46,
@@ -1440,7 +1485,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 187
     },
     {
       "id": 47,
@@ -1471,7 +1517,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 61
     },
     {
       "id": 48,
@@ -1503,7 +1550,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 99
     },
     {
       "id": 49,
@@ -1534,7 +1582,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 116
     },
     {
       "id": 50,
@@ -1565,7 +1614,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 50
     },
     {
       "id": 51,
@@ -1597,7 +1647,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 99
     },
     {
       "id": 52,
@@ -1631,7 +1682,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 105
     },
     {
       "id": 53,
@@ -1662,7 +1714,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 110
     },
     {
       "id": 54,
@@ -1693,7 +1746,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 94
     },
     {
       "id": 55,
@@ -1724,7 +1778,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 116
     },
     {
       "id": 56,
@@ -1756,7 +1811,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 55
     },
     {
       "id": 57,
@@ -1787,7 +1843,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 77
     },
     {
       "id": 58,
@@ -1818,7 +1875,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 176
     },
     {
       "id": 59,
@@ -1849,7 +1907,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 154
     },
     {
       "id": 60,
@@ -1881,7 +1940,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 83
     },
     {
       "id": 61,
@@ -1912,7 +1972,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 94
     },
     {
       "id": 62,
@@ -1944,7 +2005,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 121
     },
     {
       "id": 63,
@@ -1975,7 +2037,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 88
     },
     {
       "id": 64,
@@ -2006,7 +2069,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 143
     },
     {
       "id": 65,
@@ -2037,7 +2101,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 171
     },
     {
       "id": 66,
@@ -2068,7 +2133,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 105
     },
     {
       "id": 67,
@@ -2099,7 +2165,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 154
     },
     {
       "id": 68,
@@ -2133,7 +2200,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 105
     },
     {
       "id": 69,
@@ -2165,7 +2233,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 83
     },
     {
       "id": 70,
@@ -2196,7 +2265,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 138
     },
     {
       "id": 71,
@@ -2227,7 +2297,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 171
     },
     {
       "id": 72,
@@ -2259,7 +2330,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 154
     },
     {
       "id": 73,
@@ -2290,7 +2362,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 66
     },
     {
       "id": 74,
@@ -2321,7 +2394,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 33
     },
     {
       "id": 75,
@@ -2353,7 +2427,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 121
     },
     {
       "id": 76,
@@ -2384,7 +2459,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 77
     },
     {
       "id": 77,
@@ -2415,7 +2491,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 143
     },
     {
       "id": 78,
@@ -2448,7 +2525,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 138
     },
     {
       "id": 79,
@@ -2479,7 +2557,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 105
     },
     {
       "id": 80,
@@ -2510,7 +2589,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.6,
-      "reviewCount": 6
+      "reviewCount": 6,
+      "purchasePrice": 72
     },
     {
       "id": 81,
@@ -2541,7 +2621,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.7,
-      "reviewCount": 7
+      "reviewCount": 7,
+      "purchasePrice": 66
     },
     {
       "id": 82,
@@ -2572,7 +2653,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 8
+      "reviewCount": 8,
+      "purchasePrice": 61
     },
     {
       "id": 83,
@@ -2603,7 +2685,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.8,
-      "reviewCount": 9
+      "reviewCount": 9,
+      "purchasePrice": 55
     },
     {
       "id": 84,
@@ -2635,7 +2718,8 @@
         "temperature": "22°C - 28°C"
       },
       "rating": 4.9,
-      "reviewCount": 3
+      "reviewCount": 3,
+      "purchasePrice": 83
     },
     {
       "id": 85,
@@ -2663,7 +2747,8 @@
         "nutrientContent": "High macro/micro nutrients"
       },
       "rating": 4.6,
-      "reviewCount": 4
+      "reviewCount": 4,
+      "purchasePrice": 319
     },
     {
       "id": 86,
@@ -2691,7 +2776,8 @@
         "nutrientContent": "High macro/micro nutrients"
       },
       "rating": 4.7,
-      "reviewCount": 5
+      "reviewCount": 5,
+      "purchasePrice": 231
     }
   ],
   "orders": [
@@ -2814,6 +2900,30 @@
   ],
   "inquiries": [],
   "logs": [
+    {
+      "t": 1794645109777,
+      "user": "owner",
+      "action": "completed POS sale #PP-INV-7002 (₹522.9) for Walk-in Customer",
+      "ip": "::1"
+    },
+    {
+      "t": 1794645109749,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794645038218,
+      "user": "owner",
+      "action": "staff login",
+      "ip": "::1"
+    },
+    {
+      "t": 1794645015662,
+      "user": "owner",
+      "action": "failed staff login",
+      "ip": "::1"
+    },
     {
       "t": 1794471347943,
       "user": "owner",
@@ -3595,6 +3705,18 @@
     }
   ],
   "inventoryLogs": [
+    {
+      "id": 97,
+      "productId": 1,
+      "productName": "Cherry Barb",
+      "change": -2,
+      "previousStock": 23,
+      "newStock": 21,
+      "type": "pos_sale",
+      "reason": "POS Counter Sale #PP-INV-7002",
+      "performedBy": "owner",
+      "timestamp": 1794645109775
+    },
     {
       "id": 96,
       "productId": 5,
@@ -4761,8 +4883,12 @@
     "phone": "+91 98765 43210",
     "whatsappNumber": "919876543210",
     "address": "Pairaplants Studio, Aquatic Flora Hub, India",
+    "gstin": "32AAAAA0000A1Z5",
+    "invoicePrefix": "PP-INV-",
     "currency": "INR",
     "currencySymbol": "₹",
+    "defaultTaxRate": 5,
+    "lowStockDefault": 8,
     "freeShippingThreshold": 0,
     "seo": {
       "metaTitle": "Pairaplants – Premium Aquatic Plants, Tropical Fishes & Aquascaping",
@@ -4772,5 +4898,310 @@
       "keywords": "aquatic plants, pairaplants, aquascaping, freshwater shrimp, planted aquarium, live fish"
     }
   },
-  "newsletter": []
+  "newsletter": [],
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "Kerala Aquatic Flora Farm",
+      "contactPerson": "Sunil Kumar",
+      "phone": "+91 94471 23456",
+      "email": "flora@keralaplants.in",
+      "address": "Near Periyar River, Aluva, Kochi, Kerala 683101",
+      "type": "Aquatic Plants & Mosses",
+      "notes": "Premier tissue culture and submerged stem plant nursery. Weekly Wednesday deliveries.",
+      "createdAt": "2026-10-01T09:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Malabar Ornamental Hatchery",
+      "contactPerson": "Muhammed Shafi",
+      "phone": "+91 98460 34567",
+      "email": "hatchery@malabarfish.in",
+      "address": "Cheruvannur, Feroke, Kozhikode, Kerala 673631",
+      "type": "Ornamental Fishes & Shrimps",
+      "notes": "Certified quarantined live fish & dwarf caridina/neocaridina shrimp breeder.",
+      "createdAt": "2026-10-05T10:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "AquaScape Substrates & Stone Imports",
+      "contactPerson": "Rajesh Sharma",
+      "phone": "+91 98840 56789",
+      "email": "stones@aquascapematerials.com",
+      "address": "Industrial Estate, Guindy, Chennai, Tamil Nadu 600032",
+      "type": "Substrates & Hardscape",
+      "notes": "Direct importer of volcanic aquasoil, black quartz sand, dragon stones and driftwood.",
+      "createdAt": "2026-10-10T14:15:00.000Z"
+    },
+    {
+      "id": 4,
+      "name": "Ada Green Tools & Essentials",
+      "contactPerson": "Arun Nair",
+      "phone": "+91 80234 67890",
+      "email": "support@adagreen.in",
+      "address": "100 Feet Road, Indiranagar, Bengaluru, Karnataka 560038",
+      "type": "Aquarium Accessories",
+      "notes": "Supplies surgical grade aquascaping tools, CO2 diffusers, liquid plant fertilizers.",
+      "createdAt": "2026-10-15T11:00:00.000Z"
+    }
+  ],
+  "purchases": [
+    {
+      "id": 5001,
+      "purchaseNumber": "PO-2026-001",
+      "supplierId": 1,
+      "supplierName": "Kerala Aquatic Flora Farm",
+      "date": "2026-11-01T10:00:00.000Z",
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Anubias Nana Petite",
+          "sku": "PP-PLT-001",
+          "qty": 30,
+          "purchasePrice": 120,
+          "total": 3600
+        },
+        {
+          "productId": 2,
+          "productName": "Microsorum Trident Fern",
+          "sku": "PP-PLT-002",
+          "qty": 25,
+          "purchasePrice": 140,
+          "total": 3500
+        },
+        {
+          "productId": 3,
+          "productName": "Rotala Rotundifolia Blood Red",
+          "sku": "PP-PLT-003",
+          "qty": 40,
+          "purchasePrice": 90,
+          "total": 3600
+        }
+      ],
+      "subtotal": 10700,
+      "tax": 535,
+      "grandTotal": 11235,
+      "paymentStatus": "paid",
+      "paymentMethod": "Bank Transfer",
+      "notes": "Initial November botanical nursery restock.",
+      "createdBy": "owner"
+    },
+    {
+      "id": 5002,
+      "purchaseNumber": "PO-2026-002",
+      "supplierId": 2,
+      "supplierName": "Malabar Ornamental Hatchery",
+      "date": "2026-11-05T14:30:00.000Z",
+      "items": [
+        {
+          "productId": 6,
+          "productName": "Neon Blue Dwarf Shrimp",
+          "sku": "PP-SHR-001",
+          "qty": 50,
+          "purchasePrice": 65,
+          "total": 3250
+        },
+        {
+          "productId": 7,
+          "productName": "Bloody Mary Cherry Shrimp",
+          "sku": "PP-SHR-002",
+          "qty": 50,
+          "purchasePrice": 70,
+          "total": 3500
+        }
+      ],
+      "subtotal": 6750,
+      "tax": 337.5,
+      "grandTotal": 7087.5,
+      "paymentStatus": "paid",
+      "paymentMethod": "UPI",
+      "notes": "Quarantined healthy dwarf shrimp stock-in.",
+      "createdBy": "owner"
+    }
+  ],
+  "posSales": [
+    {
+      "id": 7002,
+      "invoiceNumber": "PP-INV-7002",
+      "customerId": null,
+      "customerName": "Walk-in Customer",
+      "customerPhone": "",
+      "date": "2026-11-14T08:31:49.775Z",
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Cherry Barb",
+          "sku": "PP-FIS-001",
+          "qty": 2,
+          "price": 249,
+          "discount": 0,
+          "total": 498
+        }
+      ],
+      "subtotal": 498,
+      "discount": 0,
+      "tax": 24.9,
+      "taxRate": 5,
+      "grandTotal": 522.9,
+      "paymentMethod": "UPI",
+      "paymentStatus": "completed",
+      "transactionRef": "",
+      "notes": "",
+      "createdBy": "owner"
+    },
+    {
+      "id": 7001,
+      "invoiceNumber": "PP-INV-7001",
+      "customerId": 1,
+      "customerName": "Anoop Menon",
+      "customerPhone": "+91 98470 11223",
+      "date": "2026-11-10T11:45:00.000Z",
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Anubias Nana Petite",
+          "sku": "PP-PLT-001",
+          "qty": 2,
+          "price": 249,
+          "total": 498
+        },
+        {
+          "productId": 6,
+          "productName": "Neon Blue Dwarf Shrimp",
+          "sku": "PP-SHR-001",
+          "qty": 4,
+          "price": 149,
+          "total": 596
+        }
+      ],
+      "subtotal": 1094,
+      "discount": 50,
+      "tax": 52.2,
+      "grandTotal": 1096.2,
+      "paymentMethod": "UPI",
+      "paymentStatus": "completed",
+      "transactionRef": "UPI-789012345678",
+      "createdBy": "manager"
+    }
+  ],
+  "invoices": [
+    {
+      "id": 9002,
+      "invoiceNumber": "PP-INV-7002",
+      "type": "pos",
+      "referenceId": 7002,
+      "date": "2026-11-14T08:31:49.775Z",
+      "customer": {
+        "name": "Walk-in Customer",
+        "phone": "",
+        "email": "",
+        "address": ""
+      },
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Cherry Barb",
+          "sku": "PP-FIS-001",
+          "qty": 2,
+          "price": 249,
+          "discount": 0,
+          "total": 498
+        }
+      ],
+      "subtotal": 498,
+      "discount": 0,
+      "tax": 24.9,
+      "taxRate": 5,
+      "grandTotal": 522.9,
+      "paymentMethod": "UPI",
+      "paymentStatus": "completed",
+      "transactionRef": "",
+      "gstin": "32AAAAA0000A1Z5",
+      "notes": "Thank you for choosing Paira Plants Botanical Studio."
+    },
+    {
+      "id": 9001,
+      "invoiceNumber": "PP-INV-7001",
+      "type": "pos",
+      "referenceId": 7001,
+      "date": "2026-11-10T11:45:00.000Z",
+      "customer": {
+        "name": "Anoop Menon",
+        "phone": "+91 98470 11223",
+        "email": "anoop.menon@example.com",
+        "address": "Panampilly Nagar, Kochi, Kerala"
+      },
+      "items": [
+        {
+          "productId": 1,
+          "productName": "Anubias Nana Petite",
+          "sku": "PP-PLT-001",
+          "qty": 2,
+          "price": 249,
+          "total": 498
+        },
+        {
+          "productId": 6,
+          "productName": "Neon Blue Dwarf Shrimp",
+          "sku": "PP-SHR-001",
+          "qty": 4,
+          "price": 149,
+          "total": 596
+        }
+      ],
+      "subtotal": 1094,
+      "discount": 50,
+      "tax": 52.2,
+      "grandTotal": 1096.2,
+      "paymentMethod": "UPI",
+      "paymentStatus": "completed",
+      "gstin": "32AAAAA0000A1Z5",
+      "notes": "Thank you for choosing Paira Plants Botanical Studio."
+    }
+  ],
+  "payments": [
+    {
+      "id": 8003,
+      "paymentNumber": "PAY-2026-8003",
+      "date": "2026-11-14T08:31:49.775Z",
+      "type": "sale",
+      "referenceId": 7002,
+      "referenceNumber": "PP-INV-7002",
+      "customerName": "Walk-in Customer",
+      "amount": 522.9,
+      "method": "UPI",
+      "status": "completed",
+      "transactionRef": "",
+      "notes": "Counter checkout payment via UPI"
+    },
+    {
+      "id": 8001,
+      "paymentNumber": "PAY-2026-001",
+      "date": "2026-11-10T11:45:00.000Z",
+      "type": "sale",
+      "referenceId": 7001,
+      "referenceNumber": "PP-INV-7001",
+      "customerName": "Anoop Menon",
+      "amount": 1096.2,
+      "method": "UPI",
+      "status": "completed",
+      "transactionRef": "UPI-789012345678",
+      "notes": "Instant counter settlement via QR scan"
+    },
+    {
+      "id": 8002,
+      "paymentNumber": "PAY-2026-002",
+      "date": "2026-11-01T10:15:00.000Z",
+      "type": "purchase",
+      "referenceId": 5001,
+      "referenceNumber": "PO-2026-001",
+      "supplierName": "Kerala Aquatic Flora Farm",
+      "amount": 11235,
+      "method": "Bank Transfer",
+      "status": "completed",
+      "transactionRef": "NEFT-5566778899",
+      "notes": "Supplier nursery invoice settlement"
+    }
+  ],
+  "batches": []
 }

@@ -2164,6 +2164,15 @@ footer.site-footer a:hover {
 .badge-status.shipped { background: #ede9fe; color: #6d28d9; border: 1px solid #ddd6fe; }
 .badge-status.delivered { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 .badge-status.cancelled { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+.badge-status.paid, .badge-status.completed, .badge-status.received { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.badge-status.pending, .badge-status.ordered { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.badge-status.failed { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.badge-status.low { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+.badge-status.out { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+.badge-status.instock { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.badge-status.pos { background: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe; }
+.badge-status.web { background: #ccfbf1; color: #0f766e; border: 1px solid #99f6e4; }
+.badge-status.mortality { background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
 
 /* Stock Pills */
 .stock-pill {
@@ -2352,4 +2361,257 @@ footer.site-footer a:hover {
   .footer-top-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ==============================================================================
+   POINT OF SALE (POS) BILLING TERMINAL & ADVANCED INVENTORY CSS
+   ============================================================================== */
+.pos-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .pos-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pos-catalog {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.pos-catalog-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.pos-prod-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 14px;
+  max-height: 640px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.pos-prod-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  text-align: left;
+}
+
+.pos-prod-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--forest-primary);
+  box-shadow: 0 4px 14px rgba(30, 92, 60, 0.12);
+}
+
+.pos-prod-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #f8fafc;
+}
+
+.pos-prod-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: #f1f5f9;
+}
+
+.pos-prod-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--forest-primary);
+  line-height: 1.25;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pos-prod-sku {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  font-family: monospace;
+}
+
+.pos-prod-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.pos-prod-price {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--forest-primary);
+}
+
+.pos-stock-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #e6f4ee;
+  color: #1e5c3c;
+}
+
+.pos-stock-badge.low {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.pos-stock-badge.out {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* POS Checkout Panel */
+.pos-checkout-panel {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: sticky;
+  top: 90px;
+}
+
+.pos-customer-box {
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.pos-cart-list {
+  max-height: 280px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 4px;
+}
+
+.pos-cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.88rem;
+}
+
+.pos-cart-meta {
+  flex: 1;
+  min-width: 0;
+  padding-right: 8px;
+}
+
+.pos-cart-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pos-qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pos-qty-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.pos-qty-val {
+  width: 28px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.pos-total-banner {
+  background: linear-gradient(135deg, #1e5c3c, #153e28);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pos-total-banner .val {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.admin-subnav {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.admin-subnav-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -6px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.admin-subnav-btn:hover {
+  color: var(--forest-primary);
+}
+
+.admin-subnav-btn.active {
+  color: var(--forest-primary);
+  border-bottom-color: var(--forest-primary);
 }

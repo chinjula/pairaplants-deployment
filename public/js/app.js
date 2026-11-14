@@ -28,25 +28,29 @@ const EMOJI = {
   'Shrimps': '🦐'
 };
 
-const ROLE_NAMES = { superadmin: 'Super Admin', manager: 'Manager', support: 'Customer Support' };
+const ROLE_NAMES = {
+  superadmin: 'Super Admin',
+  manager: 'Manager',
+  inventory: 'Inventory Staff',
+  sales: 'Sales Staff',
+  support: 'Customer Support'
+};
 
-// 15 Admin Sections
+// 13 Main Admin Dashboard Modules matching enterprise requirements
 const ADMIN_SECTIONS = [
-  { id: 'dashboard', name: 'Dashboard', icon: '📊', roles: ['superadmin', 'manager'] },
-  { id: 'products', name: 'Products', icon: '🌿', roles: ['superadmin', 'manager'] },
-  { id: 'categories', name: 'Categories', icon: '📁', roles: ['superadmin'] },
-  { id: 'inventory', name: 'Inventory', icon: '📦', roles: ['superadmin', 'manager', 'support'] },
-  { id: 'orders', name: 'Orders', icon: '🛍️', roles: ['superadmin', 'manager', 'support'] },
-  { id: 'homepage', name: 'Homepage Editor', icon: '🎨', roles: ['superadmin'] },
-  { id: 'media', name: 'Banners & Media', icon: '🖼️', roles: ['superadmin'] },
-  { id: 'customers', name: 'Customers', icon: '👥', roles: ['superadmin', 'manager'] },
-  { id: 'inquiries', name: 'Customer Inquiries', icon: '💬', roles: ['superadmin', 'support'] },
-  { id: 'coupons', name: 'Coupons', icon: '🏷️', roles: ['superadmin'] },
-  { id: 'seo', name: 'SEO Settings', icon: '🔍', roles: ['superadmin'] },
-  { id: 'reports', name: 'Reports & Analytics', icon: '📈', roles: ['superadmin', 'manager'] },
-  { id: 'staff', name: 'Staff Management', icon: '🔑', roles: ['superadmin'] },
-  { id: 'settings', name: 'Website Settings', icon: '⚙️', roles: ['superadmin'] },
-  { id: 'backups', name: 'Security & Backups', icon: '🛡️', roles: ['superadmin'] }
+  { id: 'dashboard', name: 'Dashboard', icon: '📊', roles: ['superadmin', 'manager', 'inventory', 'sales'] },
+  { id: 'products', name: 'Products', icon: '🌿', roles: ['superadmin', 'manager', 'inventory'] },
+  { id: 'categories', name: 'Categories', icon: '📁', roles: ['superadmin', 'manager'] },
+  { id: 'suppliers', name: 'Suppliers', icon: '🏭', roles: ['superadmin', 'manager', 'inventory'] },
+  { id: 'purchases', name: 'Purchases', icon: '📥', roles: ['superadmin', 'manager', 'inventory'] },
+  { id: 'inventory', name: 'Stock Management', icon: '📦', roles: ['superadmin', 'manager', 'inventory', 'sales', 'support'] },
+  { id: 'pos', name: 'Sales / POS', icon: '💳', roles: ['superadmin', 'manager', 'sales'] },
+  { id: 'customers', name: 'Customers', icon: '👥', roles: ['superadmin', 'manager', 'sales', 'support'] },
+  { id: 'orders', name: 'Website Orders', icon: '🛍️', roles: ['superadmin', 'manager', 'sales', 'support'] },
+  { id: 'payments', name: 'Payments', icon: '💰', roles: ['superadmin', 'manager', 'sales'] },
+  { id: 'invoices', name: 'Invoices', icon: '🧾', roles: ['superadmin', 'manager', 'sales', 'inventory'] },
+  { id: 'reports', name: 'Reports', icon: '📈', roles: ['superadmin', 'manager'] },
+  { id: 'settings', name: 'Settings', icon: '⚙️', roles: ['superadmin'] }
 ];
 
 /* ---------- Global State ---------- */
@@ -58,6 +62,13 @@ let filter = 'All';
 let subfilter = 'All';
 let search = '';
 let staffUser = null;
+let posCart = [];
+let posSelectedCustomer = null;
+let posCategoryFilter = 'All';
+let posSearchQuery = '';
+let reportsPeriod = 'all';
+let settingsTab = 'store';
+let stockTab = 'all';
 let customerUser = null;
 let adminTab = 'dashboard';
 let toastTimer = null;
@@ -979,76 +990,182 @@ const pages = {
 const adminViews = {
   /* 1. Dashboard */
   async dashboard() {
-    const r = await api('/reports/overview');
+    const s = await api('/dashboard/stats');
     return `
       <div class="admin-header-row">
         <div>
-          <span class="kicker">OVERVIEW &amp; PERFORMANCE</span>
+          <span class="kicker">REAL-TIME OVERVIEW</span>
           <h1 style="font-size:2rem;margin:0">Admin Dashboard</h1>
         </div>
-        <div style="display:flex;gap:10px;">
-          <button class="btn-pill sm" data-a="openAddProductModal">+ Add New Product</button>
-          <a class="btn-pill sm outline" href="#shop" target="_blank">View Live Store ↗</a>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn-pill sm" data-a="adminNav" data-v="pos">💳 Open POS</button>
+          <button class="btn-pill sm outline" data-a="openNewPurchaseModal">📥 Record Purchase</button>
+          <button class="btn-pill sm outline" data-a="openStockAdjustModal">⚖️ Adjust Stock</button>
+          <button class="btn-pill sm outline" data-a="openAddProductModal">+ New Product</button>
         </div>
       </div>
 
-      <!-- KPI Grid -->
+      <!-- 10 Summary KPI Cards -->
       <div class="kpi-grid">
         <div class="kpi-card">
           <span class="kpi-title">Total Products</span>
-          <div class="kpi-value">${r.totalProducts}</div>
-          <span class="kpi-subtitle">Active Botanical Items</span>
+          <div class="kpi-value">${s.totalProducts || s.productsCount || 0}</div>
+          <span class="kpi-subtitle">Catalog botanical items</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-title">Total Orders</span>
-          <div class="kpi-value">${r.totalOrders}</div>
-          <span class="kpi-subtitle">All-time customer orders</span>
+          <span class="kpi-title">Available Stock</span>
+          <div class="kpi-value">${s.totalStock || s.totalStockUnits || 0}</div>
+          <span class="kpi-subtitle">Total units on hand</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-title">Pending Orders</span>
-          <div class="kpi-value">${r.pendingOrders}</div>
-          <span class="kpi-subtitle">Require packing &amp; dispatch</span>
+          <span class="kpi-title">Aquatic Plants</span>
+          <div class="kpi-value">${s.plantsStock || s.plantsCount || 0}</div>
+          <span class="kpi-subtitle">Flora varieties in stock</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-title">Delivered Orders</span>
-          <div class="kpi-value">${r.deliveredOrders}</div>
-          <span class="kpi-subtitle">Successfully received</span>
+          <span class="kpi-title">Ornamental Fish</span>
+          <div class="kpi-value">${s.fishStock || s.fishCount || 0}</div>
+          <span class="kpi-subtitle">Freshwater live species</span>
         </div>
-        <div class="kpi-card ${r.lowStockProducts > 0 ? 'alert' : ''}">
+        <div class="kpi-card">
+          <span class="kpi-title">Dwarf Shrimps</span>
+          <div class="kpi-value">${s.shrimpStock || s.shrimpCount || 0}</div>
+          <span class="kpi-subtitle">Cleaners &amp; invertebrates</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Gravels &amp; Substrates</span>
+          <div class="kpi-value">${s.gravelsStock || s.gravelCount || 0}</div>
+          <span class="kpi-subtitle">Aquascaping materials</span>
+        </div>
+        <div class="kpi-card ${s.lowStockCount > 0 ? 'alert' : ''}">
           <span class="kpi-title">Low Stock Alerts</span>
-          <div class="kpi-value" style="color:var(--terracotta);">${r.lowStockProducts}</div>
+          <div class="kpi-value" style="color:var(--terracotta);">${s.lowStockCount || 0}</div>
           <span class="kpi-subtitle">At or below threshold</span>
         </div>
-        <div class="kpi-card ${r.outOfStockProducts > 0 ? 'alert' : ''}">
+        <div class="kpi-card ${s.outOfStockCount > 0 ? 'alert' : ''}">
           <span class="kpi-title">Out of Stock</span>
-          <div class="kpi-value" style="color:#b91c1c;">${r.outOfStockProducts}</div>
-          <span class="kpi-subtitle">Unavailable for checkout</span>
+          <div class="kpi-value" style="color:#b91c1c;">${s.outOfStockCount || 0}</div>
+          <span class="kpi-subtitle">Zero available inventory</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-title">Registered Customers</span>
-          <div class="kpi-value">${r.totalCustomers}</div>
-          <span class="kpi-subtitle">Active accounts</span>
+          <span class="kpi-title">Total Sales Revenue</span>
+          <div class="kpi-value" style="color:var(--moss);">${money(s.totalSales || s.totalSalesRevenue || 0)}</div>
+          <span class="kpi-subtitle">POS counter &amp; web revenue</span>
         </div>
         <div class="kpi-card">
-          <span class="kpi-title">Sales Revenue</span>
-          <div class="kpi-value" style="color:var(--moss);">${money(r.totalRevenue)}</div>
-          <span class="kpi-subtitle">Gross verified orders</span>
+          <span class="kpi-title">Total Purchases Cost</span>
+          <div class="kpi-value">${money(s.totalPurchases || s.totalPurchasesCost || 0)}</div>
+          <span class="kpi-subtitle">Supplier stock investments</span>
         </div>
       </div>
 
-      <!-- Top Selling Products -->
-      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;margin-top:20px;">
-        <h3 style="margin-bottom:16px;">Top Selling Botanicals</h3>
-        ${(r.topSelling || []).length ? `
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Product Name</th><th>Units Sold</th></tr></thead>
-              <tbody>
-                ${r.topSelling.map(s => `<tr><td><strong>${esc(s.name)}</strong></td><td>${s.qty} units</td></tr>`).join('')}
-              </tbody>
-            </table>
+      <!-- Action Alerts & Live Panels -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(420px, 1fr));gap:24px;margin-top:24px;">
+        
+        <!-- Recent Sales -->
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <h3 style="margin:0;">Recent Sales</h3>
+            <button class="btn-pill sm outline" data-a="adminNav" data-v="orders">View Orders ↗</button>
           </div>
-        ` : '<p class="muted">No sales metrics recorded yet.</p>'}
+          ${(s.recentSales && s.recentSales.length) ? `
+            <div class="table-wrap" style="margin:0;">
+              <table>
+                <thead><tr><th>Ref</th><th>Customer</th><th>Amount</th><th>Status</th></tr></thead>
+                <tbody>
+                  ${s.recentSales.map(sl => `
+                    <tr>
+                      <td><code>${esc(sl.invoiceNumber || sl.orderNumber || '#' + sl.id)}</code></td>
+                      <td>${esc(sl.customerName || (sl.customer && sl.customer.name) || 'Walk-in Customer')}</td>
+                      <td><strong>${money(sl.total || sl.grandTotal || 0)}</strong></td>
+                      <td><span class="badge-status ${esc((sl.status || 'completed').toLowerCase())}">${esc(sl.status || 'Completed')}</span></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          ` : '<p class="muted">No sales recorded yet.</p>'}
+        </div>
+
+        <!-- Recent Purchases -->
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <h3 style="margin:0;">Recent Purchases (Stock In)</h3>
+            <button class="btn-pill sm outline" data-a="adminNav" data-v="purchases">View Purchases ↗</button>
+          </div>
+          ${(s.recentPurchases && s.recentPurchases.length) ? `
+            <div class="table-wrap" style="margin:0;">
+              <table>
+                <thead><tr><th>PO #</th><th>Supplier</th><th>Cost</th><th>Items</th></tr></thead>
+                <tbody>
+                  ${s.recentPurchases.map(po => `
+                    <tr>
+                      <td><code>${esc(po.poNumber || 'PO-' + po.id)}</code></td>
+                      <td>${esc(po.supplierName || 'Supplier')}</td>
+                      <td><strong>${money(po.totalCost || 0)}</strong></td>
+                      <td><span class="badge-status instock">${(po.items || []).length} items</span></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          ` : '<p class="muted">No supplier purchases recorded yet.</p>'}
+        </div>
+
+        <!-- Low Stock Alerts -->
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <h3 style="margin:0;color:var(--terracotta);">Critical &amp; Low Stock</h3>
+            <button class="btn-pill sm outline" data-a="adminNav" data-v="inventory">Manage Stock ↗</button>
+          </div>
+          ${((s.lowStockProducts || s.lowStockList) && (s.lowStockProducts || s.lowStockList).length) ? `
+            <div class="table-wrap" style="margin:0;">
+              <table>
+                <thead><tr><th>Product</th><th>Stock</th><th>Threshold</th><th>Action</th></tr></thead>
+                <tbody>
+                  ${(s.lowStockProducts || s.lowStockList).map(p => `
+                    <tr>
+                      <td>
+                        <strong>${esc(p.name)}</strong>
+                        <div style="font-size:0.75rem;color:var(--ink-secondary)"><code>${esc(p.sku || '')}</code> · ${esc(p.category)}</div>
+                      </td>
+                      <td><span class="badge-status ${p.stock <= 0 ? 'out' : 'low'}">${p.stock} units</span></td>
+                      <td>${p.lowStockThreshold || p.threshold || 5} units</td>
+                      <td>
+                        <button class="btn-pill sm outline" style="padding:4px 10px;font-size:0.75rem" data-a="openStockAdjustModal" data-id="${p.id}">+ Adjust / In</button>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          ` : '<p class="muted">All catalog items have healthy inventory levels.</p>'}
+        </div>
+
+        <!-- Best-Selling Products -->
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <h3 style="margin:0;">Best-Selling Products</h3>
+            <button class="btn-pill sm outline" data-a="adminNav" data-v="reports">Analytics ↗</button>
+          </div>
+          ${((s.bestSellingProducts || s.bestSellers) && (s.bestSellingProducts || s.bestSellers).length) ? `
+            <div class="table-wrap" style="margin:0;">
+              <table>
+                <thead><tr><th>Product Name</th><th>Units Sold</th><th>Sales Value</th></tr></thead>
+                <tbody>
+                  ${(s.bestSellingProducts || s.bestSellers).map(b => `
+                    <tr>
+                      <td><strong>${esc(b.name)}</strong></td>
+                      <td><span class="badge-status instock">${b.unitsSold || b.qty || 0} units</span></td>
+                      <td><strong>${money(b.revenue || 0)}</strong></td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          ` : '<p class="muted">No sales metrics recorded yet.</p>'}
+        </div>
+
       </div>
     `;
   },
@@ -1060,123 +1177,162 @@ const adminViews = {
       <div class="admin-header-row">
         <div>
           <span class="kicker">CATALOG MANAGEMENT</span>
-          <h1 style="font-size:2rem;margin:0">Products (${products.length})</h1>
+          <h1 style="font-size:2rem;margin:0">Products Directory (${products.length})</h1>
         </div>
-        <div style="display:flex;gap:12px;">
-          <div class="search-wrap" style="margin-bottom:0;width:260px;">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <div class="search-wrap" style="margin-bottom:0;width:240px;">
             <span class="search-icon">🔍</span>
-            <input type="search" placeholder="Search catalog..." data-i="admin-prod-search">
+            <input type="search" placeholder="Search by name, SKU..." data-i="admin-prod-search">
           </div>
-          <button class="btn-pill sm" data-a="openAddProductModal">+ Add Product</button>
+          <button class="btn-pill sm" data-a="openAddProductModal">+ Add New Product</button>
         </div>
       </div>
 
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Item</th><th>Category</th><th>SKU</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr>
+            <tr>
+              <th>Item / Scientific Name</th>
+              <th>SKU</th>
+              <th>Category</th>
+              <th>Cost</th>
+              <th>Price</th>
+              <th>Margin</th>
+              <th>Stock</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
           </thead>
           <tbody id="admin-prod-tbody">
-            ${products.map(p => `
-              <tr data-name="${esc(p.name.toLowerCase())}" data-cat="${esc(p.category.toLowerCase())}">
-                <td style="display:flex;align-items:center;gap:10px;">
-                  ${p.image && !p.image.includes('hero-aquarium') ? `
-                    <img src="${esc(p.image)}" alt="" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;border:1px solid var(--line);">
-                  ` : `
-                    <span style="font-size:1.2rem;width:36px;text-align:center;">${EMOJI[p.subcategory] || EMOJI[p.category] || '🌿'}</span>
-                  `}
-                  <div>
-                    <strong>${esc(p.name)}</strong>
-                    ${p.isFeatured ? '<span class="badge" style="background:#eaf2ec;margin-left:4px;">Featured</span>' : ''}
-                    ${p.isVisible === false ? '<span class="badge" style="background:#fee2e2;color:#b91c1c;margin-left:4px;">Hidden</span>' : ''}
-                  </div>
-                </td>
-                <td>${esc(p.category)}</td>
-                <td><code style="font-size:0.8rem">${esc(p.sku || `PP-${p.id}`)}</code></td>
-                <td>${p.salePrice ? `<strong style="color:var(--terracotta)">${money(p.salePrice)}</strong> <del class="muted">${money(p.price)}</del>` : `<strong>${money(p.price)}</strong>`}</td>
-                <td>${stockBadge(p)}</td>
-                <td>${p.stock > 0 ? '<span style="color:#15803d;font-weight:600;">Active</span>' : '<span style="color:#b91c1c;font-weight:600;">Sold Out</span>'}</td>
-                <td>
-                  <div style="display:flex;gap:6px;">
-                    <button class="btn-pill outline sm" data-a="editProduct" data-id="${p.id}">Edit</button>
-                    <button class="btn-pill outline sm" data-a="delProduct" data-id="${p.id}" style="color:var(--terracotta);border-color:var(--terracotta);">Delete</button>
-                  </div>
-                </td>
-              </tr>
-            `).join('')}
+            ${products.map(p => {
+              const cost = p.purchasePrice || Math.round(p.price * 0.55);
+              const margin = p.price > 0 ? Math.round(((p.price - cost) / p.price) * 100) : 0;
+              const isLow = p.stock <= (p.lowStockThreshold || 5);
+              const isOut = p.stock <= 0;
+              const stockClass = isOut ? 'out' : (isLow ? 'low' : 'instock');
+              return `
+                <tr data-name="${esc(p.name.toLowerCase())}" data-cat="${esc(p.category.toLowerCase())}">
+                  <td style="display:flex;align-items:center;gap:12px;">
+                    ${p.image && !p.image.includes('hero-aquarium') ? `
+                      <img src="${esc(p.image)}" alt="" style="width:40px;height:40px;border-radius:6px;object-fit:cover;flex-shrink:0;border:1px solid var(--line);">
+                    ` : `
+                      <span style="font-size:1.4rem;width:40px;text-align:center;">${EMOJI[p.subcategory] || EMOJI[p.category] || '🌿'}</span>
+                    `}
+                    <div>
+                      <strong>${esc(p.name)}</strong>
+                      ${p.scientificName ? `<div style="font-size:0.75rem;font-style:italic;color:var(--ink-secondary)">${esc(p.scientificName)}</div>` : ''}
+                      ${p.difficulty ? `<span class="badge-status new" style="font-size:0.68rem;padding:1px 6px;">${esc(p.difficulty)}</span>` : ''}
+                    </div>
+                  </td>
+                  <td><code>${esc(p.sku || `PP-${p.id}`)}</code></td>
+                  <td>
+                    <div>${esc(p.category)}</div>
+                    <div style="font-size:0.75rem;color:var(--ink-secondary)">${esc(p.subcategory || '')}</div>
+                  </td>
+                  <td>${money(cost)}</td>
+                  <td><strong>${money(p.price)}</strong></td>
+                  <td><span style="color:${margin >= 40 ? '#166534' : '#b45309'};font-weight:700;">${margin}%</span></td>
+                  <td>
+                    <span class="badge-status ${stockClass}">${p.stock} units</span>
+                  </td>
+                  <td>
+                    <span class="badge-status ${p.isVisible !== false ? 'instock' : 'out'}">${p.isVisible !== false ? 'Active' : 'Hidden'}</span>
+                  </td>
+                  <td>
+                    <div style="display:flex;gap:6px;">
+                      <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="editProduct" data-id="${p.id}">Edit</button>
+                      <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="openStockAdjustModal" data-id="${p.id}">Stock</button>
+                      <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;color:#b91c1c;border-color:#fecaca;" data-a="delProduct" data-id="${p.id}">&times;</button>
+                    </div>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
           </tbody>
         </table>
       </div>
     `;
   },
 
-  /* 3. Categories */
+  /* 3. Categories Management */
   async categories() {
     const cats = await api('/categories');
     return `
       <div class="admin-header-row">
         <div>
-          <span class="kicker">TAXONOMY</span>
+          <span class="kicker">PRODUCT HIERARCHY</span>
           <h1 style="font-size:2rem;margin:0">Categories &amp; Subcategories</h1>
         </div>
       </div>
 
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Icon</th><th>Category Name</th><th>Slug</th><th>Subcategories</th></tr></thead>
-          <tbody>
-            ${cats.map(c => `
-              <tr>
-                <td style="font-size:1.5rem">${c.icon || '🌿'}</td>
-                <td><strong>${esc(c.name)}</strong></td>
-                <td><code>${esc(c.slug)}</code></td>
-                <td>${(c.subcategories || []).map(s => `<span class="badge" style="margin:2px;">${esc(s)}</span>`).join('')}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:20px;">
+        ${cats.map(c => `
+          <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;box-shadow:var(--shadow-subtle);">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span style="font-size:1.8rem;">${EMOJI[c.name] || '🌿'}</span>
+                <div>
+                  <h3 style="margin:0;font-size:1.15rem;">${esc(c.name)}</h3>
+                  <span class="muted" style="font-size:0.8rem;">${c.count || 0} active products</span>
+                </div>
+              </div>
+            </div>
+            
+            <div style="margin-top:14px;border-top:1px solid var(--line-subtle);padding-top:12px;">
+              <span style="font-size:0.75rem;font-weight:700;color:var(--forest-primary);text-transform:uppercase;letter-spacing:0.04em;">Subcategories</span>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+                ${(c.subcategories || []).map(sub => `
+                  <span style="background:var(--canvas-alt);padding:4px 10px;border-radius:var(--radius-pill);font-size:0.8rem;border:1px solid var(--line-subtle);">${esc(sub)}</span>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `).join('')}
       </div>
     `;
   },
 
-  /* 4. Advanced Inventory Management */
-  async inventory() {
-    const items = await api('/inventory');
-    const logs = await api('/inventory/logs');
-
+  /* 4. Suppliers Directory */
+  async suppliers() {
+    const list = await api('/suppliers');
     return `
       <div class="admin-header-row">
         <div>
-          <span class="kicker">STOCK CONTROL &amp; AUDIT</span>
-          <h1 style="font-size:2rem;margin:0">Inventory Management</h1>
+          <span class="kicker">VENDOR MANAGEMENT</span>
+          <h1 style="font-size:2rem;margin:0">Suppliers Directory (${list.length})</h1>
         </div>
-        <div class="search-wrap" style="margin-bottom:0;width:280px;">
-          <span class="search-icon">🔍</span>
-          <input type="search" placeholder="Filter inventory..." data-i="admin-inv-search">
-        </div>
+        <button class="btn-pill sm" data-a="openAddSupplierModal">+ Add New Supplier</button>
       </div>
 
-      <div class="table-wrap" style="margin-bottom:32px;">
+      <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Botanical Product</th><th>Category</th><th>SKU</th><th>Current Stock</th><th>Low-Stock Alert</th><th>Quick Adjust</th></tr>
+            <tr>
+              <th>Supplier Name</th>
+              <th>Contact Person</th>
+              <th>Phone / WhatsApp</th>
+              <th>Email</th>
+              <th>Address / State</th>
+              <th>GSTIN</th>
+              <th>Payment Terms</th>
+              <th>Actions</th>
+            </tr>
           </thead>
-          <tbody id="admin-inv-tbody">
-            ${items.map(it => `
-              <tr data-name="${esc(it.name.toLowerCase())}" data-cat="${esc(it.category.toLowerCase())}">
-                <td><strong>${esc(it.name)}</strong></td>
-                <td>${esc(it.category)}</td>
-                <td><code>${esc(it.sku)}</code></td>
+          <tbody>
+            ${list.map(s => `
+              <tr>
+                <td><strong>${esc(s.name)}</strong></td>
+                <td>${esc(s.contactPerson || '-')}</td>
+                <td><a href="tel:${esc(s.phone)}">${esc(s.phone || '-')}</a></td>
+                <td><a href="mailto:${esc(s.email)}">${esc(s.email || '-')}</a></td>
+                <td>${esc(s.address || s.state || '-')}</td>
+                <td><code>${esc(s.gstin || 'Unregistered')}</code></td>
+                <td><span class="badge-status instock">${esc(s.paymentTerms || 'Net 30')}</span></td>
                 <td>
-                  <input type="number" min="0" value="${it.stock}" data-c="stockOverride" data-id="${it.id}" style="width:75px;padding:6px;border:1px solid var(--line);border-radius:6px;font-weight:700;">
-                </td>
-                <td>${it.status === 'out_of_stock' ? '<span class="stock-pill out">Out of Stock</span>' : (it.status === 'low_stock' ? '<span class="stock-pill low">Low Stock (&le; ' + it.lowStockThreshold + ')</span>' : '<span class="stock-pill in">Healthy</span>')}</td>
-                <td>
-                  <div style="display:flex;gap:4px;">
-                    <button class="btn-pill sm outline" data-a="invDelta" data-id="${it.id}" data-v="-1">-1</button>
-                    <button class="btn-pill sm outline" data-a="invDelta" data-id="${it.id}" data-v="1">+1</button>
-                    <button class="btn-pill sm outline" data-a="invDelta" data-id="${it.id}" data-v="5">+5</button>
-                    <button class="btn-pill sm outline" data-a="invDelta" data-id="${it.id}" data-v="10">+10</button>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="openNewPurchaseModal" data-sup="${s.id}">+ PO</button>
+                    <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="editSupplier" data-id="${s.id}">Edit</button>
+                    <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;color:#b91c1c;border-color:#fecaca;" data-a="delSupplier" data-id="${s.id}">&times;</button>
                   </div>
                 </td>
               </tr>
@@ -1184,179 +1340,394 @@ const adminViews = {
           </tbody>
         </table>
       </div>
+    `;
+  },
 
-      <!-- Movement Audit Trail -->
-      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;">
-        <h3 style="margin-bottom:12px;">Recent Stock Movement Audit Logs</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Timestamp</th><th>Product</th><th>Change</th><th>Old &rarr; New</th><th>Reason</th><th>User</th></tr></thead>
-            <tbody>
-              ${logs.slice(0, 25).map(l => `
-                <tr>
-                  <td>${when(l.timestamp)}</td>
-                  <td><strong>${esc(l.productName)}</strong></td>
-                  <td style="font-weight:700;color:${l.change > 0 ? '#15803d' : '#b91c1c'};">${l.change > 0 ? '+' : ''}${l.change}</td>
-                  <td>${l.previousStock} &rarr; <strong>${l.newStock}</strong></td>
-                  <td>${esc(l.reason)}</td>
-                  <td><code>${esc(l.performedBy)}</code></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
+  /* 5. Purchases & Stock In */
+  async purchases() {
+    const list = await api('/purchases');
+    const totalCost = list.reduce((sum, p) => sum + (p.totalCost || 0), 0);
+    return `
+      <div class="admin-header-row">
+        <div>
+          <span class="kicker">PROCUREMENT &amp; STOCK IN</span>
+          <h1 style="font-size:2rem;margin:0">Purchase Orders (${list.length})</h1>
         </div>
+        <button class="btn-pill sm" data-a="openNewPurchaseModal">+ Record Purchase / Stock In</button>
+      </div>
+
+      <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));">
+        <div class="kpi-card">
+          <span class="kpi-title">Total Purchases Value</span>
+          <div class="kpi-value" style="color:var(--forest-primary);">${money(totalCost)}</div>
+          <span class="kpi-subtitle">All-time procurement</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Total Orders</span>
+          <div class="kpi-value">${list.length}</div>
+          <span class="kpi-subtitle">Generated PO records</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>PO Number</th>
+              <th>Date</th>
+              <th>Supplier</th>
+              <th>Items Ordered</th>
+              <th>Total Cost</th>
+              <th>Payment Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map(p => `
+              <tr>
+                <td><code>${esc(p.poNumber || 'PO-' + p.id)}</code></td>
+                <td>${new Date(p.createdAt || Date.now()).toLocaleDateString('en-IN')}</td>
+                <td><strong>${esc(p.supplierName || 'Supplier')}</strong></td>
+                <td>
+                  <span class="badge-status instock">${(p.items || []).length} lines · ${(p.items || []).reduce((acc, i) => acc + (i.quantity || 0), 0)} units</span>
+                </td>
+                <td><strong>${money(p.totalCost || 0)}</strong></td>
+                <td><span class="badge-status ${p.paymentStatus === 'Paid' ? 'paid' : 'pending'}">${esc(p.paymentStatus || 'Paid')}</span></td>
+                <td>
+                  <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="viewPurchase" data-id="${p.id}">View Details</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
       </div>
     `;
   },
 
-  /* 5. Orders Management */
-  async orders() {
-    const list = await api('/orders');
+  /* 6. Central Stock Management & Mortality Tracking */
+  async inventory() {
+    await loadProducts();
+    const logs = await api('/inventory/logs');
+    const lowStockItems = products.filter(p => p.stock <= (p.lowStockThreshold || 5) && p.stock > 0);
+    const outStockItems = products.filter(p => p.stock <= 0);
+    const mortalityLogs = logs.filter(l => l.type === 'mortality' || l.type === 'damage');
+
+    // Valuation calculations
+    const totalUnits = products.reduce((acc, p) => acc + (p.stock || 0), 0);
+    const totalCostValuation = products.reduce((acc, p) => acc + ((p.stock || 0) * (p.purchasePrice || Math.round(p.price * 0.55))), 0);
+    const totalRetailValuation = products.reduce((acc, p) => acc + ((p.stock || 0) * p.price), 0);
+
+    let displayItems = products;
+    if (stockTab === 'low') displayItems = lowStockItems;
+    else if (stockTab === 'out') displayItems = outStockItems;
+
     return `
       <div class="admin-header-row">
         <div>
-          <span class="kicker">ORDER DISPATCH</span>
-          <h1 style="font-size:2rem;margin:0">Customer Orders (${list.length})</h1>
+          <span class="kicker">CENTRAL STOCK &amp; LIVING GOODS AUDIT</span>
+          <h1 style="font-size:2rem;margin:0">Stock Management</h1>
         </div>
         <div style="display:flex;gap:10px;">
-          <a class="btn-pill sm outline" href="/api/reports/orders/export" target="_blank">📥 Export CSV</a>
+          <button class="btn-pill sm" data-a="openStockAdjustModal">⚖️ Adjust Stock / Log Loss</button>
         </div>
       </div>
 
-      ${list.length ? `
+      <!-- Valuation Summary -->
+      <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="kpi-card">
+          <span class="kpi-title">Total Units on Hand</span>
+          <div class="kpi-value">${totalUnits}</div>
+          <span class="kpi-subtitle">Across all active botanicals</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Inventory Valuation (Cost)</span>
+          <div class="kpi-value" style="color:var(--forest-primary);">${money(totalCostValuation)}</div>
+          <span class="kpi-subtitle">Acquisition / wholesale value</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Inventory Valuation (Retail)</span>
+          <div class="kpi-value" style="color:var(--moss);">${money(totalRetailValuation)}</div>
+          <span class="kpi-subtitle">Projected retail value</span>
+        </div>
+        <div class="kpi-card ${lowStockItems.length > 0 ? 'alert' : ''}">
+          <span class="kpi-title">Low Stock Items</span>
+          <div class="kpi-value" style="color:var(--terracotta);">${lowStockItems.length}</div>
+          <span class="kpi-subtitle">Needs reordering</span>
+        </div>
+      </div>
+
+      <!-- Subnav Navigation -->
+      <div class="admin-subnav" style="margin-top:20px;">
+        <button class="admin-subnav-btn ${stockTab === 'all' ? 'active' : ''}" data-a="stockTab" data-v="all">📦 All Inventory (${products.length})</button>
+        <button class="admin-subnav-btn ${stockTab === 'low' ? 'active' : ''}" data-a="stockTab" data-v="low">⚠️ Low Stock (${lowStockItems.length})</button>
+        <button class="admin-subnav-btn ${stockTab === 'out' ? 'active' : ''}" data-a="stockTab" data-v="out">🚫 Out of Stock (${outStockItems.length})</button>
+        <button class="admin-subnav-btn ${stockTab === 'mortality' ? 'active' : ''}" data-a="stockTab" data-v="mortality">🥀 Mortality &amp; Loss Logs (${mortalityLogs.length})</button>
+        <button class="admin-subnav-btn ${stockTab === 'audit' ? 'active' : ''}" data-a="stockTab" data-v="audit">📜 Audit Ledger (${logs.length})</button>
+      </div>
+
+      ${(stockTab === 'all' || stockTab === 'low' || stockTab === 'out') ? `
         <div class="table-wrap">
           <table>
             <thead>
-              <tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr>
+              <tr>
+                <th>Product / Spec</th>
+                <th>SKU</th>
+                <th>Category</th>
+                <th>Current Stock</th>
+                <th>Low Threshold</th>
+                <th>Unit Cost</th>
+                <th>Stock Valuation</th>
+                <th>Quick Adjust</th>
+              </tr>
             </thead>
-            <tbody>
-              ${list.map(o => `
-                <tr>
-                  <td>
-                    <strong>#${o.id}</strong><br>
-                    <span class="muted" style="font-size:0.8rem">${when(o.date)}</span>
-                  </td>
-                  <td>
-                    <strong>${esc(o.name)}</strong><br>
-                    <span class="muted">${esc(o.phone)}</span><br>
-                    <span style="font-size:0.75rem;color:var(--ink-secondary);">${esc(o.address)}</span>
-                  </td>
-                  <td>
-                    ${(o.items || []).map(i => `${esc(i.name)} &times; ${i.qty}`).join('<br>')}
-                  </td>
-                  <td style="font-weight:700;">${money(o.total)}</td>
-                  <td>
-                    <select data-c="orderStatus" data-id="${o.id}" class="badge-status ${(o.status || 'new').toLowerCase()}" style="cursor:pointer;padding:6px 10px;">
-                      ${['New', 'Packed', 'Shipped', 'Delivered', 'Cancelled'].map(s => `
-                        <option value="${s}" ${o.status === s ? 'selected' : ''}>${s}</option>
-                      `).join('')}
-                    </select>
-                  </td>
-                  <td>
-                    <div style="display:flex;flex-direction:column;gap:4px;">
-                      <a class="btn-pill sm outline" href="/api/orders/${o.id}/invoice" target="_blank" style="text-align:center;">Invoice</a>
-                      <a class="btn-pill sm outline" href="https://wa.me/${encodeURIComponent(o.phone.replace(/[^0-9]/g, ''))}?text=${encodeURIComponent(`Hello ${o.name}! Pairaplants update regarding your order #${o.id}: status is now ${o.status}.`)}" target="_blank" style="text-align:center;">WhatsApp</a>
-                      ${o.status !== 'Cancelled' ? `
-                        <button class="btn-pill sm outline" data-a="cancelOrder" data-id="${o.id}" style="color:var(--terracotta);border-color:var(--terracotta);">Cancel</button>
-                      ` : ''}
-                    </div>
-                  </td>
-                </tr>
-              `).join('')}
+            <tbody id="admin-inv-tbody">
+              ${displayItems.map(p => {
+                const cost = p.purchasePrice || Math.round(p.price * 0.55);
+                const isOut = p.stock <= 0;
+                const isLow = p.stock <= (p.lowStockThreshold || 5);
+                return `
+                  <tr data-name="${esc(p.name.toLowerCase())}" data-cat="${esc(p.category.toLowerCase())}">
+                    <td>
+                      <strong>${esc(p.name)}</strong>
+                      ${p.scientificName ? `<div style="font-size:0.75rem;font-style:italic;color:var(--ink-secondary)">${esc(p.scientificName)}</div>` : ''}
+                    </td>
+                    <td><code>${esc(p.sku || `PP-${p.id}`)}</code></td>
+                    <td>${esc(p.category)}</td>
+                    <td><span class="badge-status ${isOut ? 'out' : (isLow ? 'low' : 'instock')}">${p.stock} units</span></td>
+                    <td>${p.lowStockThreshold || 5}</td>
+                    <td>${money(cost)}</td>
+                    <td><strong>${money(p.stock * cost)}</strong></td>
+                    <td>
+                      <div style="display:flex;gap:4px;">
+                        <button class="btn-pill sm outline" style="padding:2px 8px;font-size:0.75rem;" data-a="invDelta" data-id="${p.id}" data-v="-1">-1</button>
+                        <button class="btn-pill sm outline" style="padding:2px 8px;font-size:0.75rem;" data-a="invDelta" data-id="${p.id}" data-v="1">+1</button>
+                        <button class="btn-pill sm outline" style="padding:2px 8px;font-size:0.75rem;" data-a="openStockAdjustModal" data-id="${p.id}">Custom</button>
+                      </div>
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
             </tbody>
           </table>
         </div>
-      ` : '<p class="muted">No customer orders placed yet.</p>'}
+      ` : ''}
+
+      ${stockTab === 'mortality' ? `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Timestamp</th><th>Product Name</th><th>Qty Lost</th><th>Category/Type</th><th>Mandatory Reason</th><th>Logged By</th></tr>
+            </thead>
+            <tbody>
+              ${mortalityLogs.length ? mortalityLogs.map(l => `
+                <tr>
+                  <td>${new Date(l.date || Date.now()).toLocaleString('en-IN')}</td>
+                  <td><strong>${esc(l.productName || 'Product #' + l.productId)}</strong></td>
+                  <td><span class="badge-status mortality">${l.change} units</span></td>
+                  <td><span class="badge-status new">${esc(l.type || 'mortality')}</span></td>
+                  <td>${esc(l.reason || 'Plant melt / fish casualty')}</td>
+                  <td>${esc(l.user || 'Staff')}</td>
+                </tr>
+              `).join('') : '<tr><td colspan="6" class="muted" style="text-align:center;">No mortality losses recorded yet.</td></tr>'}
+            </tbody>
+          </table>
+        </div>
+      ` : ''}
+
+      ${stockTab === 'audit' ? `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Timestamp</th><th>Product Name</th><th>Change</th><th>Balance After</th><th>Type / Reason</th><th>Staff</th></tr>
+            </thead>
+            <tbody>
+              ${logs.length ? logs.slice().reverse().slice(0, 100).map(l => `
+                <tr>
+                  <td>${new Date(l.date || Date.now()).toLocaleString('en-IN')}</td>
+                  <td><strong>${esc(l.productName || 'Product #' + l.productId)}</strong></td>
+                  <td><span class="badge-status ${l.change > 0 ? 'instock' : 'out'}">${l.change > 0 ? '+' : ''}${l.change}</span></td>
+                  <td><strong>${l.newStock !== undefined ? l.newStock : '-'}</strong></td>
+                  <td>${esc(l.reason || l.type || 'Adjustment')}</td>
+                  <td>${esc(l.user || 'system')}</td>
+                </tr>
+              `).join('') : '<tr><td colspan="6" class="muted" style="text-align:center;">No stock movement logs recorded yet.</td></tr>'}
+            </tbody>
+          </table>
+        </div>
+      ` : ''}
     `;
   },
 
-  /* 6. Homepage CMS Editor */
-  async homepage() {
-    const config = await api('/homepage');
-    const hero = config.hero || {};
-    const why = config.whyChooseUs || { cards: [] };
+  /* 7. Point of Sale (POS) Counter Billing */
+  async pos() {
+    await loadProducts();
+    const customers = await api('/customers');
+    const filtered = products.filter(p => {
+      const matchCat = (posCategoryFilter === 'All') || (p.category === posCategoryFilter);
+      return matchCat && p.isVisible !== false;
+    });
+
+    const subtotal = posCart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const taxRate = (storeSettings && storeSettings.defaultTaxRate) ? storeSettings.defaultTaxRate : 5;
+    const taxAmount = Math.round(subtotal * (taxRate / 100));
+    const grandTotal = subtotal + taxAmount;
 
     return `
       <div class="admin-header-row">
         <div>
-          <span class="kicker">CMS &amp; BANNERS</span>
-          <h1 style="font-size:2rem;margin:0">Homepage Editor</h1>
+          <span class="kicker">COUNTER BILLING &amp; CHECKOUT</span>
+          <h1 style="font-size:2rem;margin:0">Point of Sale (POS) Terminal</h1>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn-pill sm outline" data-a="posClearCart" ${!posCart.length ? 'disabled' : ''}>Clear Cart</button>
         </div>
       </div>
 
-      <form data-f="saveHomepage" style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:32px;">
-        <h3 style="margin-bottom:16px;">Hero Banner Content</h3>
-        <div class="two-col" style="padding:0;margin-bottom:24px;">
-          <div>
-            <label for="h-title">Hero Main Heading</label>
-            <input id="h-title" name="hero_title" value="${esc(hero.title || '')}" required>
-            
-            <label for="h-sub">Subtitle Description</label>
-            <textarea id="h-sub" name="hero_subtitle" rows="3" required>${esc(hero.subtitle || '')}</textarea>
-          </div>
-          <div>
-            <label for="h-cta">Primary CTA Text</label>
-            <input id="h-cta" name="hero_ctaText" value="${esc(hero.ctaText || 'Explore Collection →')}">
-            
-            <label for="h-link">Primary CTA Link</label>
-            <input id="h-link" name="hero_ctaLink" value="${esc(hero.ctaLink || '#shop')}">
-
-            <label for="h-img">Hero Image Path or Cloudinary URL</label>
-            <input id="h-img" name="hero_bannerImage" value="${esc(hero.bannerImage || '/images/hero-aquarium.jpg')}">
-          </div>
-        </div>
-
-        <h3 style="margin-top:24px;margin-bottom:16px;">Why Choose Us Section</h3>
-        <label for="w-title">Section Heading</label>
-        <input id="w-title" name="why_title" value="${esc(why.title || 'Why Choose Us')}" style="max-width:400px;margin-bottom:16px;">
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-          ${(why.cards || []).map((c, i) => `
-            <div style="background:var(--canvas-alt);padding:16px;border-radius:var(--radius-sm);border:1px solid var(--line);">
-              <strong>Card ${i + 1}</strong>
-              <div style="display:flex;gap:10px;margin-top:8px;">
-                <input name="why_card_${i}_icon" value="${esc(c.icon || '🌿')}" style="width:50px;">
-                <input name="why_card_${i}_title" value="${esc(c.title || '')}" style="flex:1;">
-              </div>
-              <textarea name="why_card_${i}_desc" rows="2" style="margin-top:8px;">${esc(c.description || '')}</textarea>
+      <div class="pos-layout">
+        <!-- Catalog & Selection (Left) -->
+        <div class="pos-catalog">
+          <div style="display:flex;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+            <div class="search-wrap" style="margin-bottom:0;flex:1;min-width:220px;">
+              <span class="search-icon">🔍</span>
+              <input type="search" placeholder="Scan SKU or type name..." data-i="pos-search" value="${esc(posSearchQuery)}">
             </div>
-          `).join('')}
-        </div>
-
-        <button class="btn-pill" style="margin-top:24px;padding:12px 30px;">Save Homepage Settings</button>
-      </form>
-    `;
-  },
-
-  /* 7. Media Library */
-  async media() {
-    const list = await api('/media');
-    return `
-      <div class="admin-header-row">
-        <div>
-          <span class="kicker">ASSET MANAGEMENT</span>
-          <h1 style="font-size:2rem;margin:0">Banners &amp; Media Library</h1>
-        </div>
-      </div>
-
-      <!-- Drag & Drop Uploader -->
-      <div class="upload-dropzone" style="margin-bottom:28px;">
-        <span style="font-size:2.5rem">📸</span>
-        <h3 style="margin:8px 0;">Upload Botanical Photos &amp; Banners</h3>
-        <p class="muted">Supports JPEG, PNG, WebP, GIF up to 5MB.</p>
-        <input type="file" id="media-file-input" multiple accept="image/*" style="margin-top:12px;">
-        <div style="margin-top:10px;">
-          <button class="btn-pill sm" data-a="uploadMedia">Upload Selected Files</button>
-        </div>
-      </div>
-
-      <div class="gallery-preview-grid">
-        ${list.map(f => `
-          <div class="gallery-preview-item" style="aspect-ratio:1;">
-            <img src="${esc(f.url)}" alt="${esc(f.filename)}">
-            <button class="gallery-preview-remove" data-a="copyUrl" data-v="${esc(f.url)}" title="Copy URL">📋</button>
           </div>
-        `).join('')}
+
+          <!-- Category filter pills -->
+          <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:14px;">
+            ${['All', ...CATS].map(c => `
+              <button class="btn-pill sm ${posCategoryFilter === c ? '' : 'outline'}" style="white-space:nowrap;padding:4px 12px;font-size:0.8rem;" data-a="posCategory" data-v="${c}">${c}</button>
+            `).join('')}
+          </div>
+
+          <!-- Products Grid -->
+          <div class="pos-prod-grid">
+            ${filtered.map(p => {
+              const inCart = posCart.find(i => i.id === p.id);
+              const isOut = p.stock <= 0;
+              return `
+                <div class="pos-prod-card ${isOut ? 'out' : ''}" data-a="posAddToCart" data-id="${p.id}" data-name="${esc(p.name)}" data-sku="${esc(p.sku || '')}">
+                  <div style="position:relative;">
+                    ${p.image && !p.image.includes('hero-aquarium') ? `
+                      <img src="${esc(p.image)}" alt="" style="width:100%;height:85px;object-fit:cover;border-radius:6px;margin-bottom:8px;">
+                    ` : `
+                      <div style="height:85px;display:flex;align-items:center;justify-content:center;background:var(--canvas-alt);border-radius:6px;font-size:2rem;margin-bottom:8px;">
+                        ${EMOJI[p.subcategory] || EMOJI[p.category] || '🌿'}
+                      </div>
+                    `}
+                    <span class="pos-badge ${p.stock <= 0 ? 'out' : (p.stock <= 5 ? 'low' : 'stock')}">
+                      ${p.stock} in stock
+                    </span>
+                  </div>
+                  <div style="font-weight:700;font-size:0.88rem;line-height:1.2;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+                    ${esc(p.name)}
+                  </div>
+                  <div style="font-size:0.75rem;color:var(--ink-secondary);margin-bottom:6px;"><code>${esc(p.sku || `PP-${p.id}`)}</code></div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;">
+                    <div style="font-weight:700;color:var(--forest-primary);font-size:0.95rem;">${money(p.price)}</div>
+                    ${inCart ? `<span style="background:var(--moss);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;">${inCart.qty}</span>` : ''}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+
+        <!-- POS Checkout Panel (Right) -->
+        <div class="pos-checkout-panel">
+          <h3 style="margin-top:0;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+            <span>Current Sale</span>
+            <span class="badge-status instock">${posCart.reduce((sum, i) => sum + i.qty, 0)} Items</span>
+          </h3>
+
+          <!-- Customer Selection -->
+          <div style="background:var(--canvas-alt);padding:12px;border-radius:var(--radius-sm);margin-bottom:14px;border:1px solid var(--line-subtle);">
+            <label style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--forest-primary);margin-bottom:4px;display:block;">Customer</label>
+            <div style="display:flex;gap:6px;margin-bottom:6px;">
+              <select id="pos-cust-select" style="flex:1;padding:6px 8px;font-size:0.85rem;">
+                <option value="walkin">👤 Walk-in Customer (General Counter)</option>
+                ${customers.map(c => `
+                  <option value="${c.id}" ${posSelectedCustomer === c.id ? 'selected' : ''}>${esc(c.name)} (${esc(c.phone || c.email)})</option>
+                `).join('')}
+              </select>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+              <input id="pos-cust-name" placeholder="Walk-in Name (optional)" style="padding:6px 8px;font-size:0.82rem;">
+              <input id="pos-cust-phone" placeholder="Phone / WhatsApp" style="padding:6px 8px;font-size:0.82rem;">
+            </div>
+          </div>
+
+          <!-- POS Cart Item List -->
+          <div style="flex:1;max-height:300px;overflow-y:auto;border-bottom:1px solid var(--line);margin-bottom:14px;">
+            ${posCart.length ? posCart.map(item => `
+              <div class="pos-cart-item">
+                <div style="flex:1;min-width:0;">
+                  <div style="font-weight:600;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(item.name)}</div>
+                  <div style="font-size:0.75rem;color:var(--ink-secondary);">${money(item.price)} each</div>
+                </div>
+                <div class="pos-qty-stepper">
+                  <button class="pos-stepper-btn" data-a="posDecQty" data-id="${item.id}">-</button>
+                  <span class="pos-qty-val">${item.qty}</span>
+                  <button class="pos-stepper-btn" data-a="posIncQty" data-id="${item.id}">+</button>
+                </div>
+                <div style="font-weight:700;width:70px;text-align:right;">${money(item.price * item.qty)}</div>
+                <button style="background:none;border:none;color:#b91c1c;cursor:pointer;padding:4px;" data-a="posRemoveItem" data-id="${item.id}">&times;</button>
+              </div>
+            `).join('') : `
+              <div style="text-align:center;padding:40px 10px;color:var(--ink-secondary);">
+                <div style="font-size:2rem;margin-bottom:6px;">🛒</div>
+                <p style="margin:0;font-size:0.9rem;">Cart is empty. Click items from catalog to add to bill.</p>
+              </div>
+            `}
+          </div>
+
+          <!-- Totals Breakdown -->
+          <div style="background:var(--canvas-alt);padding:14px;border-radius:var(--radius-sm);margin-bottom:14px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.88rem;">
+              <span>Subtotal:</span>
+              <strong>${money(subtotal)}</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.88rem;">
+              <span>GST (${taxRate}% CGST+SGST):</span>
+              <strong>${money(taxAmount)}</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.88rem;">
+              <span>Discount (%):</span>
+              <input type="number" id="pos-discount-pct" min="0" max="100" value="0" style="width:60px;padding:2px 6px;text-align:right;">
+            </div>
+            <div class="pos-total-banner">
+              <span>Total Payable</span>
+              <span>${money(grandTotal)}</span>
+            </div>
+          </div>
+
+          <!-- Payment Mode -->
+          <label style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:var(--forest-primary);margin-bottom:6px;display:block;">Payment Mode</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+            <label style="display:flex;align-items:center;gap:6px;background:var(--canvas);padding:8px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);cursor:pointer;font-size:0.85rem;">
+              <input type="radio" name="posPaymentMethod" value="Cash" checked>
+              <span>💵 Cash</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;background:var(--canvas);padding:8px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);cursor:pointer;font-size:0.85rem;">
+              <input type="radio" name="posPaymentMethod" value="UPI">
+              <span>📱 UPI / QR</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;background:var(--canvas);padding:8px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);cursor:pointer;font-size:0.85rem;">
+              <input type="radio" name="posPaymentMethod" value="Card">
+              <span>💳 Card</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;background:var(--canvas);padding:8px 10px;border-radius:var(--radius-sm);border:1px solid var(--line);cursor:pointer;font-size:0.85rem;">
+              <input type="radio" name="posPaymentMethod" value="Bank Transfer">
+              <span>🏛️ Bank</span>
+            </label>
+          </div>
+
+          <!-- Checkout Button -->
+          <button class="btn-pill" style="width:100%;padding:14px;font-size:1rem;display:flex;justify-content:center;align-items:center;gap:8px;" data-a="posCheckout" ${!posCart.length ? 'disabled' : ''}>
+            <span>Complete Sale &amp; Print Bill</span>
+            <span>&rarr;</span>
+          </button>
+        </div>
       </div>
     `;
   },
@@ -1367,306 +1738,588 @@ const adminViews = {
     return `
       <div class="admin-header-row">
         <div>
-          <span class="kicker">CLIENT DATABASE</span>
-          <h1 style="font-size:2rem;margin:0">Registered Customers (${list.length})</h1>
+          <span class="kicker">CLIENTELE DIRECTORY</span>
+          <h1 style="font-size:2rem;margin:0">Customers (${list.length})</h1>
         </div>
+        <button class="btn-pill sm" data-a="openAddCustomerModal">+ Add Customer</button>
       </div>
 
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Total Orders</th><th>Total Spend</th><th>Status</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>City / Address</th>
+              <th>Orders Count</th>
+              <th>Total Spend</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
           <tbody>
             ${list.map(c => `
               <tr>
                 <td><strong>${esc(c.name)}</strong></td>
-                <td>${esc(c.email)}</td>
-                <td>${esc(c.phone || '—')}</td>
-                <td>${c.orderCount} orders</td>
-                <td style="font-weight:700;">${money(c.totalSpent)}</td>
-                <td>${c.active ? '<span class="badge" style="background:#eaf2ec;color:#204c32;">Active</span>' : '<span class="badge" style="background:#fee2e2;color:#b91c1c;">Disabled</span>'}</td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
-    `;
-  },
-
-  /* 9. Customer Inquiries */
-  async inquiries() {
-    const q = await api('/inquiries');
-    return `
-      <div class="admin-header-row">
-        <div>
-          <span class="kicker">SUPPORT INBOX</span>
-          <h1 style="font-size:2rem;margin:0">Care Consultations (${q.length})</h1>
-        </div>
-      </div>
-
-      ${q.length ? q.map(x => `
-        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:20px;margin-bottom:16px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-            <div>
-              <strong>${esc(x.name)}</strong> &nbsp;·&nbsp;
-              <a href="mailto:${esc(x.email)}" style="color:var(--moss)">${esc(x.email)}</a>
-              ${x.phone ? ` &nbsp;·&nbsp; <span>${esc(x.phone)}</span>` : ''}
-              <span class="badge" style="margin-left:8px;background:${x.done ? '#eaf2ec' : '#fef3c7'}">${x.done ? 'Resolved' : 'Open'}</span>
-            </div>
-            <span class="muted" style="font-size:0.8rem">${when(x.date)}</span>
-          </div>
-          <p style="color:var(--ink-secondary);margin:10px 0;line-height:1.5;">${esc(x.message)}</p>
-          <div style="display:flex;gap:10px;margin-top:12px;">
-            ${!x.done ? `<button class="btn-pill sm" data-a="resolveInquiry" data-id="${x.id}">Mark Resolved</button>` : ''}
-            <a class="btn-pill sm outline" href="mailto:${esc(x.email)}?subject=Pairaplants Care Consultation Reply">Email Response</a>
-          </div>
-        </div>
-      `).join('') : '<p class="muted">No consultation requests logged.</p>'}
-    `;
-  },
-
-  /* 10. Coupons */
-  async coupons() {
-    const list = await api('/coupons');
-    return `
-      <div class="admin-header-row">
-        <div>
-          <span class="kicker">PROMOTIONS</span>
-          <h1 style="font-size:2rem;margin:0">Discount Coupons</h1>
-        </div>
-      </div>
-
-      <div class="two-col" style="padding:0;align-items:start;">
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Code</th><th>Discount</th><th>Min Order</th><th>Uses</th><th>Actions</th></tr></thead>
-            <tbody>
-              ${list.map(c => `
-                <tr>
-                  <td><strong><code>${esc(c.code)}</code></strong></td>
-                  <td>${c.discountType === 'percent' ? `${c.discountValue}%` : money(c.discountValue)}</td>
-                  <td>${money(c.minOrder)}</td>
-                  <td>${c.usageCount || 0}</td>
-                  <td><button class="btn-pill sm outline" data-a="delCoupon" data-id="${c.id}" style="color:var(--terracotta);">Delete</button></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-
-        <form data-f="addCoupon" style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;">
-          <h3>Create Coupon</h3>
-          <label for="cp-c">Coupon Code</label>
-          <input id="cp-c" name="code" required placeholder="e.g. MONSOON20" style="text-transform:uppercase;">
-          <label for="cp-t">Discount Type</label>
-          <select id="cp-t" name="discountType">
-            <option value="percent">Percentage (%)</option>
-            <option value="fixed">Fixed Amount (₹)</option>
-          </select>
-          <label for="cp-v">Discount Value</label>
-          <input id="cp-v" name="discountValue" type="number" required placeholder="e.g. 10 or 150">
-          <label for="cp-m">Minimum Cart Total (₹)</label>
-          <input id="cp-m" name="minOrder" type="number" value="0">
-          <button class="btn-pill" style="width:100%;margin-top:16px;">Create Coupon</button>
-        </form>
-      </div>
-    `;
-  },
-
-  /* 11. SEO Settings */
-  async seo() {
-    const set = (storeSettings && storeSettings.seo) || {};
-    return `
-      <div class="admin-header-row">
-        <div>
-          <span class="kicker">SEARCH ENGINE OPTIMIZATION</span>
-          <h1 style="font-size:2rem;margin:0">SEO &amp; Indexing</h1>
-        </div>
-      </div>
-
-      <form data-f="saveSeo" style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:32px;max-width:800px;">
-        <label for="seo-t">Meta Title</label>
-        <input id="seo-t" name="metaTitle" value="${esc(set.metaTitle || '')}" required>
-
-        <label for="seo-d">Meta Description</label>
-        <textarea id="seo-d" name="metaDescription" rows="3" required>${esc(set.metaDescription || '')}</textarea>
-
-        <label for="seo-og">Social Sharing Open Graph Image</label>
-        <input id="seo-og" name="ogImage" value="${esc(set.ogImage || '/images/hero-aquarium.jpg')}">
-
-        <label for="seo-u">Canonical URL</label>
-        <input id="seo-u" name="canonicalUrl" value="${esc(set.canonicalUrl || 'https://pairaplants.vercel.app')}">
-
-        <div style="margin:20px 0;padding:16px;background:var(--canvas-alt);border-radius:var(--radius-sm);border:1px solid var(--line);">
-          <strong>Public Bot Endpoints:</strong>
-          <div style="margin-top:6px;font-size:0.88rem;">
-            🗺️ <a href="/sitemap.xml" target="_blank" style="color:var(--moss);">/sitemap.xml (Dynamic Product XML Sitemap)</a><br>
-            🤖 <a href="/robots.txt" target="_blank" style="color:var(--moss);">/robots.txt (Crawler Directive)</a>
-          </div>
-        </div>
-
-        <button class="btn-pill">Save SEO Settings</button>
-      </form>
-    `;
-  },
-
-  /* 12. Reports & Analytics */
-  async reports() {
-    const r = await api('/reports/overview');
-    return `
-      <div class="admin-header-row">
-        <div>
-          <span class="kicker">BUSINESS INTELLIGENCE</span>
-          <h1 style="font-size:2rem;margin:0">Reports &amp; Analytics</h1>
-        </div>
-        <a class="btn-pill sm outline" href="/api/reports/orders/export" target="_blank">Export Orders CSV</a>
-      </div>
-
-      <div class="kpi-grid">
-        <div class="kpi-card"><span class="kpi-title">Gross Revenue</span><div class="kpi-value">${money(r.totalRevenue)}</div></div>
-        <div class="kpi-card"><span class="kpi-title">Total Orders</span><div class="kpi-value">${r.totalOrders}</div></div>
-        <div class="kpi-card"><span class="kpi-title">Delivered Orders</span><div class="kpi-value">${r.deliveredOrders}</div></div>
-        <div class="kpi-card"><span class="kpi-title">Fulfillment Ratio</span><div class="kpi-value">${r.totalOrders ? Math.round((r.deliveredOrders / r.totalOrders) * 100) : 100}%</div></div>
-      </div>
-    `;
-  },
-
-  /* 13. Staff Accounts */
-  async staff() {
-    const users = await api('/users');
-    return `
-      <div class="admin-header-row">
-        <div>
-          <span class="kicker">PERMISSIONS</span>
-          <h1 style="font-size:2rem;margin:0">Staff Management</h1>
-        </div>
-      </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Name</th><th>Username</th><th>Role</th><th>Access Status</th><th>Action</th></tr></thead>
-          <tbody>
-            ${users.map(u => `
-              <tr>
-                <td><strong>${esc(u.name)}</strong></td>
-                <td><code>${esc(u.username)}</code></td>
-                <td><span class="badge">${ROLE_NAMES[u.role] || u.role}</span></td>
-                <td>${u.active ? '<span style="color:#15803d;font-weight:600;">Active</span>' : '<span style="color:#b91c1c;font-weight:600;">Disabled</span>'}</td>
+                <td><a href="tel:${esc(c.phone)}">${esc(c.phone || '-')}</a></td>
+                <td><a href="mailto:${esc(c.email)}">${esc(c.email || '-')}</a></td>
+                <td>${esc(c.city || c.address || '-')}</td>
+                <td><span class="badge-status instock">${c.totalOrders || 0} orders</span></td>
+                <td><strong>${money(c.totalSpend || 0)}</strong></td>
                 <td>
-                  ${u.id !== staffUser.id ? `
-                    <button class="btn-pill sm outline" data-a="toggleStaff" data-id="${u.id}" data-v="${u.active ? 0 : 1}">${u.active ? 'Disable' : 'Enable'}</button>
-                  ` : '<span class="badge">You</span>'}
-                  <button class="btn-pill sm outline" data-a="resetStaffPw" data-id="${u.id}">Reset Password</button>
+                  <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="viewCustomer" data-id="${c.id}">Profile</button>
                 </td>
               </tr>
             `).join('')}
           </tbody>
         </table>
       </div>
-
-      <form data-f="createStaff" style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;margin-top:24px;max-width:600px;">
-        <h3>Create New Staff Account</h3>
-        <label for="st-n">Full Name</label>
-        <input id="st-n" name="name" required placeholder="e.g. Priya Iyer">
-        <label for="st-u">Username</label>
-        <input id="st-u" name="username" required pattern="[a-z0-9_]{3,20}" placeholder="e.g. priya">
-        <label for="st-p">Password</label>
-        <input id="st-p" name="password" type="password" minlength="8" required placeholder="Minimum 8 characters">
-        <label for="st-r">Staff Role</label>
-        <select id="st-r" name="role">
-          <option value="manager">Manager (Inventory &amp; Orders)</option>
-          <option value="support">Customer Support (Inquiries &amp; Lookups)</option>
-          <option value="superadmin">Super Admin (Full Website Control)</option>
-        </select>
-        <button class="btn-pill" style="margin-top:16px;">Create Staff User</button>
-      </form>
     `;
   },
 
-  /* 14. Website Settings */
-  async settings() {
-    const s = storeSettings || {};
+  /* 9. Website Customer Orders */
+  async orders() {
+    const list = await api('/orders');
     return `
       <div class="admin-header-row">
         <div>
-          <span class="kicker">GENERAL CONFIGURATION</span>
-          <h1 style="font-size:2rem;margin:0">Website Settings</h1>
+          <span class="kicker">ORDER FULFILLMENT</span>
+          <h1 style="font-size:2rem;margin:0">Website Orders (${list.length})</h1>
         </div>
       </div>
 
-      <form data-f="saveSettings" style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:32px;max-width:700px;">
-        <label for="s-sn">Store Name</label>
-        <input id="s-sn" name="storeName" value="${esc(s.storeName || 'Pairaplants')}" required>
-
-        <label for="s-bt">Brand Title</label>
-        <input id="s-bt" name="brandTitle" value="${esc(s.brandTitle || 'Paira Plants')}" required>
-
-        <label for="s-tl">Tagline</label>
-        <input id="s-tl" name="tagline" value="${esc(s.tagline || 'Aquatic Plants, Fishes & Gravels')}">
-
-        <label for="s-e">Support Email</label>
-        <input id="s-e" name="email" type="email" value="${esc(s.email || 'care@pairaplants.com')}" required>
-
-        <label for="s-p">Support Phone</label>
-        <input id="s-p" name="phone" value="${esc(s.phone || '+91 98765 43210')}" required>
-
-        <label for="s-w">WhatsApp Hotline (Numbers only, e.g. 919876543210)</label>
-        <input id="s-w" name="whatsappNumber" value="${esc(s.whatsappNumber || '919876543210')}">
-
-        <label for="s-a">Store Address</label>
-        <textarea id="s-a" name="address" rows="2">${esc(s.address || '')}</textarea>
-
-        <button class="btn-pill" style="margin-top:20px;">Save Store Settings</button>
-      </form>
-    `;
-  },
-
-  /* 15. Security & Backups */
-  async backups() {
-    const b = await api('/backups');
-    const logs = await api('/logs');
-
-    return `
-      <div class="admin-header-row">
-        <div>
-          <span class="kicker">DATA PROTECTION</span>
-          <h1 style="font-size:2rem;margin:0">Security &amp; Backups</h1>
-        </div>
-        <button class="btn-pill sm" data-a="createBackup">Snapshot Now</button>
-      </div>
-
-      <div class="table-wrap" style="margin-bottom:32px;">
+      <div class="table-wrap">
         <table>
-          <thead><tr><th>Snapshot File</th><th>Archive Size</th><th>Action</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Date</th>
+              <th>Customer</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Payment</th>
+              <th>Fulfillment Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
           <tbody>
-            ${b.map(x => `
+            ${list.map(o => `
               <tr>
-                <td><strong><code>${esc(x.file)}</code></strong></td>
-                <td>${(x.size / 1024).toFixed(1)} KB</td>
-                <td><button class="btn-pill sm outline" data-a="restoreBackup" data-f="${esc(x.file)}">Restore</button></td>
+                <td><code>#${o.id}</code></td>
+                <td>${new Date(o.createdAt || Date.now()).toLocaleDateString('en-IN')}</td>
+                <td>
+                  <strong>${esc(o.name || (o.customer && o.customer.name) || 'Customer')}</strong>
+                  <div style="font-size:0.75rem;color:var(--ink-secondary)">${esc(o.phone || '')}</div>
+                </td>
+                <td>${(o.items || []).length} items</td>
+                <td><strong>${money(o.total || 0)}</strong></td>
+                <td><span class="badge-status ${o.paymentMethod === 'cod' ? 'pending' : 'paid'}">${esc(o.paymentMethod || 'Online')}</span></td>
+                <td>
+                  <select data-c="orderStatus" data-id="${o.id}" style="padding:4px 8px;font-size:0.8rem;border-radius:var(--radius-pill);">
+                    ${['new', 'processing', 'shipped', 'delivered', 'cancelled'].map(st => `
+                      <option value="${st}" ${o.status === st ? 'selected' : ''}>${st.toUpperCase()}</option>
+                    `).join('')}
+                  </select>
+                </td>
+                <td>
+                  <div style="display:flex;gap:4px;">
+                    <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="viewOrder" data-id="${o.id}">View</button>
+                    ${o.status !== 'cancelled' ? `
+                      <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;color:#b91c1c;border-color:#fecaca;" data-a="cancelOrder" data-id="${o.id}">Cancel &amp; Restore</button>
+                    ` : ''}
+                  </div>
+                </td>
               </tr>
             `).join('')}
           </tbody>
         </table>
       </div>
+    `;
+  },
 
-      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;">
-        <h3 style="margin-bottom:12px;">Administrative Audit Trail</h3>
-        <div class="table-wrap">
+  /* 10. Payments Ledger */
+  async payments() {
+    const list = await api('/payments');
+    const totalCollected = list.filter(p => p.status === 'Completed').reduce((sum, p) => sum + (p.amount || 0), 0);
+    return `
+      <div class="admin-header-row">
+        <div>
+          <span class="kicker">FINANCIAL AUDIT</span>
+          <h1 style="font-size:2rem;margin:0">Payments &amp; Ledger (${list.length})</h1>
+        </div>
+      </div>
+
+      <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="kpi-card">
+          <span class="kpi-title">Total Payments Collected</span>
+          <div class="kpi-value" style="color:var(--forest-primary);">${money(totalCollected)}</div>
+          <span class="kpi-subtitle">Completed transactions</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Transactions Count</span>
+          <div class="kpi-value">${list.length}</div>
+          <span class="kpi-subtitle">POS, Web &amp; Vendor payouts</span>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Txn ID</th>
+              <th>Date</th>
+              <th>Channel</th>
+              <th>Reference #</th>
+              <th>Party</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map(p => `
+              <tr>
+                <td><code>${esc(p.transactionId || 'TXN-' + p.id)}</code></td>
+                <td>${new Date(p.createdAt || Date.now()).toLocaleDateString('en-IN')}</td>
+                <td><span class="badge-status ${p.source === 'pos' ? 'pos' : 'web'}">${esc(p.source || 'pos').toUpperCase()}</span></td>
+                <td><code>${esc(p.referenceNumber || '-')}</code></td>
+                <td><strong>${esc(p.customerName || p.partyName || 'Customer')}</strong></td>
+                <td><strong>${money(p.amount || 0)}</strong></td>
+                <td>${esc(p.method || 'Cash')}</td>
+                <td><span class="badge-status ${esc((p.status || '').toLowerCase())}">${esc(p.status || 'Completed')}</span></td>
+                <td>
+                  ${p.status !== 'Completed' ? `
+                    <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="verifyPayment" data-id="${p.id}">Verify</button>
+                  ` : '<span style="color:#166534;font-size:0.8rem;font-weight:600;">✓ Verified</span>'}
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  },
+
+  /* 11. GST Tax Invoices */
+  async invoices() {
+    const list = await api('/invoices');
+    return `
+      <div class="admin-header-row">
+        <div>
+          <span class="kicker">STATUTORY GST TAX BILLING</span>
+          <h1 style="font-size:2rem;margin:0">Tax Invoices (${list.length})</h1>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Invoice #</th>
+              <th>Date</th>
+              <th>Customer</th>
+              <th>Channel</th>
+              <th>Taxable</th>
+              <th>GST (5%)</th>
+              <th>Total Amount</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map(inv => `
+              <tr>
+                <td><code>${esc(inv.invoiceNumber)}</code></td>
+                <td>${new Date(inv.date || inv.createdAt || Date.now()).toLocaleDateString('en-IN')}</td>
+                <td>
+                  <strong>${esc(inv.customerName || (inv.customer && inv.customer.name) || 'Walk-in')}</strong>
+                  ${(inv.customer && inv.customer.phone) ? `<div style="font-size:0.75rem;color:var(--ink-secondary)">${esc(inv.customer.phone)}</div>` : ''}
+                </td>
+                <td><span class="badge-status ${inv.type === 'pos' ? 'pos' : 'web'}">${inv.type === 'pos' ? 'POS Counter' : 'Online Store'}</span></td>
+                <td>${money(inv.subtotal || 0)}</td>
+                <td>${money(inv.taxAmount || 0)}</td>
+                <td><strong>${money(inv.grandTotal || 0)}</strong></td>
+                <td><span class="badge-status ${esc((inv.status || 'paid').toLowerCase())}">${esc(inv.status || 'Paid')}</span></td>
+                <td>
+                  <a class="btn-pill sm outline" style="padding:4px 10px;font-size:0.75rem;" href="/api/invoices/${inv.id}/print" target="_blank">Print / PDF 🖨️</a>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  },
+
+  /* 12. Reports & Analytics */
+  async reports() {
+    const r = await api(`/reports/analytics?period=${reportsPeriod}`);
+    return `
+      <div class="admin-header-row">
+        <div>
+          <span class="kicker">BUSINESS INTELLIGENCE &amp; AUDIT</span>
+          <h1 style="font-size:2rem;margin:0">Reports &amp; Analytics</h1>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a class="btn-pill sm outline" href="/api/reports/export?type=sales" target="_blank">📥 Sales CSV</a>
+          <a class="btn-pill sm outline" href="/api/reports/export?type=purchases" target="_blank">📥 Purchases CSV</a>
+          <a class="btn-pill sm outline" href="/api/reports/export?type=inventory" target="_blank">📥 Inventory CSV</a>
+        </div>
+      </div>
+
+      <!-- Period Filter -->
+      <div class="admin-subnav" style="margin-top:0;">
+        <button class="admin-subnav-btn ${reportsPeriod === 'today' ? 'active' : ''}" data-a="reportsPeriod" data-v="today">Today</button>
+        <button class="admin-subnav-btn ${reportsPeriod === '7d' ? 'active' : ''}" data-a="reportsPeriod" data-v="7d">Last 7 Days</button>
+        <button class="admin-subnav-btn ${reportsPeriod === '30d' ? 'active' : ''}" data-a="reportsPeriod" data-v="30d">Last 30 Days</button>
+        <button class="admin-subnav-btn ${reportsPeriod === 'all' ? 'active' : ''}" data-a="reportsPeriod" data-v="all">All Time</button>
+      </div>
+
+      <!-- Financial Metrics Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-title">Gross Revenue</span>
+          <div class="kpi-value" style="color:var(--forest-primary);">${money(r.revenue || 0)}</div>
+          <span class="kpi-subtitle">Total invoiced sales</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Cost of Goods Sold (COGS)</span>
+          <div class="kpi-value">${money(r.cogs || 0)}</div>
+          <span class="kpi-subtitle">Direct acquisition cost</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Gross Profit</span>
+          <div class="kpi-value" style="color:var(--moss);">${money(r.grossProfit || 0)}</div>
+          <span class="kpi-subtitle">Net markup earnings</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Gross Margin</span>
+          <div class="kpi-value" style="color:${(r.grossMargin || 0) >= 35 ? '#166534' : '#b45309'};">${r.grossMargin || 0}%</div>
+          <span class="kpi-subtitle">Gross profit percentage</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Stock Valuation (Cost)</span>
+          <div class="kpi-value">${money(r.stockValuationCost || 0)}</div>
+          <span class="kpi-subtitle">Current stock at cost</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-title">Stock Valuation (Retail)</span>
+          <div class="kpi-value">${money(r.stockValuationRetail || 0)}</div>
+          <span class="kpi-subtitle">Current stock at retail</span>
+        </div>
+      </div>
+
+      <!-- Category Breakdown -->
+      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:24px;margin-top:20px;">
+        <h3 style="margin-top:0;margin-bottom:14px;">Sales by Category Breakdown</h3>
+        <div class="table-wrap" style="margin:0;">
           <table>
-            <thead><tr><th>Timestamp</th><th>User</th><th>Action Performed</th><th>Client IP</th></tr></thead>
+            <thead><tr><th>Category</th><th>Units Sold</th><th>Revenue</th></tr></thead>
             <tbody>
-              ${logs.slice(0, 30).map(l => `
+              ${(r.categoryBreakdown || []).map(c => `
                 <tr>
-                  <td>${when(l.t)}</td>
-                  <td><strong>${esc(l.user)}</strong></td>
-                  <td>${esc(l.action)}</td>
-                  <td><code>${esc(l.ip || '—')}</code></td>
+                  <td><strong>${esc(c.category)}</strong></td>
+                  <td>${c.units} units</td>
+                  <td><strong>${money(c.revenue)}</strong></td>
                 </tr>
               `).join('')}
             </tbody>
           </table>
         </div>
       </div>
+    `;
+  },
+
+  /* 13. Settings Hub */
+  async settings() {
+    const s = storeSettings || {};
+    const users = await api('/users');
+    const config = await api('/homepage');
+    const mediaList = await api('/media');
+    const couponsList = await api('/coupons');
+    const inquiriesList = await api('/inquiries');
+    const backups = await api('/backups');
+    const logs = await api('/logs');
+
+    return `
+      <div class="admin-header-row">
+        <div>
+          <span class="kicker">CONFIGURATION &amp; ROLES</span>
+          <h1 style="font-size:2rem;margin:0">Settings Hub</h1>
+        </div>
+      </div>
+
+      <!-- Subnav -->
+      <div class="admin-subnav" style="margin-top:0;">
+        <button class="admin-subnav-btn ${settingsTab === 'store' ? 'active' : ''}" data-a="settingsTab" data-v="store">🏪 Business &amp; GST</button>
+        <button class="admin-subnav-btn ${settingsTab === 'staff' ? 'active' : ''}" data-a="settingsTab" data-v="staff">👥 Staff Roles</button>
+        <button class="admin-subnav-btn ${settingsTab === 'homepage' ? 'active' : ''}" data-a="settingsTab" data-v="homepage">🏡 Homepage CMS</button>
+        <button class="admin-subnav-btn ${settingsTab === 'media' ? 'active' : ''}" data-a="settingsTab" data-v="media">🖼️ Media Library</button>
+        <button class="admin-subnav-btn ${settingsTab === 'coupons' ? 'active' : ''}" data-a="settingsTab" data-v="coupons">🏷️ Coupons</button>
+        <button class="admin-subnav-btn ${settingsTab === 'inquiries' ? 'active' : ''}" data-a="settingsTab" data-v="inquiries">✉️ Inquiries</button>
+        <button class="admin-subnav-btn ${settingsTab === 'backups' ? 'active' : ''}" data-a="settingsTab" data-v="backups">💾 Backups &amp; Logs</button>
+      </div>
+
+      ${settingsTab === 'store' ? `
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;max-width:800px;">
+          <h3 style="margin-top:0;">Business Profile &amp; Statutory GST Configuration</h3>
+          <form data-f="saveSettings">
+            <div class="two-col" style="padding:0;">
+              <div>
+                <label for="set-name">Store Name</label>
+                <input id="set-name" name="name" value="${esc(s.name || 'Pairaplants')}" required>
+
+                <label for="set-phone">Phone Number</label>
+                <input id="set-phone" name="phone" value="${esc(s.phone || '+91 98765 43210')}">
+
+                <label for="set-email">Email Address</label>
+                <input id="set-email" name="email" value="${esc(s.email || 'info@pairaplants.com')}">
+
+                <label for="set-addr">Physical Nursery Address</label>
+                <textarea id="set-addr" name="address" rows="2">${esc(s.address || 'Kochi, Kerala, India')}</textarea>
+              </div>
+
+              <div>
+                <label for="set-gstin">GSTIN (Statutory Tax ID)</label>
+                <input id="set-gstin" name="gstin" value="${esc(s.gstin || '32AAAAA0000A1Z5')}" placeholder="e.g. 32AAAAA0000A1Z5">
+
+                <label for="set-prefix">Invoice Prefix</label>
+                <input id="set-prefix" name="invoicePrefix" value="${esc(s.invoicePrefix || 'PP-INV-')}" placeholder="PP-INV-">
+
+                <label for="set-tax">Default GST Tax Rate (%)</label>
+                <input id="set-tax" name="defaultTaxRate" type="number" step="0.5" value="${s.defaultTaxRate || 5}">
+
+                <label for="set-th">Default Low Stock Reorder Threshold</label>
+                <input id="set-th" name="lowStockDefault" type="number" value="${s.lowStockDefault || 8}">
+              </div>
+            </div>
+            <button class="btn-pill" style="margin-top:20px;">Save Business Settings</button>
+          </form>
+        </div>
+      ` : ''}
+
+      ${settingsTab === 'staff' ? `
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <h3 style="margin:0;">Staff Accounts &amp; RBAC Permissions</h3>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Username</th><th>Display Name</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody>
+                ${users.map(u => `
+                  <tr>
+                    <td><strong>${esc(u.username)}</strong></td>
+                    <td>${esc(u.name)}</td>
+                    <td><span class="badge-status new">${esc(ROLE_NAMES[u.role] || u.role)}</span></td>
+                    <td><span class="badge-status ${u.active ? 'instock' : 'out'}">${u.active ? 'Active' : 'Disabled'}</span></td>
+                    <td>
+                      <div style="display:flex;gap:6px;">
+                        <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="resetStaffPw" data-id="${u.id}">Reset PW</button>
+                        <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="toggleStaff" data-id="${u.id}" data-v="${u.active ? '0' : '1'}">${u.active ? 'Disable' : 'Enable'}</button>
+                      </div>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top:28px;border-top:1px solid var(--line);padding-top:20px;max-width:550px;">
+            <h4>Create New Staff Account</h4>
+            <form data-f="createStaff" style="margin-top:12px;">
+              <div class="two-col" style="padding:0;">
+                <div>
+                  <label for="ns-u">Username</label>
+                  <input id="ns-u" name="username" required>
+                  <label for="ns-n">Full Name</label>
+                  <input id="ns-n" name="name" required>
+                </div>
+                <div>
+                  <label for="ns-p">Password</label>
+                  <input id="ns-p" name="password" type="password" required minlength="6">
+                  <label for="ns-r">System Role</label>
+                  <select id="ns-r" name="role">
+                    <option value="manager">Manager</option>
+                    <option value="inventory">Inventory Staff</option>
+                    <option value="sales">Sales Staff</option>
+                    <option value="support">Customer Support</option>
+                    <option value="superadmin">Super Admin</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn-pill sm" style="margin-top:12px;">Create Staff Account</button>
+            </form>
+          </div>
+        </div>
+      ` : ''}
+
+      ${settingsTab === 'homepage' ? `
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;max-width:800px;">
+          <h3 style="margin-top:0;">Homepage Hero &amp; CMS Editor</h3>
+          <form data-f="saveHomepage">
+            <label for="hp-t">Hero Main Title</label>
+            <input id="hp-t" name="hero_title" value="${esc((config.hero && config.hero.title) || 'Living Aquatic Wonders')}" required>
+
+            <label for="hp-st">Hero Subtitle</label>
+            <input id="hp-st" name="hero_subtitle" value="${esc((config.hero && config.hero.subtitle) || '')}">
+
+            <label for="hp-img">Hero Aquarium Image URL</label>
+            <input id="hp-img" name="hero_bannerImage" value="${esc((config.hero && config.hero.bannerImage) || '/images/hero-aquarium.jpg')}">
+
+            <div class="two-col" style="padding:0;margin-top:8px;">
+              <div>
+                <label for="hp-cta">CTA Button Text</label>
+                <input id="hp-cta" name="hero_ctaText" value="${esc((config.hero && config.hero.ctaText) || 'Shop Aquatic Life')}">
+              </div>
+              <div>
+                <label for="hp-link">CTA Button Link</label>
+                <input id="hp-link" name="hero_ctaLink" value="${esc((config.hero && config.hero.ctaLink) || '#shop')}">
+              </div>
+            </div>
+
+            <h4 style="margin-top:24px;border-top:1px solid var(--line);padding-top:16px;">Why Choose Pairaplants Highlights</h4>
+            <label for="why-t">Highlights Section Title</label>
+            <input id="why-t" name="why_title" value="${esc((config.whyChooseUs && config.whyChooseUs.title) || 'The Pairaplants Difference')}">
+
+            <div class="two-col" style="padding:0;margin-top:12px;">
+              ${[0, 1, 2, 3].map(i => {
+                const card = (config.whyChooseUs && config.whyChooseUs.cards && config.whyChooseUs.cards[i]) || {};
+                return `
+                  <div style="background:var(--canvas-alt);padding:14px;border-radius:var(--radius-sm);margin-bottom:12px;">
+                    <strong>Feature #${i + 1}</strong>
+                    <input name="why_card_${i}_icon" value="${esc(card.icon || '🌿')}" placeholder="Icon (e.g. 🌿)" style="margin:4px 0;">
+                    <input name="why_card_${i}_title" value="${esc(card.title || '')}" placeholder="Title" style="margin-bottom:4px;">
+                    <textarea name="why_card_${i}_desc" rows="2" placeholder="Description">${esc(card.description || '')}</textarea>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <button class="btn-pill" style="margin-top:14px;">Update Homepage CMS</button>
+          </form>
+        </div>
+      ` : ''}
+
+      ${settingsTab === 'media' ? `
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;">
+          <h3 style="margin-top:0;">Media Library</h3>
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:20px;">
+            <input type="file" id="media-file-input" multiple accept="image/*">
+            <button class="btn-pill sm" data-a="uploadMedia">Upload Selected Images</button>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(130px, 1fr));gap:14px;">
+            ${mediaList.map(m => `
+              <div style="border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--canvas);">
+                <img src="${esc(m.url)}" alt="" style="width:100%;height:100px;object-fit:cover;">
+                <div style="padding:6px;text-align:center;">
+                  <button class="btn-pill sm outline" style="padding:2px 6px;font-size:0.7rem;width:100%;" data-a="copyUrl" data-v="${esc(m.url)}">Copy Link</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
+      ${settingsTab === 'coupons' ? `
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;">
+          <h3 style="margin-top:0;">Promotional Coupons</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Code</th><th>Discount</th><th>Min Order</th><th>Actions</th></tr></thead>
+              <tbody>
+                ${couponsList.map(c => `
+                  <tr>
+                    <td><code>${esc(c.code)}</code></td>
+                    <td><strong>${c.discountType === 'percent' ? `${c.discountValue}% OFF` : money(c.discountValue) + ' OFF'}</strong></td>
+                    <td>${money(c.minOrder || 0)}</td>
+                    <td>
+                      <button class="btn-pill sm outline" style="color:#b91c1c;border-color:#fecaca;padding:2px 8px;" data-a="delCoupon" data-id="${c.id}">Delete</button>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top:20px;max-width:500px;">
+            <h4>Create New Coupon</h4>
+            <form data-f="addCoupon" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+              <input name="code" placeholder="CODE (e.g. MONSOON20)" required>
+              <select name="discountType">
+                <option value="percent">Percentage (%)</option>
+                <option value="flat">Flat Amount (₹)</option>
+              </select>
+              <input name="discountValue" type="number" placeholder="Discount Value" required>
+              <input name="minOrder" type="number" placeholder="Min Order (₹)">
+              <button class="btn-pill sm" style="grid-column:1 / -1;">Create Coupon</button>
+            </form>
+          </div>
+        </div>
+      ` : ''}
+
+      ${settingsTab === 'inquiries' ? `
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;">
+          <h3 style="margin-top:0;">Customer Inquiries (${inquiriesList.length})</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Date</th><th>Name</th><th>Email / Phone</th><th>Message</th><th>Actions</th></tr></thead>
+              <tbody>
+                ${inquiriesList.map(q => `
+                  <tr>
+                    <td>${new Date(q.createdAt || Date.now()).toLocaleDateString('en-IN')}</td>
+                    <td><strong>${esc(q.name)}</strong></td>
+                    <td>${esc(q.email || q.phone || '-')}</td>
+                    <td>${esc(q.message || '')}</td>
+                    <td>
+                      ${!q.done ? `
+                        <button class="btn-pill sm outline" style="padding:2px 8px;font-size:0.75rem;" data-a="resolveInquiry" data-id="${q.id}">Resolve</button>
+                      ` : '<span style="color:#166534;font-size:0.8rem;">✓ Resolved</span>'}
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ` : ''}
+
+      ${settingsTab === 'backups' ? `
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <h3 style="margin:0;">Database Snapshots &amp; Audit Logs</h3>
+            <button class="btn-pill sm" data-a="createBackup">Create Database Snapshot</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Snapshot File</th><th>Created At</th><th>Size</th><th>Actions</th></tr></thead>
+              <tbody>
+                ${backups.map(b => `
+                  <tr>
+                    <td><code>${esc(b.file)}</code></td>
+                    <td>${new Date(b.created).toLocaleString('en-IN')}</td>
+                    <td>${Math.round(b.size / 1024)} KB</td>
+                    <td>
+                      <button class="btn-pill sm outline" style="padding:2px 8px;font-size:0.75rem;" data-a="restoreBackup" data-f="${esc(b.file)}">Restore</button>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <h4 style="margin-top:24px;">Recent System Audit Logs</h4>
+          <div style="background:var(--canvas-alt);border:1px solid var(--line);border-radius:var(--radius-sm);max-height:220px;overflow-y:auto;padding:12px;font-family:monospace;font-size:0.8rem;">
+            ${logs.slice(0, 40).map(l => `
+              <div style="padding:3px 0;border-bottom:1px solid var(--line-subtle);">
+                <span class="muted">${new Date(l.date || Date.now()).toLocaleTimeString()}</span> · 
+                <strong>[${esc(l.type || 'SYSTEM')}]</strong> ${esc(l.text || l.reason || '')}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
     `;
   }
 };
@@ -1797,35 +2450,81 @@ function showProductFormModal(p = null) {
               <label for="p-n">Product Name</label>
               <input id="p-n" name="name" required value="${isEdit ? esc(p.name) : ''}" placeholder="e.g. Bucephalandra Kedagang">
 
+              <label for="p-sn">Scientific Name (Botanical / Taxon)</label>
+              <input id="p-sn" name="scientificName" value="${isEdit ? esc(p.scientificName || '') : ''}" placeholder="e.g. Bucephalandra sp. 'Kedagang'">
+
               <label for="p-c">Category</label>
               <select id="p-c" name="category">
                 ${CATS.map(c => `<option ${isEdit && p.category === c ? 'selected' : ''}>${c}</option>`).join('')}
               </select>
 
               <label for="p-sc">Subcategory</label>
-              <input id="p-sc" name="subcategory" value="${isEdit ? esc(p.subcategory || '') : ''}" placeholder="e.g. Ferns & Mosses">
+              <input id="p-sc" name="subcategory" value="${isEdit ? esc(p.subcategory || '') : ''}" placeholder="e.g. Foreground Plants">
 
-              <label for="p-sku">SKU Code</label>
+              <label for="p-sku">SKU / Product Code</label>
               <input id="p-sku" name="sku" value="${isEdit ? esc(p.sku || '') : ''}" placeholder="e.g. PP-PLT-087">
 
-              <label for="p-d">Description</label>
+              <label for="p-d">Product Description</label>
               <textarea id="p-d" name="description" rows="3">${isEdit ? esc(p.description || '') : ''}</textarea>
             </div>
 
             <div>
-              <label for="p-pr">Regular Price (₹)</label>
-              <input id="p-pr" name="price" type="number" min="0" step="any" required value="${isEdit ? p.price : ''}" placeholder="250">
+              <div class="two-col" style="padding:0;">
+                <div>
+                  <label for="p-cp">Purchase Cost (₹)</label>
+                  <input id="p-cp" name="purchasePrice" type="number" min="0" step="any" value="${isEdit ? (p.purchasePrice || '') : ''}" placeholder="120">
+                </div>
+                <div>
+                  <label for="p-pr">Selling Price (₹)</label>
+                  <input id="p-pr" name="price" type="number" min="0" step="any" required value="${isEdit ? p.price : ''}" placeholder="250">
+                </div>
+              </div>
 
               <label for="p-sp">Sale Price (₹, optional)</label>
-              <input id="p-sp" name="salePrice" type="number" min="0" step="any" value="${isEdit && p.salePrice ? p.salePrice : ''}" placeholder="Leave blank if not on sale">
+              <input id="p-sp" name="salePrice" type="number" min="0" step="any" value="${isEdit && p.salePrice ? p.salePrice : ''}" placeholder="Leave blank if not on discount">
 
-              <label for="p-st">Stock Quantity</label>
-              <input id="p-st" name="stock" type="number" min="0" required value="${isEdit ? p.stock : 10}">
+              <div class="two-col" style="padding:0;">
+                <div>
+                  <label for="p-st">Available Stock</label>
+                  <input id="p-st" name="stock" type="number" min="0" required value="${isEdit ? p.stock : 10}">
+                </div>
+                <div>
+                  <label for="p-th">Low Stock Threshold</label>
+                  <input id="p-th" name="lowStockThreshold" type="number" min="0" value="${isEdit ? (p.lowStockThreshold || 5) : 5}">
+                </div>
+              </div>
 
-              <label for="p-th">Low Stock Threshold</label>
-              <input id="p-th" name="lowStockThreshold" type="number" min="0" value="${isEdit ? p.lowStockThreshold : 5}">
+              <div class="two-col" style="padding:0;">
+                <div>
+                  <label for="p-diff">Difficulty Level</label>
+                  <select id="p-diff" name="difficulty">
+                    <option value="Easy" ${isEdit && p.difficulty === 'Easy' ? 'selected' : ''}>Easy</option>
+                    <option value="Moderate" ${isEdit && p.difficulty === 'Moderate' ? 'selected' : ''}>Moderate</option>
+                    <option value="Advanced" ${isEdit && p.difficulty === 'Advanced' ? 'selected' : ''}>Advanced</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="p-light">Lighting Requirements</label>
+                  <select id="p-light" name="lighting">
+                    <option value="Low" ${isEdit && p.lighting === 'Low' ? 'selected' : ''}>Low Light</option>
+                    <option value="Moderate" ${isEdit && p.lighting === 'Moderate' ? 'selected' : ''}>Moderate Light</option>
+                    <option value="High" ${isEdit && p.lighting === 'High' ? 'selected' : ''}>High Light (CO2 Rec.)</option>
+                  </select>
+                </div>
+              </div>
 
-              <div style="margin-top:16px;display:flex;gap:16px;">
+              <div class="two-col" style="padding:0;">
+                <div>
+                  <label for="p-temp">Temperature Range</label>
+                  <input id="p-temp" name="temperatureRange" value="${isEdit ? esc(p.temperatureRange || '22°C - 28°C') : '22°C - 28°C'}">
+                </div>
+                <div>
+                  <label for="p-batch">Batch / Lot #</label>
+                  <input id="p-batch" name="batchNumber" value="${isEdit ? esc(p.batchNumber || '') : ''}" placeholder="BATCH-2026-03">
+                </div>
+              </div>
+
+              <div style="margin-top:12px;display:flex;gap:16px;">
                 <label style="display:flex;align-items:center;gap:6px;cursor:pointer;">
                   <input type="checkbox" name="isFeatured" ${isEdit && p.isFeatured ? 'checked' : ''}>
                   <span>Featured on Home</span>
@@ -1865,6 +2564,436 @@ function showProductFormModal(p = null) {
             <button type="submit" class="btn-pill sm">${isEdit ? 'Update Product' : 'Add to Catalog'}</button>
           </div>
         </form>
+      </div>
+    </div>
+  `;
+  openModal(html);
+}
+
+/* ==============================================================================
+   ADDITIONAL ADMIN MODALS (SUPPLIERS, PURCHASES, STOCK, CUSTOMERS, ORDERS, POS)
+   ============================================================================== */
+function showSupplierModal(sup = null) {
+  const isEdit = !!sup;
+  const html = `
+    <div class="modal-card" style="max-width:550px;">
+      <div class="modal-head">
+        <h3>${isEdit ? 'Edit Supplier: ' + esc(sup.name) : 'Add New Supplier'}</h3>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form data-f="saveSupplier" data-id="${isEdit ? sup.id : ''}">
+          <label for="sup-n">Supplier / Nursery Name</label>
+          <input id="sup-n" name="name" required value="${isEdit ? esc(sup.name) : ''}" placeholder="e.g. Kerala Aquatic Nursery">
+
+          <div class="two-col" style="padding:0;">
+            <div>
+              <label for="sup-cp">Contact Person</label>
+              <input id="sup-cp" name="contactPerson" value="${isEdit ? esc(sup.contactPerson || '') : ''}">
+
+              <label for="sup-ph">Phone / WhatsApp</label>
+              <input id="sup-ph" name="phone" required value="${isEdit ? esc(sup.phone || '') : ''}">
+            </div>
+            <div>
+              <label for="sup-em">Email Address</label>
+              <input id="sup-em" name="email" type="email" value="${isEdit ? esc(sup.email || '') : ''}">
+
+              <label for="sup-gst">GSTIN</label>
+              <input id="sup-gst" name="gstin" value="${isEdit ? esc(sup.gstin || '') : ''}" placeholder="32AAAAA0000A1Z5">
+            </div>
+          </div>
+
+          <label for="sup-ad">Address / State</label>
+          <input id="sup-ad" name="address" value="${isEdit ? esc(sup.address || '') : ''}">
+
+          <div class="two-col" style="padding:0;">
+            <div>
+              <label for="sup-pt">Payment Terms</label>
+              <select id="sup-pt" name="paymentTerms">
+                <option value="Net 30" ${isEdit && sup.paymentTerms === 'Net 30' ? 'selected' : ''}>Net 30 Days</option>
+                <option value="Net 15" ${isEdit && sup.paymentTerms === 'Net 15' ? 'selected' : ''}>Net 15 Days</option>
+                <option value="Cash / Advance" ${isEdit && sup.paymentTerms === 'Cash / Advance' ? 'selected' : ''}>Cash / Advance</option>
+              </select>
+            </div>
+            <div>
+              <label for="sup-bal">Opening Balance (₹)</label>
+              <input id="sup-bal" name="balance" type="number" value="${isEdit ? (sup.balance || 0) : 0}">
+            </div>
+          </div>
+
+          <div class="modal-footer" style="margin-top:20px;padding:0;background:none;border:none;">
+            <button type="button" class="btn-pill sm outline" data-a="closeModal">Cancel</button>
+            <button type="submit" class="btn-pill sm">${isEdit ? 'Update Supplier' : 'Save Supplier'}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  openModal(html);
+}
+
+async function showNewPurchaseModal(supId = null) {
+  const suppliers = await api('/suppliers');
+  await loadProducts();
+  const html = `
+    <div class="modal-card" style="max-width:800px;">
+      <div class="modal-head">
+        <h3>Record Supplier Purchase / Stock In</h3>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form data-f="savePurchase">
+          <div class="two-col" style="padding:0;">
+            <div>
+              <label for="po-sup">Supplier</label>
+              <select id="po-sup" name="supplierId" required>
+                ${suppliers.map(s => `<option value="${s.id}" ${supId && +supId === s.id ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}
+              </select>
+            </div>
+            <div>
+              <label for="po-pay">Payment Status</label>
+              <select id="po-pay" name="paymentStatus">
+                <option value="Paid">Paid</option>
+                <option value="Pending">Pending / Credit</option>
+              </select>
+            </div>
+          </div>
+
+          <h4 style="margin-top:16px;margin-bottom:8px;">Line Items (Stock In)</h4>
+          <div id="po-items-container">
+            <div class="po-item-row" style="display:grid;grid-template-columns:2fr 1fr 1fr 40px;gap:8px;margin-bottom:8px;align-items:center;">
+              <select name="productId" required>
+                <option value="">-- Select Product --</option>
+                ${products.map(p => `<option value="${p.id}">${esc(p.name)} (${esc(p.sku || p.id)})</option>`).join('')}
+              </select>
+              <input name="quantity" type="number" min="1" value="10" placeholder="Qty" required>
+              <input name="unitCost" type="number" min="0" step="any" placeholder="Unit Cost (₹)" required>
+              <button type="button" class="btn-pill sm outline" style="padding:4px;color:#b91c1c;border-color:#fecaca;" onclick="this.closest('.po-item-row').remove()">&times;</button>
+            </div>
+          </div>
+
+          <button type="button" class="btn-pill sm outline" style="margin-top:6px;" data-a="addPoLineItem">+ Add Another Line Item</button>
+
+          <label for="po-notes" style="margin-top:14px;">Notes / Invoice Reference</label>
+          <input id="po-notes" name="notes" placeholder="e.g. Nursery shipment invoice #9842">
+
+          <div class="modal-footer" style="margin-top:20px;padding:0;background:none;border:none;">
+            <button type="button" class="btn-pill sm outline" data-a="closeModal">Cancel</button>
+            <button type="submit" class="btn-pill sm">Record Purchase &amp; Add Stock</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  openModal(html);
+}
+
+function showPurchaseDetailModal(po) {
+  const html = `
+    <div class="modal-card" style="max-width:700px;">
+      <div class="modal-head">
+        <h3>Purchase Order: ${esc(po.poNumber || 'PO-' + po.id)}</h3>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;justify-content:space-between;margin-bottom:16px;background:var(--canvas-alt);padding:14px;border-radius:var(--radius-sm);">
+          <div>
+            <div><strong>Supplier:</strong> ${esc(po.supplierName || 'Supplier')}</div>
+            <div><strong>Date:</strong> ${new Date(po.createdAt || Date.now()).toLocaleString('en-IN')}</div>
+          </div>
+          <div>
+            <div><strong>Status:</strong> <span class="badge-status instock">${esc(po.status || 'Received')}</span></div>
+            <div><strong>Payment:</strong> <span class="badge-status ${po.paymentStatus === 'Paid' ? 'paid' : 'pending'}">${esc(po.paymentStatus || 'Paid')}</span></div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Product</th><th>Quantity</th><th>Unit Cost</th><th>Total</th></tr></thead>
+            <tbody>
+              ${(po.items || []).map(i => `
+                <tr>
+                  <td><strong>${esc(i.productName || 'Item #' + i.productId)}</strong></td>
+                  <td>${i.quantity} units</td>
+                  <td>${money(i.unitCost || 0)}</td>
+                  <td><strong>${money(i.totalCost || (i.quantity * (i.unitCost || 0)))}</strong></td>
+                </tr>
+              `).join('')}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="3" style="text-align:right;">Grand Total:</th>
+                <th>${money(po.totalCost || 0)}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        ${po.notes ? `<p style="margin-top:10px;font-size:0.85rem;color:var(--ink-secondary);"><strong>Notes:</strong> ${esc(po.notes)}</p>` : ''}
+
+        <div class="modal-footer" style="margin-top:20px;padding:0;background:none;border:none;">
+          <button type="button" class="btn-pill sm outline" data-a="closeModal">Close</button>
+        </div>
+      </div>
+    </div>
+  `;
+  openModal(html);
+}
+
+async function showStockAdjustModal(pid = null) {
+  await loadProducts();
+  const html = `
+    <div class="modal-card" style="max-width:550px;">
+      <div class="modal-head">
+        <h3>Adjust Stock / Record Living Goods Loss</h3>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form data-f="saveStockAdjust">
+          <label for="adj-p">Select Botanical Item</label>
+          <select id="adj-p" name="productId" required>
+            ${products.map(p => `
+              <option value="${p.id}" ${pid && +pid === p.id ? 'selected' : ''}>
+                ${esc(p.name)} (Current Stock: ${p.stock})
+              </option>
+            `).join('')}
+          </select>
+
+          <div class="two-col" style="padding:0;">
+            <div>
+              <label for="adj-t">Adjustment Type</label>
+              <select id="adj-t" name="type" required>
+                <option value="adjustment">Physical Count Audit</option>
+                <option value="mortality">Living Goods Mortality (Casualty / Melt)</option>
+                <option value="damage">Transit Damage / Breakage</option>
+                <option value="sample">Display Tank / Sample</option>
+              </select>
+            </div>
+            <div>
+              <label for="adj-c">Quantity Change (+ or -)</label>
+              <input id="adj-c" name="change" type="number" required placeholder="-2 or +5">
+              <span class="muted" style="font-size:0.75rem;">Negative (-) for loss/mortality, positive (+) for surplus.</span>
+            </div>
+          </div>
+
+          <label for="adj-r">Mandatory Reason / Description</label>
+          <input id="adj-r" name="reason" required placeholder="e.g. Cryptocoryne leaf melt during acclimatization">
+
+          <label for="adj-b">Batch / Lot Number (Optional)</label>
+          <input id="adj-b" name="batchNumber" placeholder="e.g. BATCH-2026-03">
+
+          <div class="modal-footer" style="margin-top:20px;padding:0;background:none;border:none;">
+            <button type="button" class="btn-pill sm outline" data-a="closeModal">Cancel</button>
+            <button type="submit" class="btn-pill sm">Save Adjustment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  openModal(html);
+}
+
+function showCustomerModal(c = null) {
+  const isEdit = !!c;
+  const html = `
+    <div class="modal-card" style="max-width:550px;">
+      <div class="modal-head">
+        <h3>${isEdit ? 'Edit Customer' : 'Add New Customer'}</h3>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form data-f="saveCustomer" data-id="${isEdit ? c.id : ''}">
+          <label for="cm-n">Full Name</label>
+          <input id="cm-n" name="name" required value="${isEdit ? esc(c.name) : ''}">
+
+          <div class="two-col" style="padding:0;">
+            <div>
+              <label for="cm-p">Phone / WhatsApp</label>
+              <input id="cm-p" name="phone" required value="${isEdit ? esc(c.phone || '') : ''}">
+            </div>
+            <div>
+              <label for="cm-e">Email Address</label>
+              <input id="cm-e" name="email" type="email" value="${isEdit ? esc(c.email || '') : ''}">
+            </div>
+          </div>
+
+          <label for="cm-a">Address</label>
+          <input id="cm-a" name="address" value="${isEdit ? esc(c.address || '') : ''}">
+
+          <div class="two-col" style="padding:0;">
+            <div>
+              <label for="cm-c">City</label>
+              <input id="cm-c" name="city" value="${isEdit ? esc(c.city || '') : ''}">
+            </div>
+            <div>
+              <label for="cm-s">State / Pincode</label>
+              <input id="cm-s" name="state" value="${isEdit ? esc(c.state || '') : ''}">
+            </div>
+          </div>
+
+          <div class="modal-footer" style="margin-top:20px;padding:0;background:none;border:none;">
+            <button type="button" class="btn-pill sm outline" data-a="closeModal">Cancel</button>
+            <button type="submit" class="btn-pill sm">${isEdit ? 'Update Customer' : 'Create Customer'}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  `;
+  openModal(html);
+}
+
+async function showCustomerProfileModal(custId) {
+  const cust = await api(`/customers/${custId}`);
+  const html = `
+    <div class="modal-card" style="max-width:700px;">
+      <div class="modal-head">
+        <h3>Customer Profile: ${esc(cust.name)}</h3>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="kpi-grid" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:18px;">
+          <div class="kpi-card">
+            <span class="kpi-title">Total Orders</span>
+            <div class="kpi-value">${cust.totalOrders || (cust.orders || []).length || 0}</div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-title">Total Spent</span>
+            <div class="kpi-value" style="color:var(--forest-primary);">${money(cust.totalSpend || 0)}</div>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-title">Phone</span>
+            <div style="font-size:0.95rem;font-weight:600;margin-top:8px;">${esc(cust.phone || '-')}</div>
+          </div>
+        </div>
+
+        <div style="background:var(--canvas-alt);padding:14px;border-radius:var(--radius-sm);margin-bottom:16px;">
+          <div><strong>Email:</strong> ${esc(cust.email || '-')}</div>
+          <div><strong>Shipping Address:</strong> ${esc(cust.address || '-')}, ${esc(cust.city || '')} ${esc(cust.state || '')}</div>
+        </div>
+
+        <h4>Order History (${(cust.orders || []).length})</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Order ID</th><th>Date</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody>
+              ${(cust.orders || []).length ? (cust.orders || []).map(o => `
+                <tr>
+                  <td><code>#${o.id}</code></td>
+                  <td>${new Date(o.createdAt || Date.now()).toLocaleDateString('en-IN')}</td>
+                  <td><strong>${money(o.total || 0)}</strong></td>
+                  <td><span class="badge-status ${esc(o.status || 'completed')}">${esc(o.status || 'Completed')}</span></td>
+                </tr>
+              `).join('') : '<tr><td colspan="4" class="muted">No past orders.</td></tr>'}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="modal-footer" style="margin-top:20px;padding:0;background:none;border:none;">
+          <button type="button" class="btn-pill sm outline" data-a="closeModal">Close</button>
+        </div>
+      </div>
+    </div>
+  `;
+  openModal(html);
+}
+
+function showOrderDetailModal(o) {
+  const html = `
+    <div class="modal-card" style="max-width:700px;">
+      <div class="modal-head">
+        <h3>Order Details #${o.id}</h3>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background:var(--canvas-alt);padding:14px;border-radius:var(--radius-sm);margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;">
+            <div>
+              <strong>Customer:</strong> ${esc(o.name || (o.customer && o.customer.name) || 'Customer')}<br>
+              <strong>Phone:</strong> ${esc(o.phone || '-')}<br>
+              <strong>Email:</strong> ${esc(o.email || '-')}<br>
+              <strong>Shipping:</strong> ${esc(o.address || '-')}, ${esc(o.city || '')} ${esc(o.pincode || '')}
+            </div>
+            <div style="text-align:right;">
+              <strong>Date:</strong> ${new Date(o.createdAt || Date.now()).toLocaleDateString('en-IN')}<br>
+              <strong>Status:</strong> <span class="badge-status ${esc(o.status || 'new')}">${esc(o.status || 'NEW')}</span><br>
+              <strong>Payment:</strong> <span class="badge-status ${o.paymentMethod === 'cod' ? 'pending' : 'paid'}">${esc(o.paymentMethod || 'Online')}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Product Item</th><th>Quantity</th><th>Price</th><th>Line Total</th></tr></thead>
+            <tbody>
+              ${(o.items || []).map(i => {
+                const prod = findProduct(i.id || i.productId);
+                return `
+                  <tr>
+                    <td><strong>${esc(i.name || (prod ? prod.name : 'Item #' + i.id))}</strong></td>
+                    <td>${i.qty || i.quantity || 1} units</td>
+                    <td>${money(i.price || (prod ? prod.price : 0))}</td>
+                    <td><strong>${money((i.qty || i.quantity || 1) * (i.price || (prod ? prod.price : 0)))}</strong></td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="3" style="text-align:right;">Grand Total:</th>
+                <th>${money(o.total || 0)}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="modal-footer" style="margin-top:20px;padding:0;background:none;border:none;">
+          <button type="button" class="btn-pill sm outline" data-a="closeModal">Close</button>
+        </div>
+      </div>
+    </div>
+  `;
+  openModal(html);
+}
+
+function showPosReceiptModal(sale, invoice) {
+  const html = `
+    <div class="modal-card" style="max-width:500px;">
+      <div class="modal-head">
+        <h3>POS Bill Generated ✓</h3>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <div style="font-size:3rem;margin-bottom:10px;">🧾</div>
+        <h4 style="margin:0;color:var(--forest-primary)">Sale Completed Successfully</h4>
+        <p class="muted" style="margin:4px 0 16px;">Tax Invoice: <strong>${esc(invoice.invoiceNumber)}</strong></p>
+
+        <div style="background:var(--canvas-alt);padding:14px;border-radius:var(--radius-sm);text-align:left;font-size:0.88rem;margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span>Customer:</span>
+            <strong>${esc(sale.customerName || 'Walk-in')}</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span>Payment Mode:</span>
+            <strong>${esc(sale.paymentMethod || 'Cash')}</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span>Taxable Subtotal:</span>
+            <span>${money(sale.subtotal)}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+            <span>GST (5%):</span>
+            <span>${money(sale.taxAmount)}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:6px;font-weight:700;font-size:1rem;color:var(--forest-primary);">
+            <span>Grand Total Paid:</span>
+            <span>${money(sale.grandTotal)}</span>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:center;">
+          <a class="btn-pill sm" href="/api/invoices/${invoice.id}/print" target="_blank">🖨️ Print Tax Invoice</a>
+          <button class="btn-pill sm outline" data-a="closeModal">Start Next Sale</button>
+        </div>
       </div>
     </div>
   `;
@@ -2111,6 +3240,160 @@ const actions = {
     navigator.clipboard.writeText(location.origin + btn.dataset.v);
     toast('Image URL copied to clipboard!');
   },
+  posAddToCart(btn) {
+    const pid = +btn.dataset.id;
+    const p = findProduct(pid);
+    if (!p) return;
+    if (p.stock <= 0) return toast(`${p.name} is out of stock!`, 'error');
+    const existing = posCart.find(i => i.id === pid);
+    if (existing) {
+      if (existing.qty >= p.stock) return toast(`Cannot add more than ${p.stock} units (current stock)`, 'error');
+      existing.qty += 1;
+    } else {
+      posCart.push({ id: p.id, name: p.name, price: p.price, stock: p.stock, qty: 1, image: p.image, sku: p.sku });
+    }
+    return render();
+  },
+  posIncQty(btn) {
+    const pid = +btn.dataset.id;
+    const item = posCart.find(i => i.id === pid);
+    if (!item) return;
+    if (item.qty >= item.stock) return toast(`Cannot exceed available stock (${item.stock} units)`, 'error');
+    item.qty += 1;
+    return render();
+  },
+  posDecQty(btn) {
+    const pid = +btn.dataset.id;
+    const item = posCart.find(i => i.id === pid);
+    if (!item) return;
+    item.qty -= 1;
+    if (item.qty <= 0) posCart = posCart.filter(i => i.id !== pid);
+    return render();
+  },
+  posRemoveItem(btn) {
+    const pid = +btn.dataset.id;
+    posCart = posCart.filter(i => i.id !== pid);
+    return render();
+  },
+  posClearCart() {
+    if (posCart.length && confirm('Clear current POS cart?')) {
+      posCart = [];
+      return render();
+    }
+  },
+  posCategory(btn) {
+    posCategoryFilter = btn.dataset.v;
+    return render();
+  },
+  stockTab(btn) {
+    stockTab = btn.dataset.v;
+    return render();
+  },
+  settingsTab(btn) {
+    settingsTab = btn.dataset.v;
+    return render();
+  },
+  reportsPeriod(btn) {
+    reportsPeriod = btn.dataset.v;
+    return render();
+  },
+  openAddSupplierModal() {
+    showSupplierModal();
+  },
+  async editSupplier(btn) {
+    const list = await api('/suppliers');
+    const s = list.find(x => x.id === +btn.dataset.id);
+    if (s) showSupplierModal(s);
+  },
+  async delSupplier(btn) {
+    if (confirm('Delete this supplier record?')) {
+      await api(`/suppliers/${btn.dataset.id}`, 'DELETE');
+      toast('Supplier removed');
+      return render();
+    }
+  },
+  openNewPurchaseModal(btn) {
+    const supId = btn && btn.dataset && btn.dataset.sup;
+    showNewPurchaseModal(supId);
+  },
+  async viewPurchase(btn) {
+    const list = await api('/purchases');
+    const po = list.find(x => x.id === +btn.dataset.id);
+    if (po) showPurchaseDetailModal(po);
+  },
+  openStockAdjustModal(btn) {
+    const pid = btn && btn.dataset && btn.dataset.id;
+    showStockAdjustModal(pid);
+  },
+  openAddCustomerModal() {
+    showCustomerModal();
+  },
+  async viewCustomer(btn) {
+    showCustomerProfileModal(+btn.dataset.id);
+  },
+  async editCustomer(btn) {
+    const list = await api('/customers');
+    const c = list.find(x => x.id === +btn.dataset.id);
+    if (c) showCustomerModal(c);
+  },
+  async verifyPayment(btn) {
+    await api(`/payments/${btn.dataset.id}/status`, 'PATCH', { status: 'Completed' });
+    toast('Payment marked as verified & completed');
+    return render();
+  },
+  async viewOrder(btn) {
+    const list = await api('/orders');
+    const o = list.find(x => x.id === +btn.dataset.id);
+    if (o) showOrderDetailModal(o);
+  },
+  addPoLineItem() {
+    const container = $('#po-items-container');
+    if (!container) return;
+    const row = document.createElement('div');
+    row.className = 'po-item-row';
+    row.style.cssText = 'display:grid;grid-template-columns:2fr 1fr 1fr 40px;gap:8px;margin-bottom:8px;align-items:center;';
+    row.innerHTML = `
+      <select name="productId" required>
+        <option value="">-- Select Product --</option>
+        ${products.map(p => `<option value="${p.id}">${esc(p.name)} (${esc(p.sku || p.id)})</option>`).join('')}
+      </select>
+      <input name="quantity" type="number" min="1" value="10" placeholder="Qty" required>
+      <input name="unitCost" type="number" min="0" step="any" placeholder="Unit Cost (₹)" required>
+      <button type="button" class="btn-pill sm outline" style="padding:4px;color:#b91c1c;border-color:#fecaca;" onclick="this.closest('.po-item-row').remove()">&times;</button>
+    `;
+    container.appendChild(row);
+  },
+  async posCheckout() {
+    if (!posCart.length) return toast('Cart is empty!', 'error');
+    const custSelect = $('#pos-cust-select');
+    const custName = $('#pos-cust-name') ? $('#pos-cust-name').value.trim() : '';
+    const custPhone = $('#pos-cust-phone') ? $('#pos-cust-phone').value.trim() : '';
+    const discountPct = $('#pos-discount-pct') ? (+($('#pos-discount-pct').value) || 0) : 0;
+    const methodEl = document.querySelector('input[name="posPaymentMethod"]:checked');
+    const paymentMethod = methodEl ? methodEl.value : 'Cash';
+
+    const customerId = (custSelect && custSelect.value !== 'walkin') ? +custSelect.value : null;
+
+    try {
+      const payload = {
+        customerId,
+        customerName: custName || (customerId ? null : 'Walk-in Customer'),
+        customerPhone: custPhone,
+        items: posCart.map(i => ({ productId: i.id, quantity: i.qty, unitPrice: i.price })),
+        discountPercent: discountPct,
+        paymentMethod
+      };
+      const res = await api('/pos/checkout', 'POST', payload);
+      posCart = [];
+      toast('POS Counter Sale completed!');
+      await loadProducts();
+      showPosReceiptModal(res.posSale, res.invoice);
+      return render();
+    } catch (e) {
+      toast(e.message, 'error');
+    }
+  },
+
   async staffLogout() {
     await api('/logout', 'POST');
     staffUser = null;
@@ -2192,6 +3475,94 @@ const forms = {
     f.reset();
     toast(res.message);
   },
+  async saveSupplier(d, f) {
+    const id = f.dataset.id;
+    const payload = {
+      name: d.name,
+      contactPerson: d.contactPerson,
+      phone: d.phone,
+      email: d.email,
+      address: d.address,
+      gstin: d.gstin,
+      paymentTerms: d.paymentTerms || 'Net 30',
+      balance: +d.balance || 0
+    };
+    if (id) {
+      await api(`/suppliers/${id}`, 'PUT', payload);
+      toast('Supplier updated!');
+    } else {
+      await api('/suppliers', 'POST', payload);
+      toast('Supplier added!');
+    }
+    closeModal();
+    return render();
+  },
+  async savePurchase(d, f) {
+    const items = [];
+    const itemRows = f.querySelectorAll('.po-item-row');
+    itemRows.forEach(row => {
+      const pid = +row.querySelector('[name="productId"]').value;
+      const qty = +row.querySelector('[name="quantity"]').value;
+      const unitCost = +row.querySelector('[name="unitCost"]').value;
+      const p = findProduct(pid);
+      if (pid && qty > 0) {
+        items.push({
+          productId: pid,
+          productName: p ? p.name : 'Item #' + pid,
+          quantity: qty,
+          unitCost: unitCost || (p ? p.purchasePrice : 0),
+          totalCost: (qty * (unitCost || (p ? p.purchasePrice : 0)))
+        });
+      }
+    });
+    if (!items.length) return toast('Please select at least one item.', 'error');
+    const payload = {
+      supplierId: +d.supplierId,
+      items,
+      paymentStatus: d.paymentStatus || 'Paid',
+      notes: d.notes || ''
+    };
+    await api('/purchases', 'POST', payload);
+    toast('Purchase order recorded and stock added!');
+    closeModal();
+    await loadProducts();
+    return render();
+  },
+  async saveStockAdjust(d) {
+    const payload = {
+      productId: +d.productId,
+      type: d.type || 'adjustment',
+      change: +d.change,
+      reason: d.reason,
+      batchNumber: d.batchNumber || null
+    };
+    await api('/inventory/adjust', 'POST', payload);
+    toast('Stock adjustment / loss recorded!');
+    closeModal();
+    await loadProducts();
+    return render();
+  },
+  async saveCustomer(d, f) {
+    const id = f.dataset.id;
+    const payload = {
+      name: d.name,
+      phone: d.phone,
+      email: d.email,
+      address: d.address,
+      city: d.city,
+      state: d.state
+    };
+    if (id) {
+      await api(`/customers/${id}`, 'PUT', payload);
+      toast('Customer profile updated!');
+    } else {
+      await api('/customers', 'POST', payload);
+      toast('Customer added!');
+    }
+    closeModal();
+    return render();
+  },
+
   async saveProduct(d, f) {
     const id = f.dataset.id;
     let images = [];
@@ -2199,13 +3570,21 @@ const forms = {
 
     const payload = {
       name: d.name,
+      scientificName: d.scientificName || '',
       category: d.category,
       subcategory: d.subcategory,
+      sku: d.sku,
       price: +d.price,
       salePrice: d.salePrice ? +d.salePrice : null,
+      purchasePrice: d.purchasePrice ? +d.purchasePrice : Math.round(+d.price * 0.55),
       stock: +d.stock,
       lowStockThreshold: +d.lowStockThreshold || 5,
-      sku: d.sku,
+      difficulty: d.difficulty || 'Easy',
+      lighting: d.lighting || 'Moderate',
+      growthRate: d.growthRate || 'Moderate',
+      temperatureRange: d.temperatureRange || '22°C - 28°C',
+      tankCompatibility: d.tankCompatibility || 'Community safe',
+      batchNumber: d.batchNumber || '',
       description: d.description,
       isFeatured: !!d.isFeatured,
       isVisible: !!d.isVisible,
@@ -2338,6 +3717,12 @@ document.addEventListener('input', e => {
     const q = e.target.value.toLowerCase().trim();
     $$('#admin-prod-tbody tr').forEach(tr => {
       tr.style.display = (!q || tr.dataset.name.includes(q) || tr.dataset.cat.includes(q)) ? '' : 'none';
+    });
+  } else if (e.target.dataset.i === 'pos-search') {
+    posSearchQuery = e.target.value.toLowerCase().trim();
+    $('.pos-prod-card').forEach(card => {
+      const text = (card.dataset.name + ' ' + (card.dataset.sku || '')).toLowerCase();
+      card.style.display = (!posSearchQuery || text.includes(posSearchQuery)) ? '' : 'none';
     });
   } else if (e.target.dataset.i === 'admin-inv-search') {
     const q = e.target.value.toLowerCase().trim();
