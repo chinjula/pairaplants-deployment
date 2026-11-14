@@ -3331,6 +3331,12 @@
   "inquiries": [],
   "logs": [
     {
+      "t": 1794648976515,
+      "user": "owner",
+      "action": "staff logged in via /admin/login",
+      "ip": "::ffff:127.0.0.1"
+    },
+    {
       "t": 1794647793464,
       "user": "owner",
       "action": "completed POS sale #PP-INV-7004 (₹126) for Walk-in Customer",

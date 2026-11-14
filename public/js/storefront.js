@@ -4,7 +4,9 @@
 (function() {
   // 1. Cart Management in LocalStorage
   const CART_KEY = 'pp_cart_v2';
+  const COUPON_KEY = 'pp_coupon_v2';
   let cart = {};
+  let appliedCoupon = null;
 
   try {
     const saved = localStorage.getItem(CART_KEY);
@@ -13,11 +15,29 @@
     cart = {};
   }
 
+  try {
+    const savedC = sessionStorage.getItem(COUPON_KEY);
+    if (savedC) appliedCoupon = JSON.parse(savedC);
+  } catch (e) {
+    appliedCoupon = null;
+  }
+
   function saveCart() {
     try {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
     } catch (e) {}
     updateHeaderCartBadge();
+    if (window.location.pathname === '/cart') {
+      renderCartPage();
+    }
+  }
+
+  function saveCoupon(c) {
+    appliedCoupon = c;
+    try {
+      if (c) sessionStorage.setItem(COUPON_KEY, JSON.stringify(c));
+      else sessionStorage.removeItem(COUPON_KEY);
+    } catch (e) {}
     if (window.location.pathname === '/cart') {
       renderCartPage();
     }
@@ -143,8 +163,16 @@
     }
 
     const subtotal = items.reduce((sum, it) => sum + (it.price * (it.qty || 1)), 0);
+    let discount = 0;
+    if (appliedCoupon) {
+      if (appliedCoupon.type === 'percent') {
+        discount = Math.round(subtotal * (appliedCoupon.val / 100));
+      } else if (appliedCoupon.type === 'fixed') {
+        discount = Math.min(subtotal, appliedCoupon.val);
+      }
+    }
     const shipping = 0; // Free thermal shipping
-    const grandTotal = subtotal + shipping;
+    const grandTotal = Math.max(0, subtotal - discount + shipping);
 
     container.innerHTML = `
       <div class="cart-grid-layout">
@@ -193,6 +221,25 @@
             <a href="/shop" class="btn-pill outline sm">&larr; Continue Shopping</a>
             <button type="button" class="btn-pill sm outline" id="clear-cart-btn" style="color:#b91c1c;border-color:#fca5a5;">Clear Cart</button>
           </div>
+
+          <!-- Promo Coupon Box -->
+          <div class="cart-coupon-card">
+            <div style="font-weight:700;font-size:0.9rem;color:#0F172A;">Have a Promotional Coupon?</div>
+            ${appliedCoupon ? `
+              <div class="cart-coupon-msg success">
+                <span>&check; Coupon <strong>${appliedCoupon.code}</strong> applied: You saved ₹ ${discount.toLocaleString('en-IN')}!</span>
+                <button type="button" id="btn-remove-coupon" style="background:none;border:none;color:#DC2626;cursor:pointer;font-weight:700;margin-left:8px;text-decoration:underline;">(Remove)</button>
+              </div>
+            ` : `
+              <form id="coupon-apply-form" class="cart-coupon-form">
+                <input type="text" id="coupon-input" class="cart-coupon-input" placeholder="e.g. PAIRAWELCOME or GREEN100" maxlength="20">
+                <button type="submit" class="btn-pill sm">Apply</button>
+              </form>
+              <div class="cart-coupon-msg" style="color:#64748B;">
+                Use <strong>PAIRAWELCOME</strong> for 10% off or <strong>GREEN100</strong> for ₹100 off on ₹500+
+              </div>
+            `}
+          </div>
         </div>
 
         <!-- Order Summary & Checkout Form -->
@@ -203,6 +250,12 @@
               <span>Botanical Items Subtotal</span>
               <span class="tabular-nums">₹ ${subtotal.toLocaleString('en-IN')}</span>
             </div>
+            ${discount > 0 ? `
+              <div class="summary-row" style="color:#15803D;font-weight:600;">
+                <span>Discount (${appliedCoupon.code})</span>
+                <span class="tabular-nums">-₹ ${discount.toLocaleString('en-IN')}</span>
+              </div>
+            ` : ''}
             <div class="summary-row">
               <span>Live Thermal Packaging</span>
               <span style="color:var(--primary-green);font-weight:700;">FREE (Insured)</span>
@@ -301,6 +354,37 @@
       };
     }
 
+    // Coupon handlers
+    const couponForm = container.querySelector('#coupon-apply-form');
+    if (couponForm) {
+      couponForm.onsubmit = (ev) => {
+        ev.preventDefault();
+        const codeInput = container.querySelector('#coupon-input');
+        const code = (codeInput ? codeInput.value : '').trim().toUpperCase();
+        if (code === 'PAIRAWELCOME') {
+          saveCoupon({ code, type: 'percent', val: 10 });
+          showToast('&check; 10% Discount Coupon PAIRAWELCOME applied!');
+        } else if (code === 'GREEN100') {
+          if (subtotal < 500) {
+            alert('GREEN100 requires a minimum cart subtotal of ₹500.');
+            return;
+          }
+          saveCoupon({ code, type: 'fixed', val: 100 });
+          showToast('&check; ₹100 Discount Coupon GREEN100 applied!');
+        } else {
+          alert('Invalid or expired coupon code. Try PAIRAWELCOME or GREEN100.');
+        }
+      };
+    }
+
+    const removeCouponBtn = container.querySelector('#btn-remove-coupon');
+    if (removeCouponBtn) {
+      removeCouponBtn.onclick = () => {
+        saveCoupon(null);
+        showToast('Coupon removed.');
+      };
+    }
+
     // Submit Checkout
     const form = container.querySelector('#public-checkout-form');
     if (form) {
@@ -318,7 +402,7 @@
           address: `${fd.get('address')}, ${fd.get('city')} - ${fd.get('pincode')}`,
           items: items.map(it => ({ id: +it.id, qty: it.qty, price: it.price })),
           paymentMethod: fd.get('paymentMethod') || 'Cash / UPI on Delivery',
-          notes: 'Online Store Checkout'
+          notes: appliedCoupon ? `Discount applied: ${appliedCoupon.code} (-₹${discount})` : 'Online Store Checkout'
         };
 
         try {
@@ -330,9 +414,10 @@
           const result = await res.json();
           if (!res.ok) throw new Error(result.error || 'Failed to place order.');
 
-          // Clear cart
+          // Clear cart & coupon
           cart = {};
           saveCart();
+          saveCoupon(null);
 
           // Render Success Confirmation
           container.innerHTML = `
@@ -364,3 +449,4 @@
     renderCartPage();
   }
 })();
+
