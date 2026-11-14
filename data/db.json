@@ -3331,6 +3331,12 @@
   "inquiries": [],
   "logs": [
     {
+      "t": 1794651122702,
+      "user": "owner",
+      "action": "staff logged in via /admin/login",
+      "ip": "::ffff:127.0.0.1"
+    },
+    {
       "t": 1794650822655,
       "user": "owner",
       "action": "staff logged in via /admin/login",

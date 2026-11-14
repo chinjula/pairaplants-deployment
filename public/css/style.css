@@ -685,7 +685,7 @@ main#app {
 .shop-filter-bar {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 40px 5% 24px;
+  padding: 40px 4% 24px 4%;
 }
 
 .shop-header-flex {
@@ -1115,8 +1115,9 @@ main#app {
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
-  padding-top: 10px;
-  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #F1F5F9;
+  gap: 8px;
 }
 
 .price-wrap {
@@ -1247,23 +1248,23 @@ main#app {
    RESPONSIVE PRODUCT GRID & MULTI-DEVICE ARCHITECTURE
    ============================================================================== */
 
-/* 1. Large Desktop (1600px - 1920px and above) - 5 Cards Per Row */
+/* 1. Large Desktop (1600px - 1920px and above) - 4 Cards Per Row (Consistent & Balanced) */
 @media (min-width: 1600px) {
   .product-grid {
-    max-width: 1720px;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 26px;
-    padding: 0 3%;
+    max-width: 1440px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 0 4% 60px 4%;
   }
 }
 
 /* 2. Standard Desktop (1200px - 1599px, e.g. 1440px, 1366px Laptop) - 4 Cards Per Row */
 @media (min-width: 1200px) and (max-width: 1599px) {
   .product-grid {
-    max-width: 1400px;
+    max-width: 1440px;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    padding: 0 4%;
+    padding: 0 4% 60px 4%;
   }
 }
 
