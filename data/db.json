@@ -6140,13 +6140,13 @@
   ],
   "homepage": {
     "hero": {
-      "title": "Bring Life to Your Aquarium",
-      "subtitle": "Pairaplants brings the beauty of aquatic nature into your home and workspace with premium, healthy aquatic plants, quarantined fishes & gravels.",
-      "ctaText": "Explore Collection →",
-      "ctaLink": "#shop",
-      "secondaryCtaText": "About Pairaplants",
-      "secondaryCtaLink": "#story",
-      "bannerImage": "/images/hero-aquarium.jpg"
+      "title": "Bring Living Nature Into Your Aquarium",
+      "subtitle": "Premium, pest-free aquatic plants, quarantined freshwater fishes, dwarf shrimps, and natural aquascaping substrates delivered with 100% live arrival guarantee.",
+      "ctaText": "Explore Collection",
+      "ctaLink": "/shop",
+      "secondaryCtaText": "About Paira Plants",
+      "secondaryCtaLink": "/about",
+      "bannerImage": "/images/Sunlit Emerald Koi Garden.png"
     },
     "promoBanners": [
       {
@@ -6250,7 +6250,14 @@
       "ogImage": "/images/hero-aquarium.jpg",
       "canonicalUrl": "https://pairaplants.vercel.app",
       "keywords": "aquatic plants, pairaplants, aquascaping, freshwater shrimp, planted aquarium, live fish"
-    }
+    },
+    "hero_banner_image": "/images/Sunlit Emerald Koi Garden.png",
+    "hero_title": "Bring Living Nature Into Your Aquarium",
+    "hero_subtitle": "Premium, pest-free aquatic plants, quarantined freshwater fishes, dwarf shrimps, and natural aquascaping substrates delivered with 100% live arrival guarantee.",
+    "hero_cta_text": "Explore Collection",
+    "hero_cta_link": "/shop",
+    "hero_secondary_text": "About Paira Plants",
+    "hero_secondary_link": "/about"
   },
   "newsletter": [],
   "suppliers": [

@@ -1,3 +1,107 @@
+
+const POPULAR_CATALOG_IMAGES = [
+  { name: 'Cherry Barb', url: '/images/products/cherry-barb.jpg' },
+  { name: 'Dwarf Pufferfish', url: '/images/products/dwarf-pufferfish.webp' },
+  { name: 'Golden Mountain Minnow', url: '/images/products/golden-mountain-minnow.webp' },
+  { name: 'White Mountain Minnow', url: '/images/products/white-mountain-minnow.webp' },
+  { name: 'Neon Tetra', url: '/images/products/neon-tetra.jpg' },
+  { name: 'Mixed Guppy', url: '/images/products/mixed-guppy.jpg' },
+  { name: 'Golden Algae Eater', url: '/images/products/golden-algae-eater.jpg' },
+  { name: 'Siamese Algae Eater', url: '/images/products/siamese-algae-eater.jpg' },
+  { name: 'Blue Dream Shrimp', url: '/images/products/blue-dream-shrimp.jpg' },
+  { name: 'Red Cherry Shrimp', url: '/images/products/red-cherry-shrimp.jpg' },
+  { name: 'Amano Shrimp', url: '/images/products/amano-shrimp-moss.jpg' },
+  { name: 'Zebra Nerite Snail', url: '/images/products/zebra-nerite-snail.jpg' },
+  { name: 'Amazon Sword', url: '/images/products/amazon-sword.jpg' },
+  { name: 'Anubias Nana', url: '/images/products/anubias-nana.webp' },
+  { name: 'Ludwigia Super Red', url: '/images/products/ludwigia-super-red.jpg' },
+  { name: 'Monte Carlo Carpet', url: '/images/products/monte-carlo-carpet.jpg' },
+  { name: 'Java Fern', url: '/images/products/java-fern.jpg' },
+  { name: 'Hygrophila Pinnatifida', url: '/images/products/hygrophila-pinnatifida.jpg' },
+  { name: 'Botanical Flora Studio', url: '/images/products/aquatic-cultivated-collection.jpg' },
+  { name: 'Sunlit Emerald Koi Garden', url: '/images/Sunlit Emerald Koi Garden.png' }
+];
+
+function getCatalogImageThumbnailsHtml(currentUrl) {
+  return POPULAR_CATALOG_IMAGES.map(item => `
+    <div class="quick-cat-thumb ${item.url === currentUrl ? 'active' : ''}" 
+         data-a="selectCatalogPhoto" 
+         data-url="${esc(item.url)}" 
+         title="${esc(item.name)}" 
+         style="cursor:pointer;position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;border:2px solid ${item.url === currentUrl ? '#15803d' : '#e2e8f0'};">
+      <img src="${esc(item.url)}" alt="${esc(item.name)}" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  `).join('');
+}
+
+function showProductImageModal(pId) {
+  const p = findProduct(pId);
+  if (!p) return;
+  const currentImg = p.image || (p.images && p.images[0]) || '/images/Sunlit Emerald Koi Garden.png';
+
+  const html = `
+    <div class="modal-card" style="max-width:680px;">
+      <div class="modal-head">
+        <div>
+          <span style="font-size:0.75rem;font-weight:700;color:var(--moss, #15803d);letter-spacing:0.5px;">MEDIA MANAGER</span>
+          <h3 style="margin:2px 0 0 0;">Update Product Photo: ${esc(p.name)}</h3>
+        </div>
+        <button class="modal-close" data-a="closeModal">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding:24px;">
+        <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:start;">
+          <!-- Left: Current Photo Preview -->
+          <div style="text-align:center;">
+            <div style="width:180px;height:180px;border-radius:12px;overflow:hidden;border:2px solid var(--moss, #15803d);box-shadow:0 4px 14px rgba(0,0,0,0.1);background:#f8fafc;display:flex;align-items:center;justify-content:center;">
+              <img id="quick-prod-img-preview" src="${esc(currentImg)}" alt="${esc(p.name)}" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='/images/Sunlit Emerald Koi Garden.png'">
+            </div>
+            <div style="font-size:0.75rem;color:var(--text-muted, #64748b);margin-top:8px;font-weight:600;">Active Storefront Photo</div>
+            <div style="font-size:0.75rem;color:var(--text-muted, #64748b);">SKU: <code>${esc(p.sku || 'PP-' + p.id)}</code></div>
+          </div>
+
+          <!-- Right: Controls -->
+          <div>
+            <div style="margin-bottom:14px;">
+              <label for="quick-img-url-input" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:4px;">1. Image URL or Path</label>
+              <input id="quick-img-url-input" value="${esc(currentImg)}" placeholder="/images/products/... or https://..." style="width:100%;padding:8px 12px;border:1px solid var(--line, #e2e8f0);border-radius:6px;font-size:0.85rem;">
+            </div>
+
+            <div style="margin-bottom:14px;padding:12px;border:1px dashed var(--line, #cbd5e1);border-radius:8px;background:var(--canvas-alt, #f8fafc);">
+              <label style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:4px;">2. Or Upload From Computer</label>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <input type="file" id="quick-prod-file-input" accept="image/*" style="font-size:0.8rem;flex:1;">
+                <button type="button" class="btn-pill sm outline" data-a="quickUploadProdFile" data-id="${p.id}" style="white-space:nowrap;">Upload &amp; Use</button>
+              </div>
+            </div>
+
+            <div>
+              <label style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:6px;">3. Or Pick from Popular Nursery Catalog</label>
+              <div style="display:grid;grid-template-columns:repeat(5, 1fr);gap:8px;max-height:130px;overflow-y:auto;padding:6px;border:1px solid var(--line, #e2e8f0);border-radius:6px;background:#fff;" id="quick-catalog-picker">
+                ${getCatalogImageThumbnailsHtml(currentImg)}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="margin-top:24px;padding:16px 0 0 0;display:flex;justify-content:flex-end;gap:10px;border-top:1px solid var(--line, #e2e8f0);">
+          <button type="button" class="btn-pill sm outline" data-a="closeModal">Cancel</button>
+          <button type="button" class="btn-pill sm" data-a="saveQuickProductImage" data-id="${p.id}">Save Product Photo</button>
+        </div>
+      </div>
+    </div>
+  `;
+  openModal(html);
+
+  const urlInput = document.getElementById('quick-img-url-input');
+  if (urlInput) {
+    urlInput.addEventListener('input', e => {
+      const preview = document.getElementById('quick-prod-img-preview');
+      if (preview && e.target.value.trim()) preview.src = e.target.value.trim();
+    });
+  }
+}
+
 'use strict';
 
 /* ==============================================================================
@@ -1244,11 +1348,10 @@ const adminViews = {
               return `
                 <tr data-name="${esc(p.name.toLowerCase())}" data-cat="${esc(p.category.toLowerCase())}">
                   <td style="display:flex;align-items:center;gap:12px;">
-                    ${p.image && !p.image.includes('hero-aquarium') ? `
-                      <img src="${esc(p.image)}" alt="" style="width:40px;height:40px;border-radius:6px;object-fit:cover;flex-shrink:0;border:1px solid var(--line);">
-                    ` : `
-                      <span style="font-size:1.4rem;width:40px;text-align:center;">${EMOJI[p.subcategory] || EMOJI[p.category] || '🌿'}</span>
-                    `}
+                    <div class="admin-prod-thumb-wrap" data-a="openProductImageModal" data-id="${p.id}" title="Click to change product photo">
+                      <img src="${esc(p.image || '/images/Sunlit Emerald Koi Garden.png')}" alt="" onerror="this.src='/images/Sunlit Emerald Koi Garden.png'">
+                      <span class="admin-prod-thumb-badge">📷</span>
+                    </div>
                     <div>
                       <strong>${esc(p.name)}</strong>
                       ${p.scientificName ? `<div style="font-size:0.75rem;font-style:italic;color:var(--ink-secondary)">${esc(p.scientificName)}</div>` : ''}
@@ -1271,6 +1374,7 @@ const adminViews = {
                   </td>
                   <td>
                     <div style="display:flex;gap:6px;">
+                      <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="openProductImageModal" data-id="${p.id}" title="Change Product Photo">📷 Photo</button>
                       <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="editProduct" data-id="${p.id}">Edit</button>
                       <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;" data-a="openStockAdjustModal" data-id="${p.id}">Stock</button>
                       <button class="btn-pill sm outline" style="padding:4px 8px;font-size:0.75rem;color:#b91c1c;border-color:#fecaca;" data-a="delProduct" data-id="${p.id}">&times;</button>
@@ -2743,26 +2847,65 @@ const adminViews = {
       ` : ''}
 
       ${settingsTab === 'homepage' ? `
-        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;max-width:800px;">
-          <h3 style="margin-top:0;">Homepage Hero &amp; CMS Editor</h3>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;max-width:850px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+            <div>
+              <h3 style="margin:0;">Homepage Hero &amp; Storefront Editor</h3>
+              <p class="muted" style="margin:2px 0 0 0;font-size:0.85rem;">Customize the main storefront hero banner image, headline, and promotional text live.</p>
+            </div>
+            <a href="/" target="_blank" class="btn-pill sm outline" style="display:flex;align-items:center;gap:6px;">View Live Home &rarr;</a>
+          </div>
+
+          <!-- Hero Live Banner Preview -->
+          <div class="hero-preview-box" id="hp-preview-box">
+            <div class="hero-preview-bg" id="hp-preview-bg" style="background-image:linear-gradient(rgba(15,41,30,0.55), rgba(15,41,30,0.75)), url('${esc((config.hero && config.hero.bannerImage) || (storeSettings && storeSettings.hero_banner_image) || '/images/Sunlit Emerald Koi Garden.png')}');"></div>
+            <div style="position:relative;z-index:2;max-width:620px;">
+              <span style="display:inline-block;font-size:0.75rem;font-weight:700;letter-spacing:1px;color:#86efac;margin-bottom:6px;">🌱 LIVE STOREFRONT PREVIEW</span>
+              <h2 id="hp-preview-title" style="font-family:'Playfair Display',serif;font-size:1.7rem;margin:0 0 8px 0;line-height:1.2;color:#fff;">${esc((config.hero && config.hero.title) || (storeSettings && storeSettings.hero_title) || 'Bring Living Nature Into Your Aquarium')}</h2>
+              <p id="hp-preview-sub" style="font-size:0.88rem;color:#cbd5e1;margin:0 0 16px 0;line-height:1.4;">${esc((config.hero && config.hero.subtitle) || (storeSettings && storeSettings.hero_subtitle) || 'Premium, pest-free aquatic plants, quarantined freshwater fishes, dwarf shrimps, and natural aquascaping substrates delivered with 100% live arrival guarantee.')}</p>
+              <div style="display:flex;gap:10px;">
+                <span id="hp-preview-cta" class="btn-banner" style="display:inline-block;padding:7px 18px;font-size:0.82rem;background:#15803d;color:#fff;border-radius:999px;font-weight:600;">${esc((config.hero && config.hero.ctaText) || 'Explore Collection')} &rarr;</span>
+                <span class="btn-banner outline-light" style="display:inline-block;padding:7px 18px;font-size:0.82rem;border:1px solid rgba(255,255,255,0.7);color:#fff;border-radius:999px;font-weight:600;">About Paira Plants</span>
+              </div>
+            </div>
+          </div>
+
           <form data-f="saveHomepage">
-            <label for="hp-t">Hero Main Title</label>
-            <input id="hp-t" name="hero_title" value="${esc((config.hero && config.hero.title) || 'Living Aquatic Wonders')}" required>
+            <h4 style="margin:20px 0 10px 0;">Hero Banner Background Photo</h4>
+            <div style="background:var(--canvas-alt);padding:16px;border-radius:8px;border:1px solid var(--line);margin-bottom:18px;">
+              <label for="hp-img" style="font-weight:600;font-size:0.85rem;display:block;margin-bottom:4px;">1. Banner Image URL or Path</label>
+              <input id="hp-img" name="hero_bannerImage" value="${esc((config.hero && config.hero.bannerImage) || (storeSettings && storeSettings.hero_banner_image) || '/images/Sunlit Emerald Koi Garden.png')}" placeholder="/images/... or https://..." style="width:100%;margin-bottom:12px;" oninput="const bg = document.getElementById('hp-preview-bg'); if(bg && this.value.trim()) bg.style.backgroundImage = 'linear-gradient(rgba(15,41,30,0.55), rgba(15,41,30,0.75)), url(' + this.value.trim() + ')';">
+
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;">
+                <input type="file" id="hero-banner-file-input" accept="image/*" style="font-size:0.82rem;flex:1;">
+                <button type="button" class="btn-pill sm outline" data-a="uploadHeroBanner" style="white-space:nowrap;">📁 Upload Banner Photo</button>
+              </div>
+
+              <div>
+                <span style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:6px;">Or Select from Curated Nursery Presets:</span>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <button type="button" class="btn-pill sm outline" data-a="selectHeroPreset" data-v="/images/Sunlit Emerald Koi Garden.png">🌿 Sunlit Emerald Koi Garden</button>
+                  <button type="button" class="btn-pill sm outline" data-a="selectHeroPreset" data-v="/images/products/aquatic-cultivated-collection.jpg">🌿 Nursery Propagation Studio</button>
+                  <button type="button" class="btn-pill sm outline" data-a="selectHeroPreset" data-v="/images/products/clay-soil-planted-tank.jpg">🌿 Planted Substrate Biotope</button>
+                </div>
+              </div>
+            </div>
+
+            <h4 style="margin:20px 0 10px 0;">Hero Headlines &amp; Call to Action</h4>
+            <label for="hp-t">Hero Main Headline</label>
+            <input id="hp-t" name="hero_title" value="${esc((config.hero && config.hero.title) || (storeSettings && storeSettings.hero_title) || 'Bring Living Nature Into Your Aquarium')}" required oninput="const t = document.getElementById('hp-preview-title'); if(t) t.innerText = this.value;">
 
             <label for="hp-st">Hero Subtitle</label>
-            <input id="hp-st" name="hero_subtitle" value="${esc((config.hero && config.hero.subtitle) || '')}">
-
-            <label for="hp-img">Hero Aquarium Image URL</label>
-            <input id="hp-img" name="hero_bannerImage" value="${esc((config.hero && config.hero.bannerImage) || '/images/hero-aquarium.jpg')}">
+            <textarea id="hp-st" name="hero_subtitle" rows="2" oninput="const s = document.getElementById('hp-preview-sub'); if(s) s.innerText = this.value;">${esc((config.hero && config.hero.subtitle) || (storeSettings && storeSettings.hero_subtitle) || 'Premium, pest-free aquatic plants, quarantined freshwater fishes, dwarf shrimps, and natural aquascaping substrates delivered with 100% live arrival guarantee.')}</textarea>
 
             <div class="two-col" style="padding:0;margin-top:8px;">
               <div>
                 <label for="hp-cta">CTA Button Text</label>
-                <input id="hp-cta" name="hero_ctaText" value="${esc((config.hero && config.hero.ctaText) || 'Shop Aquatic Life')}">
+                <input id="hp-cta" name="hero_ctaText" value="${esc((config.hero && config.hero.ctaText) || 'Explore Collection')}" oninput="const c = document.getElementById('hp-preview-cta'); if(c) c.innerHTML = this.value + ' &rarr;';">
               </div>
               <div>
                 <label for="hp-link">CTA Button Link</label>
-                <input id="hp-link" name="hero_ctaLink" value="${esc((config.hero && config.hero.ctaLink) || '#shop')}">
+                <input id="hp-link" name="hero_ctaLink" value="${esc((config.hero && config.hero.ctaLink) || '/shop')}">
               </div>
             </div>
 
@@ -3126,22 +3269,44 @@ function showProductFormModal(p = null) {
 
           <!-- Multi-Image Upload Section -->
           <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line);">
-            <h4>Product Images &amp; Gallery</h4>
-            <p class="muted" style="font-size:0.8rem;">Upload multiple images. First image will be set as primary.</p>
-            
-            <div style="display:flex;gap:10px;margin-top:8px;">
-              <input type="file" id="prod-file-input" multiple accept="image/*">
-              <button type="button" class="btn-pill sm outline" data-a="uploadProdImages">Upload Files</button>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div>
+                <h4 style="margin:0;">Product Images &amp; Primary Photo</h4>
+                <p class="muted" style="font-size:0.8rem;margin:2px 0 0 0;">Upload or paste primary photo and additional gallery photos. First photo is shown on the store cards.</p>
+              </div>
             </div>
 
-            <div class="gallery-preview-grid" id="modal-prod-gallery">
-              ${images.map((img, i) => `
-                <div class="gallery-preview-item" data-url="${esc(img)}">
-                  <img src="${esc(img)}" alt="Product Image">
-                  ${i === 0 ? '<span class="gallery-main-badge">Primary</span>' : ''}
-                  <button type="button" class="gallery-preview-remove" data-a="removeImgFromList">&times;</button>
+            <div style="margin-top:12px;display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:start;background:var(--canvas-alt);padding:14px;border-radius:8px;border:1px solid var(--line);">
+              <div style="text-align:center;">
+                <div style="width:110px;height:110px;border-radius:8px;overflow:hidden;border:2px solid var(--moss);background:#fff;">
+                  <img id="form-primary-preview" src="${esc(images[0] || (p && p.image) || '/images/Sunlit Emerald Koi Garden.png')}" alt="Primary" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='/images/Sunlit Emerald Koi Garden.png'">
                 </div>
-              `).join('')}
+                <span style="font-size:0.68rem;font-weight:700;color:var(--moss);display:block;margin-top:4px;">★ Primary Display</span>
+              </div>
+              <div>
+                <label for="prod-primary-image-input" style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px;">Primary Photo URL / Path</label>
+                <input id="prod-primary-image-input" name="image" value="${esc(images[0] || (p && p.image) || '')}" placeholder="/images/products/... or https://..." style="width:100%;margin-bottom:10px;" oninput="const pv = document.getElementById('form-primary-preview'); if(pv && this.value.trim()) pv.src = this.value.trim();">
+
+                <div style="display:flex;gap:8px;align-items:center;">
+                  <input type="file" id="prod-file-input" multiple accept="image/*" style="font-size:0.8rem;">
+                  <button type="button" class="btn-pill sm outline" data-a="uploadProdImages" style="white-space:nowrap;">Upload New Files</button>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:14px;">
+              <span style="font-size:0.82rem;font-weight:600;color:var(--text-muted);">Gallery Photos (${images.length})</span>
+              <div class="gallery-preview-grid" id="modal-prod-gallery" style="margin-top:8px;">
+                ${images.map((img, i) => `
+                  <div class="gallery-preview-item" data-url="${esc(img)}" style="position:relative;border:2px solid ${i === 0 ? 'var(--moss)' : 'var(--line)'};border-radius:6px;overflow:hidden;">
+                    <img src="${esc(img)}" alt="Product Image" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='/images/Sunlit Emerald Koi Garden.png'">
+                    ${i === 0 ? '<span class="gallery-main-badge" style="position:absolute;bottom:4px;left:4px;background:#15803d;color:#fff;font-size:0.65rem;padding:2px 6px;border-radius:4px;font-weight:700;">★ Primary</span>' : `
+                      <button type="button" class="btn-pill sm outline" data-a="setPrimaryImage" data-url="${esc(img)}" style="position:absolute;bottom:4px;left:4px;padding:2px 5px;font-size:0.65rem;background:rgba(255,255,255,0.92);border-radius:4px;cursor:pointer;">Set Primary</button>
+                    `}
+                    <button type="button" class="gallery-preview-remove" data-a="removeImgFromList" title="Remove image" style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;display:grid;place-items:center;font-size:12px;">&times;</button>
+                  </div>
+                `).join('')}
+              </div>
             </div>
             <input type="hidden" name="images_json" id="images_json_input" value="${esc(JSON.stringify(images))}">
           </div>
@@ -3591,6 +3756,119 @@ function showPosReceiptModal(sale, invoice) {
    EVENT DISPATCHER & EVENT DELEGATION
    ============================================================================== */
 const actions = {
+  openProductImageModal(btn) {
+    showProductImageModal(btn.dataset.id);
+  },
+  async quickUploadProdFile(btn) {
+    const input = document.getElementById('quick-prod-file-input');
+    if (!input || !input.files.length) return toast('Please select an image file first.', 'error');
+    const fd = new FormData();
+    fd.append('images', input.files[0]);
+    try {
+      const res = await api('/upload', 'POST', fd, true);
+      const urlInput = document.getElementById('quick-img-url-input');
+      const preview = document.getElementById('quick-prod-img-preview');
+      if (urlInput && res.urls && res.urls[0]) {
+        urlInput.value = res.urls[0];
+        if (preview) preview.src = res.urls[0];
+      }
+      toast('Photo uploaded successfully!');
+    } catch (e) {
+      toast(e.message, 'error');
+    }
+  },
+  selectCatalogPhoto(btn) {
+    const url = btn.dataset.url;
+    const urlInput = document.getElementById('quick-img-url-input');
+    const preview = document.getElementById('quick-prod-img-preview');
+    if (urlInput && url) {
+      urlInput.value = url;
+      if (preview) preview.src = url;
+    }
+    document.querySelectorAll('.quick-cat-thumb').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+  },
+  async saveQuickProductImage(btn) {
+    const pId = +btn.dataset.id;
+    const p = findProduct(pId);
+    if (!p) return;
+    const urlInput = document.getElementById('quick-img-url-input');
+    const newUrl = urlInput ? urlInput.value.trim() : '';
+    if (!newUrl) return toast('Please provide a photo URL or upload an image.', 'error');
+
+    try {
+      const currentImages = Array.isArray(p.images) ? p.images : (p.image ? [p.image] : []);
+      const updatedImages = [newUrl, ...currentImages.filter(u => u !== newUrl)];
+      const res = await api('/products/' + pId, 'PUT', {
+        image: newUrl,
+        images: updatedImages
+      });
+      p.image = res.image || newUrl;
+      p.images = res.images || updatedImages;
+      toast('Product photo updated successfully!');
+      closeModal();
+      await loadProducts();
+      return render();
+    } catch (e) {
+      toast(e.message, 'error');
+    }
+  },
+  setPrimaryImage(btn) {
+    const url = btn.dataset.url;
+    const hidden = document.getElementById('images_json_input');
+    if (!hidden) return;
+    let cur = [];
+    try { cur = JSON.parse(hidden.value || '[]'); } catch (e) {}
+    cur = [url, ...cur.filter(u => u !== url)];
+    hidden.value = JSON.stringify(cur);
+
+    const primaryInput = document.getElementById('prod-primary-image-input');
+    const primaryPreview = document.getElementById('form-primary-preview');
+    if (primaryInput) primaryInput.value = url;
+    if (primaryPreview) primaryPreview.src = url;
+
+    const gallery = document.getElementById('modal-prod-gallery');
+    if (gallery) {
+      gallery.innerHTML = cur.map((img, i) => `
+        <div class="gallery-preview-item" data-url="${esc(img)}" style="position:relative;border:2px solid ${i === 0 ? 'var(--moss)' : 'var(--line)'};border-radius:6px;overflow:hidden;">
+          <img src="${esc(img)}" alt="Product Image" style="width:100%;height:100%;object-fit:cover;" onerror="this.src='/images/Sunlit Emerald Koi Garden.png'">
+          ${i === 0 ? '<span class="gallery-main-badge" style="position:absolute;bottom:4px;left:4px;background:#15803d;color:#fff;font-size:0.65rem;padding:2px 6px;border-radius:4px;font-weight:700;">★ Primary</span>' : `
+            <button type="button" class="btn-pill sm outline" data-a="setPrimaryImage" data-url="${esc(img)}" style="position:absolute;bottom:4px;left:4px;padding:2px 5px;font-size:0.65rem;background:rgba(255,255,255,0.92);border-radius:4px;cursor:pointer;">Set Primary</button>
+          `}
+          <button type="button" class="gallery-preview-remove" data-a="removeImgFromList" title="Remove image" style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;display:grid;place-items:center;font-size:12px;">&times;</button>
+        </div>
+      `).join('');
+    }
+  },
+  async uploadHeroBanner() {
+    const input = document.getElementById('hero-banner-file-input');
+    if (!input || !input.files.length) return toast('Please select an image file first.', 'error');
+    const fd = new FormData();
+    fd.append('images', input.files[0]);
+    try {
+      const res = await api('/upload', 'POST', fd, true);
+      const hpImg = document.getElementById('hp-img');
+      const hpBg = document.getElementById('hp-preview-bg');
+      if (hpImg && res.urls && res.urls[0]) {
+        hpImg.value = res.urls[0];
+        if (hpBg) hpBg.style.backgroundImage = 'linear-gradient(rgba(15,41,30,0.55), rgba(15,41,30,0.75)), url(' + res.urls[0] + ')';
+      }
+      toast('Hero banner image uploaded! Click Update Homepage CMS below to save.');
+    } catch (e) {
+      toast(e.message, 'error');
+    }
+  },
+  selectHeroPreset(btn) {
+    const url = btn.dataset.v;
+    const hpImg = document.getElementById('hp-img');
+    const hpBg = document.getElementById('hp-preview-bg');
+    if (hpImg && url) {
+      hpImg.value = url;
+      if (hpBg) hpBg.style.backgroundImage = 'linear-gradient(rgba(15,41,30,0.55), rgba(15,41,30,0.75)), url(' + url + ')';
+    }
+    toast('Preset selected! Click Update Homepage CMS below to save.');
+  },
+
   browse(btn) {
     filter = btn.dataset.v;
     subfilter = 'All';
@@ -4220,6 +4498,11 @@ const forms = {
     let images = [];
     try { images = JSON.parse(d.images_json || '[]'); } catch (e) {}
 
+    const primaryImageVal = d.image ? d.image.trim() : (images[0] || '/images/Sunlit Emerald Koi Garden.png');
+    if (primaryImageVal && !images.includes(primaryImageVal)) {
+      images = [primaryImageVal, ...images];
+    }
+
     const payload = {
       name: d.name,
       scientificName: d.scientificName || '',
@@ -4241,7 +4524,7 @@ const forms = {
       isFeatured: !!d.isFeatured,
       isVisible: !!d.isVisible,
       images,
-      image: images[0] || '/images/hero-aquarium.jpg'
+      image: primaryImageVal
     };
 
     if (id) {
@@ -4494,11 +4777,17 @@ document.addEventListener('keydown', e => {
 
 /* ---------- Page Render Execution ---------- */
 async function render() {
+  const adminWs = document.getElementById('admin-workspace');
+  if (adminWs) {
+    return renderAdminView(adminTab);
+  }
   const route = updateHeaderNav();
   try {
-    $('#app').innerHTML = await pages[route]();
+    const appEl = $('#app');
+    if (appEl) appEl.innerHTML = await pages[route]();
   } catch (e) {
-    $('#app').innerHTML = `<div style="color:var(--terracotta);padding:60px 24px;text-align:center;"><h2>Page Render Error</h2><p>${esc(e.message)}</p></div>`;
+    const appEl = $('#app');
+    if (appEl) appEl.innerHTML = `<div style="color:var(--terracotta);padding:60px 24px;text-align:center;"><h2>Page Render Error</h2><p>${esc(e.message)}</p></div>`;
   }
 }
 

@@ -500,7 +500,7 @@ app.post('/api/customer/wishlist', custAuth, (req, res) => {
 /* ==============================================================================
    3. MULTI-IMAGE MEDIA UPLOAD ENDPOINT
    ============================================================================== */
-app.post('/api/upload', auth('superadmin', 'manager'), upload.array('images', 8), (req, res) => {
+app.post('/api/upload', auth('superadmin', 'manager', 'inventory'), upload.array('images', 8), (req, res) => {
   try {
     if (!req.files || !req.files.length) {
       return res.status(400).json({ error: 'Please select at least one image file.' });
@@ -513,7 +513,20 @@ app.post('/api/upload', auth('superadmin', 'manager'), upload.array('images', 8)
   }
 });
 
-app.get('/api/media', auth('superadmin'), (req, res) => {
+app.get('/api/catalog-images', (req, res) => {
+  try {
+    const prodImgDir = path.join(__dirname, 'public', 'images', 'products');
+    if (!fs.existsSync(prodImgDir)) return res.json([]);
+    const files = fs.readdirSync(prodImgDir)
+      .filter(f => /\.(jpe?g|png|webp|gif)$/i.test(f))
+      .map(f => '/images/products/' + f);
+    res.json(files);
+  } catch (e) {
+    res.json([]);
+  }
+});
+
+app.get('/api/media', auth('superadmin', 'manager', 'inventory'), (req, res) => {
   try {
     if (!fs.existsSync(UPLOADS_DIR)) return res.json([]);
     const files = fs.readdirSync(UPLOADS_DIR)
@@ -1645,11 +1658,19 @@ app.get('/api/homepage', (req, res) => {
   res.json(db.homepage || {});
 });
 
-app.put('/api/homepage', auth('superadmin'), (req, res) => {
+app.put('/api/homepage', auth('superadmin', 'manager'), (req, res) => {
   const b = req.body;
   if (!db.homepage) db.homepage = {};
+  if (!db.settings) db.settings = {};
 
-  if (b.hero) db.homepage.hero = { ...db.homepage.hero, ...b.hero };
+  if (b.hero) {
+    db.homepage.hero = { ...db.homepage.hero, ...b.hero };
+    if (b.hero.bannerImage) db.settings.hero_banner_image = b.hero.bannerImage;
+    if (b.hero.title) db.settings.hero_title = b.hero.title;
+    if (b.hero.subtitle) db.settings.hero_subtitle = b.hero.subtitle;
+    if (b.hero.ctaText) db.settings.hero_cta_text = b.hero.ctaText;
+    if (b.hero.ctaLink) db.settings.hero_cta_link = b.hero.ctaLink;
+  }
   if (Array.isArray(b.promoBanners)) db.homepage.promoBanners = b.promoBanners;
   if (b.whyChooseUs) db.homepage.whyChooseUs = b.whyChooseUs;
   if (Array.isArray(b.sections)) db.homepage.sections = b.sections;
@@ -3136,11 +3157,19 @@ app.get('/api/homepage', (req, res) => {
   res.json(db.homepage || {});
 });
 
-app.put('/api/homepage', auth('superadmin'), (req, res) => {
+app.put('/api/homepage', auth('superadmin', 'manager'), (req, res) => {
   const b = req.body;
   if (!db.homepage) db.homepage = {};
+  if (!db.settings) db.settings = {};
 
-  if (b.hero) db.homepage.hero = { ...db.homepage.hero, ...b.hero };
+  if (b.hero) {
+    db.homepage.hero = { ...db.homepage.hero, ...b.hero };
+    if (b.hero.bannerImage) db.settings.hero_banner_image = b.hero.bannerImage;
+    if (b.hero.title) db.settings.hero_title = b.hero.title;
+    if (b.hero.subtitle) db.settings.hero_subtitle = b.hero.subtitle;
+    if (b.hero.ctaText) db.settings.hero_cta_text = b.hero.ctaText;
+    if (b.hero.ctaLink) db.settings.hero_cta_link = b.hero.ctaLink;
+  }
   if (Array.isArray(b.promoBanners)) db.homepage.promoBanners = b.promoBanners;
   if (b.whyChooseUs) db.homepage.whyChooseUs = b.whyChooseUs;
   if (Array.isArray(b.sections)) db.homepage.sections = b.sections;
