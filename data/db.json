@@ -6220,7 +6220,7 @@
     "business_name": "Pairaplants",
     "storeName": "Pairaplants",
     "brandTitle": "Paira Plants",
-    "business_logo": "/images/hero-aquarium.jpg",
+    "business_logo": "/images/logo.png",
     "business_address": "Pairaplants Studio, Aquatic Flora Hub, Kochi, Kerala, India",
     "address": "Pairaplants Studio, Aquatic Flora Hub, Kochi, Kerala, India",
     "phone_number": "+91 98765 43210",
@@ -6247,7 +6247,7 @@
     "seo": {
       "metaTitle": "Pairaplants – Premium Aquatic Plants, Tropical Fishes & Aquascaping",
       "metaDescription": "Pairaplants provides premium, pest-free aquatic plants, quarantined fishes, dwarf shrimps, and planted aquarium substrates with 100% live arrival guarantee.",
-      "ogImage": "/images/hero-aquarium.jpg",
+      "ogImage": "/images/logo.png",
       "canonicalUrl": "https://pairaplants.vercel.app",
       "keywords": "aquatic plants, pairaplants, aquascaping, freshwater shrimp, planted aquarium, live fish"
     },

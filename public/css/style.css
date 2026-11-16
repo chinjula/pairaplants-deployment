@@ -1,3 +1,20 @@
+/* Custom Typography: Neogrey Font Family */
+@font-face {
+  font-family: 'Neogrey';
+  src: url('/fonts/Neogrey_Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neogrey';
+  src: url('/fonts/Neogrey_Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* 
   Pairaplants – Full-Width Modern Editorial Aquascaping Theme
   Seamless edge-to-edge full screen design
@@ -162,9 +179,30 @@ header.site-header {
 }
 
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.brand:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.brand-logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 210px;
 }
 
 .brand-icon {
@@ -1714,11 +1752,16 @@ footer.site-footer a:hover {
   }
 
   .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    flex-shrink: 0;
+    display: inline-flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand-logo-img {
+    height: 34px !important;
+    width: auto !important;
+    max-width: 180px !important;
   }
 
   .brand .brand-icon {
