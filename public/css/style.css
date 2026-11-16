@@ -1759,8 +1759,12 @@ td input[type="number"] {
 
   /* Hide Desktop navigation and action pills on mobile */
   nav.main-nav,
-  .header-actions {
+  .header-actions .nav-auth-links {
     display: none !important;
+  }
+  .header-actions {
+    display: flex !important;
+    gap: 8px;
   }
 
   /* Prominent Botanical Forest Green Hamburger Menu Button */
@@ -5549,4 +5553,116 @@ footer.site-footer {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 20px;
+}
+
+
+/* ==========================================================================
+   HEADER AUTH & CART NAVBAR (Cart Icon + Sign in | Join now)
+   ========================================================================== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-cart-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #005953;
+  text-decoration: none;
+  padding: 4px;
+  border-radius: 8px;
+  transition: transform 0.18s ease, color 0.18s ease;
+  flex-shrink: 0;
+}
+
+.nav-cart-btn:hover {
+  color: #132A1C;
+  transform: translateY(-1px);
+}
+
+.nav-cart-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
+
+.nav-cart-btn .cart-badge-count {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9999px;
+  background: #132A1C;
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  line-height: 1;
+}
+
+.nav-cart-btn .cart-badge-count[style*="display: none"],
+.nav-cart-btn .cart-badge-count:empty {
+  display: none !important;
+}
+
+.nav-auth-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.nav-auth-link {
+  color: #005953;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+.nav-auth-link:hover {
+  color: #132A1C;
+  text-decoration: underline;
+}
+
+.nav-auth-sep {
+  color: #94A3B8;
+  font-weight: 300;
+  font-size: 1.05rem;
+  user-select: none;
+  display: inline-block;
+  opacity: 0.8;
+  margin: 0 2px;
+}
+
+.mobile-nav-auth-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #F4F8F6;
+  border-bottom: 1px solid #EAE5D9;
+  font-size: 1.05rem;
+}
+
+.mobile-nav-auth-strip .nav-auth-link {
+  color: #005953;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.mobile-nav-auth-strip .nav-auth-sep {
+  color: #94A3B8;
+  font-size: 1.1rem;
 }
