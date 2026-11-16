@@ -6161,13 +6161,13 @@
   ],
   "homepage": {
     "hero": {
-      "title": "Bring Living Nature Into Your Aquarium",
-      "subtitle": "Premium, pest-free aquatic plants, quarantined freshwater fishes, dwarf shrimps, and natural aquascaping substrates delivered with 100% live arrival guarantee.",
-      "ctaText": "Explore Collection",
+      "title": "Your Aquarium , Our Care",
+      "subtitle": "Tell us within 2 hours if anything's off and we'll replace or refund. 98% of our live botanical shipments thrive across India.",
+      "ctaText": "Get Started",
       "ctaLink": "/shop",
       "secondaryCtaText": "About Paira Plants",
       "secondaryCtaLink": "/about",
-      "bannerImage": "/images/Sunlit Emerald Koi Garden.png"
+      "bannerImage": "/images/pairaplants-hero-panoramic.jpg"
     },
     "promoBanners": [
       {
@@ -6272,10 +6272,10 @@
       "canonicalUrl": "https://pairaplants.vercel.app",
       "keywords": "aquatic plants, pairaplants, aquascaping, freshwater shrimp, planted aquarium, live fish"
     },
-    "hero_banner_image": "/images/Sunlit Emerald Koi Garden.png",
+    "hero_banner_image": "/images/pairaplants-hero-panoramic.jpg",
     "hero_title": "Bring Living Nature Into Your Aquarium",
-    "hero_subtitle": "Premium, pest-free aquatic plants, quarantined freshwater fishes, dwarf shrimps, and natural aquascaping substrates delivered with 100% live arrival guarantee.",
-    "hero_cta_text": "Explore Collection",
+    "hero_subtitle": "Tell us within 2 hours if anything's off and we'll replace or refund. 98% of our live botanical shipments thrive across India.",
+    "hero_cta_text": "Get Started",
     "hero_cta_link": "/shop",
     "hero_secondary_text": "About Paira Plants",
     "hero_secondary_link": "/about",
@@ -6283,7 +6283,10 @@
     "cashfree_mode": "sandbox",
     "cashfree_app_id": "",
     "cashfree_secret_key": "",
-    "cod_enabled": true
+    "cod_enabled": true,
+    "hero_badge": "Licensed & Insured Live Arrival",
+    "hero_title_line1": "Your Aquarium , Our Care",
+    "hero_title_line2": "Your Living Sanctuary"
   },
   "newsletter": [],
   "suppliers": [
