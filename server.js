@@ -3868,7 +3868,12 @@ if (!isVercel) {
 /* ==============================================================================
    ADMIN AUTHENTICATION & ROUTE PROTECTION (Requirements 2, 6 & 12)
    ============================================================================== */
-app.get('/login', (req, res) => res.redirect('/admin/login'));
+app.get('/login', (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  const mode = req.query.mode || '';
+  const tab = req.query.tab || (mode === 'signup' ? 'customer-signup' : 'customer-signin');
+  res.send(renderAdminLoginPage(req.query.error, host, tab));
+});
 
 app.get('/admin/login', (req, res) => {
   try {
@@ -3877,7 +3882,7 @@ app.get('/admin/login', (req, res) => {
     if (u) return res.redirect('/admin/dashboard');
   } catch (e) {}
   const host = `${req.protocol}://${req.get('host')}`;
-  res.send(renderAdminLoginPage(req.query.error, host));
+  res.send(renderAdminLoginPage(req.query.error, host, 'staff'));
 });
 
 app.post('/admin/login', (req, res) => {
