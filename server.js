@@ -16,6 +16,7 @@ const {
   syncInquiryToSupabase
 } = require('./lib/supabaseSync');
 const supabase = require('./lib/supabaseClient');
+const cashfree = require('./lib/cashfree');
 const {
   renderLayout,
   renderHomePage,
@@ -25,6 +26,7 @@ const {
   renderGalleryPage,
   renderContactPage,
   renderCartPage,
+  renderPaymentStatusPage,
   renderAdminLoginPage,
   renderAdminAppShell,
   slugify,
@@ -242,12 +244,17 @@ app.use((req, res, next) => {
     'X-Content-Type-Options': 'nosniff',
     'X-Frame-Options': 'SAMEORIGIN',
     'Referrer-Policy': 'same-origin',
-    'Content-Security-Policy': "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://res.cloudinary.com https://images.unsplash.com;"
+    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://sdk.cashfree.com; frame-src 'self' https://sdk.cashfree.com https://sandbox.cashfree.com https://api.cashfree.com https://payments.cashfree.com; connect-src 'self' https://sdk.cashfree.com https://sandbox.cashfree.com https://api.cashfree.com https://payments.cashfree.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://res.cloudinary.com https://images.unsplash.com https://*.cashfree.com;"
   });
   next();
 });
 
-app.use(express.json({ limit: '500kb' }));
+app.use(express.json({
+  limit: '500kb',
+  verify: (req, res, buf) => {
+    req.rawBody = buf ? buf.toString() : '';
+  }
+}));
 app.use(express.urlencoded({ extended: true, limit: '500kb' }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
@@ -838,6 +845,246 @@ app.post('/api/orders', (req, res) => {
   save();
   syncOrderToSupabase(o, lines, db).catch(() => {});
   res.status(201).json(o);
+});
+
+/* ==============================================================================
+   CASHFREE PAYMENT GATEWAY API (UPI, GPay, PhonePe, Cards, NetBanking, Wallets)
+   ============================================================================== */
+app.get('/api/payment/config', (req, res) => {
+  const cfConfig = cashfree.getConfig(db.settings || {});
+  res.json({
+    cashfree: {
+      enabled: cfConfig.enabled,
+      mode: cfConfig.mode,
+      appId: cfConfig.appId,
+      configured: Boolean(cfConfig.appId && cfConfig.secretKey)
+    },
+    cod: {
+      enabled: db.settings.cod_enabled !== false
+    }
+  });
+});
+
+app.post('/api/payment/cashfree/create-order', async (req, res) => {
+  try {
+    const b = req.body;
+    const name = str(b.name, 80);
+    const phone = str(b.phone, 30);
+    const email = str(b.email, 120);
+    const address = str(b.address, 300);
+    const couponCode = str(b.coupon, 30).toUpperCase();
+
+    if (!name || !phone || !address || !Array.isArray(b.items) || !b.items.length) {
+      return res.status(400).json({ error: 'Please enter name, phone, delivery address, and select at least one item.' });
+    }
+
+    const lines = [];
+    for (const it of b.items) {
+      const p = db.products.find(x => x.id === it.id);
+      if (!p || !Number.isInteger(it.qty) || it.qty < 1 || lines.some(l => l.id === p.id)) {
+        return res.status(400).json({ error: 'Invalid product item in cart.' });
+      }
+      if (it.qty > p.stock) {
+        return res.status(409).json({ error: `Only ${p.stock} units of ${p.name} available in nursery.` });
+      }
+      lines.push({ id: p.id, name: p.name, qty: it.qty, price: p.salePrice || p.price });
+    }
+
+    const subtotal = lines.reduce((s, l) => s + l.price * l.qty, 0);
+    let discount = 0;
+
+    if (couponCode) {
+      const c = db.coupons.find(x => x.code === couponCode && x.active);
+      if (c && (!c.minOrder || subtotal >= c.minOrder)) {
+        if (c.discountType === 'percent') {
+          discount = Math.round((subtotal * c.discountValue) / 100);
+          if (c.maxDiscount && discount > c.maxDiscount) discount = c.maxDiscount;
+        } else if (c.discountType === 'fixed') {
+          discount = Math.min(c.discountValue, subtotal);
+        }
+      }
+    }
+
+    const total = Math.max(0, subtotal - discount);
+    const tempOrderId = nid(db.orders.length ? db.orders : [{ id: 1000 }]);
+    const cfOrderId = `CF_ORD_${tempOrderId}_${Date.now().toString().slice(-4)}`;
+
+    const o = {
+      id: tempOrderId,
+      cfOrderId,
+      name,
+      phone,
+      email: email || '',
+      address,
+      items: lines,
+      subtotal,
+      discount,
+      couponCode: couponCode || null,
+      total,
+      paymentMethod: 'Cashfree Online',
+      paymentStatus: 'PENDING',
+      status: 'Payment Pending',
+      statusHistory: [
+        { status: 'Payment Pending', time: Date.now(), note: 'Order initiated with Cashfree online checkout' }
+      ],
+      date: Date.now()
+    };
+
+    db.orders.unshift(o);
+    save();
+
+    const host = `${req.protocol}://${req.get('host')}`;
+    const returnUrl = `${host}/payment/status?order_id=${tempOrderId}`;
+    const notifyUrl = `${host}/api/payment/cashfree/webhook`;
+
+    const cfRes = await cashfree.createOrder({
+      orderId: cfOrderId,
+      orderAmount: total,
+      customer: { id: `CUST_${phone.replace(/\D/g, '')}`, name, phone, email },
+      returnUrl,
+      notifyUrl,
+      settings: db.settings || {}
+    });
+
+    if (!cfRes.success) {
+      o.status = 'Payment Cancelled';
+      save();
+      return res.status(400).json({ error: cfRes.error || 'Failed to initiate Cashfree payment.' });
+    }
+
+    o.paymentSessionId = cfRes.paymentSessionId;
+    save();
+
+    res.json({
+      success: true,
+      orderId: tempOrderId,
+      cfOrderId,
+      paymentSessionId: cfRes.paymentSessionId,
+      mode: cfRes.mode,
+      demoMode: Boolean(cfRes.demoMode),
+      amount: total
+    });
+  } catch (err) {
+    console.error('Error in /api/payment/cashfree/create-order:', err.message);
+    res.status(500).json({ error: 'Server error creating Cashfree payment order.' });
+  }
+});
+
+app.post('/api/payment/cashfree/verify', async (req, res) => {
+  try {
+    const { orderId } = req.body;
+    const o = db.orders.find(x => x.id === Number(orderId) || x.cfOrderId === String(orderId));
+    if (!o) {
+      return res.status(404).json({ error: 'Order not found.' });
+    }
+
+    if (o.paymentStatus === 'PAID') {
+      return res.json({ success: true, order: o });
+    }
+
+    const cfRes = await cashfree.getOrderStatus(o.cfOrderId || `ORD-${o.id}`, db.settings || {});
+
+    if (cfRes.success && (cfRes.orderStatus === 'PAID' || cfRes.demoMode)) {
+      o.paymentStatus = 'PAID';
+      o.status = 'Confirmed';
+      o.paidAt = Date.now();
+      o.statusHistory.push({
+        status: 'Confirmed',
+        time: Date.now(),
+        note: 'Payment successfully captured via Cashfree'
+      });
+
+      // Deduct stock via Centralized Inventory Engine
+      o.items.forEach(l => {
+        recordStockTransaction({
+          productId: l.id,
+          transactionType: 'sale',
+          quantityIn: 0,
+          quantityOut: l.qty,
+          referenceNumber: `ORD-${o.id}`,
+          createdBy: 'Cashfree Online',
+          notes: `Online Purchase ORD-${o.id} via Cashfree`
+        });
+      });
+
+      if (o.couponCode) {
+        const c = db.coupons.find(x => x.code === o.couponCode);
+        if (c) c.usageCount = (c.usageCount || 0) + 1;
+      }
+
+      save();
+      syncOrderToSupabase(o, o.items, db).catch(() => {});
+      return res.json({ success: true, order: o });
+    } else {
+      return res.json({
+        success: false,
+        status: cfRes.orderStatus || 'PENDING',
+        message: 'Payment verification pending or unconfirmed.'
+      });
+    }
+  } catch (err) {
+    console.error('Error in /api/payment/cashfree/verify:', err.message);
+    res.status(500).json({ error: 'Server error verifying Cashfree payment.' });
+  }
+});
+
+app.post('/api/payment/cashfree/webhook', async (req, res) => {
+  try {
+    const signature = req.headers['x-webhook-signature'];
+    const timestamp = req.headers['x-webhook-timestamp'];
+    const cfg = cashfree.getConfig(db.settings || {});
+    if (signature && timestamp && cfg.secretKey) {
+      const isValid = cashfree.verifyWebhookSignature({
+        rawBody: req.rawBody || JSON.stringify(req.body),
+        timestamp,
+        signature,
+        secretKey: cfg.secretKey
+      });
+      if (!isValid) {
+        console.warn('[Cashfree Webhook] Invalid signature rejected');
+        return res.status(400).send('Invalid signature');
+      }
+    }
+    const payload = req.body || {};
+    const orderData = payload.data && (payload.data.order || payload.data);
+    const orderId = orderData && (orderData.order_id || orderData.orderId);
+
+    if (orderId) {
+      const o = db.orders.find(x => x.cfOrderId === String(orderId) || `ORD-${x.id}` === String(orderId));
+      if (o && o.paymentStatus !== 'PAID') {
+        const isPaid = (payload.type === 'PAYMENT_SUCCESS_WEBHOOK') || 
+                       (orderData && orderData.order_status === 'PAID') || 
+                       (payload.event === 'order.paid');
+        if (isPaid) {
+          o.paymentStatus = 'PAID';
+          o.status = 'Confirmed';
+          o.paidAt = Date.now();
+          o.statusHistory.push({
+            status: 'Confirmed',
+            time: Date.now(),
+            note: 'Payment verified via Cashfree Webhook'
+          });
+          o.items.forEach(l => {
+            recordStockTransaction({
+              productId: l.id,
+              transactionType: 'sale',
+              quantityIn: 0,
+              quantityOut: l.qty,
+              referenceNumber: `ORD-${o.id}`,
+              createdBy: 'Cashfree Webhook',
+              notes: `Order #${o.id} paid via Cashfree`
+            });
+          });
+          save();
+          syncOrderToSupabase(o, o.items, db).catch(() => {});
+        }
+      }
+    }
+    res.status(200).send('OK');
+  } catch (err) {
+    console.error('[Cashfree Webhook Error]', err.message);
+    res.status(400).send('Error');
+  }
 });
 
 app.get('/api/orders', auth('superadmin', 'manager', 'support'), (req, res) => {
@@ -3738,6 +3985,46 @@ app.get('/contact', (req, res) => {
 app.get('/cart', (req, res) => {
   const host = `${req.protocol}://${req.get('host')}`;
   res.send(renderCartPage(db, host));
+});
+
+app.get('/payment/status', async (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  const orderId = req.query.order_id;
+  const o = db.orders.find(x => x.id === Number(orderId) || x.cfOrderId === String(orderId));
+
+  let status = 'PENDING';
+  if (o) {
+    if (o.paymentStatus === 'PAID') {
+      status = 'PAID';
+    } else {
+      const cfRes = await cashfree.getOrderStatus(o.cfOrderId || `ORD-${o.id}`, db.settings || {});
+      if (cfRes.success && (cfRes.orderStatus === 'PAID' || cfRes.demoMode)) {
+        o.paymentStatus = 'PAID';
+        o.status = 'Confirmed';
+        o.paidAt = Date.now();
+        o.statusHistory.push({ status: 'Confirmed', time: Date.now(), note: 'Payment verified on customer return' });
+        o.items.forEach(l => {
+          recordStockTransaction({
+            productId: l.id,
+            transactionType: 'sale',
+            quantityIn: 0,
+            quantityOut: l.qty,
+            referenceNumber: `ORD-${o.id}`,
+            createdBy: 'Cashfree Return',
+            notes: `Order #${o.id} paid via Cashfree`
+          });
+        });
+        save();
+        syncOrderToSupabase(o, o.items, db).catch(() => {});
+        status = 'PAID';
+      } else if (cfRes.orderStatus === 'FAILED' || cfRes.orderStatus === 'CANCELLED') {
+        status = 'FAILED';
+      }
+    }
+  }
+
+  const html = renderPaymentStatusPage({ db, host, order: o, status });
+  res.send(html);
 });
 
 /* ---------- 404 & Global Error Handler ---------- */

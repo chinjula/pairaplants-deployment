@@ -32,7 +32,7 @@
       "category": "Ornamental Freshwater Fish",
       "subcategory": "Fish",
       "price": 120,
-      "stock": 19,
+      "stock": 18,
       "description": "Active and peaceful schooling fish with vibrant cherry-red coloration.",
       "sku": "PP-FIS-001",
       "salePrice": null,
@@ -4228,6 +4228,27 @@
   ],
   "inventoryLogs": [
     {
+      "id": 100,
+      "productId": 1,
+      "productName": "Cherry Barb",
+      "sku": "PP-FIS-001",
+      "transactionType": "sale",
+      "quantityIn": 0,
+      "quantityOut": 1,
+      "change": -1,
+      "previousStock": 19,
+      "newStock": 18,
+      "referenceNumber": "ORD-1003",
+      "transactionDate": "2026-11-16T07:46:52.667Z",
+      "createdBy": "Cashfree Online",
+      "notes": "Online Purchase ORD-1003 via Cashfree",
+      "batchNumber": null,
+      "type": "sale",
+      "reason": "Online Purchase ORD-1003 via Cashfree",
+      "performedBy": "Cashfree Online",
+      "timestamp": 1794815212667
+    },
+    {
       "id": 99,
       "productId": 1,
       "productName": "Cherry Barb",
@@ -6257,7 +6278,12 @@
     "hero_cta_text": "Explore Collection",
     "hero_cta_link": "/shop",
     "hero_secondary_text": "About Paira Plants",
-    "hero_secondary_link": "/about"
+    "hero_secondary_link": "/about",
+    "cashfree_enabled": true,
+    "cashfree_mode": "sandbox",
+    "cashfree_app_id": "",
+    "cashfree_secret_key": "",
+    "cod_enabled": true
   },
   "newsletter": [],
   "suppliers": [

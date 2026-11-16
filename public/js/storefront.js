@@ -1,3 +1,14 @@
+
+  function loadCashfreeSDK() {
+    return new Promise((resolve, reject) => {
+      if (window.Cashfree) return resolve(window.Cashfree);
+      const s = document.createElement('script');
+      s.src = 'https://sdk.cashfree.com/js/v3/cashfree.js';
+      s.onload = () => resolve(window.Cashfree);
+      s.onerror = () => reject(new Error('Unable to load Cashfree checkout SDK.'));
+      document.head.appendChild(s);
+    });
+  }
 // public/js/storefront.js - Client Interactivity for Public Storefront
 'use strict';
 
@@ -281,6 +292,11 @@
               </div>
 
               <div class="form-group">
+                <label>Email Address (for order tracking &amp; payment receipt) *</label>
+                <input type="email" name="email" required placeholder="name@example.com">
+              </div>
+
+              <div class="form-group">
                 <label>Street Address &amp; House / Flat # *</label>
                 <textarea name="address" rows="3" required placeholder="Door no, Apartment, Street name..."></textarea>
               </div>
@@ -296,18 +312,36 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <label>Payment Method</label>
-                <div class="payment-method-box">
-                  <label class="radio-label">
-                    <input type="radio" name="paymentMethod" value="Cash / UPI on Delivery" checked>
-                    <span><strong>Cash / UPI on Delivery</strong> (Pay upon live arrival)</span>
+              <div class="form-group" style="margin-top:16px;">
+                <label style="font-weight:700;margin-bottom:8px;display:block;">Select Payment Method</label>
+                <div class="payment-method-box" style="display:grid;gap:10px;">
+                  <label class="payment-method-tile active" id="tile-cashfree" style="display:flex;align-items:flex-start;gap:12px;padding:14px;border:2px solid #15803D;border-radius:12px;cursor:pointer;background:#f0fdf4;transition:all 0.2s ease;">
+                    <input type="radio" name="paymentMethod" value="cashfree" checked style="margin-top:4px;">
+                    <div style="flex:1;">
+                      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;">
+                        <strong style="color:#0F291E;font-size:0.95rem;">⚡ Online Payment (Cashfree)</strong>
+                        <span style="background:#15803D;color:#fff;font-size:0.68rem;font-weight:700;padding:2px 8px;border-radius:999px;">RECOMMENDED</span>
+                      </div>
+                      <p style="font-size:0.8rem;color:#475569;margin:4px 0 0 0;line-height:1.4;">
+                        UPI (Google Pay, PhonePe, Paytm, BHIM), Credit/Debit Cards, NetBanking &amp; Wallets
+                      </p>
+                    </div>
+                  </label>
+
+                  <label class="payment-method-tile" id="tile-cod" style="display:flex;align-items:flex-start;gap:12px;padding:14px;border:1px solid #E2E8F0;border-radius:12px;cursor:pointer;background:#fff;transition:all 0.2s ease;">
+                    <input type="radio" name="paymentMethod" value="Cash / UPI on Delivery" style="margin-top:4px;">
+                    <div style="flex:1;">
+                      <strong style="color:#0F291E;font-size:0.95rem;">🚚 Cash / UPI on Delivery</strong>
+                      <p style="font-size:0.8rem;color:#475569;margin:4px 0 0 0;line-height:1.4;">
+                        Pay upon live arrival of healthy aquatic plants &amp; quarantined livestock.
+                      </p>
+                    </div>
                   </label>
                 </div>
               </div>
 
               <button type="submit" class="btn-pill" style="width:100%;padding:14px;font-size:1rem;margin-top:14px;" id="place-order-btn">
-                Confirm &amp; Place Order (₹ ${grandTotal.toLocaleString('en-IN')})
+                🔒 Pay Securely via Cashfree (₹ ${grandTotal.toLocaleString('en-IN')})
               </button>
             </form>
           </div>
@@ -385,59 +419,192 @@
       };
     }
 
+    // Payment method radio selection event
+    const tileCashfree = container.querySelector('#tile-cashfree');
+    const tileCod = container.querySelector('#tile-cod');
+    const submitBtn = container.querySelector('#place-order-btn');
+
+    container.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+      radio.onchange = () => {
+        if (radio.value === 'cashfree') {
+          if (tileCashfree) {
+            tileCashfree.style.borderColor = '#15803D';
+            tileCashfree.style.background = '#f0fdf4';
+            tileCashfree.classList.add('active');
+          }
+          if (tileCod) {
+            tileCod.style.borderColor = '#E2E8F0';
+            tileCod.style.background = '#fff';
+            tileCod.classList.remove('active');
+          }
+          if (submitBtn) submitBtn.innerHTML = `🔒 Pay Securely via Cashfree (₹ ${grandTotal.toLocaleString('en-IN')})`;
+        } else {
+          if (tileCod) {
+            tileCod.style.borderColor = '#15803D';
+            tileCod.style.background = '#f0fdf4';
+            tileCod.classList.add('active');
+          }
+          if (tileCashfree) {
+            tileCashfree.style.borderColor = '#E2E8F0';
+            tileCashfree.style.background = '#fff';
+            tileCashfree.classList.remove('active');
+          }
+          if (submitBtn) submitBtn.innerHTML = `🚚 Confirm Cash on Delivery (₹ ${grandTotal.toLocaleString('en-IN')})`;
+        }
+      };
+    });
+
+    // Helper to render Order Confirmation Screen
+    function renderOrderSuccess(res, modeLabel) {
+      container.innerHTML = `
+        <div class="narrow-box" style="text-align:center;padding:80px 20px;">
+          <div style="font-size:3.5rem;color:var(--primary-green);margin-bottom:16px;">&check;</div>
+          <h1 style="margin-bottom:10px;">Order Placed Successfully!</h1>
+          <p style="font-size:1.1rem;color:var(--text-muted);margin-bottom:24px;">Thank you, <strong>${esc(res.name)}</strong>. Your order <strong>#ORD-${res.id}</strong> has been confirmed.</p>
+          <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:12px;padding:24px;max-width:480px;margin:0 auto 28px;text-align:left;">
+            <p><strong>Order Number:</strong> #ORD-${res.id}</p>
+            <p><strong>Total Amount:</strong> ₹ ${(res.total || grandTotal).toLocaleString('en-IN')}</p>
+            <p><strong>Payment Mode:</strong> ${esc(modeLabel || res.paymentMethod || 'Cashfree Online')}</p>
+            <p><strong>Dispatch:</strong> Thermal Insulated Box with 100% Live Arrival Guarantee</p>
+            <p style="margin-bottom:0;"><strong>Delivery Address:</strong> ${esc(res.address)}</p>
+          </div>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a class="btn-pill" href="/shop">Continue Browsing Plants &rarr;</a>
+            <a class="btn-pill outline" href="/api/orders/${res.id}/invoice" target="_blank">Download Tax Invoice</a>
+          </div>
+        </div>
+      `;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     // Submit Checkout
     const form = container.querySelector('#public-checkout-form');
     if (form) {
       form.onsubmit = async (ev) => {
         ev.preventDefault();
-        const submitBtn = form.querySelector('#place-order-btn');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Processing Order...';
+        const btn = form.querySelector('#place-order-btn');
+        const origText = btn.innerHTML;
+        btn.disabled = true;
 
         const fd = new FormData(form);
-        const orderData = {
-          name: fd.get('name'),
-          phone: fd.get('phone'),
-          email: '',
-          address: `${fd.get('address')}, ${fd.get('city')} - ${fd.get('pincode')}`,
-          items: items.map(it => ({ id: +it.id, qty: it.qty, price: it.price })),
-          paymentMethod: fd.get('paymentMethod') || 'Cash / UPI on Delivery',
-          notes: appliedCoupon ? `Discount applied: ${appliedCoupon.code} (-₹${discount})` : 'Online Store Checkout'
-        };
+        const selectedMethod = fd.get('paymentMethod');
+        const name = fd.get('name');
+        const phone = fd.get('phone');
+        const email = fd.get('email') || '';
+        const address = `${fd.get('address')}, ${fd.get('city')} - ${fd.get('pincode')}`;
+        const orderItems = items.map(it => ({ id: +it.id, qty: it.qty, price: it.price }));
+        const coupon = appliedCoupon ? appliedCoupon.code : null;
 
-        try {
-          const res = await fetch('/api/orders', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(orderData)
-          });
-          const result = await res.json();
-          if (!res.ok) throw new Error(result.error || 'Failed to place order.');
+        if (selectedMethod === 'cashfree') {
+          btn.textContent = 'Connecting to Cashfree Gateway...';
 
-          // Clear cart & coupon
-          cart = {};
-          saveCart();
-          saveCoupon(null);
+          try {
+            // 1. Create order on backend
+            const res = await fetch('/api/payment/cashfree/create-order', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name,
+                phone,
+                email,
+                address,
+                items: orderItems,
+                coupon
+              })
+            });
 
-          // Render Success Confirmation
-          container.innerHTML = `
-            <div class="narrow-box" style="text-align:center;padding:80px 20px;">
-              <div style="font-size:3.5rem;color:var(--primary-green);margin-bottom:16px;">&check;</div>
-              <h1 style="margin-bottom:10px;">Order Placed Successfully!</h1>
-              <p style="font-size:1.1rem;color:var(--text-muted);margin-bottom:24px;">Thank you, <strong>${result.name}</strong>. Your order <strong>#ORD-${result.id}</strong> has been confirmed.</p>
-              <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:12px;padding:24px;max-width:480px;margin:0 auto 28px;text-align:left;">
-                <p><strong>Order Number:</strong> #ORD-${result.id}</p>
-                <p><strong>Total Amount:</strong> ₹ ${(result.total || grandTotal).toLocaleString('en-IN')}</p>
-                <p><strong>Payment Mode:</strong> ${result.paymentMethod || 'Cash / UPI on Delivery'}</p>
-                <p><strong>Dispatch:</strong> Thermal Insulated Box with 100% Live Arrival Guarantee</p>
-              </div>
-              <a class="btn-pill" href="/shop">Continue Shopping &rarr;</a>
-            </div>
-          `;
-        } catch (err) {
-          alert('Error placing order: ' + err.message);
-          submitBtn.disabled = false;
-          submitBtn.textContent = `Confirm & Place Order (₹ ${grandTotal.toLocaleString('en-IN')})`;
+            const session = await res.json();
+            if (!res.ok) throw new Error(session.error || 'Failed to initiate Cashfree payment.');
+
+            // 2. Ensure SDK is ready
+            await loadCashfreeSDK();
+
+            // Demo Mode fallback for test simulations
+            if (session.demoMode) {
+              btn.textContent = 'Simulating Test Verification...';
+              const vRes = await fetch('/api/payment/cashfree/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ orderId: session.orderId })
+              });
+              const vData = await vRes.json();
+              if (vData.success) {
+                cart = {};
+                saveCart();
+                saveCoupon(null);
+                renderOrderSuccess(vData.order, 'Cashfree Online (Demo Verified)');
+                return;
+              }
+            }
+
+            // 3. Launch Cashfree v3 Checkout Modal
+            const cf = Cashfree({ mode: session.mode || 'sandbox' });
+            btn.textContent = 'Awaiting Payment in Modal...';
+
+            cf.checkout({
+              paymentSessionId: session.paymentSessionId,
+              redirectTarget: '_modal'
+            }).then(async (cfRes) => {
+              if (cfRes && cfRes.error) {
+                btn.disabled = false;
+                btn.innerHTML = origText;
+                showToast('Payment window closed or cancelled.');
+                return;
+              }
+
+              btn.textContent = 'Verifying Transaction...';
+              const verifyRes = await fetch('/api/payment/cashfree/verify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ orderId: session.orderId })
+              });
+              const verifyData = await verifyRes.json();
+
+              if (verifyData.success) {
+                cart = {};
+                saveCart();
+                saveCoupon(null);
+                renderOrderSuccess(verifyData.order, 'Cashfree Online');
+              } else {
+                btn.disabled = false;
+                btn.innerHTML = origText;
+                alert('Payment confirmation pending: ' + (verifyData.message || 'Please check order status.'));
+              }
+            });
+          } catch (err) {
+            alert('Error initiating Cashfree payment: ' + err.message);
+            btn.disabled = false;
+            btn.innerHTML = origText;
+          }
+        } else {
+          // Cash / UPI on Delivery
+          btn.textContent = 'Processing Order...';
+          try {
+            const res = await fetch('/api/orders', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name,
+                phone,
+                email,
+                address,
+                items: orderItems,
+                paymentMethod: 'Cash / UPI on Delivery',
+                notes: appliedCoupon ? `Discount applied: ${appliedCoupon.code} (-₹${discount})` : 'Online Store Checkout'
+              })
+            });
+            const result = await res.json();
+            if (!res.ok) throw new Error(result.error || 'Failed to place order.');
+
+            cart = {};
+            saveCart();
+            saveCoupon(null);
+            renderOrderSuccess(result, 'Cash / UPI on Delivery');
+          } catch (err) {
+            alert('Error placing order: ' + err.message);
+            btn.disabled = false;
+            btn.innerHTML = origText;
+          }
         }
       };
     }

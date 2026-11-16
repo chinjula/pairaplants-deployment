@@ -2721,6 +2721,7 @@ const adminViews = {
         <button class="admin-subnav-btn ${settingsTab === 'coupons' ? 'active' : ''}" data-a="settingsTab" data-v="coupons">🏷️ Coupons</button>
         <button class="admin-subnav-btn ${settingsTab === 'inquiries' ? 'active' : ''}" data-a="settingsTab" data-v="inquiries">✉️ Inquiries</button>
         <button class="admin-subnav-btn ${settingsTab === 'backups' ? 'active' : ''}" data-a="settingsTab" data-v="backups">💾 Backups &amp; Logs</button>
+        <button class="admin-subnav-btn ${settingsTab === 'payments' ? 'active' : ''}" data-a="settingsTab" data-v="payments">💳 Payments (Cashfree)</button>
       </div>
 
       ${settingsTab === 'store' ? `
@@ -3050,6 +3051,86 @@ const adminViews = {
           </div>
         </div>
       ` : ''}
+      ${settingsTab === 'payments' ? `
+        <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);padding:28px;max-width:850px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+            <div>
+              <h3 style="margin:0;">💳 Cashfree Payment Gateway &amp; Checkout</h3>
+              <p class="muted" style="margin:4px 0 0 0;font-size:0.85rem;">
+                Configure instant online customer payments via UPI (Google Pay, PhonePe, Paytm, BHIM), Cards, and NetBanking.
+              </p>
+            </div>
+            <div>
+              <span class="badge ${s.cashfree_app_id && s.cashfree_secret_key ? (s.cashfree_mode === 'production' ? 'badge-success' : 'badge-warning') : 'badge-neutral'}" style="font-size:0.85rem;padding:6px 12px;">
+                ${s.cashfree_app_id && s.cashfree_secret_key ? (s.cashfree_mode === 'production' ? '🟢 Live Production' : '🟡 Test Sandbox') : '⚪ Credentials Required'}
+              </span>
+            </div>
+          </div>
+
+          <form data-f="savePaymentSettings">
+            <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:var(--radius-sm);padding:16px;margin-bottom:24px;">
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;margin:0;font-weight:600;color:#14532D;">
+                <input type="checkbox" name="cashfree_enabled" ${s.cashfree_enabled !== false ? 'checked' : ''} style="width:18px;height:18px;accent-color:#15803D;">
+                <span>Enable Cashfree Payment Gateway on Storefront Checkout</span>
+              </label>
+              <p class="muted" style="margin:6px 0 0 28px;font-size:0.8rem;color:#166534;">
+                When active, customers on <code>/cart</code> can pay instantly via UPI apps, Credit/Debit cards, or NetBanking.
+              </p>
+            </div>
+
+            <div class="two-col" style="padding:0;gap:20px;">
+              <div>
+                <label for="cf-mode"><strong>Environment Mode</strong></label>
+                <select id="cf-mode" name="cashfree_mode" style="width:100%;margin-bottom:16px;">
+                  <option value="sandbox" ${s.cashfree_mode === 'sandbox' ? 'selected' : ''}>🧪 Sandbox (Test Mode)</option>
+                  <option value="production" ${s.cashfree_mode === 'production' ? 'selected' : ''}>🚀 Production (Live Payments)</option>
+                </select>
+
+                <label for="cf-app-id"><strong>Cashfree App ID (Client ID) *</strong></label>
+                <input id="cf-app-id" name="cashfree_app_id" value="${esc(s.cashfree_app_id || '')}" placeholder="e.g. TEST1038488392cf99a84..." style="font-family:monospace;margin-bottom:16px;">
+
+                <label for="cf-secret-key"><strong>Cashfree Secret Key *</strong></label>
+                <input id="cf-secret-key" type="password" name="cashfree_secret_key" value="${esc(s.cashfree_secret_key || '')}" placeholder="e.g. cfsk_ma_test_..." style="font-family:monospace;">
+              </div>
+
+              <div>
+                <div style="background:#F8FAFC;border:1px solid var(--line);border-radius:var(--radius-sm);padding:18px;">
+                  <h4 style="margin:0 0 8px 0;font-size:0.95rem;">📚 Cashfree Setup Guide</h4>
+                  <ul style="font-size:0.82rem;color:var(--text-muted);padding-left:18px;margin:0 0 14px 0;line-height:1.6;">
+                    <li>Obtain your API credentials from the official <a href="https://merchant.cashfree.com/merchants/login" target="_blank" rel="noopener" style="color:var(--primary-green);font-weight:600;">Cashfree Merchant Dashboard</a>.</li>
+                    <li>For testing, use <strong>Sandbox Mode</strong> with test UPI IDs or Cards. Switch to <strong>Production</strong> when ready for real transactions.</li>
+                    <li>Cashfree PG API version utilized: <code>2023-08-01</code>.</li>
+                  </ul>
+
+                  <h5 style="margin:12px 0 4px 0;font-size:0.85rem;">Webhook Notification Endpoint</h5>
+                  <div style="background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-family:monospace;font-size:0.75rem;word-break:break-all;color:#334155;">
+                    ${window.location.origin}/api/payment/cashfree/webhook
+                  </div>
+                  <small class="muted" style="display:block;margin-top:4px;font-size:0.75rem;">Set this under Cashfree Dashboard &gt; Developers &gt; Webhooks for real-time payment notifications.</small>
+                </div>
+              </div>
+            </div>
+
+            <hr style="margin:24px 0;border:0;border-top:1px solid var(--line);">
+
+            <div style="margin-bottom:24px;">
+              <h4 style="margin:0 0 8px 0;font-size:1rem;">🚚 Alternative Payment Methods</h4>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;margin:0;font-weight:600;">
+                <input type="checkbox" name="cod_enabled" ${s.cod_enabled !== false ? 'checked' : ''} style="width:18px;height:18px;accent-color:#15803D;">
+                <span>Enable Cash / UPI on Delivery (COD)</span>
+              </label>
+              <p class="muted" style="margin:4px 0 0 28px;font-size:0.8rem;">
+                Allows customers to place orders without immediate online payment and settle upon delivery.
+              </p>
+            </div>
+
+            <button type="submit" class="btn-pill" style="padding:12px 28px;font-size:0.95rem;">
+              💾 Save Payment Settings
+            </button>
+          </form>
+        </div>
+      ` : ''}
+
     `;
   }
 };
@@ -4582,6 +4663,20 @@ const forms = {
     await api('/settings', 'PUT', { seo: d });
     storeSettings = await api('/settings');
     toast('SEO settings updated!');
+    return render();
+  },
+  async savePaymentSettings(d, form) {
+    const payload = {
+      cashfree_enabled: form.querySelector('[name="cashfree_enabled"]').checked,
+      cashfree_mode: d.cashfree_mode || 'sandbox',
+      cashfree_app_id: (d.cashfree_app_id || '').trim(),
+      cashfree_secret_key: (d.cashfree_secret_key || '').trim(),
+      cod_enabled: form.querySelector('[name="cod_enabled"]').checked
+    };
+
+    await api('/settings', 'PUT', payload);
+    storeSettings = await api('/settings');
+    toast('Payment gateway configuration saved successfully!');
     return render();
   },
   async saveSettings(d) {
