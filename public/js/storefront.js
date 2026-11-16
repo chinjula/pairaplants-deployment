@@ -626,5 +626,64 @@
   if (window.location.pathname === '/cart') {
     renderCartPage();
   }
+
+  // 6. Contact Form Handler
+  const contactForm = document.getElementById('public-contact-form');
+  if (contactForm) {
+    contactForm.onsubmit = async (ev) => {
+      ev.preventDefault();
+      const btn = contactForm.querySelector('#contact-submit-btn');
+      const statusDiv = contactForm.querySelector('#contact-form-status');
+      const origText = btn ? btn.innerHTML : 'Send Botanical Inquiry';
+
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span>Sending Inquiry...</span>';
+      }
+
+      const fd = new FormData(contactForm);
+      const name = (fd.get('name') || '').trim();
+      const email = (fd.get('email') || '').trim();
+      const phone = (fd.get('phone') || '').trim();
+      const subject = fd.get('subject') || 'General Inquiry';
+      const userMsg = (fd.get('message') || '').trim();
+
+      const fullMessage = `[Topic: ${subject}]\n${userMsg}`;
+
+      try {
+        const res = await fetch('/api/inquiries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone, message: fullMessage })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed to submit inquiry.');
+
+        if (statusDiv) {
+          statusDiv.style.display = 'block';
+          statusDiv.className = 'contact-status-banner success';
+          statusDiv.innerHTML = `<strong>&check; Thank you, ${esc(name)}!</strong> Your inquiry has been received. Our botanical specialists will reach out via email or WhatsApp within 4 business hours.`;
+        }
+        contactForm.reset();
+        if (btn) btn.innerHTML = '<span>Inquiry Sent Successfully!</span>';
+        setTimeout(() => {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = origText;
+          }
+        }, 5000);
+      } catch (err) {
+        if (statusDiv) {
+          statusDiv.style.display = 'block';
+          statusDiv.className = 'contact-status-banner error';
+          statusDiv.innerHTML = `<strong>Error:</strong> ${esc(err.message)}`;
+        }
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
+    };
+  }
 })();
 

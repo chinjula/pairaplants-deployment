@@ -3820,67 +3820,403 @@ footer.site-footer {
 }
 
 
-/* Contact Grid */
-.contact-grid-wrap {
+/* ==============================================================================
+   DRIBBLE-STYLE "CONTACT US" TWO FLOATING CARDS UI/UX ARCHITECTURE
+   ============================================================================== */
+
+.contact-page-wrapper {
+  background: #F8FAFC !important;
+  padding: 64px 5% 96px !important;
+  font-family: var(--font-sans) !important;
+  color: #1E293B !important;
+  min-height: calc(100vh - 120px) !important;
+}
+
+.contact-page-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 52px;
+}
+
+.contact-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: #EBF7EE;
+  border: 1px solid #BBF7D0;
+  border-radius: 999px;
+  color: #15803D;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.contact-page-title {
+  font-family: var(--font-serif, 'Fraunces', Georgia, serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  color: #0F291E;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.contact-page-desc {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: #64748B;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+/* Two Side-by-Side Floating Cards Container */
+.contact-floating-cards-grid {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 36px;
+  align-items: stretch;
 }
 
-.contact-info-card {
+/* Base Floating Card */
+.contact-floating-card {
   background: #FFFFFF;
+  border-radius: 28px;
   border: 1px solid #E2E8F0;
-  border-radius: 16px;
-  padding: 32px;
-}
-
-.contact-methods {
+  box-shadow: 0 20px 45px -12px rgba(15, 41, 30, 0.06), 0 4px 16px rgba(0, 0, 0, 0.02);
+  padding: 44px 40px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  margin-bottom: 28px;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.method-item {
-  display: flex;
-  gap: 14px;
+.contact-floating-card:hover {
+  box-shadow: 0 26px 50px -12px rgba(15, 41, 30, 0.09), 0 6px 20px rgba(0, 0, 0, 0.03);
 }
 
-.method-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: #ECFDF5;
+/* Card Header */
+.contact-card-kicker {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: #15803D;
+  margin-bottom: 8px;
+}
+
+.contact-card-headline {
+  font-family: var(--font-serif, 'Fraunces', Georgia, serif);
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #0F291E;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+
+.contact-card-subtext {
+  font-size: 0.92rem;
+  color: #64748B;
+  line-height: 1.6;
+  margin: 0 0 32px;
+}
+
+/* Left Card: Vertical Contact Info List */
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 32px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-circle-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #E8F5E9;
+  color: #15803D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(21, 128, 61, 0.08);
+  transition: all 0.2s ease;
+}
+
+.contact-info-item:hover .contact-circle-badge {
+  background: #C8E6C9;
+  transform: scale(1.05);
+}
+
+.contact-circle-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-item-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94A3B8;
+}
+
+.contact-item-val {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #0F172A;
+  line-height: 1.45;
+}
+
+.contact-item-link {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #0F172A;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  line-height: 1.45;
+}
+
+.contact-item-link:hover {
+  color: #15803D;
+}
+
+.contact-item-note {
+  font-size: 0.8rem;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+/* Left Card: Subtly Tinted Highlight Box with Bright Green WhatsApp Pill */
+.contact-wa-highlight-box {
+  background: #F0FDF4;
+  border: 1px solid #DCFCE7;
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: auto;
+}
+
+.wa-box-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.wa-box-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #25D366;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.instant-wa-card {
-  background: #F8FAFC;
+.wa-box-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.wa-box-text h4 {
+  margin: 0 0 2px;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #0F291E;
+}
+
+.wa-box-text p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.btn-whatsapp-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #25D366;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-whatsapp-pill:hover {
+  background: #20BD5A;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(37, 211, 102, 0.45);
+  color: #FFFFFF;
+}
+
+.btn-whatsapp-pill svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Right Card: Minimalist Inquiry Form */
+.contact-inquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field-group label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.form-field-group input,
+.form-field-group select,
+.form-field-group textarea {
+  width: 100%;
   border: 1px solid #E2E8F0;
   border-radius: 12px;
-  padding: 20px;
+  padding: 13px 16px;
+  font-size: 0.92rem;
+  color: #0F172A;
+  background: #FAFBFB;
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: inherit;
 }
 
-.instant-wa-card h3 {
-  margin: 0 0 6px;
-  font-size: 1.05rem;
-}
-
-.instant-wa-card p {
-  font-size: 0.85rem;
-  color: #64748B;
-  margin: 0;
-}
-
-.contact-form-card {
+.form-field-group input:focus,
+.form-field-group select:focus,
+.form-field-group textarea:focus {
+  border-color: #15803D;
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  border-radius: 16px;
-  padding: 32px;
+  box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.12);
+}
+
+.form-field-group input::placeholder,
+.form-field-group textarea::placeholder {
+  color: #94A3B8;
+}
+
+.form-fields-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.contact-submit-forest-btn {
+  background: #0F291E;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 32px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 25px -4px rgba(15, 41, 30, 0.3);
+  margin-top: 6px;
+}
+
+.contact-submit-forest-btn:hover {
+  background: #15803D;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -4px rgba(21, 128, 61, 0.38);
+}
+
+.contact-submit-forest-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.contact-submit-forest-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.contact-status-banner {
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-status-banner.success {
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  color: #14532D;
+}
+
+.contact-status-banner.error {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #991B1B;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 960px) {
+  .contact-floating-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .contact-floating-card {
+    padding: 36px 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-page-wrapper {
+    padding: 44px 18px 72px !important;
+  }
+
+  .contact-floating-card {
+    padding: 32px 20px;
+    border-radius: 22px;
+  }
+
+  .form-fields-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Cart Grid Layout */
