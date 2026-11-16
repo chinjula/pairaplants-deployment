@@ -3868,6 +3868,8 @@ if (!isVercel) {
 /* ==============================================================================
    ADMIN AUTHENTICATION & ROUTE PROTECTION (Requirements 2, 6 & 12)
    ============================================================================== */
+app.get('/login', (req, res) => res.redirect('/admin/login'));
+
 app.get('/admin/login', (req, res) => {
   try {
     const t = jwt.verify(req.cookies.token, SECRET);
