@@ -13,6 +13,17 @@
 'use strict';
 
 (function() {
+  // Helper to safely escape HTML
+  function esc(s) {
+    if (s === null || s === undefined) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // 1. Cart Management in LocalStorage
   const CART_KEY = 'pp_cart_v2';
   const COUPON_KEY = 'pp_coupon_v2';
